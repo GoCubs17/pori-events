@@ -1,6 +1,6 @@
 {
-    "name": "Wundertools Drupal 8",
-    "description": "Wundertools Drupal 8 Composer Project Template",
+    "name": "Pori Events",
+    "description": "Drupal 8 based Pori Events Composer Project",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [

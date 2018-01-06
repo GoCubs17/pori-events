@@ -21,10 +21,10 @@ if (file_exists(drush_server_home() . '/.vagrant.d')) {
 
 $aliases['local'] = array(
   'parent' => '@parent',
-  'site' => 'wundertools',
+  'site' => 'pori-events',
   'env' => 'vagrant',
   'root' => '/vagrant/drupal/web',
-  'remote-host' => 'local.wundertools.com',
+  'remote-host' => 'local.tapahtumat.pori.fi',
   'remote-user' => 'vagrant',
   'ssh-options' => '-i ' . $key,
   'path-aliases' => array(
@@ -34,10 +34,10 @@ $aliases['local'] = array(
 );
 
 $aliases['dev'] = array(
-  'uri' => 'https://dev.wundertools.com',
+  'uri' => 'https://tapahtumat-pori.dev.wunder.io',
   'remote-user' => 'www-admin',
-  'remote-host' => 'dev.wundertools.com',
-  'root' => '/var/www/dev.wundertools.com/web',
+  'remote-host' => 'tapahtumat-pori.dev.wunder.io',
+  'root' => '/var/www/tapahtumat-pori.dev.wunder.io/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
@@ -49,10 +49,10 @@ $aliases['dev'] = array(
 );
 
 $aliases['stage'] = array(
-  'uri' => 'https://stage.wundertools.com',
+  'uri' => 'https://tapahtumat-pori.stage.wunder.io',
   'remote-user' => 'www-admin',
-  'remote-host' => 'stage.wundertools.com',
-  'root' => '/var/www/stage.wundertools.com/web',
+  'remote-host' => 'tapahtumat-pori.stage.wunder.io',
+  'root' => '/var/www/tapahtumat-pori.stage.wunder.io/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
@@ -64,10 +64,10 @@ $aliases['stage'] = array(
 );
 
 $aliases['prod'] = array(
-  'uri' => 'https://wundertools.com',
+  'uri' => 'https://tapahtumat.pori.fi',
   'remote-user' => 'www-admin',
-  'remote-host' => 'wundertools.com',
-  'root' => '/var/www/wundertools.com/web',
+  'remote-host' => 'tapahtumat.pori.fi',
+  'root' => '/var/www/tapahtumat.pori.fi/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
