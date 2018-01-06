@@ -95,3 +95,6 @@ $settings['rebuild_access'] = TRUE;
  * directory.
  */
 $settings['skip_permissions_hardening'] = TRUE;
+
+$base_url = 'https://local.tapahtumat.pori.fi';
+$config['stage_file_proxy.settings']['origin'] = 'https://tapahtumat-pori.stage.wunder.io';
