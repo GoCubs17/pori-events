@@ -1,0 +1,26 @@
+uuid: 26273420-c998-4457-a8b6-7f07f907b020
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

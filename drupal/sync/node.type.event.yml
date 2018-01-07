@@ -1,0 +1,17 @@
+uuid: 47ef0eee-b6c6-4ef1-abff-b22f4d39d849
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Event
+type: event
+description: 'A single Event in the Event Calendar.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
