@@ -1,0 +1,14 @@
+global-styling:
+  version: 1.0
+  css:
+    base:
+      dist/css/styles.css: {}
+      dist/css/styles-print.css: { media: print }
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+global-scripting:
+  version: 1.0
+  js:
+    dist/js/scripts.min.js: {}

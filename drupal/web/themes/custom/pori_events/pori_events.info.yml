@@ -1,0 +1,30 @@
+name: pori_events
+type: theme
+description: 'Pori events theme.'
+package: Custom
+core: 8.x
+base theme: classy
+
+libraries:
+  - pori_events/global-styling
+  - pori_events/global-scripting
+
+# ckeditor_stylesheets:
+#   - asset-builds/css/styles-wysiwyg.css
+
+# libraries-extend:
+#   toolbar/toolbar:
+#     - pori_events/toolbar
+
+libraries-override:
+  classy/base: false
+  core/modernizr: false
+
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  messages: Messages
+  content_header: 'Content Header'
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: 'Footer'
