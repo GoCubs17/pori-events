@@ -3,9 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.body
+    - field.field.node.event.field_address
+    - field.field.node.event.field_description
+    - field.field.node.event.field_end_time
+    - field.field.node.event.field_image
+    - field.field.node.event.field_short_description
+    - field.field.node.event.field_start_time
     - node.type.event
   module:
+    - address
+    - datetime
+    - image
     - text
     - user
 id: node.event.default
@@ -13,12 +21,53 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
+  field_address:
+    weight: 107
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: address_default
+    region: content
+  field_description:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_end_time:
+    weight: 103
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_image:
+    weight: 106
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_short_description:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_start_time:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   links:
     weight: 100
