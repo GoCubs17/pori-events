@@ -41,6 +41,9 @@ var path = {
     src: basePath.dist + 'image/',
     dist: basePath.dist + 'image/'
   },
+  fonts: {
+    dist: basePath.dist + 'fonts/'
+  },
   templates: {
     dist: basePath.templates
   },

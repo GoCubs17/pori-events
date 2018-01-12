@@ -1,7 +1,7 @@
 # Default application configuration that all configurations inherit from.
 
-scss_files: "assets/scss/**/*.scss"
-exclude: 'assets/scss/lib/normalize/_normalize.scss'
+scss_files: "src/scss/**/*.scss"
+exclude: 'src/scss/lib/normalize/_normalize.scss'
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already

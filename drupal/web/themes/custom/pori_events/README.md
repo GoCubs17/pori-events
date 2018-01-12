@@ -10,11 +10,11 @@ If the bower command gives you 'Command not found' run it from theme root like t
 
 After this you can run the command that compiles your sass files to css.
 
-    grunt build
+    gulp
 
-If you want to compile the css into human-readable form you can use the grunt build-dev
+If you want to compile the css into production form you can use the gulp --production
 
-    grunt build-dev
+    gulp --production
 
 ### Good to know ###
 
