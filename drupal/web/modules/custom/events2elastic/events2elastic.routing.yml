@@ -1,0 +1,7 @@
+events2elastic.searchkit_proxy:
+  path: '/api/search/searchkit/{index}/_search'
+  defaults:
+    _controller: '\Drupal\events2elastic\Controller\SearchkitProxyController::proxy'
+    _title: 'Searchkit-Elasticsearch Helper Proxy'
+  requirements:
+    _permission: 'access content'
