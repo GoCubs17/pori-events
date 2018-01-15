@@ -7,3 +7,4 @@ elasticsearch_helper:
   password: ''
 _core:
   default_config_hash: 2ROBGBFIQb7sf6vEtDXAeYHoM1X0-Kh16SNBl5zWHqE
+langcode: fi
