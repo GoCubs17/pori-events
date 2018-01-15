@@ -142,11 +142,13 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'string',
                 'index' => 'not_analyzed',
               ],
-              'content' => [
-                'type' => 'text',
-                'analyzer' => $analyzer,
-                // Trade off index size for better highlighting.
-                'term_vector' => 'with_positions_offsets',
+              'start_date' => [
+                'type' => 'date',
+                'format' => 'epoch_second',
+              ],
+              'end_date' => [
+                'type' => 'date',
+                'format' => 'epoch_second',
               ],
             ],
           ],

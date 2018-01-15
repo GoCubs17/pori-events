@@ -43,9 +43,21 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'url' => $object->url(),
     ];
     if ($bundle == 'event') {
-      $data['image'] = $object->field_image->value;
+      // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
+
+      // Date fields
+      $data['start_time'] = $object->field_start_time->value;
+      $data['end_time'] = $object->field_end_time->value;
+
+      // Use image style for field_image
+      if($object->hasField('field_image') && !$object->get('field_image')->isEmpty()) {
+        $entity_img_id = $object->get('field_image')->first()->getValue()['target_id'];
+        $image = \Drupal::entityTypeManager()->getStorage('file')->load($entity_img_id);
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
+        $data['image'] = $style->buildUrl($image->getFileUri());
+      }
     }
     return $data;
   }
