@@ -65,17 +65,6 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
   }
 
   /**
-   * Determine the name of the ID for the elasticsearch entry.
-   *
-   * @return string
-   *   The id of the item to be indexed.
-   */
-  public function getId($data) {
-    // Elasticsearch will generate its own id.
-    return NULL;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function index($source) {
@@ -140,6 +129,18 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'title' => [
                 'type' => 'text',
                 'analyzer' => $analyzer,
+              ],
+              'description' => [
+                'type' => 'text',
+                'analyzer' => $analyzer,
+              ],
+              'short_description' => [
+                'type' => 'text',
+                'analyzer' => $analyzer,
+              ],
+              'image' => [
+                'type' => 'string',
+                'index' => 'not_analyzed',
               ],
               'content' => [
                 'type' => 'text',

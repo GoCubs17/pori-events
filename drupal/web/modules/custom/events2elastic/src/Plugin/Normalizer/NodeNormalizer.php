@@ -40,9 +40,13 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'status' => $object->isPublished(),
       'bundle' => $bundle,
       'created' => $object->getCreatedTime(),
-      'content' => 'ADD CONTENT HERE',
       'url' => $object->url(),
     ];
+    if ($bundle == 'event') {
+      $data['image'] = $object->field_image->value;
+      $data['description'] = $object->field_description->value;
+      $data['short_description'] = $object->field_short_description->value;
+    }
     return $data;
   }
 
