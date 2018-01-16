@@ -1,0 +1,14 @@
+uuid: 574dca52-0b2c-439e-b7b0-14d950820fbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+  module:
+    - node
+id: node.event
+targetEntityType: node
+bundle: event
+types:
+  - 'schema:Event'
+fieldMappings: {  }
