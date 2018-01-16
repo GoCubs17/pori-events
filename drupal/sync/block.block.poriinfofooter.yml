@@ -1,0 +1,25 @@
+uuid: 66da7805-e98a-4ed7-a12d-cf8caea8f7dc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3ed68970-241e-464a-94d7-1c153ca69c6f'
+  module:
+    - block_content
+  theme:
+    - pori_events
+id: poriinfofooter
+theme: pori_events
+region: footer
+weight: -1
+provider: null
+plugin: 'block_content:3ed68970-241e-464a-94d7-1c153ca69c6f'
+settings:
+  id: 'block_content:3ed68970-241e-464a-94d7-1c153ca69c6f'
+  label: 'Pori info footer'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

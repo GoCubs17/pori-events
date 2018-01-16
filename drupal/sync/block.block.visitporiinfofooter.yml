@@ -1,0 +1,25 @@
+uuid: 81e01f0d-1428-4a27-aafc-fa95165ae41a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:657739bd-43fd-4b06-942f-a8ba2c6afa13'
+  module:
+    - block_content
+  theme:
+    - pori_events
+id: visitporiinfofooter
+theme: pori_events
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:657739bd-43fd-4b06-942f-a8ba2c6afa13'
+settings:
+  id: 'block_content:657739bd-43fd-4b06-942f-a8ba2c6afa13'
+  label: 'Visitpori info footer'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

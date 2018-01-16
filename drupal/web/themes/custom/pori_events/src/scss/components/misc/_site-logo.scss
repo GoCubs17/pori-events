@@ -1,0 +1,20 @@
+.site-logo {
+  display: block;
+  width: 80%;
+
+  @media screen and (min-width: $desktop-narrow) {
+    width: 33rem;
+  }
+}
+
+.footer-logo {
+  background: url("../../logo.svg") top left no-repeat;
+  display: block;
+  font-size: 0;
+  height: 2.5rem;
+  width: 25rem;
+
+  @media screen and (min-width: $desktop-narrow) {
+    width: 33rem;
+  }
+}

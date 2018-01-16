@@ -71,10 +71,15 @@
 
   </main>
 
-  {% if page.footer %}
-    <footer class="page-footer" role="contentinfo">
-      {{ page.footer }}
-    </footer>
-  {% endif %}
+  <footer class="page-footer" role="contentinfo">
+    <div class="page-footer__top">
+      <a href="{{ front_page }}" class="footer-logo">Etusivu</a>
+    </div>
+    <div class="page-footer__bottom">
+      {% if page.footer %}
+        {{ page.footer }}
+      {% endif %}
+    </div>
+  </footer>
 
 </div>{# /.layout-container #}
