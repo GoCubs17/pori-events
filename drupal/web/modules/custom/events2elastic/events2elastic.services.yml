@@ -1,0 +1,10 @@
+services:
+  events2elastic.normalizer.node_normalizer:
+    class: Drupal\events2elastic\Plugin\Normalizer\NodeNormalizer
+    tags:
+      - { name: normalizer, priority: 50 }
+    arguments: ['@entity.manager']
+
+  logger.channel.events2elastic:
+    parent: logger.channel_base
+    arguments: ['events2elastic']

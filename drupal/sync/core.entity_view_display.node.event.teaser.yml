@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_address
     - field.field.node.event.field_description
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_image
+    - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - node.type.event
   module:
@@ -19,6 +22,10 @@ content:
     weight: 100
     region: content
 hidden:
+  field_address: true
   field_description: true
   field_end_time: true
+  field_image: true
+  field_short_description: true
   field_start_time: true
+  langcode: true
