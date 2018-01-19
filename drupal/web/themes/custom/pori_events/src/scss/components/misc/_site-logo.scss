@@ -12,7 +12,11 @@
   display: block;
   font-size: 0;
   height: 2.5rem;
-  width: 25rem;
+  width: 20rem;
+
+  @media screen and (min-width: $tablet-portrait-narrow) {
+    width: 25rem;
+  }
 
   @media screen and (min-width: $desktop-narrow) {
     width: 33rem;

@@ -6,6 +6,7 @@
   color: inherit;
   content: $content;
   font-family: FontAwesome;
+
   @if $responsive {
     @include font-size-responsive($font-size);
   }

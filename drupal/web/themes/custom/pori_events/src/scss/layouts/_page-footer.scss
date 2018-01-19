@@ -5,8 +5,12 @@
 }
 
 .page-footer__top {
-  margin-top: 3rem;
+  margin-top: 2rem;
   width: 100%;
+
+  @media screen and (min-width: $tablet-portrait-narrow) {
+    margin-top: 3rem;
+  }
 }
 
 .page-footer__bottom .region {
