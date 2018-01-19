@@ -1,0 +1,9 @@
+tips:
+  views-ui-format:
+    label: Tulostusmuoto
+  views-ui-fields:
+    label: Kentät
+  views-ui-sorts:
+    label: Järjestysehdot
+  views-ui-preview:
+    label: Esikatselu
