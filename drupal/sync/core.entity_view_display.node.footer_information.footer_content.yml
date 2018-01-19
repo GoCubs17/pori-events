@@ -1,0 +1,54 @@
+uuid: f1c9a2ab-8203-46ce-aba3-3c1211e34269
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.footer_content
+    - field.field.node.footer_information.field_footer_section_1
+    - field.field.node.footer_information.field_footer_section_2
+    - field.field.node.footer_information.field_footer_section_3
+    - field.field.node.footer_information.field_footer_section_4
+    - node.type.footer_information
+  module:
+    - text
+    - user
+id: node.footer_information.footer_content
+targetEntityType: node
+bundle: footer_information
+mode: footer_content
+content:
+  field_footer_section_1:
+    weight: 101
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_footer_section_2:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_footer_section_3:
+    weight: 103
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_footer_section_4:
+    weight: 104
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

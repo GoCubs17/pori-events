@@ -1,0 +1,10 @@
+uuid: 67c45ad4-0bf8-4e3c-b006-cec1327b33eb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.footer_content
+label: 'Footer content'
+targetEntityType: node
+cache: true

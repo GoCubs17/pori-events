@@ -1,0 +1,22 @@
+{
+  "name": "pori_events",
+  "description": "Bower configuration for pori_events Drupal 8 theme",
+  "main": "",
+  "authors": [
+    "DRUID"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "./src/scss/font-awesome.scss",
+        "./dist/fonts/*"
+      ]
+    }
+  }
+}

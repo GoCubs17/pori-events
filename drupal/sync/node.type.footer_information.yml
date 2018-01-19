@@ -1,0 +1,17 @@
+uuid: 6517ff79-3efe-40c4-82ff-f4ec928b192c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Footer information'
+type: footer_information
+description: 'Four sections for footer information'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false
