@@ -1,10 +1,13 @@
-.site-logo img {
+.site-logo {
   display: block;
-  max-height: 2.5rem;
   width: 100%;
 
   @media screen and (min-width: $desktop-narrow) {
     width: 22.5rem;
+  }
+
+  img {
+    max-height: 2.5rem;
   }
 }
 
