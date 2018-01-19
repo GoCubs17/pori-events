@@ -12,7 +12,7 @@
   display: block;
   font-size: 0;
   height: 2.5rem;
-  width: 20rem;
+  width: auto;
 
   @media screen and (min-width: $tablet-portrait-narrow) {
     width: 25rem;
