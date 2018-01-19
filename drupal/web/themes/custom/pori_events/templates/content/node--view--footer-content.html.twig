@@ -77,20 +77,28 @@
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
 
-  <div class="footer__item">
-    {{ content.field_footer_section_1 }}
-  </div>
+  {% if content.field_footer_section_1['#items'] != false %}
+    <div class="footer__item">
+      {{ content.field_footer_section_1 }}
+    </div>
+  {% endif %}
 
-  <div class="footer__item">
-    {{ content.field_footer_section_2 }}
-  </div>
+  {% if content.field_footer_section_2['#items'] != false %}
+    <div class="footer__item">
+      {{ content.field_footer_section_2 }}
+    </div>
+  {% endif %}
 
-  <div class="footer__item">
-    {{ content.field_footer_section_3 }}
-  </div>
+  {% if content.field_footer_section_3['#items'] != false %}
+    <div class="footer__item">
+      {{ content.field_footer_section_3 }}
+    </div>
+  {% endif %}
 
-  <div class="footer__item">
-    {{ content.field_footer_section_4 }}
-  </div>
+  {% if content.field_footer_section_4['#items'] != false %}
+    <div class="footer__item">
+      {{ content.field_footer_section_4 }}
+    </div>
+  {% endif %}
 
 </article>
