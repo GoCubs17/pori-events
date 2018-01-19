@@ -13,7 +13,7 @@
   }
 }
 
-.page-footer__bottom .region {
+.page-footer__bottom .footer-block {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -31,7 +31,7 @@
     justify-content: flex-start;
   }
 
-  .block {
+  .footer__item {
     margin: 0 .5rem;
     width: 100%;
 

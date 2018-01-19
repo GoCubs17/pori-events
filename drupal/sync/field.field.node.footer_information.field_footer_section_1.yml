@@ -1,0 +1,21 @@
+uuid: 82773a47-6627-4f89-9c7d-924d9a777484
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_footer_section_1
+    - node.type.footer_information
+  module:
+    - text
+id: node.footer_information.field_footer_section_1
+field_name: field_footer_section_1
+entity_type: node
+bundle: footer_information
+label: 'Footer section 1'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
