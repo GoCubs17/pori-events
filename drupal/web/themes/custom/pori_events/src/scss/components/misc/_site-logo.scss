@@ -1,7 +1,7 @@
 .site-logo img {
   display: block;
   max-height: 2.5rem;
-  width: 80%;
+  width: 100%;
 
   @media screen and (min-width: $desktop-narrow) {
     width: 22.5rem;
@@ -13,13 +13,10 @@
   display: block;
   font-size: 0;
   height: 2.5rem;
-  width: auto;
-
-  @media screen and (min-width: $tablet-portrait-narrow) {
-    width: 25rem;
-  }
+  max-height: 2.5rem;
+  width: 100%;
 
   @media screen and (min-width: $desktop-narrow) {
-    width: 33rem;
+    width: 22.5rem;
   }
 }
