@@ -17,8 +17,13 @@
   set slogan = '<a href="beta.pori.fi">Porin kaupungin</a> kalenterista löydät kaikki lähialueen tapahtumat ja harrasteet.
                 <a href="beta.visitpori.fi">Visit pori</a> auttaa tapahtumajärjestämiseen liittyvissä asioissa.'
 %}
+{%
+  set containerClasses = [
+    'branding__container',
+  ]
+%}
 {% block content %}
-  <div class="branding__container">
+  <div {{ attributes.addClass(containerClasses) }}>
     {% if site_logo %}
       <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
         <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
