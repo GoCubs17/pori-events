@@ -1,0 +1,14 @@
+uuid: 02fb4c8f-1d2f-455b-9a8f-77633adf14c6
+langcode: fi
+status: true
+dependencies: {  }
+name: 16_9_medium
+label: '16:9 Medium'
+effects:
+  b63c266b-ae92-4a35-bbf8-a291b112b527:
+    uuid: b63c266b-ae92-4a35-bbf8-a291b112b527
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 960
+      height: 454
