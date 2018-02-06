@@ -91,7 +91,15 @@
 
   {% if content.field_image['#items'] != false %}
     <div class="event__image--container">
-      {{ content.field_image }}
+
+
+      <div class="slide-container">
+        <div class="slide-container__content">
+          {{ content.field_image }}
+        </div>
+        <div class="slide-container__arrows"></div>
+        <div class="slide-container__dots"></div>
+      </div>
     </div>
   {% endif %}
 
