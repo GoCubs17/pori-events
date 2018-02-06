@@ -86,14 +86,6 @@
     margin-bottom: 3rem;
     width: 30%;
   }
-
-  //> * {
-  //  margin-bottom: 1.25rem;
-  //
-  //  @media screen and (min-width: $desktop) {
-  //    margin-bottom: 3rem;
-  //  }
-  //}
 }
 
 .event__content--sidebar__title {
@@ -133,12 +125,6 @@
   }
 
   &.event__address {
-    //.event__address--postal {
-    //  display: flex;
-    //  flex-wrap: wrap;
-    //  justify-content: flex-end;
-    //}
-
     .span {
       @media screen and (min-width: $desktop + 8.75rem) {
         display: flex;
@@ -147,26 +133,37 @@
       }
     }
 
-    //.event__address--street::after {
-    //  content: ",";
-    //  margin-right: .313rem;
-    //}
-
     .event__address--street span::after {
       @media screen and (min-width: $desktop + 8.75rem) {
         content: ",";
         margin-right: .313rem;
       }
     }
+  }
+}
 
-    //.event__address--street > *:last-child::after {
-    //  content: "";
-    //  margin-right: 0;
-    //}
+.event__back-button {
+  border: 1.5px solid $black;
+  color: $black;
+  display: block;
+  margin-top: 1.5rem;
+  padding: .8rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+
+  @media screen and (min-width: $tablet-portrait-narrow) {
+    display: initial;
+  }
+
+  &:hover {
+    background: $black;
+    color: $white;
   }
 }
 
 .event__address {
+  // Icons are not working atm. TODO: Fix FontAwesome icons.
   &::before {
     @include fa('\f041', 2rem, 3.125rem, false);
   }
