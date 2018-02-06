@@ -147,7 +147,8 @@
   color: $black;
   display: block;
   margin-top: 1.5rem;
-  padding: .8rem 1rem;
+  padding: .8rem 1rem .8rem 2.8rem;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -160,11 +161,32 @@
     background: $black;
     color: $white;
   }
-}
 
+  &::before {
+    color: $black;
+    left: .5rem;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    width: 1.875rem;
+  }
+}
+// Icons are not working atm. TODO: Fix FontAwesome icons.
 .event__address {
-  // Icons are not working atm. TODO: Fix FontAwesome icons.
   &::before {
     @include fa('\f041', 2rem, 3.125rem, false);
+  }
+}
+
+.event__time {
+  &::before {
+    @include fa('\f017', 2rem, 3.125rem, false);
+  }
+}
+
+.event__back-button {
+  &::before {
+    @include fa('\f060', 1.5rem, 3.125rem, false);
   }
 }
