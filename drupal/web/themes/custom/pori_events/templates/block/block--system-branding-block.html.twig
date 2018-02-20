@@ -24,6 +24,11 @@
     'branding__container',
   ]
 %}
+{%
+  set containerClasses = [
+    'branding__container',
+  ]
+%}
 {% block content %}
   <div {{ attributes.addClass(containerClasses) }}>
     {% if site_logo %}
