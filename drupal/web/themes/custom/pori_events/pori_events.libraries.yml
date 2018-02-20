@@ -1,8 +1,16 @@
+
 slick:
   js:
     libraries/slick/slick.min.js: {}
   dependencies:
     - core/jquery
+
+kada-elastic-events:
+  css:
+    theme:
+      dist/kada-elastic-events/dist/styles.css: {}
+  js:
+    dist/kada-elastic-events/dist/bundle.js: {}
 
 global-styling:
   version: 1.0
@@ -15,8 +23,11 @@ global-styling:
     - core/jquery
     - core/jquery.once
     - pori_events/slick
+    - pori_events/kada-elastic-events
 
 global-scripting:
   version: 1.0
   js:
     dist/js/scripts.min.js: {}
+  dependencies:
+    - pori_events/kada-elastic-events

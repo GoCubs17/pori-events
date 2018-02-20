@@ -13,17 +13,33 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
+
+{# Provide default slogan if none is set in site settings. #}
 {%
-  set slogan = '<a href="beta.pori.fi">Porin kaupungin</a> kalenterista löydät kaikki lähialueen tapahtumat ja harrasteet.
-                <a href="beta.visitpori.fi">Visit pori</a> auttaa tapahtumajärjestämiseen liittyvissä asioissa.'
+  set slogan = '<a href="https://beta.pori.fi">Porin kaupungin</a> kalenterista löydät kaikki lähialueen tapahtumat ja harrasteet.
+                <a href="https://beta.visitpori.fi">Visit pori</a> auttaa tapahtumajärjestämiseen liittyvissä asioissa.'
+%}
+{%
+  set containerClasses = [
+    'branding__container',
+  ]
+%}
+{%
+  set containerClasses = [
+    'branding__container',
+  ]
 %}
 {% block content %}
-  <div class="branding__container">
+  <div {{ attributes.addClass(containerClasses) }}>
     {% if site_logo %}
       <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
         <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
       </a>
     {% endif %}
-    <div class="site-slogan">{{ slogan|striptags('<a>')|raw|t }}</div>
+    {% if site_slogan %}
+      <div class="site-slogan">{{ site_slogan }}</div>
+    {% else %}
+      <div class="site-slogan">{{ slogan|striptags('<a>')|raw|t }}</div>
+    {% endif %}
   </div>
 {% endblock %}

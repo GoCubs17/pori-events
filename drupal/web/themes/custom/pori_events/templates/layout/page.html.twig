@@ -54,7 +54,11 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
-      {{ page.content }}
+      {% if is_front %}
+        <div id="kada-event-search" class="kada-event-search">Search thingy here</div>
+      {% else %}
+        {{ page.content }}
+      {% endif %}
     </div>{# /.layout-content #}
 
     {% if page.sidebar_first %}
