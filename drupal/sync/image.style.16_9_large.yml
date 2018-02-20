@@ -1,0 +1,14 @@
+uuid: 4bac8e58-4b30-4c17-a473-ffe18af61fed
+langcode: fi
+status: true
+dependencies: {  }
+name: 16_9_large
+label: '16:9 Large'
+effects:
+  8b578a07-a25f-4508-8599-fb7e6ac71eb9:
+    uuid: 8b578a07-a25f-4508-8599-fb7e6ac71eb9
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1800
+      height: 757

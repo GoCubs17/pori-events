@@ -1,8 +1,9 @@
-uuid: 26273420-c998-4457-a8b6-7f07f907b020
+uuid: 9abd663b-c999-4713-aa07-314e1269d762
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.event.field_address
     - field.field.node.event.field_description
     - field.field.node.event.field_end_time
@@ -10,67 +11,68 @@ dependencies:
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - node.type.event
+    - responsive_image.styles.16_9_responsive
   module:
     - address
     - datetime
-    - image
+    - responsive_image
     - text
     - user
-id: node.event.default
+id: node.event.full
 targetEntityType: node
 bundle: event
-mode: default
+mode: full
 content:
   field_address:
-    weight: 107
-    label: above
+    weight: 6
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_description:
-    weight: 104
-    label: above
+    weight: 5
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_end_time:
-    weight: 103
-    label: above
+    weight: 2
+    label: hidden
     settings:
       timezone_override: ''
-      format_type: unix_time_epoch
+      date_format: U
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
     region: content
   field_image:
-    weight: 106
-    label: above
+    weight: 3
+    label: hidden
     settings:
-      image_style: ''
+      responsive_image_style: 16_9_responsive
       image_link: ''
     third_party_settings: {  }
-    type: image
+    type: responsive_image
     region: content
   field_short_description:
-    weight: 105
-    label: above
+    weight: 4
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_start_time:
-    weight: 102
-    label: above
+    weight: 1
+    label: hidden
     settings:
       timezone_override: ''
-      format_type: unix_time_epoch
+      date_format: U
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }

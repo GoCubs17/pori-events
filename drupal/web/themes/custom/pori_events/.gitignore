@@ -7,7 +7,9 @@ composer.json
 *.sass-cache*
 
 # node
-libraries
+libraries/font-awesome
+libraries/jquery
+libraries/responsive-nav
 node_modules
 npm-debug.log
 .gulp
