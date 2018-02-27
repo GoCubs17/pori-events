@@ -16,7 +16,7 @@ const EventGridItem = (props) => {
     <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
       <a href={url} target="_blank">
         <img data-qa="poster" className={bemBlocks.item("poster")} src={result._source.field_content_image_et_url} width="170" height="240"/>
-        <div data-qa="title_field.original" className={bemBlocks.item("title_field.original")} dangerouslySetInnerHTML={{__html:source.title_field.original}}>
+        <div data-qa="title.original" className={bemBlocks.item("title.original")} dangerouslySetInnerHTML={{__html:source.title.original}}>
         </div>
       </a>
     </div>
@@ -29,13 +29,13 @@ const EventListItem = (props) => {
 
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
   const url = (source.url) ? source.url : '/node/' + result._id
-  const image = (source.field_content_image_et_url) ? (
+  const image = (source.image) ? (
     <div className="event__image__wrapper">
-      <img src={source.field_content_image_et_url} width="231" height="231" alt="" />
+      <img src={source.image} width="231" height="231" alt="" />
     </div>
   ) : null;
-  const title = (source.title_field) ? source.title_field : null;
-  const leading = (source.field_lead_paragraph_et) ? source.field_lead_paragraph_et : null;
+  const title = (source.title) ? source.title : null;
+  const leading = (source.short_description) ? source.short_description : null;
 
   const place = (source.relation_place_service_node) ? (
     <div className="event__place">

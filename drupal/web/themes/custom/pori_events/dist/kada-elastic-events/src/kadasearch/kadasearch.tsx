@@ -43,32 +43,11 @@ const CollapsedPanel = (<Panel collapsable={true} defaultCollapsed={true} />);
 // now, so the client can test what works best for them. When this is
 // considered stable, it will make sense to remove the fields entirely from the
 // search options.
-const hobbiesQueryFields = [
- // "field_keywords_et.raw^13",
- // "field_keywords_et.stemmed^11",
- // "field_keywords_et.autocomplete",
- // "title_field^10",
- // "title_field.autocomplete^2",
-  // "field_district^8",
-  // "field_lead_paragraph_et^3",
-  // "field_address.raw^4",
-  // "field_address.standard^3",
-  // "field_address.autocomplete",
-]
 const eventsQueryFields = [
- // "field_keywords_et.raw^13",
- // "field_keywords_et.stemmed^11",
- // "field_keywords_et.autocomplete",
- // "title_field^10",
- // "title_field.autocomplete^2",
-  // "field_district^8",
-  // "field_event_types.raw^6",
-  // "field_event_types.stemmed^5",
-  // "field_lead_paragraph_et^3",
-  // "field_address.raw^4",
-  // "field_address.standard^3",
-  // "field_address.autocomplete",
+ "title^10",
+ "title.autocomplete^2",
 ]
+
 
 // Available query options:
 // https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl-query-string-query.html
@@ -134,6 +113,7 @@ export class KadaSearch extends React.Component<any, any> {
       <SearchkitProvider searchkit={this.searchkit}>
         <Layout size="l">
           <LayoutBody>
+
             <SideBar>
               <SearchBox
                 autofocus={false}
@@ -144,76 +124,11 @@ export class KadaSearch extends React.Component<any, any> {
                 prefixQueryOptions={prefixQueryOptions}
                 queryBuilder={QueryString}
               />
-
-              <DateRangeFilter
-                id="field_event_date"
-                title={window.Drupal.t("When")}
-                fromDateField="field_event_date.from"
-                toDateField="field_event_date.to"
-                calendarComponent={DateRangeCalendar}
-                containerComponent={CollapsedPanel}
-                fieldOptions={{
-                  type: 'nested',
-                  options: {
-                    path: 'field_event_date'
-                  }
-                }}
-                rangeFormatter={(v) => moment(parseInt(""+v)).format('D.M.YYYY')}
-              />
-
-              <RefinementListFilter
-                id="event_types"
-                title={window.Drupal.t("What")}
-                field="field_event_types"
-                operator="AND"
-                size={5}
-                containerComponent={CollapsedPanel}
-                listComponent={ItemHistogramList}
-              />
-
-              <RefinementWithText
-                id="target_audience"
-                title={window.Drupal.t("For whom")}
-                field="field_target_audience"
-                operator="OR"
-                listComponent={ItemHistogramList}
-                description={window.Drupal.t("Select one or many")}
-              />
-
-              <Panel
-                collapsable={true}
-                defaultCollapsed={true}
-                title={window.Drupal.t("Where")}>
-
-                <RefinementListFilter
-                  id="district"
-                  title={window.Drupal.t("Write or search from dropdown")}
-                  field="field_district"
-                  operator="OR"
-                  listComponent={MultiSelect}
-                  size={100}
-                />
-
-              </Panel>
-
-              <RefinementListFilter
-                id="hobby_details"
-                title={window.Drupal.t("Fine down search")}
-                field="hobby_details"
-                operator="AND"
-                containerComponent={CollapsedPanel}
-                listComponent={ItemHistogramList}
-              />
-
             </SideBar>
 
             <LayoutResults>
 
               <ActionBar>
-                <ActionBarRow>
-                  <GroupedSelectedFilters/>
-                  <ResetFilters/>
-                </ActionBarRow>
                 <ActionBarRow>
                   <HitsStats/>
                 </ActionBarRow>
@@ -229,8 +144,7 @@ export class KadaSearch extends React.Component<any, any> {
                   itemComponent={EventListItem}
                   hitsPerPage={10}
                   highlightFields={[
-                    "title_field",
-                    "field_lead_paragraph_et",
+                    "title",
                   ]}
                   scrollTo=".sk-layout"
                 />

@@ -90,7 +90,7 @@ export class DateRangeFilter extends SearchkitComponent<DateRangeFilterProps, an
     fieldOptions: {
       type: 'nested',
       options: {
-        path: 'field_event_date'
+        path: 'start_time'
       }
     }
   }
