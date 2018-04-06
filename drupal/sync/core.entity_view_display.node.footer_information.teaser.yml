@@ -16,4 +16,8 @@ content:
     weight: 100
     region: content
 hidden:
+  field_footer_section_1: true
+  field_footer_section_2: true
+  field_footer_section_3: true
+  field_footer_section_4: true
   langcode: true

@@ -2,7 +2,7 @@ elasticsearch_helper:
   scheme: http
   host: localhost
   port: '9200'
-  authentication: '0'
+  authentication: 0
   user: ''
   password: ''
 _core:
