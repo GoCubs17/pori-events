@@ -22,6 +22,7 @@
    - { role: php-fpm, tags: [ 'php-fpm' ] }
    - { role: drush, tags: [ 'drush' ] }
    - { role: drupal-log, tags: [ 'drupal-log' ] }
+   - { role: elasticsearch, tags: [ 'elasticsearch' ] }
    - { role: newrelic-infra, tags: [ 'newrelic-infra' ] }
    - { role: newrelic-sysmon, tags: [ 'newrelic-sysmon' ] }
 
@@ -179,3 +180,5 @@
 
     newrelic_enabled: True
     newrelic_infra_enabled: True
+    
+    elasticsearch_heap_size: 1g
