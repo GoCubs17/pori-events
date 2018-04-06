@@ -22,19 +22,21 @@ class NodeNormalizer extends ContentEntityNormalizer {
    *
    * @var array
    */
-  protected $format = ['elasticsearch_helper'];
+  // protected $format = ['elasticsearch_helper'];
 
   /**
    * {@inheritdoc}
    */
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
+
     $bundle = $object->bundle();
     // Get the object language.
     $langcode = $object->language()->getId();
     // Common for all bundles.
     $data = [
       'id' => $object->id(),
+
       'uuid' => $object->uuid(),
       'title' => $object->getTitle(),
       'status' => $object->isPublished(),
@@ -43,9 +45,31 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'url' => $object->url(),
     ];
     if ($bundle == 'event') {
+      // area term
+      if ($object->field_area->target_id) {
+        $term_name = Term::load($object->field_area->target_id)->get('name')->value;
+        $data['area'] = $term_name;
+      }
+
+      // audience term
+      if ($object->field_target_audience->target_id) {
+        $term_name = Term::load($object->field_target_audience->target_id)->get('name')->value;
+        $data['audience'] = $term_name;
+      }
+
+      // type term
+      if ($object->field_event_type->target_id) {
+        $term_name = Term::load($object->field_event_type->target_id)->get('name')->value;
+        $data['event_type'] = $term_name;
+      }      
+
       // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
+      $data['tickets'] = $object->field_tickets->value;
+
+      // boolean fields
+      $data['free_enterance'] = $object->field_free_enterance->value;
 
       // Date fields
       $data['start_time'] = $object->field_start_time->value;

@@ -105,6 +105,43 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
             'number_of_shards' => 1,
             // No need for replicas, we only have one ES node.
             'number_of_replicas' => 0,
+            'analysis' => [
+              'filter' => [
+                'autocomplete_filter' => [
+                  'type' => 'edge_ngram',
+                  'min_gram' => 2,
+                  'max_gram' => 20,
+                ],
+              ],
+              'analyzer' => [
+                'comma_separated' => [
+                  'type' => 'custom',
+                  'tokenizer' => 'custom_comma_tokenizer',
+                ],
+                'autocomplete' => [
+                  'type' => 'custom',
+                  'tokenizer' => 'standard',
+                  'filter' => [
+                    'lowercase',
+                    'autocomplete_filter',
+                  ],
+                ],
+                'keyword_autocomplete' => [
+                  'type' => 'custom',
+                  'tokenizer' => 'keyword',
+                  'filter' => [
+                    'lowercase',
+                    'autocomplete_filter',
+                  ],
+                ],
+              ],
+              'tokenizer' => [
+                'custom_comma_tokenizer' => [
+                  'type' => 'pattern',
+                  'pattern' => ',',
+                ],
+              ],
+            ],
           ],
         ]);
         $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
@@ -129,7 +166,37 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'title' => [
                 'type' => 'text',
                 'analyzer' => $analyzer,
+                'fields' => [
+                  'stemmed' => [
+                    'type' => 'text',
+                    'analyzer' => $analyzer,
+                  ],
+                  'autocomplete' => [
+                    'type' => 'text',
+                    'analyzer' => 'autocomplete',
+                    'search_analyzer' => 'simple',
+                  ],
+                ],
               ],
+              'area' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],        
+              'audience' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'event_type' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'tickets' => [
+                'type' => 'text',
+                'analyzer' => $analyzer,
+              ],
+              'free_enterance' => [
+                'type' => 'boolean',
+              ],              
               'description' => [
                 'type' => 'text',
                 'analyzer' => $analyzer,
@@ -139,7 +206,7 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'analyzer' => $analyzer,
               ],
               'image' => [
-                'type' => 'string',
+                'type' => 'text',
                 'index' => 'not_analyzed',
               ],
               'start_date' => [
