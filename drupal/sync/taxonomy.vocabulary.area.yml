@@ -1,0 +1,9 @@
+uuid: 05ba25eb-e8f1-47fa-ab08-620eb8ff6ad1
+langcode: fi
+status: true
+dependencies: {  }
+name: Area
+vid: area
+description: ''
+hierarchy: 0
+weight: 0

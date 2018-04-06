@@ -1,0 +1,9 @@
+uuid: 788f6349-0756-40d2-802e-8196d5b618f2
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Target audience'
+vid: target_audience
+description: ''
+hierarchy: 0
+weight: 0

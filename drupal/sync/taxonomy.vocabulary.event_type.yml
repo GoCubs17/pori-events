@@ -1,0 +1,9 @@
+uuid: e9cfb5fa-57ff-4f08-b544-266d616503fa
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Event type'
+vid: event_type
+description: ''
+hierarchy: 0
+weight: 0
