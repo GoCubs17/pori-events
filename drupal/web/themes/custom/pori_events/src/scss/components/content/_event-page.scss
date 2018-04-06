@@ -18,9 +18,9 @@
   }
 }
 
-.event__title {
-  color: $blue;
-}
+// .event__title {
+//   color: $blue;
+// }
 
 .event__image--container {
   margin-bottom: 1.2rem;
@@ -180,9 +180,9 @@
 }
 
 .event__time {
-  &::before {
-    @include fa('\f017', 2rem, 3.125rem, false);
-  }
+  // &::before {
+  //   @include fa('\f017', 2rem, 3.125rem, false);
+  // }
 }
 
 .event__back-button {
