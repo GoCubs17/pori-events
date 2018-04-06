@@ -2,7 +2,7 @@
 
 project_name: pori-events
 
-support_email: support@wundertools.com
+support_email: fi.support@wunder.io
 
 innodb_buffer_pool_size: "{{ memory_db }}"
 
@@ -38,35 +38,13 @@ php_env_vars_include_db: True
 upcloud_project_name: "{{ project_name }}"
 #upcloud_server_admin_ssh_keys:
 
-upcloud_zone: de-fra1
+upcloud_zone: fi-hel1
 
 # These are the specifications for servers in this project
 upcloud_server_spec_list:
-  - group: prod-front
-    # This can be used to add these machines into multiple groups
+  - group: prod
+    ## This can be used to add these machines into multiple groups
     secondary_groups:
-      - prod
-    members:
-      - { name: 1, state: present }
-      - { name: 2, state: present }
-    settings:
-      plan: 4xCPU-4GB
-      zone: "{{ upcloud_zone }}"
-      # Allows ansible to reboot the machine when making changes to the disks
-      allow_reboot_on_resize: true
-      storage_devices:
-        - title: root
-          os: CentOS 7.0
-          size: 50
-        - title: logs
-          size: 10
-          mount:
-            path: /var/log
-            fstype: ext4
-            opts: defaults,noatime
-  - group: prod-lb
-    secondary_groups:
-      - prod
       - firewall_web
     members:
       - { name: 1, state: present }
@@ -79,47 +57,13 @@ upcloud_server_spec_list:
         - title: root
           os: CentOS 7.0
           size: 50
-        - title: logs
-          size: 10
-          mount:
-            path: /var/log
-            fstype: ext4
-            opts: defaults,noatime
-  - group: prod-db
-    secondary_groups:
-      - prod
-    members:
-      - { name: 1, state: present }
-    settings:
-      plan: 6xCPU-8GB
-      zone: "{{ upcloud_zone }}"
-      # Allows ansible to reboot the machine when making changes to the disks
-      allow_reboot_on_resize: true
-      storage_devices:
-        - title: root
-          os: CentOS 7.0
-          size: 50
-        - title: logs
-          size: 10
-          mount:
-            path: /var/log
-            fstype: ext4
-            opts: defaults,noatime
-        - title: nfs
-          size: 100
-          mount:
-            path: /nfs-files
-            fstype: ext4
-            opts: defaults,noatime
           backup_rule: { interval: daily, time: '0330', retention: 7 }
-        - title: database
-          size: 30
+        - title: logs
+          size: 10
           mount:
-            path: /var/lib/mysql
+            path: /var/log
             fstype: ext4
-            # Options for mysql performance
-            # These are the same as Mozilla is using for their mysql servers: https://bugzilla.mozilla.org/show_bug.cgi?id=874039
-            opts: defaults,noatime,data=writeback,barrier=0,dioread_nolock
+            opts: defaults,noatime
   - group: stage
     # This can be used to add these machines into multiple groups
     secondary_groups:
@@ -162,3 +106,132 @@ upcloud_server_spec_list:
             path: /var/log
             fstype: ext4
             opts: noatime
+
+# SSH Public key service
+base_pubkeys_host: key.wunder.io
+
+# Use this base domain for all wunder projects in upcloud
+upcloud_server_hostname_base_domain: upc.wunder.io
+
+# Logging parameters
+papertrail_host: "logs.papertrailapp.com"
+papertrail_port: 12425
+
+# Our email which is usually used to register letsencrypt certificates
+letsencrypt_email: fi.support@wunder.io
+certbot_email: fi.support@wunder.io
+
+##
+# Upcloud Firewall settings
+##
+# Combine all lists to one variable which is used in all machines
+firewall_ssh_allowed:
+
+  # Current VPN and Office IP-address listings can be found from
+  # https://intra.wunder.io/info/office-and-vpn-ip-addresses
+  
+  # VyprVPN endpoints
+  - comment: VyprVPN - Frankfurt (DE)
+    ip: 94.237.27.124
+  - comment: VyprVPN - Helsinki (FI)
+    ip: 94.237.33.88
+  - comment: VyprVPN - London (UK)
+    ip: 83.136.248.231
+
+  # Office IP-addresses
+  - comment: Wunder Office - Munich (DE)
+    ip: 80.81.0.70
+  - comment: Wunder Office - Riga (LV)
+    ip: 80.233.128.174
+  - comment: Wunder Office - Tallinn (EE)
+    ip: 213.219.120.178
+  - comment: Wunder Office - Turku (FI)
+    ip: 87.94.15.10
+  - comment: Wunder Office - Helsinki (FI)
+    ip: 84.20.132.177
+  
+  # This is list of deploybot IP-addresses
+  # source: http://support.deploybot.com/article/854-ips-and-ports-for-firewall-setup
+  - comment: Deploybot Server
+    ip: 35.160.197.15
+  - comment: Deploybot Server
+    ip: 35.164.109.1
+  - comment: Deploybot Server
+    ip: 35.164.222.16
+  - comment: Deploybot Server
+    ip: 35.165.208.249
+  - comment: Deploybot Server
+    ip: 52.25.14.156
+  - comment: Deploybot Server
+    ip: 52.32.192.9
+  - comment: Deploybot Server
+    ip: 52.32.251.109
+  - comment: Deploybot Server
+    ip: 52.32.69.162
+  - comment: Deploybot Server
+    ip: 52.34.43.222
+  - comment: Deploybot Server
+    ip: 52.35.111.113
+  - comment: Deploybot Server
+    ip: 52.35.132.215
+  - comment: Deploybot Server
+    ip: 52.37.215.92
+  - comment: Deploybot Server
+    ip: 52.38.202.217
+  
+  # This is list of Travis CI container based addresses
+  # source: https://docs.travis-ci.com/user/ip-addresses/
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 52.45.220.64
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 52.45.220.65
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 52.54.40.118
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 52.54.40.119
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 54.89.89.104
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 54.89.89.105
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 54.82.137.203
+  - comment: Travis CI Containers - travis-ci.com
+    ip: 54.82.137.204
+
+# DEPRECATED - THIS WILL BE DELETED SOON
+# This contains trusted servers allowed in Upcloud Firewall 
+vpn_ip_list:
+  - name: Wunder Offices
+    addresses:
+      - 80.81.0.70
+      - 84.20.132.177
+      - 80.233.128.174
+      - 213.219.120.178
+      - 87.94.15.10
+  - name: VyprVPN
+    addresses:
+      - 94.237.27.124
+      - 94.237.33.88
+      - 83.136.248.231
+
+# DEPRECATED - THIS WILL BE DELETED SOON
+# This contains trusted servers allowed in Upcloud Firewall 
+# This is list of deploybot IP-addresses
+# source: http://support.deploybot.com/article/854-ips-and-ports-for-firewall-setup
+deployment_server_ip_list:
+  - name: Deploybot servers
+    addresses:
+      - 35.160.197.15
+      - 35.164.109.1
+      - 35.164.222.16
+      - 35.165.208.249
+      - 52.25.14.156
+      - 52.32.192.9
+      - 52.32.251.109
+      - 52.32.69.162
+      - 52.34.43.222
+      - 52.35.111.113
+      - 52.35.132.215
+      - 52.37.215.92
+      - 52.38.202.217
+

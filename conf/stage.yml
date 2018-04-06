@@ -1,7 +1,7 @@
 ---
 
 # Setup servers and firewalls using upcloud api
-- include: upcloud.yml
+#- include: upcloud.yml
 
 # Example of standard single server setup without production services (monitoring, logging etc.)
 - hosts: stage
@@ -12,6 +12,7 @@
    - { role: base, tags: [ 'base' ] }
    - { role: papertrail, tags: [ 'papertrail' ] }
    - { role: varnish, tags: [ 'varnish' ] }
+   - { role: memcached, tags: [ 'memcached' ] }
    - { role: dbserver, tags: [ 'dbserver' ] }
    - { role: drupal-db, tags: [ 'drupal-db' ] }
    - { role: certbot, tags: [ 'certbot' ] }
@@ -53,7 +54,7 @@
 
     # You can set custom variables if the same value is used in multiple places so it can be easily changed here
     # You can use it anywhere after this using " {{ variable_name }}"
-    domain_name: stage.example.com
+    domain_name: pori-events.stage.wunder.io
 
     # This is used in cronjob and varnish and nginx configs
     drupal_web_root: "/var/www/{{ domain_name }}/current/web"
@@ -76,8 +77,8 @@
 
     # On dev and stage it's good idea to protect the site with htauth
     basicauth_enabled: True
-    basicauth_username: wunder
-    basicauth_password: tools
+    basicauth_username: pori
+    basicauth_password: kada
     # Basic auth can also be disabled for certain ip's
     basicauth_ip:
       - address: 84.20.132.177
@@ -85,6 +86,7 @@
       - address: 94.237.27.124
       - address: 94.237.33.88
       - address: 83.136.248.231
+      - address: 194.89.239.222
 
     # Apps I want to run on this server
     apps:

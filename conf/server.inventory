@@ -1,6 +1,8 @@
 [dev]
+94.237.38.225
 
 [stage]
+185.26.49.29
 
 [prod-db]
 
@@ -13,9 +15,12 @@
 dev
 stage
 prod-lb
+prod
 
 [prod:children]
 prod-lb
 prod-front
 prod-db
 
+[prod]
+94.237.34.50
