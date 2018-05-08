@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - taxonomy
+id: migrate_source_event_audience
+migration_tags: null
+migration_group: migrate_source_event
+label: Audience
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: 'https://linkedevents.dymesolutions.com/api/v1/keyword_set/pori:audiences/?include=keywords&page_size=999'
+  item_selector: keywords
+  ids:
+    audience_id:
+      type: string
+  constants:
+    slash: '/'
+  fields:
+    -
+      name: audience_id
+      label: 'ID of the audience'
+      selector: 'id'
+    -
+      name: audience_name
+      label: 'Name of the audience'
+      selector: 'name/fi'
+process:
+  vid:
+    plugin: default_value
+    default_value: target_audience
+  name: audience_name
+  path:
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        # Slash needs to be prefixed for the path.
+        - constants/slash
+        - author_alias
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: {  }

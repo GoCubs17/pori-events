@@ -1,0 +1,10 @@
+name: JSON migration Linked Events
+type: module
+description: JSON migration Linked Events
+core: 8.x
+package: Migration
+dependencies:
+  - migrate_linked_events
+  - migrate_linked_events_setup
+  - migrate_plus
+  - migrate_tools
