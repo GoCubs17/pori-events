@@ -213,9 +213,21 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'date',
                 'format' => 'epoch_second',
               ],
+              'start_date_millis' => [
+                'type' => 'date',
+              ],              
               'end_date' => [
                 'type' => 'date',
                 'format' => 'epoch_second',
+              ],
+              'end_date_millis' => [
+                'type' => 'date',
+              ],
+              'date_lenght' => [
+                'type' => 'text',
+              ],
+              'date_pretty' => [
+                'type' => 'text',
               ],
             ],
           ],

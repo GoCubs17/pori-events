@@ -72,8 +72,19 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['free_enterance'] = $object->field_free_enterance->value;
 
       // Date fields
-      $data['start_time'] = $object->field_start_time->value;
-      $data['end_time'] = $object->field_end_time->value;
+      $from = $object->field_start_time->value;
+      $to = $object->field_end_time->value;
+
+      $data['start_time'] = $from;
+      $data['end_time'] = $to;
+
+      $data['start_time_millis'] = date('U000', strtotime($from));
+      $data['end_time_millis'] = date('U000',strtotime($to));
+
+      $data['date_lenght'] = !empty($data['end_time_millis']) ? $data['end_time_millis'] - $data['start_time_millis'] : null;
+
+      $data['date_pretty'] = date('j.n.Y H:i', strtotime($from)) . " - " . date('j.n.Y H:i', strtotime($to));
+
 
       // Use image style for field_image
       if($object->hasField('field_image') && !$object->get('field_image')->isEmpty()) {
