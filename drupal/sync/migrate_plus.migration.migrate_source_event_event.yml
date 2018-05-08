@@ -1,0 +1,133 @@
+uuid: 33a7242d-9b37-4dde-ac11-e3f614b5208b
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - node
+id: migrate_source_event_event
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_event
+label: Events
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: 'https://linkedevents.dymesolutions.com/api/v1/event/?page_size=999999&include=location,keywords,audience'
+  item_selector: data
+  ids:
+    event_id:
+      type: string
+  constants:
+    slash: /
+  fields:
+    -
+      name: event_id
+      label: 'ID of the event'
+      selector: id
+    -
+      name: event_title
+      label: 'Title of the event'
+      selector: name/fi
+    -
+      name: event_description
+      label: 'Long description of the event'
+      selector: description/fi
+    -
+      name: event_short_description
+      label: 'Short description of the event'
+      selector: short_description/fi
+    -
+      name: event_address
+      label: 'Address of the event'
+      selector: location_extra_info/fi
+    -
+      name: event_start_time
+      label: 'Event start time'
+      selector: start_time
+    -
+      name: event_end_time
+      label: 'Event end time'
+      selector: end_time
+    -
+      name: event_created
+      label: 'Time created'
+      selector: created_time
+    -
+      name: event_location
+      label: Location
+      selector: location/id
+    -
+      name: event_audience
+      label: Audience
+      selector: audience
+    -
+      name: event_keywords
+      label: Keywords
+      selector: keywords
+process:
+  type:
+    plugin: default_value
+    default_value: event
+  title: event_title
+  field_description: event_description
+  field_short_description: event_short_description
+  field_address: event_address
+  field_start_time:
+    plugin: format_date
+    format: 'Y-m-d\TH:i:s'
+    source: event_start_time
+  field_end_time:
+    plugin: format_date
+    format: 'Y-m-d\TH:i:s'
+    source: event_end_time
+  created:
+    plugin: format_date
+    format: U
+    source: event_created
+  uid:
+    plugin: default_value
+    default_value: 1
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: book_alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - book_alias
+  field_event_type:
+    -
+      source: event_keywords
+      plugin: extract
+      default: ''
+      index:
+        - 0
+        - id
+    -
+      plugin: migration
+      migration: migrate_source_event_keywords
+  field_area:
+    plugin: migration
+    migration: migrate_source_event_area
+    source: event_location
+  field_target_audience:
+    -
+      source: event_audience
+      plugin: extract
+      default: ''
+      index:
+        - 0
+        - id
+    -
+      plugin: migration
+      migration: migrate_source_event_audience
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

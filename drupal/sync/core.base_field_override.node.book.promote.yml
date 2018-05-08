@@ -1,0 +1,24 @@
+uuid: 53f62f44-64de-45ac-b512-b83271221f8e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+_core:
+  default_config_hash: qlkXtucbxFDdCm6g1EzTwqMscpsFMhHtbfkblRRtL8s
+id: node.book.promote
+field_name: promote
+entity_type: node
+bundle: book
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

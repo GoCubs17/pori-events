@@ -8,9 +8,9 @@ dependencies:
 _core:
   default_config_hash: 3QZ9apklK6mQ7BzodmxzOxqO---2BCPtOLE3k9eQ0Is
 id: watchdog
-label: Watchdog
+label: Vahtikoira
 module: views
-description: 'Recent log messages'
+description: 'Viimeisimmät lokimerkinnät'
 tag: ''
 base_table: watchdog
 base_field: wid
@@ -19,7 +19,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Isäntä
     position: 0
     display_options:
       access:
@@ -40,10 +40,10 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: Suodatin
           reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -56,10 +56,10 @@ display:
           total_pages: null
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Kaikki -'
             offset: false
             offset_label: Offset
           tags:
@@ -151,7 +151,7 @@ display:
           field: nothing
           relationship: none
           group_type: group
-          admin_label: Icon
+          admin_label: Ikoni
           label: ''
           exclude: false
           alter:
@@ -250,7 +250,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Severity
+          label: Vakavuus
           exclude: true
           alter:
             alter_text: false
@@ -300,7 +300,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Type
+          label: Tyyppi
           exclude: false
           alter:
             alter_text: false
@@ -349,7 +349,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Date
+          label: Päivämäärä
           exclude: false
           alter:
             alter_text: false
@@ -401,7 +401,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Message
+          label: Viesti
           exclude: false
           alter:
             alter_text: false
@@ -451,7 +451,7 @@ display:
           relationship: uid
           group_type: group
           admin_label: ''
-          label: User
+          label: Käyttäjä
           exclude: false
           alter:
             alter_text: false
@@ -516,7 +516,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimenpiteet
           exclude: false
           alter:
             alter_text: false
@@ -572,7 +572,7 @@ display:
           exposed: true
           expose:
             operator_id: type_op
-            label: Type
+            label: Tyyppi
             description: ''
             use_operator: false
             operator: type_op
@@ -611,7 +611,7 @@ display:
           exposed: true
           expose:
             operator_id: severity_op
-            label: Severity
+            label: Vakavuus
             description: ''
             use_operator: false
             operator: severity_op
@@ -650,7 +650,7 @@ display:
           expose:
             label: ''
           plugin_id: standard
-      title: 'Recent log messages'
+      title: 'Viimeisimmät lokimerkinnät'
       header: {  }
       footer: {  }
       empty:
@@ -664,7 +664,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: 'No log messages available.'
+            value: 'Yhtään lokimerkintää ei ole saatavilla.'
             format: basic_html
           plugin_id: text
       relationships:
@@ -685,7 +685,7 @@ display:
           1: AND
       css_class: admin-dblog
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -696,13 +696,13 @@ display:
   page:
     display_plugin: page
     id: page
-    display_title: Page
+    display_title: Sivu
     position: 1
     display_options:
       display_extenders: {  }
       path: admin/reports/dblog
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'

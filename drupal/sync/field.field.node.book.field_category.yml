@@ -1,0 +1,27 @@
+uuid: 2ce0f5a1-47e8-4118-a041-007c9ce7dd4a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.book
+_core:
+  default_config_hash: W_KQKsg011a8UJ15E7it88UaYQCLJHo2f2lxF8Xr2fw
+id: node.book.field_category
+field_name: field_category
+entity_type: node
+bundle: book
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles: {  }
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,22 @@
+uuid: 6064964b-504b-4374-9d22-3311b95c00cb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+  module:
+    - path
+_core:
+  default_config_hash: FLgwAMn0Jrj-bBCzH3Bpqmy6ahsoZKszEucVYN3tbI4
+id: node.book.path
+field_name: path
+entity_type: node
+bundle: book
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

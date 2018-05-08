@@ -1,0 +1,22 @@
+uuid: fc781293-334c-450a-b45c-17cec0a656d3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+_core:
+  default_config_hash: XOfUSz0BPot1mxb2FAXj8zF-RdWl55ejH0C_WujnlqI
+id: node.book.uid
+field_name: uid
+entity_type: node
+bundle: book
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

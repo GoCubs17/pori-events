@@ -20,7 +20,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Isäntä
     position: 0
     display_options:
       access:
@@ -232,7 +232,7 @@ display:
           admin_label: ''
           label: ''
           empty: true
-          content: 'No comments available.'
+          content: 'Kommentteja ei ole saatavilla.'
           tokenize: false
           plugin_id: text_custom
       display_extenders: {  }

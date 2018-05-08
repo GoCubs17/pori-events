@@ -1,0 +1,24 @@
+uuid: c2bdbd5f-4a04-4c55-8083-af75e464a121
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+_core:
+  default_config_hash: cvKvFc3TnO_Tkk6fI_iT5Y1NMYG5UivKMN0A8KJQT-E
+id: node.book.status
+field_name: status
+entity_type: node
+bundle: book
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

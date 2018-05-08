@@ -7,9 +7,9 @@ dependencies:
 _core:
   default_config_hash: wTJRNzsLVTenCALONNlVfgm_pBOlqucSPuVFLOD56ck
 id: user_admin_people
-label: People
+label: Käyttäjät
 module: user
-description: 'Find and manage people interacting with your site.'
+description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
 tag: default
 base_table: users_field_data
 base_field: uid
@@ -18,7 +18,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Isäntä
     position: 0
     display_options:
       access:
@@ -38,10 +38,10 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: Suodatin
           reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -53,16 +53,16 @@ display:
           id: 0
           total_pages: 0
           tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Kaikki -'
             offset: false
             offset_label: Offset
           quantity: 9
@@ -149,7 +149,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Bulk update'
+          label: Massapäivitys
           exclude: false
           alter:
             alter_text: false
@@ -199,7 +199,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Username
+          label: Käyttäjätunnus
           exclude: false
           alter:
             alter_text: false
@@ -251,7 +251,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Status
+          label: Tila
           exclude: false
           alter:
             alter_text: false
@@ -296,8 +296,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_true: Active
-            format_custom_false: Blocked
+            format_custom_true: Voimassa
+            format_custom_false: Suljettu
           entity_type: user
           entity_field: status
         roles_target_id:
@@ -307,7 +307,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Roles
+          label: Käyttäjäroolit
           exclude: false
           alter:
             alter_text: false
@@ -358,7 +358,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Member for'
+          label: 'Käyttäjä jo'
           exclude: false
           alter:
             alter_text: false
@@ -414,7 +414,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Last access'
+          label: 'Viimeksi paikalla'
           exclude: false
           alter:
             alter_text: false
@@ -470,7 +470,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Toimenpiteet
           exclude: false
           alter:
             alter_text: false
@@ -604,6 +604,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -647,7 +648,7 @@ display:
               administrator: '0'
           is_grouped: true
           group_info:
-            label: Status
+            label: Tila
             description: ''
             identifier: status
             optional: true
@@ -658,11 +659,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Active
+                title: Voimassa
                 operator: '='
                 value: '1'
               2:
-                title: Blocked
+                title: Suljettu
                 operator: '='
                 value: '0'
           plugin_id: boolean
@@ -681,7 +682,7 @@ display:
           exposed: true
           expose:
             operator_id: roles_target_id_op
-            label: Role
+            label: Rooli
             description: ''
             use_operator: false
             operator: roles_target_id_op
@@ -721,7 +722,7 @@ display:
           exposed: true
           expose:
             operator_id: permission_op
-            label: Permission
+            label: Käyttöoikeus
             description: ''
             use_operator: false
             operator: permission_op
@@ -812,6 +813,9 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -842,7 +846,7 @@ display:
           plugin_id: date
           entity_type: user
           entity_field: created
-      title: People
+      title: Käyttäjät
       empty:
         area_text_custom:
           id: area_text_custom
@@ -853,11 +857,11 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'No people available.'
+          content: 'Ei saatavilla olevia ihmisiä.'
           plugin_id: text_custom
       use_more: false
       use_more_always: false
-      use_more_text: more
+      use_more_text: lisää
       display_comment: ''
       use_ajax: false
       hide_attachment_summary: false
@@ -883,22 +887,22 @@ display:
   page_1:
     display_plugin: page
     id: page_1
-    display_title: Page
+    display_title: Sivu
     position: 1
     display_options:
       path: admin/people/list
       show_admin_links: false
       menu:
         type: 'default tab'
-        title: List
-        description: 'Find and manage people interacting with your site.'
+        title: Lista
+        description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
         menu_name: admin
         weight: -10
         context: ''
       tab_options:
         type: normal
-        title: People
-        description: 'Manage user accounts, roles, and permissions.'
+        title: Käyttäjät
+        description: 'Ylläpidä käyttäjiä, rooleja ja käyttöoikeuksia.'
         menu_name: admin
         weight: 0
       defaults:

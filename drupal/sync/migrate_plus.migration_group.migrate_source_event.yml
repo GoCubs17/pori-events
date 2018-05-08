@@ -1,0 +1,17 @@
+uuid: e83df75d-8737-4f1b-a267-9ae99f58783d
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+  enforced:
+    module:
+      - migrate_source_example_json
+id: migrate_source_event
+label: 'Example migration from a JSON resource.'
+description: 'A few example migrations from a JSON resource.'
+source_type: 'JSON resource'
+module: null
+shared_configuration:
+  source:
+    key: default

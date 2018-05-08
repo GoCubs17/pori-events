@@ -1,0 +1,20 @@
+uuid: 8ee347a2-fd32-4bbb-8f0f-8f271f5eb0a0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+_core:
+  default_config_hash: 0DqyUs2ZJLrEwWjSVVyzLa0WpZi8OvzgzG2X7MG5nG4
+id: node.book.created
+field_name: created
+entity_type: node
+bundle: book
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

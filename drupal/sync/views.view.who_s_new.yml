@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: o_8fSWHZOVIbydZACGsSX09DtuJhqkRmNOzcVj-4bQI
 id: who_s_new
-label: 'Who''s new'
+label: 'Uudet käyttäjät'
 module: user
 description: 'Shows a list of the newest user accounts on the site.'
 tag: default
@@ -18,7 +18,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Isäntä
     position: 0
     display_options:
       access:
@@ -39,10 +39,10 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Käytä
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -129,6 +129,9 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -160,7 +163,7 @@ display:
           plugin_id: date
           entity_type: user
           entity_field: created
-      title: 'Who''s new'
+      title: 'Uudet käyttäjät'
       header: {  }
       footer: {  }
       empty: {  }
@@ -177,12 +180,12 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: 'Who''s new'
+    display_title: 'Uudet käyttäjät'
     position: 1
     display_options:
-      display_description: 'A list of new users'
-      block_description: 'Who''s new'
-      block_category: User
+      display_description: 'Lista uusista käyttäjistä'
+      block_description: 'Uudet käyttäjät'
+      block_category: Käyttäjä
       display_extenders: {  }
     cache_metadata:
       contexts:

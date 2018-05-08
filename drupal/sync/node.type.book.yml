@@ -1,0 +1,19 @@
+uuid: 88097857-b8d0-4b67-ab51-9570fea60a64
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: d6qrxWIZbL9qRho1EfwM6OOX5R6zsacu9YDWus18rI8
+name: Book
+type: book
+description: 'Use book pages for your book content.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

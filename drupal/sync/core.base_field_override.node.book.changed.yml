@@ -1,0 +1,20 @@
+uuid: b08c5a92-65ff-4c95-bbbd-3879b3862759
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.book
+_core:
+  default_config_hash: QU6F-z2pPUVU3ANWyaR2fIGQt4kwffQLkPPhDJbZlts
+id: node.book.changed
+field_name: changed
+entity_type: node
+bundle: book
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

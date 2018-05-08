@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: rRWxAX-IQkJ5viACQRovRkC784EyCl9493GU_G23n2Q
 id: files
-label: Files
+label: Tiedostot
 module: file
 description: 'Find and manage files.'
 tag: default
@@ -19,7 +19,7 @@ display:
   default:
     display_plugin: default
     id: default
-    display_title: Master
+    display_title: Isäntä
     position: 0
     display_options:
       access:
@@ -40,10 +40,10 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: Suodatin
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -55,14 +55,14 @@ display:
           id: 0
           total_pages: 0
           tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Kaikki -'
             offset: false
             offset_label: Offset
       style:
@@ -165,7 +165,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Fid
+          label: FId
           exclude: true
           element_type: ''
           element_class: ''
@@ -187,7 +187,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Name
+          label: Nimi
           exclude: false
           alter:
             alter_text: false
@@ -250,7 +250,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'MIME type'
+          label: 'MIME tyyppi'
           exclude: false
           alter:
             alter_text: false
@@ -302,7 +302,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Size
+          label: Koko
           exclude: false
           alter:
             alter_text: false
@@ -354,7 +354,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Status
+          label: Tila
           exclude: false
           alter:
             alter_text: false
@@ -398,8 +398,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Temporary
-            format_custom_true: Permanent
+            format_custom_false: Tilapäinen
+            format_custom_true: Pysyvä
           plugin_id: field
           entity_type: file
           entity_field: status
@@ -410,7 +410,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Upload date'
+          label: Latauspäivämäärä
           exclude: false
           alter:
             alter_text: false
@@ -466,7 +466,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Changed date'
+          label: Muutospäivämäärä
           exclude: false
           alter:
             alter_text: false
@@ -522,7 +522,7 @@ display:
           relationship: fid
           group_type: sum
           admin_label: ''
-          label: 'Used in'
+          label: Käytetään
           exclude: false
           alter:
             alter_text: false
@@ -586,7 +586,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: Filename
+            label: 'Tiedoston nimi'
             description: ''
             use_operator: false
             operator: filename_op
@@ -598,6 +598,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -626,7 +627,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: 'MIME type'
+            label: 'MIME tyyppi'
             description: ''
             use_operator: false
             operator: filemime_op
@@ -638,6 +639,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -666,7 +668,7 @@ display:
           exposed: true
           expose:
             operator_id: status_op
-            label: Status
+            label: Tila
             description: ''
             use_operator: false
             operator: status_op
@@ -695,7 +697,7 @@ display:
           entity_type: file
           entity_field: status
       sorts: {  }
-      title: Files
+      title: Tiedostot
       header: {  }
       footer: {  }
       empty:
@@ -704,7 +706,7 @@ display:
           table: views
           field: area_text_custom
           empty: true
-          content: 'No files available.'
+          content: 'Tiedostoja ei ole saatavilla.'
           plugin_id: text_custom
       relationships:
         fid:
@@ -726,7 +728,7 @@ display:
         - url
         - url.query_args
         - user.permissions
-      max-age: 0
+      max-age: -1
       tags: {  }
   page_1:
     display_plugin: page
@@ -737,7 +739,7 @@ display:
       path: admin/content/files
       menu:
         type: tab
-        title: Files
+        title: Tiedostot
         description: ''
         menu_name: admin
         weight: 0
@@ -763,12 +765,12 @@ display:
         - url
         - url.query_args
         - user.permissions
-      max-age: 0
+      max-age: -1
       tags: {  }
   page_2:
     display_plugin: page
     id: page_2
-    display_title: 'File usage'
+    display_title: 'Tiedoston käyttö'
     position: 2
     display_options:
       display_description: ''
@@ -794,14 +796,14 @@ display:
           id: 0
           total_pages: 0
           tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Kaikki -'
             offset: false
             offset_label: Offset
       filters: {  }
@@ -816,7 +818,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Entity
+          label: Entiteetti
           exclude: false
           alter:
             alter_text: false
@@ -866,7 +868,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Entity type'
+          label: 'Entiteetin tyyppi'
           exclude: false
           alter:
             alter_text: false
@@ -915,7 +917,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Registering module'
+          label: 'Käytön kirjannut moduuli'
           exclude: false
           alter:
             alter_text: false
@@ -964,7 +966,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Use count'
+          label: Käyttömäärä
           exclude: false
           alter:
             alter_text: false
@@ -1015,7 +1017,7 @@ display:
           suffix: ''
           plugin_id: numeric
       group_by: false
-      title: 'File usage'
+      title: 'Tiedoston käyttö'
       arguments:
         fid:
           id: fid
@@ -1028,7 +1030,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: Kaikki
           title_enable: true
           title: 'File usage information for {{ arguments.fid }}'
           default_argument_type: fixed
@@ -1120,5 +1122,5 @@ display:
         - url
         - url.query_args
         - user.permissions
-      max-age: 0
+      max-age: -1
       tags: {  }
