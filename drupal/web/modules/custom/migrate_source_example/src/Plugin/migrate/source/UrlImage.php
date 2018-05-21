@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\migrate_source_example\Plugin\migrate\source;
+namespace Drupal\migrate_linked\Plugin\migrate\source;
 
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrationInterface;
