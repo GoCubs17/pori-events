@@ -7,7 +7,7 @@
  * set to TRUE in order to function properly. This hook is a soft-patch
  * until https://www.drupal.org/node/2675156 is fixed.
  */
-function migrate_linked_events_migrate_process_info_alter(&$definitions) {
+function migrate_source_example_migrate_process_info_alter(&$definitions) {
   foreach ($definitions as $key => &$definition) {
     if ($key == 'extract') {
       $definition['handle_multiples'] = TRUE;
