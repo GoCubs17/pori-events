@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c2d038d90c53b6aea8d295a71b76b9d",
+    "content-hash": "62c4b2db324079cdf36405eededc6cb3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -167,16 +167,16 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "1.23.2",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "b157b38c8c148c67d5b80c7c349b1a446115ea0e"
+                "reference": "20682ec4acc92e9671ba7b9bd0e972978c3a08f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/b157b38c8c148c67d5b80c7c349b1a446115ea0e",
-                "reference": "b157b38c8c148c67d5b80c7c349b1a446115ea0e",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/20682ec4acc92e9671ba7b9bd0e972978c3a08f2",
+                "reference": "20682ec4acc92e9671ba7b9bd0e972978c3a08f2",
                 "shasum": ""
             },
             "require": {
@@ -202,7 +202,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal code generator",
-            "time": "2018-03-03T04:17:26+00:00"
+            "time": "2018-04-25T17:35:50+00:00"
         },
         {
             "name": "commerceguys/addressing",
@@ -2058,16 +2058,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.5.1",
+            "version": "8.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "2aeca7dfa2661296602ac16bf9fd6085f0a121be"
+                "reference": "b012f0ae51504880e920f2c6efdbdf03b6fe2129"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/2aeca7dfa2661296602ac16bf9fd6085f0a121be",
-                "reference": "2aeca7dfa2661296602ac16bf9fd6085f0a121be",
+                "url": "https://api.github.com/repos/drupal/core/zipball/b012f0ae51504880e920f2c6efdbdf03b6fe2129",
+                "reference": "b012f0ae51504880e920f2c6efdbdf03b6fe2129",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2018-03-27T09:58:42+00:00"
+            "time": "2018-04-25T15:39:01+00:00"
         },
         {
             "name": "drupal/devel",
