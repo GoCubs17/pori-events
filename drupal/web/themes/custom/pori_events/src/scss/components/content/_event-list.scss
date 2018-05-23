@@ -10,7 +10,9 @@
 }
 
 .sk-layout__body {
-  display: flex;
+  @media screen and (min-width: $desktop-narrow) {
+    display: flex;
+  }    
 }
 
 .sk-hits-list {
@@ -19,20 +21,32 @@
 }
 
 .sk-layout__filters {
-  width: 25%;
+  width: 100%;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: $bergen-mono;
+  @media screen and (min-width: $desktop-narrow) {
+    width: 430px;
+  }   
 }
 
 .sk-layout__results {
-  width: 75%;
+  width: 100%;
+    @media screen and (min-width: $desktop-narrow) {
+    padding: 0 0 0 20px;
+  }
 }
 
 .sk-hits-list__item {
-  width: 30%;
-  padding: 0 10px 50px;
-  font-size: 14px;
+  width: 100%;
+  font-size: 14px; 
+  @media screen and (min-width: $mobile-landscape-wide) {
+    padding: 0 10px 40px;
+    width: 50%;
+  }   
+  @media screen and (min-width: $desktop-narrow) {
+    width: 33%;
+  }
 }
 
 .is-collapsable + .sk-panel__content {
@@ -59,7 +73,8 @@
 
 .sk-item-list__item {
   border-bottom: 1px solid #eee;
-  padding: 13px 10px 13px 20px;
+  padding: 13px 40px 13px 20px;
+  position: relative;
   &.is-active {
     background: $secondary-color-lighter;
     color: white;
@@ -71,6 +86,8 @@
 
 .sk-item-list-option__count {
   color: #bbb;
+  position: absolute;
+  right: 5px;  
 }
 
 .sk-search-box__text {
@@ -88,13 +105,16 @@
 
 .sk-action-bar-row {
   padding: 20px 40px;
-  margin: 0 10px 10px 10px;
+  margin: 10px 0 10px 0;
   background: whitesmoke;
   font-family: $bergen-mono;
   font-size: 12px;
   > div {
     cursor: pointer;
   }
+  @media screen and (min-width: $desktop-narrow) {
+    margin: 0 0 10px 0;
+  }  
 }
 
 .sk-filter-group-items__title,
@@ -129,8 +149,13 @@
 
 .event__title {
   color: $primary-color;
-  font-size: 22px;
+  font-size: 18px;
   margin: 10px 0;
+}
+
+.event__area {
+    font-weight: 700;
+    margin-bottom: 1em;
 }
 
 // pagination
@@ -147,9 +172,14 @@
   }
 }
 
-// for testing
+// images
 
-.event__image__wrapper img {
-  width: 315px;
-  height: 175px;
+.event__image__wrapper {
+  width: 100%;
+  // max-height: 180px;
+  background: url("../images/pori-list-default.jpg") center center no-repeat;
+  background-size: 130px;
+  &.empty {
+    height: 164px;
+  }
 }
