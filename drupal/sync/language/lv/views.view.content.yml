@@ -1,0 +1,18 @@
+label: Saturs
+display:
+  default:
+    display_options:
+      fields:
+        status:
+          label: Statuss
+      filters:
+        status:
+          expose:
+            label: Statuss
+      title: Saturs
+  page_1:
+    display_options:
+      menu:
+        title: Saturs
+      tab_options:
+        title: Saturs

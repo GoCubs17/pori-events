@@ -1,0 +1,14 @@
+uuid: 0737b246-45b0-4b13-8c08-e1dcda42de9e
+langcode: fi
+status: true
+dependencies: {  }
+name: list_image
+label: 'List image'
+effects:
+  6c0b5cce-f407-404c-a34e-890376119a08:
+    uuid: 6c0b5cce-f407-404c-a34e-890376119a08
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 630
+      height: 350

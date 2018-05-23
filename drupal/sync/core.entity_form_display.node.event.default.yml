@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.event.field_event_type
     - field.field.node.event.field_free_enterance
     - field.field.node.event.field_image
+    - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
@@ -86,6 +87,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_image_ext_url:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_short_description:
     weight: 10

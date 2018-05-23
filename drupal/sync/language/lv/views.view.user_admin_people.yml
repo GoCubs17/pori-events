@@ -1,0 +1,10 @@
+display:
+  default:
+    display_options:
+      fields:
+        status:
+          label: Statuss
+      filters:
+        status:
+          group_info:
+            label: Statuss

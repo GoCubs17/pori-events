@@ -1,0 +1,19 @@
+uuid: 53b7789b-c887-4374-80b5-6f033f9b4e63
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_ext_url
+    - node.type.event
+id: node.event.field_image_ext_url
+field_name: field_image_ext_url
+entity_type: node
+bundle: event
+label: 'Image ext url'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -251,7 +251,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Tila
+          label: Status
           exclude: false
           alter:
             alter_text: false
@@ -648,7 +648,7 @@ display:
               administrator: '0'
           is_grouped: true
           group_info:
-            label: Tila
+            label: Status
             description: ''
             identifier: status
             optional: true
