@@ -86,12 +86,16 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['date_pretty'] = date('j.n.Y H:i', strtotime($from)) . " - " . date('j.n.Y H:i', strtotime($to));
 
 
-      // Use image style for field_image
-      if($object->hasField('field_image') && !$object->get('field_image')->isEmpty()) {
-        $entity_img_id = $object->get('field_image')->first()->getValue()['target_id'];
-        $image = \Drupal::entityTypeManager()->getStorage('file')->load($entity_img_id);
-        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
-        $data['image'] = $style->buildUrl($image->getFileUri());
+      // use image cache for external images
+      if($object->field_image_ext_url->value) {
+        $display_options = array(
+          'type'     => 'imagecache_external_image',      
+        );
+        $img_view = $object->get('field_image_ext_url')->view($display_options);
+        $img_cached = $img_view[0]['#uri'];
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('list_image');
+        $style_url = $style->buildUrl($img_cached);
+        $data['image_ext'] = substr($style_url, strpos($style_url, "http://default/") + 15);
       }
     }
     return $data;
