@@ -29,6 +29,10 @@ source:
       label: 'Title of the event'
       selector: name/fi
     -
+      name: event_image
+      label: 'Image of the event'
+      selector: images
+    -
       name: event_description
       label: 'Long description of the event'
       selector: description/fi
@@ -137,6 +141,13 @@ process:
   #     plugin: migration
   #     migration: migrate_source_event_keywords
   #     get: foo
+  field_image_ext_url:
+    source: event_image
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - url
   field_event_type:
     -
       source: event_keywords
