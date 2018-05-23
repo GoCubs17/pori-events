@@ -39,7 +39,8 @@
         "drupal/migrate_plus": "^4.0",
         "drupal/migrate_tools": "^4.0",
         "drupal/taxonomy_multidelete_terms": "^1.1",
-        "drupal/structured_data": "^1.0"
+        "drupal/structured_data": "^1.0",
+        "drupal/imagecache_external": "^1.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
