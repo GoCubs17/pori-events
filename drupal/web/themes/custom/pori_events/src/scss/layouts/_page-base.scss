@@ -1,4 +1,8 @@
 .layout-container {
+  @extend %layout-container;
+}
+
+%layout-container {
   @include responsive-whitespace;
   margin: 0 auto;
   max-width: $container-width;
