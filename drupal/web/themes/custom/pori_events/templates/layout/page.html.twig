@@ -50,6 +50,16 @@
     {{ page.secondary_menu }}
   </header>
 
+ </div>
+ 
+  {% if is_front %}
+    <div id="content_header">
+      {{ page.content_header }}
+    </div>
+  {% endif %}
+
+  <div class="layout-container">
+
   <main class="page-content" role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
