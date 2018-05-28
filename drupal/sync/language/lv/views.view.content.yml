@@ -3,12 +3,20 @@ display:
   default:
     display_options:
       fields:
+        title:
+          label: Virsraksts
         status:
           label: Statuss
       filters:
+        title:
+          expose:
+            label: Virsraksts
         status:
           expose:
             label: Statuss
+        langcode:
+          expose:
+            label: Valoda
       title: Saturs
   page_1:
     display_options:

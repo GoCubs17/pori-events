@@ -2,9 +2,19 @@ display:
   default:
     display_options:
       fields:
+        filename:
+          label: Nosaukums
         status:
           label: Statuss
+          settings:
+            format_custom_true: Pastāvīgs
       filters:
         status:
           expose:
             label: Statuss
+  page_2:
+    display_options:
+      arguments:
+        fid:
+          exception:
+            title: Visi

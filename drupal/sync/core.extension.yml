@@ -3,6 +3,7 @@ module:
   admin_toolbar: 0
   adminimal_admin_toolbar: 0
   automated_cron: 0
+  blazy: 0
   block: 0
   block_content: 0
   breakpoint: 0
@@ -19,6 +20,7 @@ module:
   devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
+  entityqueue: 0
   events2elastic: 0
   field: 0
   field_ui: 0
@@ -50,6 +52,9 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  slick: 0
+  slick_ui: 0
+  slick_views: 0
   system: 0
   taxonomy: 0
   taxonomy_multidelete_terms: 0

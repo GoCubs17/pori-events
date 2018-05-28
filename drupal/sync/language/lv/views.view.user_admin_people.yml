@@ -8,3 +8,7 @@ display:
         status:
           group_info:
             label: Statuss
+  page_1:
+    display_options:
+      menu:
+        title: Saraksts

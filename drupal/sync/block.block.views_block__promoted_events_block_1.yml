@@ -1,0 +1,30 @@
+uuid: 5036446f-9411-448b-9bfd-024188447b1d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.promoted_events
+  module:
+    - system
+    - views
+  theme:
+    - pori_events
+id: views_block__promoted_events_block_1
+theme: pori_events
+region: content_header
+weight: -1
+provider: null
+plugin: 'views_block:promoted_events-block_1'
+settings:
+  id: 'views_block:promoted_events-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
