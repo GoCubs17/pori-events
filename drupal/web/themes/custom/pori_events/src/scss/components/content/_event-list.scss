@@ -187,3 +187,50 @@
     height: 164px;
   }
 }
+
+// add event
+
+#content_header {
+  position: relative;
+}
+
+.add-event {
+  position: absolute;
+  z-index: 5;
+  width: 50%;
+  background: $green;
+  color: #fff;
+  right: 0;
+  top: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  .link-text {
+    margin-right: 20px;
+  }
+  .page-footer & {
+   top: 20px;
+   width: auto;
+  }
+}
+
+// plus sign, TODO: use fontawesome
+
+.sk-layout__filters {
+  .sk-panel {
+    position: relative;
+  }
+  .sk-panel__header:after {
+    content: '-';
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #fff;
+    font-size: 26px;
+    &.is-collapsed {
+      content: '-';
+    }
+  }
+  .sk-panel__header.is-collapsed:after {
+      content: '+';
+  }  
+}
