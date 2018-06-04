@@ -1,6 +1,6 @@
 uuid: e34eb0e7-a327-44d0-8abe-9a00b5f7a9ad
-name: Site-Install
-mail: admin@example.com
+name: 'Porin tapahtumakalenteri'
+mail: matti.hernesniemi@wunder.io
 slogan: ''
 page:
   403: ''
