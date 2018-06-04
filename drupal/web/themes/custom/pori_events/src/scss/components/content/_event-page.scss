@@ -63,6 +63,9 @@
   @media screen and (min-width: $desktop) {
     width: 65%;
   }
+  .field__label {
+    display: none;
+  }
 }
 
 .event__content--sidebar {

@@ -2,6 +2,16 @@ label: Saturs
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          submit_button: Suodatin
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+      pager:
+        options:
+          tags:
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
       fields:
         title:
           label: Virsraksts
@@ -18,6 +28,7 @@ display:
           expose:
             label: Valoda
       title: Saturs
+    display_title: Isäntä
   page_1:
     display_options:
       menu:
