@@ -59,9 +59,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: ''
           empty: true
-          title: 'Welcome to [site:name]'
+          title: '[site:name]'
+          label: ''
           plugin_id: title
       exposed_form:
         type: basic
