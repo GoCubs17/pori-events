@@ -11,13 +11,3 @@ display:
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
-      filters:
-        langcode:
-          expose:
-            label: Valoda
-  page_unapproved:
-    display_options:
-      filters:
-        langcode:
-          expose:
-            label: Valoda

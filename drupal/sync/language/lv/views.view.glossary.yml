@@ -1,6 +1,16 @@
 display:
   default:
+    display_title: Isäntä
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
       fields:
         title:
           label: Virsraksts
