@@ -157,7 +157,7 @@ production:
 
   # Prod environment only symlinks files
   link:
-    - files: web/sites/default/files
+    - /var/www/pori-events.stage.wunder.io/files: web/sites/default/files
 
   local_commands:
     create:
