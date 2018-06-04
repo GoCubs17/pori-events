@@ -78,6 +78,16 @@
     margin-bottom: 3rem;
     width: 30%;
   }
+
+  .svg-inline--fa {
+    position: absolute;
+    left: 1em;
+    width: 1.8em !important;
+    height: 1.8em;
+    top: 50%;
+    margin-top: -0.9em;
+    color: $default-color-medium;
+  } 
 }
 
 .event__content--sidebar__title {
@@ -162,23 +172,5 @@
     transform: translateY(-50%);
     position: absolute;
     width: 1.875rem;
-  }
-}
-// Icons are not working atm. TODO: Fix FontAwesome icons.
-.event__address {
-  &::before {
-    @include fa('\f041', 2rem, 3.125rem, false);
-  }
-}
-
-.event__time {
-  // &::before {
-  //   @include fa('\f017', 2rem, 3.125rem, false);
-  // }
-}
-
-.event__back-button {
-  &::before {
-    @include fa('\f060', 1.5rem, 3.125rem, false);
   }
 }

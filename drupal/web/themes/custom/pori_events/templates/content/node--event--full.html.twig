@@ -125,9 +125,11 @@
         {{ "Event information:"|t }}
       </h3>
       <div class="event__content--sidebar__item event__time">
+        <i class="fas fa-clock"></i>
         {{ "At"|t }} {{ content.field_start_time[0]['#markup']|date("H:m", "Europe/Helsinki") }}
       </div>
       <div class="event__content--sidebar__item event__address">
+        <i class="fas fa-map-marker-alt"></i>
         <span class="event__address--street">{{ content.field_address.0.address_line1 }}</span>
         <span class="event__address--postal">
           {{ content.field_address.0.postal_code }}
