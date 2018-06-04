@@ -60,7 +60,7 @@ display:
         type: slick
         options:
           vanilla: false
-          optionset: default
+          optionset: events
           skin: ''
           layout: ''
           caption:
@@ -84,11 +84,11 @@ display:
           link: ''
           class: ''
           id: '1'
-          override: true
+          override: false
           overridables:
+            autoplay: autoplay
             dots: dots
             arrows: '0'
-            autoplay: '0'
             draggable: '0'
             infinite: '0'
             mouseWheel: '0'
