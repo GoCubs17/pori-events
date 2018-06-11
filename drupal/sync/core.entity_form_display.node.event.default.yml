@@ -11,10 +11,14 @@ dependencies:
     - field.field.node.event.field_free_enterance
     - field.field.node.event.field_image
     - field.field.node.event.field_image_ext_url
+    - field.field.node.event.field_location_extra_info
+    - field.field.node.event.field_price
+    - field.field.node.event.field_provider_email
+    - field.field.node.event.field_provider_phone
+    - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
-    - field.field.node.event.field_tickets
     - image.style.thumbnail
     - node.type.event
   module:
@@ -96,6 +100,46 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_location_extra_info:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_price:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_provider_email:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_provider_phone:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_provider_www:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_short_description:
     weight: 10
     settings:
@@ -118,14 +162,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
-    region: content
-  field_tickets:
-    weight: 17
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   langcode:
     type: language_select

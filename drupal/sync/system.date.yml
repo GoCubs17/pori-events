@@ -2,7 +2,7 @@ country:
   default: FI
 first_day: 1
 timezone:
-  default: Europe/Helsinki
+  default: Europe/London
   user:
     configurable: false
     warn: false

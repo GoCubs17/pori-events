@@ -63,9 +63,6 @@
   @media screen and (min-width: $desktop) {
     width: 65%;
   }
-  .field__label {
-    display: none;
-  }
 }
 
 .event__content--sidebar {
@@ -110,6 +107,7 @@
   position: relative;
   text-align: right;
   text-transform: uppercase;
+  word-break: break-all;
 
   &:first-of-type {
     border-top: 0 none;
@@ -150,30 +148,13 @@
 .event__back-button {
   border: .094rem solid $black;
   color: $black;
-  display: block;
+  display: inline-block;
   margin-top: 1.5rem;
-  padding: .8rem 1rem .8rem 2.8rem;
+  padding: .8rem 1rem;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  width: 100%;
-
-  @media screen and (min-width: $tablet-portrait-narrow) {
-    display: initial;
-  }
-
-  &:hover {
-    background: $black;
-    color: $white;
-  }
-
-  &::before {
-    color: $black;
-    left: .5rem;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-    width: 1.875rem;
+  .svg-inline--fa {
+    margin-right: 20px;
   }
 }

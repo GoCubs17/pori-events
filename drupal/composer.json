@@ -43,7 +43,9 @@
         "drupal/imagecache_external": "^1.0",
         "drupal/entityqueue": "^1.0",
         "drupal/slick": "^1.0",
-        "drupal/slick_views": "^1.0"
+        "drupal/slick_views": "^1.0",
+        "drupal/fontawesome": "^2.2",
+        "drupal/twig_tweak": "^2.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",

@@ -1,0 +1,19 @@
+uuid: d190644d-a094-409d-94ed-88c450dd8c01
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_provider_email
+    - node.type.event
+id: node.event.field_provider_email
+field_name: field_provider_email
+entity_type: node
+bundle: event
+label: 'Provider email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

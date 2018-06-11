@@ -77,67 +77,106 @@
   ]
 %}
 
+<!-- fields -->
+{% set bg_img = content.field_image_ext_url[0]['#uri'] | image_style('event_page_pic_1360px_') %}
+{% set start_time = content.field_start_time[0]['#attributes']['datetime'] %}
+{% set end_time = content.field_end_time[0]['#attributes']['datetime'] %}
+{% set short_description = content.field_short_description[0]['#context']['value'] %}
+{% set description = content.field_description[0]['#text'] %}
+{% set location_extra_info = content.field_location_extra_info[0]['#context']['value'] %}
+{% set area = content.field_area[0]['#title'] %}
+{% set price = content.field_price[0]['#context']['value'] %}
+{% set provider_www = content.field_provider_www[0]['#context']['value'] %}
+{% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
+{% set provider_email = content.field_provider_email[0]['#context']['value'] %}
+
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
 
   <div class="event__date--container">
-    {{ content.field_start_time[0]['#markup']|date("d.m.Y", "Europe/Helsinki") }}
+    {{ start_time|date("d.m.Y", "Europe/Helsinki") }}
     <span class="event__date--separator"></span>
-    {{ content.field_end_time[0]['#markup']|date("d.m.Y", "Europe/Helsinki") }}
+    {{ end_time|date("d.m.Y", "Europe/Helsinki") }}
   </div>
   {{ title_prefix }}
     <h1 class="event__title">{{ label }}</h1>
   {{ title_suffix }}
 
-  {% if content.field_image['#items'] != false %}
-    <div class="event__image--container">
+    <div class="event__image--container" style="background-image: url('{{ bg_img }} );">
 
-
-      <div class="slide-container">
-        <div class="slide-container__content">
-          {{ content.field_image }}
-        </div>
-        <div class="slide-container__arrows"></div>
-        <div class="slide-container__dots"></div>
-      </div>
     </div>
-  {% endif %}
 
   <div class="event__content--container">
     <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
-      {% if content.field_short_description['#items'] != false %}
+      {% if short_description %}
         <div class="event__content__short-description">
-          {{ content.field_short_description }}
+          {{ short_description }}
         </div>
       {% endif %}
 
-      {% if content.field_description['#items'] != false %}
+      {% if description %}
         <div class="event__content__description">
-          {{ content.field_description }}
+          {{ description|raw }}
         </div>
       {% endif %}
 
-      <a class="event__back-button" href="/">{{ "Back to events listing"|t }}</a>
+      <a class="event__back-button" href="/"><i class="fas fa-chevron-left"></i>{{ "Back to events listing"|t }}</a>
     </div>
 
     <div class="event__content--sidebar">
       <h3 class="event__content--sidebar__title">
         {{ "Event information:"|t }}
       </h3>
+
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
-        {{ "At"|t }} {{ content.field_start_time[0]['#markup']|date("H:m", "Europe/Helsinki") }}
+        {{ "At"|t }} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }}
       </div>
-      <div class="event__content--sidebar__item event__address">
+
+      {% if location_extra_info or area %}
+      <div class="event__content--sidebar__item">
         <i class="fas fa-map-marker-alt"></i>
-        <span class="event__address--street">{{ content.field_address.0.address_line1 }}</span>
-        <span class="event__address--postal">
-          {{ content.field_address.0.postal_code }}
-          {{ content.field_address.0.locality }}
-        </span>
+        {% if location_extra_info %}
+          {{ location_extra_info }},
+        {% endif %}
+        {% if area %}
+          {{ area }}
+        {% endif %}
       </div>
+      {% endif %}
+
+      {% if price %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-euro-sign"></i>
+        {{ price }}
+      </div>
+      {% endif %}
+
+      {% if provider_www %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-home"></i>
+        <a href={{ provider_www }}>
+          {{ provider_www }}
+        </a>
+      </div>
+      {% endif %}
+
+      {% if provider_phone %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-phone"></i>
+        {{ provider_phone }}
+      </div>        
+      {% endif %}
+
+      {% if provider_email %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-at"></i>
+        {{ provider_email }}
+      </div>
+      {% endif %}
+
     </div>
   </div>
-
+  {# {{ devel_breakpoint() }} #}
 </article>
 

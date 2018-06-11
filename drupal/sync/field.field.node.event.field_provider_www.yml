@@ -1,15 +1,15 @@
-uuid: 5e733ad1-e45e-4627-b07d-7e7e1e40ab69
+uuid: 18e80c24-b332-4443-a475-4b04adaff2c6
 langcode: fi
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tickets
+    - field.storage.node.field_provider_www
     - node.type.event
-id: node.event.field_tickets
-field_name: field_tickets
+id: node.event.field_provider_www
+field_name: field_provider_www
 entity_type: node
 bundle: event
-label: Tickets
+label: 'Provider www'
 description: ''
 required: false
 translatable: false

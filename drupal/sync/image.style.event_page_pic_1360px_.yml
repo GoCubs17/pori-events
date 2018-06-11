@@ -1,0 +1,15 @@
+uuid: cdbaa9ff-b3d7-4035-ab5e-2eaec3a2e3fd
+langcode: fi
+status: true
+dependencies: {  }
+name: event_page_pic_1360px_
+label: 'Event page pic (1360px)'
+effects:
+  516234a7-6a0d-4639-8839-8e2654ec0144:
+    uuid: 516234a7-6a0d-4639-8839-8e2654ec0144
+    id: image_scale
+    weight: 1
+    data:
+      width: 1360
+      height: null
+      upscale: false
