@@ -1,3 +1,5 @@
 main.page-content {
-    padding-top: 40px;
+    @media screen and (min-width: $desktop-narrow) {
+        padding-top: 40px;
+    }    
 }

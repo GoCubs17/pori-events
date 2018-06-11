@@ -20,10 +20,11 @@
 #}
 
 <div class="slide-container" style="background-image:url('{{ row._entity.field_image_ext_url.value }}')">
-    <div class="layout-container">
-        <div class="caption-content">
+    <div class="caption-content">
+        <a href=node/{{ row._entity.nid.value }} >
             <div class="title">{{ row._entity.title.value }}</div>
             <div class="short_description">{{ row._entity.field_short_description.value }}</div>
-        </div>
+        </a>
     </div>
 </div>
+{{ devel_breakpoint() }}
