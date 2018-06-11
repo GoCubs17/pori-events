@@ -1,5 +1,5 @@
 uuid: 33a7242d-9b37-4dde-ac11-e3f614b5208b
-langcode: fi
+langcode: en
 status: true
 dependencies:
   module:
@@ -72,6 +72,26 @@ source:
       name: event_keywords
       label: Keywords
       selector: keywords
+    -
+      name: event_offers
+      label: Offers
+      selector: offers
+    -
+      name: event_provider_www
+      label: Provider
+      selector: provider_link
+    -
+      name: event_provider_phone
+      label: Provider
+      selector: provider_phone
+    -
+      name: event_provider_email
+      label: Provider
+      selector: provider_email
+    -
+      name: event_location_extra_info
+      label: 'Location extra info'
+      selector: location_extra_info/fi
 process:
   type:
     plugin: default_value
@@ -79,7 +99,25 @@ process:
   title: event_title
   field_description: event_description
   field_short_description: event_short_description
-  field_address: event_address
+  field_provider_email: event_provider_email
+  field_provider_www: event_provider_www
+  field_provider_phone: event_provider_phone
+  field_location_extra_info: event_location_extra_info
+  field_price:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - price
+      - fi
+  field_free_enterance:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - is_free
   field_start_time:
     plugin: format_date
     format: 'Y-m-d\TH:i:s'

@@ -1,11 +1,11 @@
-uuid: 86f3a14a-7bb3-439a-b460-34f52075375b
+uuid: bdd1bca4-67d4-4ed9-9c43-912f3a3580f0
 langcode: fi
 status: true
 dependencies:
   module:
     - node
-id: node.field_tickets
-field_name: field_tickets
+id: node.field_location_extra_info
+field_name: field_location_extra_info
 entity_type: node
 type: string
 settings:

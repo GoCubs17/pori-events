@@ -1,0 +1,21 @@
+uuid: d9f85154-ca67-47d2-9237-1e0ac63b03f4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_provider_www
+field_name: field_provider_www
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
