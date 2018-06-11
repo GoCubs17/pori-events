@@ -26,6 +26,12 @@
   }
 }
 
+.event__image--container {
+  height: 400px;
+  background-size: cover;
+  background-position: center center;
+}
+
 .event__text-content {
   padding: 0 1rem;
   @media screen and (min-width: $desktop-narrow) {
