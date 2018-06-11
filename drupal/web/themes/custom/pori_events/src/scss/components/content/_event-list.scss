@@ -192,18 +192,19 @@
 
 #content_header {
   position: relative;
+  @extend %layout-container;
 }
 
 .add-event {
-  position: absolute;
+  display: inline-block;
   z-index: 5;
-  width: 50%;
   background: $green;
   color: #fff;
-  right: 0;
-  top: 0;
-  padding: 10px 20px;
+  padding: 10px 40px;
   text-transform: uppercase;
+  &:hover {
+    color: white;
+  }
   .link-text {
     margin-right: 20px;
   }
@@ -211,6 +212,14 @@
    top: 20px;
    width: auto;
   }
+  @media screen and (min-width: $desktop-narrow) {
+    left: 50%;
+    position: absolute;
+    top: 0;
+    footer & {
+      margin: 20px 0;
+    }
+  }  
 }
 
 // plus sign, TODO: use fontawesome
