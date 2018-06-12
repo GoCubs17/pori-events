@@ -12,7 +12,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://linkedevents.dymesolutions.com/api/v1/event/?page_size=999999&include=location,keywords,audience'
+  urls: 'https://linkedevents.dymesolutions.com/api/v2/event/?page_size=999999&include=location,keywords,audience'
   item_selector: data
   ids:
     event_id:
@@ -64,14 +64,30 @@ source:
       name: event_audience
       label: 'Audience'
       selector: audience
-    # -
-    #   name: event_type
-    #   label: 'Type'
-    #   selector: keywords/id
     -
       name: event_keywords
       label: 'Keywords'
       selector: 'keywords'
+    -
+      name: event_offers
+      label: 'Offers'
+      selector: offers
+    -
+      name: event_provider_www
+      label: 'Provider'
+      selector: provider_link
+    -
+      name: event_provider_phone
+      label: 'Provider'
+      selector: provider_phone
+    -
+      name: event_provider_email
+      label: 'Provider'
+      selector: provider_email
+    -
+      name: event_location_extra_info
+      label: 'Location extra info'
+      selector: location_extra_info/fi
 process:
   type:
     plugin: default_value
@@ -79,7 +95,25 @@ process:
   title: event_title
   field_description: event_description
   field_short_description: event_short_description
-  field_address: event_address
+  field_provider_email: event_provider_email
+  field_provider_www: event_provider_www
+  field_provider_phone: event_provider_phone
+  field_location_extra_info: event_location_extra_info
+  field_price:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - price
+      - fi
+  field_free_enterance:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - is_free        
   field_start_time:
     plugin: format_date
     format: Y-m-d\TH:i:s
@@ -88,28 +122,13 @@ process:
     plugin: format_date
     format: Y-m-d\TH:i:s
     source: event_end_time
-
-  # body/format:
-  #   plugin: static_map
-  #   source: book_body_format
-  #   map:
-  #     1: plain_text
-  #     2: basic_html
   created:
     plugin: format_date
     format: U
     source: event_created
-  #   plugin: format_date
-  #   format: U
-  #   source: book_created
-  # changed: '@created'
   uid:
     plugin: default_value
     default_value: 1
-  # field_cover:
-  #   plugin: migration
-  #   migration: migrate_source_example_json_image
-  #   source: book_image
   path:
     -
       plugin: skip_on_empty
@@ -121,26 +140,6 @@ process:
       source:
         - constants/slash
         - book_alias
-  # field_event_type:
-  #   -
-  #     plugin: explode
-  #     delimiter: ','
-  #     source: event_type
-  #   -
-  #     plugin: migration
-  #     migration: migrate_source_event_keywords
-  # foo:
-  #   -
-  #     source: event_type
-  #     plugin: extract
-  #     index:
-  #       - 0
-  #       - id
-  # field_event_type:
-  #   -
-  #     plugin: migration
-  #     migration: migrate_source_event_keywords
-  #     get: foo
   field_image_ext_url:
     source: event_image
     plugin: extract
@@ -174,14 +173,6 @@ process:
     -    
       plugin: migration
       migration: migrate_source_event_audience
-
-  # field_area:
-  #   plugin: entity_generate
-  #   source: event_location
-  #   entity_type: taxonomy_term
-  #   bundle_key: vid
-  #   bundle: area
-  #   value_key: name
 destination:
   plugin: 'entity:node'
 
