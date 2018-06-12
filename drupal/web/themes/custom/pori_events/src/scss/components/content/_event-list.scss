@@ -204,21 +204,24 @@
   text-transform: uppercase;
   &:hover {
     color: white;
+    background: darken($green, 5%);
   }
   .link-text {
     margin-right: 20px;
   }
   .page-footer & {
-   top: 20px;
-   width: auto;
+    margin: 20px 0;
+    @media screen and (min-width: $desktop-narrow) {
+      margin: 50px 0;
+      position: absolute;
+      right: 0;
+      left: auto;
+    }
   }
   @media screen and (min-width: $desktop-narrow) {
     left: 50%;
     position: absolute;
     top: 0;
-    footer & {
-      margin: 20px 0;
-    }
   }  
 }
 
