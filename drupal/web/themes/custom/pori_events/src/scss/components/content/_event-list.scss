@@ -180,12 +180,7 @@
 
 .event__image__wrapper {
   width: 100%;
-  // max-height: 180px;
-  background: url("../images/pori-list-default.jpg") center center no-repeat;
   background-size: 130px;
-  &.empty {
-    height: 164px;
-  }
 }
 
 // add event
