@@ -39,13 +39,19 @@
 
 .sk-hits-list__item {
   width: 100%;
-  font-size: 14px; 
+  font-size: 14px;
+
   @media screen and (min-width: $mobile-landscape-wide) {
     padding: 0 10px 40px;
     width: 50%;
   }   
   @media screen and (min-width: $desktop-narrow) {
     width: 33.33%;
+  }
+  @media screen and (max-width: $mobile-landscape-wide) {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;  
   }
 }
 
@@ -144,7 +150,9 @@
 .event__time {
   color: #999;
   font-size: 14px;
-  margin-top: 30px;
+  @media screen and (min-width: $desktop-narrow) {
+    margin-top: 30px;
+  }  
 }
 
 .sk-layout__results .event__title {
@@ -188,6 +196,10 @@
 #content_header {
   position: relative;
   @extend %layout-container;
+  display: none;
+  @media screen and (min-width: $desktop-narrow) {
+    display: block;
+  }
 }
 
 .add-event {
