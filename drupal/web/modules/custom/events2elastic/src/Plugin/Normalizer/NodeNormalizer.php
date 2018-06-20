@@ -72,8 +72,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['free_enterance'] = $object->field_free_enterance->value;
 
       // Date fields
-      $from = $object->field_start_time->value;
-      $to = $object->field_end_time->value;
+      $from = $object->field_start_time->value . ".000Z";
+      $to = $object->field_end_time->value . ".000Z";
 
       $data['start_time'] = $from;
       $data['end_time'] = $to;
