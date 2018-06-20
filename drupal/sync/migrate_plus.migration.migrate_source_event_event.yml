@@ -119,13 +119,15 @@ process:
       - 0
       - is_free
   field_start_time:
-    plugin: format_date
-    format: 'Y-m-d\TH:i:s'
+    plugin: substr
     source: event_start_time
+    start: 0
+    length: 19
   field_end_time:
-    plugin: format_date
-    format: 'Y-m-d\TH:i:s'
+    plugin: substr
     source: event_end_time
+    start: 0
+    length: 19
   created:
     plugin: format_date
     format: U
