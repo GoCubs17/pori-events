@@ -155,12 +155,13 @@ process:
       - url
   field_event_type:
     -
+      plugin: sub_process
       source: event_keywords
-      plugin: extract
-      default: ''
-      index:
-        - 0
-        - id
+      process:
+        -
+          target_id:
+            plugin: format_keywords
+            source: id
     -
       plugin: migration
       migration: migrate_source_event_keywords
@@ -171,11 +172,12 @@ process:
   field_target_audience:
     -
       source: event_audience
-      plugin: extract
-      default: ''
-      index:
-        - 0
-        - id
+      plugin: sub_process
+      process:
+        -
+          target_id:
+            plugin: format_keywords
+            source: id
     -
       plugin: migration
       migration: migrate_source_event_audience
