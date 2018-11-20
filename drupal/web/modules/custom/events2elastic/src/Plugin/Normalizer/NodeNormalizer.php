@@ -52,15 +52,19 @@ class NodeNormalizer extends ContentEntityNormalizer {
       }
 
       // audience term
-      if ($object->field_target_audience->target_id) {
-        $term_name = Term::load($object->field_target_audience->target_id)->get('name')->value;
-        $data['audience'] = $term_name;
+      foreach ($object->field_target_audience as $term) {
+        if ($term->target_id) {
+          $term_name = Term::load($term->target_id)->get('name')->value;
+          $data['audience'][] = $term_name;
+        }
       }
 
       // type term
-      if ($object->field_event_type->target_id) {
-        $term_name = Term::load($object->field_event_type->target_id)->get('name')->value;
-        $data['event_type'] = $term_name;
+      foreach ($object->field_event_type as $term) {
+        if ($term->target_id) {
+          $term_name = Term::load($term->target_id)->get('name')->value;
+          $data['event_type'][] = $term_name;
+        }
       }      
 
       // Text fields
