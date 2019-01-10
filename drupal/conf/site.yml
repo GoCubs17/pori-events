@@ -189,6 +189,7 @@ production:
       - drush: entup -y
       - cleanup
       - shell: sudo systemctl restart nginx php-fpm varnish
+      - shell: chmod -R a-w web
       #- shell: sudo systemctl -H [front2_ip] restart php-fpm nginx
       #- shell: sudo systemctl -H [lb_ip] restart varnish
 
