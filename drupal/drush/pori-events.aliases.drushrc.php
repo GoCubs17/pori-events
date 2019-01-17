@@ -36,8 +36,8 @@ $aliases['local'] = array(
 $aliases['dev'] = array(
   'uri' => 'https://tapahtumat-pori.dev.wunder.io',
   'remote-user' => 'www-admin',
-  'remote-host' => 'tapahtumat-pori.dev.wunder.io',
-  'root' => '/var/www/tapahtumat-pori.dev.wunder.io/web',
+  'remote-host' => '94.237.38.225',
+  'root' => '/var/www/pori-events.dev.wunder.io/current/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
@@ -51,8 +51,8 @@ $aliases['dev'] = array(
 $aliases['stage'] = array(
   'uri' => 'https://tapahtumat-pori.stage.wunder.io',
   'remote-user' => 'www-admin',
-  'remote-host' => 'tapahtumat-pori.stage.wunder.io',
-  'root' => '/var/www/tapahtumat-pori.stage.wunder.io/web',
+  'remote-host' => '185.26.49.29',
+  'root' => '/var/www/pori-events.stage.wunder.io/current/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
@@ -66,8 +66,8 @@ $aliases['stage'] = array(
 $aliases['prod'] = array(
   'uri' => 'https://tapahtumat.pori.fi',
   'remote-user' => 'www-admin',
-  'remote-host' => 'tapahtumat.pori.fi',
-  'root' => '/var/www/tapahtumat.pori.fi/web',
+  'remote-host' => '94.237.34.50',
+  'root' => '/var/www/pori-events.prod.wunder.io/current/web',
   'path-aliases' => array(
     '%dump-dir' => '/home/www-admin',
   ),
