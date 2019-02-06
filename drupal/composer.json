@@ -13,6 +13,18 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "slick",
+                "version": "1.6.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -46,7 +58,8 @@
         "drupal/slick_views": "^1.0",
         "drupal/fontawesome": "^2.2",
         "drupal/twig_tweak": "^2.0",
-        "drupal/google_analytics": "^2.3"
+        "drupal/google_analytics": "^2.3",
+        "slick": "^1.6"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
