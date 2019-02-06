@@ -50,7 +50,7 @@ if (!empty($_SERVER['SERVER_ADDR'])) {
 $env = getenv('WKV_SITE_ENV');
 switch ($env) {
   case 'production':
-    $settings['simple_environment_indicator'] = '#d4000f Production';
+    $conf['simple_environment_indicator'] = '#560004 Production';
     break;
 
   case 'dev':
@@ -62,7 +62,8 @@ switch ($env) {
     break;
 
   case 'local':
-    $settings['simple_environment_indicator'] = '#88b700 Local';
+    $settings['simple_environment_indicator'] = 'DarkGreen Local';
+    $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
     break;
 }
 /**
