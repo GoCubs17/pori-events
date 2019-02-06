@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8382a0150930157e595c4f0321421ffd",
+    "content-hash": "5f262911fd18d27f1d0e539061608d57",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4977,6 +4977,17 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "slick",
+            "version": "1.6.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-library"
         },
         {
             "name": "stack/builder",
