@@ -54,6 +54,7 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  simplei: 0
   slick: 0
   slick_ui: 0
   slick_views: 0
