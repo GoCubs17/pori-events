@@ -75,13 +75,12 @@ $config_directories = array(
 
 // Set default trusted hosts.
 $settings['trusted_host_patterns'] = array(
-  '\.localhost$',
-  '\.local$',
-  '\.loc$',
+  '^local\.pori-events\.fi$',
+  '^local\.tapahtumat\.pori\.fi$',
   '^pori-events\.dev\.wunder\.io$',
   '^pori-events\.stage\.wunder\.io$',
   '^pori-events\.prod\.wunder\.io$',
-  '^tapahtumat\.pori\.fi\.com$',
+  '^tapahtumat\.pori\.fi$',
 );
 
 /**
@@ -100,4 +99,5 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
 $settings['install_profile'] = 'config_installer';
