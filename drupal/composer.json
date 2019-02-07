@@ -25,6 +25,18 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "blazy",
+                "version": "1.8.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -58,7 +70,8 @@
         "drupal/fontawesome": "^2.2",
         "drupal/twig_tweak": "^2.0",
         "drupal/google_analytics": "^2.3",
-        "slick": "^1.6"
+        "slick": "^1.6",
+        "blazy": "^1.8"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
