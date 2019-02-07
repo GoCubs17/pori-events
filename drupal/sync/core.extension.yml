@@ -1,7 +1,6 @@
 module:
   address: 0
   admin_toolbar: 0
-  adminimal_admin_toolbar: 0
   automated_cron: 0
   blazy: 0
   block: 0
@@ -46,8 +45,6 @@ module:
   path: 0
   quickedit: 0
   rdf: 0
-  realistic_dummy_content: 0
-  realistic_dummy_content_api: 0
   search: 0
   serialization: 0
   shortcut: 0
