@@ -49,7 +49,7 @@ $aliases['dev'] = array(
 );
 
 $aliases['stage'] = array(
-  'uri' => 'https://tapahtumat-pori.stage.wunder.io',
+  'uri' => 'https://pori-events.stage.wunder.io',
   'remote-user' => 'www-admin',
   'remote-host' => '185.26.49.29',
   'root' => '/var/www/pori-events.stage.wunder.io/current/web',
