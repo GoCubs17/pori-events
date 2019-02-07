@@ -73,6 +73,17 @@ $config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../sync',
 );
 
+// Set default trusted hosts.
+$settings['trusted_host_patterns'] = array(
+  '\.localhost$',
+  '\.local$',
+  '\.loc$',
+  '^pori-events\.dev\.wunder\.io$',
+  '^pori-events\.stage\.wunder\.io$',
+  '^pori-events\.prod\.wunder\.io$',
+  '^tapahtumat\.pori\.fi\.com$',
+);
+
 /**
  * Access control for update.php script.
  */
