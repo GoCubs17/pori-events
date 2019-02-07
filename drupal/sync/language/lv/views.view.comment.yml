@@ -1,23 +1,69 @@
+label: Kommentit
 display:
   default:
     display_title: Isäntä
     display_options:
       exposed_form:
         options:
+          submit_button: Käytä
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
       pager:
         options:
+          tags:
+            previous: '‹ edellinen'
+            next: 'seuraava ›'
+            first: '« ensimmäinen'
+            last: 'viimeinen »'
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
+      fields:
+        comment_bulk_form:
+          action_title: Toiminto
+        subject:
+          label: Aihe
+        entity_id:
+          label: Kirjoitus
+        changed:
+          label: Päivitetty
+        operations:
+          label: Toimenpiteet
       filters:
+        subject:
+          expose:
+            label: Aihe
+        combine:
+          expose:
+            label: 'Kirjoittajan nimi'
         langcode:
           expose:
             label: Valoda
+      title: Kommentit
+      empty:
+        area_text_custom:
+          content: 'Kommentteja ei ole saatavilla.'
+  page_published:
+    display_options:
+      menu:
+        title: Kommentit
   page_unapproved:
     display_options:
       filters:
+        subject:
+          expose:
+            label: Aihe
         langcode:
           expose:
             label: Valoda
+      fields:
+        comment_bulk_form:
+          action_title: Toiminto
+        subject:
+          label: Aihe
+        entity_id:
+          label: Kirjoitus
+        changed:
+          label: Päivitetty
+        operations:
+          label: Toimenpiteet
