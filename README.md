@@ -52,7 +52,7 @@ The default shortcut set causes issues when running the import for the first tim
 - Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) 5.1 or greater. Note version 5.1.24 has a known issue that breaks nfs, do not use it, version 5.1.22 s known to work.
 - Make sure you have python2.7 also installed (For OS X should be default).
 
-### 1. Setup local environment
+#### Setup vagrant environment
 
 ```$ git clone git@github.com:City-of-Pori/pori-events.git```
 
@@ -62,7 +62,7 @@ The default shortcut set causes issues when running the import for the first tim
 
 ```$ cd /vagrant/drupal/```
 
-### 2.a Setting up an existing site
+#### 2.a Setting up an existing site
 
 ```$ ./build.sh build```
 
@@ -70,7 +70,7 @@ The default shortcut set causes issues when running the import for the first tim
 
 ```drush @pori-events.stage sql-dump | drush @pori-events.local sql-cli```
 
-### 2.b First time setup
+#### 2.b First time setup
 
 ```$ vagrant ssh```
 
