@@ -65,6 +65,11 @@ switch ($env) {
     $settings['simple_environment_indicator'] = 'DarkGreen Local';
     $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
     break;
+  case 'lando':
+    $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = "elasticsearch";
+    $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = "9200";
+    break;
+
 }
 /**
  * Location of the site configuration files.
@@ -75,6 +80,7 @@ $config_directories = array(
 
 // Set default trusted hosts.
 $settings['trusted_host_patterns'] = array(
+  '^pori-events\.lndo\.site$',
   '^local\.pori-events\.fi$',
   '^local\.tapahtumat\.pori\.fi$',
   '^pori-events\.dev\.wunder\.io$',

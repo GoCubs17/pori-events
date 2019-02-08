@@ -6,7 +6,9 @@
 # other site definitions.
 default:
 
-  aliases: local
+  aliases:
+    - local
+    - lando
 
   drupal_version: d8
 
@@ -19,12 +21,16 @@ default:
     new:
       - shell: echo "Use the 'create' command to create a new project and the 'reset' command to join an existing one."
 
+    # Prepare Drupal directories
+    build:
+      - make
+
     create:
       - verify: "Type yes to verify you want to create a new installation (Warning - this will delete your database contents in the process!): "
       - make
       - shell: composer drupal-scaffold
       - drush: site-install config_installer
-      - drush: cex -y
+      - drush: cim -y
       - shell: echo "New installation is complete and configuration has been exported. Please commit it."
       - cleanup
 

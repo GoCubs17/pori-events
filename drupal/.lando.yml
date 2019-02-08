@@ -1,11 +1,16 @@
-name: wunderlando
+name: pori-events
 recipe: drupal8
+
+compose:
+  - compose.yml
+
 config:
   webroot: web
   via: nginx
   php: '7.1'
   database: mariadb:10.1
-  #xdebug: true
+  xdebug: true
+  drush: 8.1.15
 
 tooling:
   build.sh:
@@ -14,27 +19,26 @@ tooling:
     cmd:
       - ./build.sh
 
-services:  
+services:
   mailhog:
     type: mailhog
     hogfrom:
       - appserver
-  
+
   appserver:
     extras:
       - "apt-get update -y"
       - "apt-get install python-yaml -y"
     overrides:
-      services:
-        environment:
-          WKV_SITE_ENV: lando
-          DB_PASS_DRUPAL: drupal8
-          DB_USER_DRUPAL: drupal8
-          DB_HOST_DRUPAL: database
-          DB_NAME_DRUPAL: drupal8
+      environment:
+        WKV_SITE_ENV: lando
+        DB_PASS_DRUPAL: drupal8
+        DB_USER_DRUPAL: drupal8
+        DB_HOST_DRUPAL: database
+        DB_NAME_DRUPAL: drupal8
 
 proxy:
-  mailhog:
+  mailhog_appserver:
     - mail.lndo.site
 
 events:
