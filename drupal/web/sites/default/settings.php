@@ -50,7 +50,7 @@ if (!empty($_SERVER['SERVER_ADDR'])) {
 $env = getenv('WKV_SITE_ENV');
 switch ($env) {
   case 'production':
-    $settings['simple_environment_indicator'] = '#d4000f Production';
+    $conf['simple_environment_indicator'] = '#560004 Production';
     break;
 
   case 'dev':
@@ -62,14 +62,31 @@ switch ($env) {
     break;
 
   case 'local':
-    $settings['simple_environment_indicator'] = '#88b700 Local';
+    $settings['simple_environment_indicator'] = 'DarkGreen Local';
+    $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
     break;
+  case 'lando':
+    $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = "elasticsearch";
+    $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = "9200";
+    break;
+
 }
 /**
  * Location of the site configuration files.
  */
 $config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../sync',
+);
+
+// Set default trusted hosts.
+$settings['trusted_host_patterns'] = array(
+  '^pori-events\.lndo\.site$',
+  '^local\.pori-events\.fi$',
+  '^local\.tapahtumat\.pori\.fi$',
+  '^pori-events\.dev\.wunder\.io$',
+  '^pori-events\.stage\.wunder\.io$',
+  '^pori-events\.prod\.wunder\.io$',
+  '^tapahtumat\.pori\.fi$',
 );
 
 /**
@@ -88,4 +105,5 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
 $settings['install_profile'] = 'config_installer';

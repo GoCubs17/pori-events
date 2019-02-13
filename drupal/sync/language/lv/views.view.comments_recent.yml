@@ -1,3 +1,7 @@
 display:
   default:
     display_title: Isäntä
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Kommentteja ei ole saatavilla.'
