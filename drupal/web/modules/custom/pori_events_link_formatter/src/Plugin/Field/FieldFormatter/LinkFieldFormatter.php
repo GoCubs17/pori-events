@@ -2,7 +2,6 @@
 
 namespace Drupal\pori_events_link_formatter\Plugin\Field\FieldFormatter;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
@@ -75,5 +74,4 @@ class LinkFieldFormatter extends FormatterBase {
     $label = preg_replace('#^https?://#', '', $item->getValue()['value']);
     return ['label' => $label, 'url' => $item->getValue()['value']];
   }
-
 }
