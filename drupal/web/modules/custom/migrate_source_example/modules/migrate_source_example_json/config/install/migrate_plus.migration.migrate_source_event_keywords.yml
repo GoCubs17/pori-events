@@ -12,7 +12,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://linkedevents.dymesolutions.com/api/v2/keyword_set/pori:topics/?include=keywords&page_size=999'
+  urls: 'https://satakuntaevents.fi/api/v2/keyword_set/pori:topics/?include=keywords&page_size=999'
   item_selector: keywords
   ids:
     keyword_id:
