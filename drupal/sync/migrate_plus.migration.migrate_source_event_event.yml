@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://linkedevents.dymesolutions.com/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
   item_selector: data
   ids:
     event_id:
