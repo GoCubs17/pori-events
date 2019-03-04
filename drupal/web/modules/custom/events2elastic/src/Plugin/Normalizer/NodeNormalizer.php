@@ -65,7 +65,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $term_name = Term::load($term->target_id)->get('name')->value;
           $data['event_type'][] = $term_name;
         }
-      }      
+      }
 
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -93,7 +93,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
       // use image cache for external images
       if($object->field_image_ext_url->value) {
         $display_options = array(
-          'type'     => 'imagecache_external_image',      
+          'type'     => 'imagecache_external_image',
         );
         $img_view = $object->get('field_image_ext_url')->view($display_options);
         $img_cached = $img_view[0]['#uri'];
