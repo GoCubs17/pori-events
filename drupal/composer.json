@@ -118,6 +118,13 @@
             "web/": ["type:web-dropin"]
         },
         "patches": {
+            "drupal/core": {
+                "Migrate delete functionality": "https://www.drupal.org/files/issues/2019-01-30/2809433-migrate-delete-missing-from-source-81.patch"
+            },
+            "drupal/migrate_tools": {
+                "Migrate delete command": "https://www.drupal.org/files/issues/2019-01-22/migrate-tools-rollback-missing-items-from-source-2863426-20.patch",
+                "Fix for command parameters": "https://www.drupal.org/files/issues/2019-02-05/migrate-tools_fix-drush-options_3024399-23.patch"
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f09619ed0a5e2357dff6194746c9a35e",
+    "content-hash": "740016fb0145ac9134b98a7f44c8069f",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2021,7 +2021,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.26",
-                    "datestamp": "1549559402",
+                    "datestamp": "1549218480",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2728,6 +2728,9 @@
                     "recurse": false,
                     "replace": false,
                     "merge-extra": false
+                },
+                "patches_applied": {
+                    "Migrate delete functionality": "https://www.drupal.org/files/issues/2019-01-30/2809433-migrate-delete-missing-from-source-81.patch"
                 }
             },
             "autoload": {
@@ -2901,7 +2904,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.9",
-                    "datestamp": "1550692543",
+                    "datestamp": "1541188681",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2925,6 +2928,14 @@
                 {
                     "name": "RobLoach",
                     "homepage": "https://www.drupal.org/user/61114"
+                },
+                {
+                    "name": "cosmicdreams",
+                    "homepage": "https://www.drupal.org/user/42579"
+                },
+                {
+                    "name": "geerlingguy",
+                    "homepage": "https://www.drupal.org/user/389011"
                 },
                 {
                     "name": "inders",
@@ -3151,6 +3162,10 @@
                     "services": {
                         "drush.services.yml": "^9"
                     }
+                },
+                "patches_applied": {
+                    "Migrate delete command": "https://www.drupal.org/files/issues/2019-01-22/migrate-tools-rollback-missing-items-from-source-2863426-20.patch",
+                    "Fix for command parameters": "https://www.drupal.org/files/issues/2019-02-05/migrate-tools_fix-drush-options_3024399-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -7645,7 +7660,8 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
+            },
+            "time": "2019-02-17T22:17:00+00:00"
         },
         {
             "name": "drupal/stage_file_proxy",
