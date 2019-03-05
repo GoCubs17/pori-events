@@ -1,26 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import extend from 'lodash/extend'
 import { SearchkitManager,SearchkitProvider,
   SearchBox, RefinementListFilter, Pagination,
-  HierarchicalMenuFilter, HitsStats, SortingSelector, NoHits,
-  ResetFilters, RangeFilter, NumericRefinementListFilter,
-  ViewSwitcherHits, ViewSwitcherToggle, DynamicRangeFilter,
-  InputFilter, GroupedSelectedFilters,
-  Layout, TopBar, LayoutBody, LayoutResults,
-  ActionBar, ActionBarRow, SideBar, QueryString, SearchkitComponent, Panel } from 'searchkit'
+  NoHits, ResetFilters, ViewSwitcherHits,
+  GroupedSelectedFilters, Layout, LayoutBody,
+  LayoutResults, ActionBar, ActionBarRow, SideBar,
+  QueryString, SearchkitComponent, Panel } from 'searchkit'
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter"
-import './index.css'
 
 const loc = window.location.origin;
+
 let elasticServer = loc + '/api/search/searchkit/event-node';
+
 let host = 'http://local.tapahtumat.pori.fi:9200';
 
 const searchkit = new SearchkitManager(elasticServer)
+
+searchkit.translateFunction = (key) => {
+  let translations = {
+    "searchbox.placeholder": Drupal.t("Search"),
+    "NoHits.NoResultsFound": Drupal.t("No results found for") + " {query}",
+    "pagination.previous": Drupal.t("Previous"),
+    "pagination.next": Drupal.t("Next")
+  }
+  return translations[key]
+}
 
 const queryFields = [
   "title^10",
   "title.autocomplete^2",
 ]
+
 const queryOptions = {
   phrase_slop: 2,
 }
@@ -47,6 +57,7 @@ const HitsListItem = (props)=> {
           <a href={url} dangerouslySetInnerHTML={{__html:title}}></a>
         </h2>
         <div>{source.area}</div>
+        <div>{leading}</div>
       </div>
     </div>
   )
@@ -75,7 +86,7 @@ class App extends SearchkitComponent {
               <Panel
                 collapsable={true}
                 defaultCollapsed={true}
-                title="What">
+                title={Drupal.t("What")}>
 
                 <RefinementListFilter
                   id="event_type"
@@ -89,7 +100,7 @@ class App extends SearchkitComponent {
               <Panel
                 collapsable={true}
                 defaultCollapsed={true}
-                title="Where">
+                title={Drupal.t("Where")}>
 
                 <RefinementListFilter
                   id="area"
@@ -103,7 +114,7 @@ class App extends SearchkitComponent {
               <Panel
                 collapsable={true}
                 defaultCollapsed={true}
-                title="When">
+                title={Drupal.t("When")}>
 
                 <DateRangeFilter
                   id="event_date"
@@ -117,7 +128,7 @@ class App extends SearchkitComponent {
               <Panel
                 collapsable={true}
                 defaultCollapsed={true}
-                title="For whom">
+                title={Drupal.t("For whom")}>
 
                 <RefinementListFilter
                   id="audience"
@@ -135,7 +146,7 @@ class App extends SearchkitComponent {
 
               <ActionBarRow>
                 <GroupedSelectedFilters/>
-                <ResetFilters/>
+                <ResetFilters translations={{"reset.clear_all":Drupal.t("Reset all filters")}}/>
               </ActionBarRow>
 
             </ActionBar>
