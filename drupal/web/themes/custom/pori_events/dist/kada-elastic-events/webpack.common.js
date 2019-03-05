@@ -1,18 +1,17 @@
-// webpack v4
-
 const path = require('path');
-
-// update from 23.12.2018
-const nodeExternals = require('webpack-node-externals');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: {
+    app: './src/index.js'
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
-//   target: 'node', // update from 23.12.2018
-//   externals: [nodeExternals()], // update from 23.12.2018
   module: {
     rules: [
       {
