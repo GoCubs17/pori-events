@@ -9,19 +9,26 @@ module.exports = {
   entry: { main: './src/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'bundle.js'
   },
-  target: 'node', // update from 23.12.2018
-  externals: [nodeExternals()], // update from 23.12.2018
+//   target: 'node', // update from 23.12.2018
+//   externals: [nodeExternals()], // update from 23.12.2018
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ['css-loader']
+    }
     ]
   }
 };

@@ -15,7 +15,6 @@ const loc = window.location.origin;
 let elasticServer = loc + '/api/search/searchkit/event-node';
 let host = 'http://local.tapahtumat.pori.fi:9200';
 
-
 const searchkit = new SearchkitManager(elasticServer)
 
 const queryFields = [
