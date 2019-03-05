@@ -4,14 +4,14 @@
   "private": true,
   "devDependencies": {
     "react-router": "^4.2.0",
-    "react-scripts": "^1.0.14",
+    "react-scripts": "^1.1.5",
     "typescript": "^2.8.1"
   },
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "searchkit": "^2.3.0",
-    "searchkit-datefilter": "0.0.2"    
+    "searchkit-datefilter": "0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
