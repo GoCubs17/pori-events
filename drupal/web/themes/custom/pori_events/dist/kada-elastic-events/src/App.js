@@ -7,12 +7,11 @@ import { SearchkitManager,SearchkitProvider,
   LayoutResults, ActionBar, ActionBarRow, SideBar,
   QueryString, SearchkitComponent, Panel } from 'searchkit'
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter"
+import Moment from 'moment';
 
 const loc = window.location.origin;
 
 let elasticServer = loc + '/api/search/searchkit/event-node';
-
-let host = 'http://local.tapahtumat.pori.fi:9200';
 
 const searchkit = new SearchkitManager(elasticServer)
 
@@ -40,24 +39,28 @@ const HitsListItem = (props)=> {
   const source = extend({}, result._source, result.highlight)
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
   const url = (source.url) ? source.url : '/node/' + result._id
-  const image = (source.image) ? (
-    <div className="event__image__wrapper">
-      <img src={source.image} width="231" height="231" alt="" />
-    </div>
-  ) : null;
+  const image_source = (source.image_ext) ? (
+  source.image_ext
+  ) : "themes/custom/pori_events/dist/images/event-default.jpg";
   const title = (source.title) ? source.title : null;
   const leading = (source.short_description) ? source.short_description : null;
+
+  const format = 'D.M.YYYY HH:MM'
+  const start_time = Moment(source.start_time).format(format);
+  const end_time = Moment(source.end_time).format(format);
 
   return (
     <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
       <div className={bemBlocks.item("title")}>
-        <div>{image}</div>
-        <div className="event__time">{source.start_time} - {source.end_time}</div>
+        <div className="event__image__wrapper">
+          <img src={image_source}/>
+        </div>
+        <div className="event__time">{start_time} - {end_time}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{__html:title}}></a>
         </h2>
-        <div>{source.area}</div>
-        <div>{leading}</div>
+        <div className="event__area">{source.area}</div>
+        <div className="event__short_description">{leading}</div>
       </div>
     </div>
   )

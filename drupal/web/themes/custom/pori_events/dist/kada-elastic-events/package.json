@@ -25,9 +25,9 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
   },
-
   "dependencies": {
     "babel-preset-react": "^6.24.1",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
