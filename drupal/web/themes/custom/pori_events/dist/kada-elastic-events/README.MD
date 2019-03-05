@@ -1,10 +1,36 @@
-## Searchkit Starter App
+# Pori Events search app
 
-Used to start new applications which use Searchkit. Based off the popular create-react-app. If you dont know about `create-react-app`, please read their [readme](https://github.com/facebookincubator/create-react-app/blob/master/README.md) and install create-react-app on your machine 
+Search application based on [searchkit-starter-app](https://github.com/searchkit/searchkit-starter-app). See [documentation](http://docs.searchkit.co/stable/) for useage examples.
 
-##  Install instructions
+## Getting started
 
-- git clone git@github.com:searchkit/searchkit-starter-app.git
-- cd searchkit-starter-app
-- yarn
-- npm start
+Build dependencies
+
+    yarn install
+
+## Directory structure
+
+    ├── dist                Compiled app code
+    ├── package.json        Application package.json file.
+    ├── README.MD           This file.
+    ├── src                 ReactJS source files.
+    ├── webpack.common.js   Common Webpack configuration.
+    ├── webpack.dev.js      Development configuration for Webpack.
+    ├── webpack.prod.js     Production configuration for Webpack.
+    ├── yarn-error.log
+    └── yarn.lock           Yarn lock file keeping track of package versions.
+
+## Development
+
+Watch for file changes
+
+    yarn start
+
+Install new modules
+
+    yarn add [module]
+
+Build for production
+
+    yarn build
+
