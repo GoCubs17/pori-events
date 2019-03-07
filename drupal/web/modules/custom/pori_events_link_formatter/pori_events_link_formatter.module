@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains pori_events_link_formatter.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function pori_events_link_formatter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the pori_events_link_formatter module.
+    case 'help.page.pori_events_link_formatter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a custom Link  formatter.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

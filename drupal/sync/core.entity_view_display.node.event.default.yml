@@ -25,6 +25,7 @@ dependencies:
     - datetime
     - image
     - imagecache_external
+    - pori_events_link_formatter
     - text
     - user
 id: node.event.default
@@ -134,10 +135,9 @@ content:
   field_provider_www:
     weight: 117
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: link_field_formatter
     region: content
   field_short_description:
     weight: 105

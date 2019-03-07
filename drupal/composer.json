@@ -78,7 +78,8 @@
         "guncha25/drupal-8-bootstrap": "0.3",
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.0@alpha",
-        "drupal/devel": "^2.0"
+        "drupal/devel": "^2.0",
+        "drupal/twig_xdebug": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"

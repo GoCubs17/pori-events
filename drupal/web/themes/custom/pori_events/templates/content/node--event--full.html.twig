@@ -86,10 +86,9 @@
 {% set location_extra_info = content.field_location_extra_info[0]['#context']['value'] %}
 {% set area = content.field_area[0]['#title'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
-{% set provider_www = content.field_provider_www[0]['#context']['value'] %}
+{% set provider_www = content.field_provider_www[0]['content'] %}
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
-
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
 
@@ -156,8 +155,8 @@
       {% if provider_www %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-home"></i>
-        <a href={{ provider_www }}>
-          {{ provider_www }}
+        <a href={{ provider_www['url'] }}>
+          {{ provider_www['label'] }}
         </a>
       </div>
       {% endif %}
