@@ -89,7 +89,7 @@
 {% set provider_www = content.field_provider_www[0]['content'] %}
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
-{% set ticket_vendor = content.field_ticket_vendor[0]['#context']['value'] %}
+{% set ticket_vendor = content.field_ticket_vendor[0]['content'] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -180,8 +180,8 @@
       {% if ticket_vendor %}
         <div class="event__content--sidebar__item">
           <i class="fas fa-ticket-alt"></i>
-          <a href={{ ticket_vendor }}>
-              {{ ticket_vendor }}
+          <a href={{ ticket_vendor['url'] }}>
+              {{ ticket_vendor['label'] }}
           </a>
         </div>
       {% endif %}
