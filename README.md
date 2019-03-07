@@ -80,7 +80,7 @@ The default shortcut set causes issues when running the import for the first tim
 
 Access your local environment at https://local.tapahtumat.pori.fi
 
-Check `docs/development.md` for more info.
+Check `docs/development.md` for more detailed information about development process.
 
 ## Credits
 
