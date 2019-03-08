@@ -130,7 +130,7 @@
 
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
-        {{ "At"|t }} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        {{ "At"|t }} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
       </div>
 
       {% if location_extra_info or area %}
