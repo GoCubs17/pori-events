@@ -49,7 +49,7 @@ const HitsListItem = (props) => {
   const leading = (source.short_description) ? source.short_description : null;
 
   const date_format = 'D.M.YYYY'
-  const time_format = 'HH:MM'
+  const time_format = 'HH:mm'
 
   const date_start = Moment(source.start_time).format(date_format)
   const date_end = Moment(source.end_time).format(date_format)
