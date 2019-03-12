@@ -26,10 +26,9 @@ searchkit.translateFunction = (key) => {
 }
 
 const queryFields = [
-  "title^10",
-  "title.autocomplete^2",
-  "short_description",
-  "area^5",
+  "title.autocomplete^10",
+  "short_description.autocomplete^8",
+  "area.autocomplete^6",
   "description^2"
 ]
 
