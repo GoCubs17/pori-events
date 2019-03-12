@@ -40,8 +40,8 @@ const queryOptions = {
 searchkit.addDefaultQuery(function(query){
   return query.setSort([
     {
-      "single_day":"desc",
-      "start_time":"asc"
+      "start_time":"asc",
+      "single_day":"desc"
     }
   ]);
 })
