@@ -37,6 +37,15 @@ const queryOptions = {
   phrase_slop: 2,
 }
 
+searchkit.addDefaultQuery(function(query){
+  return query.setSort([
+    {
+      "single_day":"desc",
+      "start_time":"asc"
+    }
+  ]);
+})
+
 const HitsListItem = (props)=> {
   const {bemBlocks, result} = props
   const source = extend({}, result._source, result.highlight)

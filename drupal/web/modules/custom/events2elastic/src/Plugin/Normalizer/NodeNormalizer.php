@@ -65,7 +65,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $term_name = Term::load($term->target_id)->get('name')->value;
           $data['event_type'][] = $term_name;
         }
-      }      
+      }
 
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -79,6 +79,10 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $from = $object->field_start_time->value . ".000Z";
       $to = $object->field_end_time->value . ".000Z";
 
+      $start_date = date('Y-m-d', strtotime($from));
+      $end_date = date('Y-m-d', strtotime($to));
+      $start_date == $end_date ? $data['single_day'] = 1 : $data['single_day'] = 0;
+
       $data['start_time'] = $from;
       $data['end_time'] = $to;
 
@@ -90,10 +94,11 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['date_pretty'] = date('j.n.Y H:i', strtotime($from)) . " - " . date('j.n.Y H:i', strtotime($to));
 
 
+
       // use image cache for external images
       if($object->field_image_ext_url->value) {
         $display_options = array(
-          'type'     => 'imagecache_external_image',      
+          'type'     => 'imagecache_external_image',
         );
         $img_view = $object->get('field_image_ext_url')->view($display_options);
         $img_cached = $img_view[0]['#uri'];
