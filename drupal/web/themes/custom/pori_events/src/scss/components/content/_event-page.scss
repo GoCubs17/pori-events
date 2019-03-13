@@ -113,7 +113,7 @@
   position: relative;
   text-align: left;
   text-transform: uppercase;
-
+  overflow-wrap: break-word;
   &:first-of-type {
     border-top: 0 none;
   }
