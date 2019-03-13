@@ -37,7 +37,7 @@ const queryOptions = {
   phrase_slop: 2,
 }
 
-const HitsListItem = (props)=> {
+const HitsListItem = (props) => {
   const {bemBlocks, result} = props
   const source = extend({}, result._source, result.highlight)
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
@@ -48,9 +48,14 @@ const HitsListItem = (props)=> {
   const title = (source.title) ? source.title : null;
   const leading = (source.short_description) ? source.short_description : null;
 
-  const format = 'D.M.YYYY HH:MM'
-  const start_time = Moment(source.start_time).format(format);
-  const end_time = Moment(source.end_time).format(format);
+  const date_format = 'D.M.YYYY'
+  const time_format = 'HH:mm'
+
+  const date_start = Moment(source.start_time).format(date_format)
+  const date_end = Moment(source.end_time).format(date_format)
+
+  const time_start = Moment(source.start_time).format(time_format)
+  const time_end = Moment(source.end_time).format(time_format)
 
   return (
     <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
@@ -58,7 +63,7 @@ const HitsListItem = (props)=> {
         <div className="event__image__wrapper">
           <img src={image_source}/>
         </div>
-        <div className="event__time">{start_time} - {end_time}</div>
+        <div className="event__time">{date_start} - {date_end} klo {time_start} - {time_end}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{__html:title}}></a>
         </h2>
