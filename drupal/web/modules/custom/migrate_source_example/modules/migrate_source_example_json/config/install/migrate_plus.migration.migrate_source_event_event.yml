@@ -99,6 +99,14 @@ process:
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_extra_info
+  field_ticket_vendor:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - info_url
+      - fi
   field_price:
     source: event_offers
     plugin: extract
@@ -174,8 +182,8 @@ process:
         - 0
         - id
     -
-      plugin: migration
-      migration: migrate_source_event_audience
+  plugin: migration
+  migration: migrate_source_event_audience
 destination:
   plugin: 'entity:node'
 
