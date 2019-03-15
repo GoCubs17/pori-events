@@ -29,7 +29,6 @@ const queryFields = [
   "title.autocomplete^10",
   "short_description",
   "area",
-  "description"
 ]
 
 const queryOptions = {
