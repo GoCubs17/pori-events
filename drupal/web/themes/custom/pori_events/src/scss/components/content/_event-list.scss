@@ -12,7 +12,7 @@
 .sk-layout__body {
   @media screen and (min-width: $desktop-narrow) {
     display: flex;
-  }    
+  }
 }
 
 .sk-hits-list {
@@ -27,7 +27,7 @@
   font-family: $bergen-mono;
   @media screen and (min-width: $desktop-narrow) {
     width: 430px;
-  }   
+  }
 }
 
 .sk-layout__results {
@@ -44,14 +44,14 @@
   @media screen and (min-width: $mobile-landscape-wide) {
     padding: 0 10px 40px;
     width: 50%;
-  }   
+  }
   @media screen and (min-width: $desktop-narrow) {
     width: 33.33%;
   }
   @media screen and (max-width: $mobile-landscape-wide) {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
-    padding-bottom: 15px;  
+    padding-bottom: 15px;
   }
 }
 
@@ -93,7 +93,7 @@
 .sk-item-list-option__count {
   color: #bbb;
   position: absolute;
-  right: 5px;  
+  right: 5px;
 }
 
 .sk-search-box__text {
@@ -120,7 +120,7 @@
   }
   @media screen and (min-width: $desktop-narrow) {
     margin: 0 0 10px 0;
-  }  
+  }
 }
 
 .sk-filter-group-items__title,
@@ -132,11 +132,22 @@
 .sk-reset-filters {
   background: $secondary-color-light;;
   display: inline-block;
-  padding: 3px 15px;
+  padding: 4px 15px;
   border-radius: 15px;
   color: white;
   text-transform: uppercase;
   margin: 10px;
+
+}
+
+.sk-filter-group-items__value::after {
+  content: "";
+  background-image: url("../images/close.svg");
+  background-size: 1rem;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0px -4px -4px 5px;
 }
 
 .sk-reset-filters {
@@ -152,7 +163,7 @@
   font-size: 14px;
   @media screen and (min-width: $desktop-narrow) {
     margin-top: 30px;
-  }  
+  }
 }
 
 .sk-layout__results .event__title {
@@ -229,7 +240,7 @@
     left: 50%;
     position: absolute;
     top: 0;
-  }  
+  }
 }
 
 // plus sign, TODO: use fontawesome
@@ -251,5 +262,5 @@
   }
   .sk-panel__header.is-collapsed:after {
       content: '+';
-  }  
+  }
 }
