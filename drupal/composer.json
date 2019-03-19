@@ -78,7 +78,8 @@
         "guncha25/drupal-8-bootstrap": "0.3",
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.0@alpha",
-        "drupal/devel": "^2.0"
+        "drupal/devel": "^2.0",
+        "drupal/twig_xdebug": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -118,6 +119,13 @@
             "web/": ["type:web-dropin"]
         },
         "patches": {
+            "drupal/core": {
+                "Migrate delete functionality": "https://www.drupal.org/files/issues/2019-01-30/2809433-migrate-delete-missing-from-source-81.patch"
+            },
+            "drupal/migrate_tools": {
+                "Migrate delete command": "https://www.drupal.org/files/issues/2019-01-22/migrate-tools-rollback-missing-items-from-source-2863426-20.patch",
+                "Fix for command parameters": "https://www.drupal.org/files/issues/2019-02-05/migrate-tools_fix-drush-options_3024399-23.patch"
+            }
         }
     }
 }

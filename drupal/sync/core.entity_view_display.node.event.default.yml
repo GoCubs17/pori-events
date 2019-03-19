@@ -19,12 +19,14 @@ dependencies:
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
+    - field.field.node.event.field_ticket_vendor
     - node.type.event
   module:
     - address
     - datetime
     - image
     - imagecache_external
+    - pori_events_link_formatter
     - text
     - user
 id: node.event.default
@@ -134,10 +136,9 @@ content:
   field_provider_www:
     weight: 117
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: link_field_formatter
     region: content
   field_short_description:
     weight: 105
@@ -162,6 +163,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_ticket_vendor:
+    weight: 120
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: link_field_formatter
     region: content
   links:
     weight: 100

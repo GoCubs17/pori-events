@@ -12,7 +12,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://linkedevents.dymesolutions.com/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
   item_selector: data
   ids:
     event_id:
@@ -99,6 +99,14 @@ process:
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_extra_info
+  field_ticket_vendor:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - info_url
+      - fi
   field_price:
     source: event_offers
     plugin: extract
@@ -113,7 +121,7 @@ process:
     default: ''
     index:
       - 0
-      - is_free        
+      - is_free
   field_start_time:
     plugin: substr
     source: event_start_time
@@ -173,9 +181,9 @@ process:
       index:
         - 0
         - id
-    -    
-      plugin: migration
-      migration: migrate_source_event_audience
+    -
+  plugin: migration
+  migration: migrate_source_event_audience
 destination:
   plugin: 'entity:node'
 

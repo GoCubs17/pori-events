@@ -53,6 +53,10 @@ Run the following to set up ES indexes.
 
 `$ lando drush eshd -y && lando drush eshr event_index && lando drush queue-run elasticsearch_helper_indexing`
  
+## Working with search
+
+Search functionality is built with React by taking [Searchkit](http://www.searchkit.co/) as a base. Refer to `drupal/web/themes/custom/pori_events/dist/kada-elastic-events/README.md` for more detailed instructions on how to work with the application. 
+ 
 ## Preparing production releases
 
 - Merge all your feature branches to `master` branch. Preferably via pull requests.

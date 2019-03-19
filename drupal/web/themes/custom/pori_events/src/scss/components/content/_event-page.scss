@@ -93,7 +93,7 @@
     top: 50%;
     margin-top: -0.9em;
     color: $default-color-medium;
-  } 
+  }
 }
 
 .event__content--sidebar__title {
@@ -111,10 +111,9 @@
   font-size: .9rem;
   padding: 1.25rem 0.5rem 1.25rem 3.75rem;
   position: relative;
-  text-align: right;
+  text-align: left;
   text-transform: uppercase;
-  word-break: break-all;
-
+  overflow-wrap: break-word;
   &:first-of-type {
     border-top: 0 none;
   }

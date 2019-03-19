@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
+    - field.field.node.event.field_ticket_vendor
     - image.style.thumbnail
     - node.type.event
   module:
@@ -162,6 +163,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
+    region: content
+  field_ticket_vendor:
+    weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   langcode:
     type: language_select

@@ -30,6 +30,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
 
+
     $bundle = $object->bundle();
     // Get the object language.
     $langcode = $object->language()->getId();
@@ -65,12 +66,14 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $term_name = Term::load($term->target_id)->get('name')->value;
           $data['event_type'][] = $term_name;
         }
-      }      
+      }
 
       // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
-      $data['tickets'] = $object->field_tickets->value;
+      if ($object->hasField('field_tickets')) {
+        $data['tickets'] = $object->field_tickets->value;
+      }
 
       // boolean fields
       $data['free_enterance'] = $object->field_free_enterance->value;
@@ -92,14 +95,19 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // use image cache for external images
       if($object->field_image_ext_url->value) {
-        $display_options = array(
-          'type'     => 'imagecache_external_image',      
-        );
-        $img_view = $object->get('field_image_ext_url')->view($display_options);
-        $img_cached = $img_view[0]['#uri'];
-        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('list_image');
-        $style_url = $style->buildUrl($img_cached);
-        $data['image_ext'] = substr($style_url, strpos($style_url, "http://default/") + 15);
+        try {
+          $display_options = array(
+            'type'     => 'imagecache_external_image',
+          );
+          $img_view = $object->get('field_image_ext_url')
+            ->view($display_options);
+          $img_cached = $img_view[0]['#uri'];
+          $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('list_image');
+          $style_url = $style->buildUrl($img_cached);
+          $data['image_ext'] = substr($style_url, strpos($style_url, "http://default/") + 15);
+        } catch (\Exception $exception) {
+          watchdog_exception('events2elastic', $exception, 'Failed setting external image on event.');
+        }
       }
     }
     return $data;

@@ -86,9 +86,10 @@
 {% set location_extra_info = content.field_location_extra_info[0]['#context']['value'] %}
 {% set area = content.field_area[0]['#title'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
-{% set provider_www = content.field_provider_www[0]['#context']['value'] %}
+{% set provider_www = content.field_provider_www[0]['content'] %}
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
+{% set ticket_vendor = content.field_ticket_vendor[0]['content'] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -131,7 +132,7 @@
 
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
-        {{ "At"|t }} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        {% trans with {'context': 'Event sidebar'} %}At{% endtrans %} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
       </div>
 
       {% if location_extra_info or area %}
@@ -156,8 +157,8 @@
       {% if provider_www %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-home"></i>
-        <a href={{ provider_www }}>
-          {{ provider_www }}
+        <a href={{ provider_www['url'] }}>
+          {{ provider_www['label'] }}
         </a>
       </div>
       {% endif %}
@@ -176,6 +177,14 @@
       </div>
       {% endif %}
 
+      {% if ticket_vendor %}
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-ticket-alt"></i>
+          <a href={{ ticket_vendor['url'] }}>
+              {{ ticket_vendor['label'] }}
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </article>
