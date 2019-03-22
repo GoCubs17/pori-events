@@ -66,8 +66,7 @@
     - name: "Add event migration cleanup cron job"
       cron:
         name: "Clean up expired events."
-        minute: "0"
-        hour: "*/3"
+        minute: "*/7"
         job: "/usr/lib/composer/vendor/bin/drush --root={{ drupal_web_root }} migrate:rollback --group=migrate_source_event --missing-from-source >> /var/log/drush_cron.log 2>&1"
         state: "present"
         user: nginx
