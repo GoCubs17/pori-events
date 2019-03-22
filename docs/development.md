@@ -53,6 +53,15 @@ Run the following to set up ES indexes.
 
 `$ lando drush eshd -y && lando drush eshr event_index && lando drush queue-run elasticsearch_helper_indexing`
  
+## Running event importer
+ 
+Site content is imported from an external source. The API is well documented here: https://satakuntaevents.fi/api/v2/
+
+Import new events by running ```lando drush migrate:import --group=migrate_source_event --update```
+Clean up expired events by running ```lando drush migrate:rollback --group=migrate_source_event --missing-from-source```
+
+On the servers these are handled by cron. They are provisioned on the server by ansible so check `production.yml` file to make any adjustments.
+
 ## Working with search
 
 Search functionality is built with React by taking [Searchkit](http://www.searchkit.co/) as a base. Refer to `drupal/web/themes/custom/pori_events/dist/kada-elastic-events/README.md` for more detailed instructions on how to work with the application. 
