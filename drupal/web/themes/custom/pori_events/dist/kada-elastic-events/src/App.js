@@ -37,7 +37,16 @@ const queryOptions = {
   phrase_slop: 2,
 }
 
-const HitsListItem = (props) => {
+searchkit.addDefaultQuery(function(query){
+  return query.setSort([
+    {
+      "single_day":"desc",
+      "start_time":"asc"
+    }
+  ]);
+})
+
+const HitsListItem = (props)=> {
   const {bemBlocks, result} = props
   const source = extend({}, result._source, result.highlight)
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
