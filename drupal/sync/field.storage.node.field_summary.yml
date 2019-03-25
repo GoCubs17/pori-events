@@ -1,11 +1,11 @@
-uuid: 5849c086-78ce-4602-a84b-d8f4a0941192
+uuid: 13898b08-4d06-4649-810d-eac5b75764a0
 langcode: fi
 status: true
 dependencies:
   module:
     - node
-id: node.field_hobby_summary
-field_name: field_hobby_summary
+id: node.field_summary
+field_name: field_summary
 entity_type: node
 type: string_long
 settings:

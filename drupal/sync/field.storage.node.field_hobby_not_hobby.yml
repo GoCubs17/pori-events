@@ -1,17 +1,14 @@
-uuid: 2a45c42b-4633-46b0-b6ae-995f1420b7b5
+uuid: 5a01e092-c8e9-433e-a89e-77e3d99e00d6
 langcode: fi
 status: true
 dependencies:
   module:
     - node
-id: node.field_organiser_phone_number
-field_name: field_organiser_phone_number
+id: node.field_hobby_not_hobby
+field_name: field_hobby_not_hobby
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

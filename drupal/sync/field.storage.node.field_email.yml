@@ -1,11 +1,11 @@
-uuid: b92cbef0-cc8d-4a53-ac12-1c7d98a1623b
+uuid: 31c4534d-9f3b-47c3-aae4-c03cb4c44f88
 langcode: fi
 status: true
 dependencies:
   module:
     - node
-id: node.field_organiser_email
-field_name: field_organiser_email
+id: node.field_email
+field_name: field_email
 entity_type: node
 type: string
 settings:
