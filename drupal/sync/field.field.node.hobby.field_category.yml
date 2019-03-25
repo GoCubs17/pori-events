@@ -1,0 +1,21 @@
+uuid: 75eec5c9-e46e-4550-b29d-e59996088d4b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.hobby
+id: node.hobby.field_category
+field_name: field_category
+entity_type: node
+bundle: hobby
+label: Category
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

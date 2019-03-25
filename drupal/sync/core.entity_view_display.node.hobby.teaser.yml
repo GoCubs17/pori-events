@@ -1,0 +1,59 @@
+uuid: 11ccb5e7-101f-44a0-9248-6913a64c6c41
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hobby.field_accessible
+    - field.field.node.hobby.field_area
+    - field.field.node.hobby.field_category
+    - field.field.node.hobby.field_child_care
+    - field.field.node.hobby.field_event_organizer_name
+    - field.field.node.hobby.field_hobby_address
+    - field.field.node.hobby.field_hobby_description
+    - field.field.node.hobby.field_hobby_e_mail
+    - field.field.node.hobby.field_hobby_end_time
+    - field.field.node.hobby.field_hobby_map
+    - field.field.node.hobby.field_hobby_person_responsible
+    - field.field.node.hobby.field_hobby_phone_number
+    - field.field.node.hobby.field_hobby_start_time
+    - field.field.node.hobby.field_hobby_summary
+    - field.field.node.hobby.field_hobby_title
+    - field.field.node.hobby.field_organiser_email
+    - field.field.node.hobby.field_organiser_phone_number
+    - field.field.node.hobby.field_pre_registration
+    - field.field.node.hobby.field_www_address
+    - node.type.hobby
+  module:
+    - user
+id: node.hobby.teaser
+targetEntityType: node
+bundle: hobby
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_accessible: true
+  field_area: true
+  field_category: true
+  field_child_care: true
+  field_event_organizer_name: true
+  field_hobby_address: true
+  field_hobby_description: true
+  field_hobby_e_mail: true
+  field_hobby_end_time: true
+  field_hobby_map: true
+  field_hobby_person_responsible: true
+  field_hobby_phone_number: true
+  field_hobby_start_time: true
+  field_hobby_summary: true
+  field_hobby_title: true
+  field_organiser_email: true
+  field_organiser_phone_number: true
+  field_pre_registration: true
+  field_www_address: true
+  langcode: true

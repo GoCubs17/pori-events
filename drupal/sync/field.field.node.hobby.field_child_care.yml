@@ -1,0 +1,23 @@
+uuid: ff9ec4dd-eb3f-419e-b9ab-0938a802b48b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_child_care
+    - node.type.hobby
+id: node.hobby.field_child_care
+field_name: field_child_care
+entity_type: node
+bundle: hobby
+label: 'Child Care'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
