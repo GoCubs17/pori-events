@@ -49,10 +49,10 @@
         user: nginx
       tags: ['cron']
       when: drupal_web_root is defined
-    # Run event migration
+    # Execute event migration
     - name: "Add event migration cron job"
       cron:
-        name: "Run event migration."
+        name: "Execute event migration."
         minute: "*/5"
         job: "/var/www/pori-events.stage.wunder.io/current/scripts/event_import.sh"
         state: "present"
