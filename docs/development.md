@@ -60,7 +60,9 @@ Site content is imported from an external source. The API is well documented her
 Import new events by running ```lando drush migrate:import --group=migrate_source_event --update```
 Clean up expired events by running ```lando drush migrate:rollback --group=migrate_source_event --missing-from-source```
 
-On the servers these are handled by cron. They are provisioned on the server by ansible so check `production.yml` file to make any adjustments.
+On the servers importer is run by a cron that executes script `drupal/scripts/event_import.sh`. You can check the output log of the script by loggin in the server with `root` user and executing `journalctl -t event_import`. 
+
+
 
 ## Working with search
 
