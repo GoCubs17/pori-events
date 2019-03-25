@@ -1,0 +1,21 @@
+uuid: 381e1f75-043e-4b6a-98a9-e24eae3ec4b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hobby_start_time
+    - node.type.hobby
+  module:
+    - datetime
+id: node.hobby.field_hobby_start_time
+field_name: field_hobby_start_time
+entity_type: node
+bundle: hobby
+label: 'Start time'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+uuid: ef4548c3-7354-4a8e-a143-61d1a051fc88
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_means_of_payment
+    - node.type.hobby
+id: node.hobby.field_means_of_payment
+field_name: field_means_of_payment
+entity_type: node
+bundle: hobby
+label: 'Culture and/or activity note etc can be used for payment'
+description: 'Culture- and/or activity note etc can be used as payment'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

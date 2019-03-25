@@ -1,0 +1,23 @@
+uuid: 70b36955-dd54-4e4d-8c7a-c0666b1081f9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_registration
+    - node.type.hobby
+id: node.hobby.field_pre_registration
+field_name: field_pre_registration
+entity_type: node
+bundle: hobby
+label: Pre-registration
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
