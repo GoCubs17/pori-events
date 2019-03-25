@@ -1,18 +1,18 @@
-uuid: 2af4bcf5-8cb3-41d4-b8d7-ac6075b0dd32
+uuid: 2a3d4fee-9799-4425-89da-b23aad3d8ece
 langcode: fi
 status: true
 dependencies:
   config:
     - field.storage.node.field_hobby_map
-    - node.type.hobby
-id: node.hobby.field_hobby_map
+    - node.type.event
+id: node.event.field_hobby_map
 field_name: field_hobby_map
 entity_type: node
-bundle: hobby
+bundle: event
 label: Map
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
