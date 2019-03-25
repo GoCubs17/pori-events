@@ -69,7 +69,10 @@
         "drupal/twig_tweak": "^2.0",
         "drupal/google_analytics": "^2.3",
         "slick": "^1.6",
-        "blazy": "^1.8"
+        "blazy": "^1.8",
+        "drupal/simple_gmap": "^1.4",
+        "drupal/conditional_fields": "^1.0@alpha",
+        "drupal/date_range_formatter": "^3.1"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",

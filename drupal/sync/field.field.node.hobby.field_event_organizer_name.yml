@@ -1,0 +1,19 @@
+uuid: cbb684b7-053a-4f1a-a923-f3f1ea43f8cc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_organizer_name
+    - node.type.hobby
+id: node.hobby.field_event_organizer_name
+field_name: field_event_organizer_name
+entity_type: node
+bundle: hobby
+label: 'Event organizer name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

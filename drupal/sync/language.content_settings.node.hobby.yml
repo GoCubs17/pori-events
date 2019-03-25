@@ -1,0 +1,11 @@
+uuid: acab157b-1026-4526-937e-ddf34e4e65e2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.hobby
+id: node.hobby
+target_entity_type_id: node
+target_bundle: hobby
+default_langcode: site_default
+language_alterable: false
