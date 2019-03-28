@@ -69,7 +69,10 @@
         "drupal/twig_tweak": "^2.0",
         "drupal/google_analytics": "^2.3",
         "slick": "^1.6",
-        "blazy": "^1.8"
+        "blazy": "^1.8",
+        "drupal/adminimal_admin_toolbar": "^1.9",
+        "drupal/realistic_dummy_content": "^2.0",
+        "drupal/realistic_dummy_content_api": "^2.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
