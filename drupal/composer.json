@@ -72,7 +72,8 @@
         "blazy": "^1.8",
         "drupal/adminimal_admin_toolbar": "^1.9",
         "drupal/realistic_dummy_content": "^2.0",
-        "drupal/realistic_dummy_content_api": "^2.0"
+        "drupal/realistic_dummy_content_api": "^2.0",
+        "drupal/paragraphs": "^1.8"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
