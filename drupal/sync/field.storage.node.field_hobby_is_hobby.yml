@@ -1,11 +1,11 @@
-uuid: 5a01e092-c8e9-433e-a89e-77e3d99e00d6
-langcode: fi
+uuid: a00eea88-9c2e-46e3-adee-b232cfd16947
+langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_hobby_not_hobby
-field_name: field_hobby_not_hobby
+id: node.field_hobby_is_hobby
+field_name: field_hobby_is_hobby
 entity_type: node
 type: boolean
 settings: {  }

@@ -1,5 +1,5 @@
-uuid: 9a19bbfa-e6df-48f9-8d80-d23df5337e71
-langcode: fi
+uuid: da8664d1-2cd7-45a4-bb27-3337503a4a02
+langcode: en
 status: true
 dependencies:
   config:
@@ -9,10 +9,10 @@ id: node.event.field_hobby_phone_number
 field_name: field_hobby_phone_number
 entity_type: node
 bundle: event
-label: 'Phone number'
-description: 'Person responsible phone number'
-required: true
-translatable: true
+label: 'Hobby phone number'
+description: ''
+required: false
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

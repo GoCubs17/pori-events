@@ -1,5 +1,5 @@
-uuid: a2a9f0e3-207c-4bac-ae09-2c159b0b588c
-langcode: fi
+uuid: 78f4568d-7069-4550-8004-742c3ca6b673
+langcode: en
 status: true
 dependencies:
   module:
@@ -9,7 +9,7 @@ field_name: field_hobby_phone_number
 entity_type: node
 type: string
 settings:
-  max_length: 255
+  max_length: 60
   is_ascii: false
   case_sensitive: false
 module: core

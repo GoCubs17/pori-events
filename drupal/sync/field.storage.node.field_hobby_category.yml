@@ -1,20 +1,19 @@
-uuid: 56b3f88b-2ed4-4486-9fce-47da867acecf
+uuid: 62adfcf1-28a3-4571-a58b-e8db954050d9
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_hobby_map
-field_name: field_hobby_map
+    - taxonomy
+id: node.field_hobby_category
+field_name: field_hobby_category
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  target_type: taxonomy_term
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,5 +1,5 @@
-uuid: acf23d41-413a-4bd0-a1b6-039cc984db57
-langcode: fi
+uuid: 75d4566b-535b-4f6c-a10b-3bbc4c8a1ecb
+langcode: en
 status: true
 dependencies:
   config:
@@ -9,10 +9,10 @@ id: node.event.field_hobby_person_responsible
 field_name: field_hobby_person_responsible
 entity_type: node
 bundle: event
-label: 'Person responsible'
+label: 'Hobby Person responsible'
 description: ''
-required: true
-translatable: true
+required: false
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

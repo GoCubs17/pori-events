@@ -1,21 +1,19 @@
-uuid: c6c7a3aa-2b29-4d0a-a42e-91c5cc366760
+uuid: 0f3ba8a2-3ab5-4138-b5a8-f1517c81862d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_end_time
+    - field.storage.node.field_hobby_email
     - node.type.event
-  module:
-    - datetime
-id: node.event.field_end_time
-field_name: field_end_time
+id: node.event.field_hobby_email
+field_name: field_hobby_email
 entity_type: node
 bundle: event
-label: 'End time'
+label: 'Hobby Email'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: datetime
+field_type: email

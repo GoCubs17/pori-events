@@ -1,15 +1,15 @@
-uuid: 62988b70-0b42-45ee-91d8-418771e3929b
+uuid: c127fe8a-a6ed-44a1-84f1-0fe5bc6daefc
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_pre_registration
+    - field.storage.node.field_hobby_is_hobby
     - node.type.event
-id: node.event.field_pre_registration
-field_name: field_pre_registration
+id: node.event.field_hobby_is_hobby
+field_name: field_hobby_is_hobby
 entity_type: node
 bundle: event
-label: 'Pre registration'
+label: 'Hobby is hobby'
 description: ''
 required: false
 translatable: false
