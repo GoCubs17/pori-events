@@ -6,21 +6,21 @@ dependencies:
     - field.field.node.event.field_accessible
     - field.field.node.event.field_address
     - field.field.node.event.field_area
-    - field.field.node.event.field_category
     - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
-    - field.field.node.event.field_email
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
     - field.field.node.event.field_free_enterance
+    - field.field.node.event.field_hobby_category
+    - field.field.node.event.field_hobby_email
+    - field.field.node.event.field_hobby_is_hobby
     - field.field.node.event.field_hobby_map
-    - field.field.node.event.field_hobby_not_hobby
     - field.field.node.event.field_hobby_person_responsible
     - field.field.node.event.field_hobby_phone_number
     - field.field.node.event.field_image
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
-    - field.field.node.event.field_means_of_payment
     - field.field.node.event.field_pre_registration
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
@@ -73,17 +73,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
     region: content
-  field_category:
-    weight: 35
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_child_care:
-    weight: 36
+    weight: 46
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_culture_and_or_activity_no:
+    weight: 47
     settings:
       display_label: true
     third_party_settings: {  }
@@ -96,14 +94,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
-    region: content
-  field_email:
-    weight: 38
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   field_end_time:
     weight: 9
@@ -127,23 +117,40 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_hobby_category:
+    weight: 45
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_hobby_email:
+    weight: 48
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_hobby_is_hobby:
+    weight: 44
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_hobby_map:
-    weight: 39
+    weight: 49
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_hobby_not_hobby:
-    weight: 33
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_hobby_person_responsible:
-    weight: 40
+    weight: 50
     settings:
       size: 60
       placeholder: ''
@@ -151,7 +158,7 @@ content:
     type: string_textfield
     region: content
   field_hobby_phone_number:
-    weight: 41
+    weight: 51
     settings:
       size: 60
       placeholder: ''
@@ -182,15 +189,8 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_means_of_payment:
-    weight: 37
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_pre_registration:
-    weight: 42
+    weight: 52
     settings:
       display_label: true
     third_party_settings: {  }

@@ -1,17 +1,14 @@
-uuid: 31c4534d-9f3b-47c3-aae4-c03cb4c44f88
-langcode: fi
+uuid: de08eedb-cb6c-4759-9692-6cf1a5b4e930
+langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_email
-field_name: field_email
+id: node.field_culture_and_or_activity_no
+field_name: field_culture_and_or_activity_no
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

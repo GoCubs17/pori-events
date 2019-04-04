@@ -1,5 +1,5 @@
-uuid: 2a3d4fee-9799-4425-89da-b23aad3d8ece
-langcode: fi
+uuid: d5cf2405-2e58-493c-8f12-5146d66ec8ef
+langcode: en
 status: true
 dependencies:
   config:
@@ -9,10 +9,10 @@ id: node.event.field_hobby_map
 field_name: field_hobby_map
 entity_type: node
 bundle: event
-label: Map
+label: 'Hobby Map'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
