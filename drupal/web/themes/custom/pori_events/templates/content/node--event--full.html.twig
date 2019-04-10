@@ -141,16 +141,16 @@
         {{ "Hobby information:"|t }}
       </h3>
       {% endif %}
-      {% if 'Off' in content.field_hobby_not_hobby[0] %}
+      {% if 'Off' in content.field_hobby_is_hobby[0] %}
       <h3 class="event__content--sidebar__title">
         {{ "Event information:"|t }}
       </h3>
       {% endif %}
 
-      {# <div class="event__content--sidebar__item event__time">
+      <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
         {% trans with {'context': 'Event sidebar'} %}At{% endtrans %} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
-      </div> #}
+      </div>
 
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
@@ -173,7 +173,7 @@
 
      {% if 'On' in content.field_free_enterance[0] %}
       <div class="event__content--sidebar__item">
-      <i class="fas fa-euro-sign"></i>
+      <i class="fas fa-door-open"></i>
           Free Event
       </div>
       {% endif %}
