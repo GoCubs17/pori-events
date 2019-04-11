@@ -4,15 +4,16 @@ dependencies:
   module:
     - migrate_source_example_json
     - node
-id: migrate_source_event_event
+id: migrate_source_event_hobby
 migration_tags: null
 migration_group: migrate_source_event
-label: Events
+label: Hobbies
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  # TODO: Change to use actual API. Now works only if there is json set on the site.
+  urls: 'https://local.tapahtumat.pori.fi/sites/default/files/activity.json'
   item_selector: data
   ids:
     event_id:
@@ -88,6 +89,14 @@ source:
       name: event_location_extra_info
       label: 'Location extra info'
       selector: location_extra_info/fi
+    -
+      name: extra_options
+      label: 'Accessible'
+      selector: extra_options
+    # -
+    #   name: hobby_summary
+    #   label: 'Summary'
+    #   selector: location_extra_info/fi
 process:
   type:
     plugin: default_value
@@ -184,5 +193,17 @@ process:
     -
       plugin: migration_lookup
       migration: migrate_source_event_audience
+  field_hobby_is_hobby:
+    plugin: default_value
+    default_value: 1
+  field_accessible:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_child_care:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_culture_and_or_activity_no:
+    source: extra_options
+    plugin: extra_offers_parse
 destination:
   plugin: 'entity:node'
