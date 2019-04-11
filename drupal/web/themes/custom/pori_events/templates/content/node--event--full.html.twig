@@ -99,7 +99,7 @@
 {% set free_entrance = content.field_free_entrance[0]['content'] %}
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
-{% set target_audience = content.field_target_audience[0]['content'] %}
+{% set target_audience = content.field_target_audience[0]['#title'] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -192,6 +192,12 @@
       <div class="event__content--sidebar__item">
         <i class="fas fa-euro-sign"></i>
         {{ event_type }}
+      </div>
+      {% endif %}
+      {% if target_audience %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-users"></i>
+        {{ target_audience }}
       </div>
       {% endif %}
 
