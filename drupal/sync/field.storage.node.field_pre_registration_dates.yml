@@ -1,0 +1,20 @@
+uuid: 4e1101a9-8e8d-46f4-9ad4-942c05c49553
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+id: node.field_pre_registration_dates
+field_name: field_pre_registration_dates
+entity_type: node
+type: daterange
+settings:
+  datetime_type: datetime
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
