@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
     - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_pre_registration_dates
     - field.field.node.event.field_pre_registration_link
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
@@ -198,6 +199,12 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_pre_registration_dates:
+    weight: 55
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
     region: content
   field_pre_registration_link:
     weight: 54
