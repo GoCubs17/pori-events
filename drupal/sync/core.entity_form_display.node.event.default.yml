@@ -22,8 +22,9 @@ dependencies:
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
     - field.field.node.event.field_pre_registration
-    - field.field.node.event.field_pre_registration_dates
+    - field.field.node.event.field_pre_registration_end_time
     - field.field.node.event.field_pre_registration_link
+    - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
@@ -38,7 +39,6 @@ dependencies:
   module:
     - address
     - datetime
-    - datetime_range
     - image
     - link
     - path
@@ -200,11 +200,11 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_pre_registration_dates:
-    weight: 55
+  field_pre_registration_end_time:
+    weight: 57
     settings: {  }
     third_party_settings: {  }
-    type: daterange_default
+    type: datetime_default
     region: content
   field_pre_registration_link:
     weight: 54
@@ -213,6 +213,12 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_pre_registration_start_tim:
+    weight: 56
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_price:
     weight: 27
