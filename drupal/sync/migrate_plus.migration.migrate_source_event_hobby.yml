@@ -104,6 +104,10 @@ source:
       name: opening_hours
       label: 'Opening hours'
       selector: opening_hours
+    -
+      name: exceptional_opening_hours
+      label: 'Exceptional opening hours'
+      selector: exceptional_opening_hours
 process:
   type:
     plugin: default_value
@@ -268,10 +272,30 @@ process:
     -
       source: opening_hours
       plugin: opening_hours_setter
+  field_weekday_thursday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_weekday_friday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_weekday_saturday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_weekday_sunday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
   field_timeframe_of_day:
     -
       source: opening_hours
       plugin: timeframe_of_day_setter
+  field_exceptional_opening_hours:
+    -
+      source: exceptional_opening_hours
+      plugin: exceptional_opening_hours_setter
 destination:
   plugin: 'entity:node'
 migration_dependencies: null
