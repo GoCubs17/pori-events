@@ -34,6 +34,14 @@ dependencies:
     - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
+    - field.field.node.event.field_timeframe_of_day
+    - field.field.node.event.field_weekday_friday
+    - field.field.node.event.field_weekday_monday
+    - field.field.node.event.field_weekday_saturday
+    - field.field.node.event.field_weekday_sunday
+    - field.field.node.event.field_weekday_thursday
+    - field.field.node.event.field_weekday_tuesday
+    - field.field.node.event.field_weekday_wednesday
     - node.type.event
   module:
     - address
@@ -41,6 +49,7 @@ dependencies:
     - image
     - imagecache_external
     - link
+    - options
     - pori_events_link_formatter
     - text
     - user
@@ -311,6 +320,69 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: link_field_formatter
+    region: content
+  field_timeframe_of_day:
+    weight: 148
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_weekday_friday:
+    weight: 151
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_monday:
+    weight: 146
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_saturday:
+    weight: 152
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_sunday:
+    weight: 153
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_thursday:
+    weight: 150
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_tuesday:
+    weight: 147
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_weekday_wednesday:
+    weight: 149
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   links:
     weight: 100

@@ -1,0 +1,19 @@
+uuid: fa8a7663-c4a3-4d43-8358-4e42f3faa62b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weekday_monday
+    - node.type.event
+id: node.event.field_weekday_monday
+field_name: field_weekday_monday
+entity_type: node
+bundle: event
+label: 'Weekday monday'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
