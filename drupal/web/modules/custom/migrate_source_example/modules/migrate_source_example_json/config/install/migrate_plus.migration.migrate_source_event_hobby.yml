@@ -101,18 +101,10 @@ source:
       name: opening_hours
       label: 'Opening hours'
       selector: opening_hours
-    # -
-    #   name: pre_registration_start_time
-    #   label: 'Pre registration start time'
-    #   selector: 'pre_registration/start_time'
-    # -
-    #   name: pre_registration_end_time
-    #   label: 'Pre registration end time'
-    #   selector: 'pre_registration/end_time'
-    # -
-    #   name: hobby_summary
-    #   label: 'Summary'
-    #   selector: location_extra_info/fi
+    -
+      name: exceptional_opening_hours
+      label: 'Exceptional opening hours'
+      selector: 'exceptional_opening_hours'
 process:
   type:
     plugin: default_value
@@ -298,5 +290,9 @@ process:
     -
       source: opening_hours
       plugin: timeframe_of_day_setter
+  field_exceptional_opening_hours:
+    -
+      source: exceptional_opening_hours
+      plugin: exceptional_opening_hours_setter
 destination:
   plugin: 'entity:node'
