@@ -34,6 +34,14 @@ dependencies:
     - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
+    - field.field.node.event.field_timeframe_of_day
+    - field.field.node.event.field_weekday_friday
+    - field.field.node.event.field_weekday_monday
+    - field.field.node.event.field_weekday_saturday
+    - field.field.node.event.field_weekday_sunday
+    - field.field.node.event.field_weekday_thursday
+    - field.field.node.event.field_weekday_tuesday
+    - field.field.node.event.field_weekday_wednesday
     - image.style.thumbnail
     - node.type.event
   module:
@@ -285,6 +293,68 @@ content:
     region: content
   field_ticket_vendor:
     weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_timeframe_of_day:
+    weight: 60
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_weekday_friday:
+    weight: 63
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_monday:
+    weight: 58
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_saturday:
+    weight: 64
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_sunday:
+    weight: 65
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_thursday:
+    weight: 62
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_tuesday:
+    weight: 59
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_wednesday:
+    weight: 61
     settings:
       size: 60
       placeholder: ''

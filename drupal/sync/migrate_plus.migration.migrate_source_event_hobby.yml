@@ -100,6 +100,10 @@ source:
       name: pre_registration
       label: 'Pre registration'
       selector: pre_registration
+    -
+      name: opening_hours
+      label: 'Opening hours'
+      selector: opening_hours
 process:
   type:
     plugin: default_value
@@ -209,7 +213,7 @@ process:
     plugin: extra_offers_parse
   field_pre_registration_link/uri:
     -
-      plugin: extract
+      plugin: extract_custom
       source: pre_registration
       default: ''
       index:
@@ -217,7 +221,7 @@ process:
         - fi
   field_pre_registration_link/title:
     -
-      plugin: extract
+      plugin: extract_custom
       source: pre_registration
       default: ''
       index:
@@ -225,7 +229,7 @@ process:
         - fi
   field_pre_registration_start_tim:
     -
-      plugin: extract
+      plugin: extract_custom
       source: pre_registration
       default: ''
       index:
@@ -236,7 +240,7 @@ process:
       length: 19
   field_pre_registration_end_time:
     -
-      plugin: extract
+      plugin: extract_custom
       source: pre_registration
       default: ''
       index:
@@ -245,6 +249,29 @@ process:
       plugin: substr
       start: 0
       length: 19
+  field_pre_registration:
+    -
+      source: pre_registration
+      plugin: pre_registration_setter
+    -
+      plugin: default_value
+      default_value: 0
+  field_weekday_monday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_weekday_tuesday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_weekday_wednesday:
+    -
+      source: opening_hours
+      plugin: opening_hours_setter
+  field_timeframe_of_day:
+    -
+      source: opening_hours
+      plugin: timeframe_of_day_setter
 destination:
   plugin: 'entity:node'
 migration_dependencies: null
