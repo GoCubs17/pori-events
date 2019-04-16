@@ -2443,8 +2443,26 @@ ol {
   margin-right: 20px;
 }
 
+
 .hobby {
   background: red !important;
+}
+
+.menu-page-selector {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  list-style: none;
+  margin-top: 30px;
+}
+
+.menu-item-selector > a {
+  color: black;
+  padding: 10px 200px;
+  border: 1px solid #009bea;
 }
 
 .site-logo {
