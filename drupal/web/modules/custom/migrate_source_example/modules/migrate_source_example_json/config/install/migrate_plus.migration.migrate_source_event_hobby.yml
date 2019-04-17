@@ -296,3 +296,7 @@ process:
       plugin: exceptional_opening_hours_setter
 destination:
   plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - migrate_source_event_keywords_hobby
+    - migrate_source_event_keywords_hobby_subterms
