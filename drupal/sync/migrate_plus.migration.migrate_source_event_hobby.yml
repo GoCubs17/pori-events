@@ -217,7 +217,7 @@ process:
     plugin: extra_offers_parse
   field_pre_registration_link/uri:
     -
-      plugin: extract_custom
+      plugin: extract
       source: pre_registration
       default: ''
       index:
@@ -225,7 +225,7 @@ process:
         - fi
   field_pre_registration_link/title:
     -
-      plugin: extract_custom
+      plugin: extract
       source: pre_registration
       default: ''
       index:
@@ -233,7 +233,7 @@ process:
         - fi
   field_pre_registration_start_tim:
     -
-      plugin: extract_custom
+      plugin: extract
       source: pre_registration
       default: ''
       index:
@@ -244,7 +244,7 @@ process:
       length: 19
   field_pre_registration_end_time:
     -
-      plugin: extract_custom
+      plugin: extract
       source: pre_registration
       default: ''
       index:
