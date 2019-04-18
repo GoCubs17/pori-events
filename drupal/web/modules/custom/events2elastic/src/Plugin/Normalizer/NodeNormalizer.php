@@ -77,6 +77,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // boolean fields
       $data['free_enterance'] = $object->field_free_enterance->value;
+      $data['is_hobby'] = $object->field_hobby_is_hobby->value;
+      $data['accesible'] = $object->field_accessible->value;
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";

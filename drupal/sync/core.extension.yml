@@ -10,13 +10,17 @@ module:
   coffee: 0
   color: 0
   comment: 0
+  conditional_fields: 0
   config: 0
   contact: 0
+  context: 0
   contextual: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  empty_page: 0
   entityqueue: 0
   events2elastic: 0
   field: 0
@@ -44,11 +48,13 @@ module:
   page_cache: 0
   path: 0
   pori_events_link_formatter: 0
+  pori_harrastukset: 0
   quickedit: 0
   rdf: 0
   search: 0
   serialization: 0
   shortcut: 0
+  simple_gmap: 0
   simplei: 0
   slick: 0
   slick_ui: 0

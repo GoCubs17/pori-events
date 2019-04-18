@@ -264,3 +264,18 @@
       content: '+';
   }
 }
+
+// Styling the searchkit items for the hobbies page is determined by the hooby-search class
+.hobby-search {
+ .sk-layout{
+  .sk-layout__body{
+    .sk-layout__filters {
+      .sk-panel {
+       .sk-panel__header.is-collapsable{
+         background:red;
+       }
+      }
+    }
+  }
+}
+}

@@ -1,0 +1,250 @@
+uuid: f96c7912-7ff8-48cb-93ec-ad498df1b909
+langcode: fi
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - node
+id: migrate_source_event_hobby
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_event
+label: Hobbies
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: 'https://local.tapahtumat.pori.fi/sites/default/files/activity.json'
+  item_selector: data
+  ids:
+    event_id:
+      type: string
+  constants:
+    slash: /
+  fields:
+    -
+      name: event_id
+      label: 'ID of the event'
+      selector: id
+    -
+      name: event_title
+      label: 'Title of the event'
+      selector: name/fi
+    -
+      name: event_image
+      label: 'Image of the event'
+      selector: images
+    -
+      name: event_description
+      label: 'Long description of the event'
+      selector: description/fi
+    -
+      name: event_short_description
+      label: 'Short description of the event'
+      selector: short_description/fi
+    -
+      name: event_address
+      label: 'Address of the event'
+      selector: location_extra_info/fi
+    -
+      name: event_start_time
+      label: 'Event start time'
+      selector: start_time
+    -
+      name: event_end_time
+      label: 'Event end time'
+      selector: end_time
+    -
+      name: event_created
+      label: 'Time created'
+      selector: created_time
+    -
+      name: event_location
+      label: Location
+      selector: location/id
+    -
+      name: event_audience
+      label: Audience
+      selector: audience
+    -
+      name: event_keywords
+      label: Keywords
+      selector: keywords
+    -
+      name: event_offers
+      label: Offers
+      selector: offers
+    -
+      name: event_provider_www
+      label: Provider
+      selector: provider_link
+    -
+      name: event_provider_phone
+      label: Provider
+      selector: provider_phone
+    -
+      name: event_provider_email
+      label: Provider
+      selector: provider_email
+    -
+      name: event_location_extra_info
+      label: 'Location extra info'
+      selector: location_extra_info/fi
+    -
+      name: extra_options
+      label: Accessible
+      selector: extra_options
+    -
+      name: pre_registration
+      label: 'Pre registration'
+      selector: pre_registration
+process:
+  type:
+    plugin: default_value
+    default_value: event
+  title: event_title
+  field_description: event_description
+  field_short_description: event_short_description
+  field_provider_email: event_provider_email
+  field_provider_www: event_provider_www
+  field_provider_phone: event_provider_phone
+  field_location_extra_info: event_location_extra_info
+  field_ticket_vendor:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - info_url
+      - fi
+  field_price:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - price
+      - fi
+  field_free_enterance:
+    source: event_offers
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - is_free
+  field_start_time:
+    plugin: substr
+    source: event_start_time
+    start: 0
+    length: 19
+  field_end_time:
+    plugin: substr
+    source: event_end_time
+    start: 0
+    length: 19
+  created:
+    plugin: format_date
+    format: U
+    source: event_created
+  uid:
+    plugin: default_value
+    default_value: 1
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: book_alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - book_alias
+  field_image_ext_url:
+    source: event_image
+    plugin: extract
+    default: ''
+    index:
+      - 0
+      - url
+  field_event_type:
+    -
+      source: event_keywords
+      plugin: extract
+      default: ''
+      index:
+        - 0
+        - id
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_keywords
+  field_area:
+    plugin: migration_lookup
+    migration: migrate_source_event_area
+    source: event_location
+  field_target_audience:
+    -
+      source: event_audience
+      plugin: extract
+      default: ''
+      index:
+        - 0
+        - id
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_audience
+  field_hobby_is_hobby:
+    plugin: default_value
+    default_value: 1
+  field_accessible:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_child_care:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_culture_and_or_activity_no:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_pre_registration_link/uri:
+    -
+      plugin: extract
+      source: pre_registration
+      default: ''
+      index:
+        - info_url
+        - fi
+  field_pre_registration_link/title:
+    -
+      plugin: extract
+      source: pre_registration
+      default: ''
+      index:
+        - description
+        - fi
+  field_pre_registration_start_tim:
+    -
+      plugin: extract
+      source: pre_registration
+      default: ''
+      index:
+        - start_time
+    -
+      plugin: substr
+      start: 0
+      length: 19
+  field_pre_registration_end_time:
+    -
+      plugin: extract
+      source: pre_registration
+      default: ''
+      index:
+        - end_time
+    -
+      plugin: substr
+      start: 0
+      length: 19
+destination:
+  plugin: 'entity:node'
+migration_dependencies: null

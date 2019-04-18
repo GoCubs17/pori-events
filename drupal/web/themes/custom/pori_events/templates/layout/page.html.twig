@@ -52,12 +52,12 @@
 
  </div>
  
-  {# {% if is_front %} #}
+  {% if is_front %}
     <div id="content_header">
       <a href="http://www.satakuntaevents.fi/" class="add-event"><span class="link-text">Lisää oma tapahtumasi</span><i class="fas fa-plus"></i></a>
       {{ page.content_header }}
     </div>
-  {# {% endif %} #}
+  {% endif %}
 
   <div class="layout-container">
 
@@ -65,11 +65,11 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
-      
-        <div id="kada-event-search" class="kada-event-search"></div>
-     
+      {% if is_front %}
+        <div id="kada-event-search" data-event-type="events" class="kada-event-search"></div>
+      {% else %}
         {{ page.content }}
-      
+      {% endif %}
     </div>{# /.layout-content #}
 
     {% if page.sidebar_first %}

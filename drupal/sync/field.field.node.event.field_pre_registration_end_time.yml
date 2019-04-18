@@ -1,0 +1,21 @@
+uuid: 6b2a0d69-fbf3-4dfa-a6cc-1b7397bc0d54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_registration_end_time
+    - node.type.event
+  module:
+    - datetime
+id: node.event.field_pre_registration_end_time
+field_name: field_pre_registration_end_time
+entity_type: node
+bundle: event
+label: 'Pre registration end time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

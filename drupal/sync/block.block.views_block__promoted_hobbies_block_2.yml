@@ -1,0 +1,24 @@
+uuid: aafa6553-be01-477a-896d-b191b90de267
+langcode: fi
+status: false
+dependencies:
+  config:
+    - views.view.promoted_hobbies
+  module:
+    - views
+  theme:
+    - pori_events
+id: views_block__promoted_hobbies_block_2
+theme: pori_events
+region: content_header
+weight: -1
+provider: null
+plugin: 'views_block:promoted_hobbies-block_2'
+settings:
+  id: 'views_block:promoted_hobbies-block_2'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }

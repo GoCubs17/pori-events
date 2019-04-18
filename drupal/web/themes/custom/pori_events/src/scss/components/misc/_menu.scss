@@ -7,7 +7,9 @@
 }
 .menu-item-selector > a {
     color: black; 
-    padding: 10px 200px;
-    border: 1px solid #009bea;
+    padding: 10px 50%;
+    &:active &:visited {
+        background: lightgrey;
+    }
     
 }

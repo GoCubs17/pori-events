@@ -3,21 +3,35 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.field_accessible
     - field.field.node.event.field_address
     - field.field.node.event.field_area
+    - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
     - field.field.node.event.field_free_enterance
+    - field.field.node.event.field_hobby_category
+    - field.field.node.event.field_hobby_email
+    - field.field.node.event.field_hobby_is_hobby
+    - field.field.node.event.field_hobby_map
+    - field.field.node.event.field_hobby_person_responsible
+    - field.field.node.event.field_hobby_phone_number
     - field.field.node.event.field_image
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
+    - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_pre_registration_end_time
+    - field.field.node.event.field_pre_registration_link
+    - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
     - node.type.event
@@ -26,6 +40,7 @@ dependencies:
     - datetime
     - image
     - imagecache_external
+    - link
     - pori_events_link_formatter
     - text
     - user
@@ -34,6 +49,16 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
+  field_accessible:
+    weight: 122
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_address:
     weight: 107
     label: above
@@ -48,6 +73,26 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_child_care:
+    weight: 134
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_culture_and_or_activity_no:
+    weight: 135
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_description:
     weight: 104
@@ -83,6 +128,55 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
+  field_hobby_category:
+    weight: 133
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_hobby_email:
+    weight: 136
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_hobby_is_hobby:
+    weight: 132
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_hobby_map:
+    weight: 137
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hobby_person_responsible:
+    weight: 138
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hobby_phone_number:
+    weight: 139
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_image:
     weight: 106
     label: above
@@ -108,6 +202,46 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_pre_registration:
+    weight: 140
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_pre_registration_end_time:
+    weight: 145
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_pre_registration_link:
+    weight: 142
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_pre_registration_start_tim:
+    weight: 144
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_price:
     weight: 115
@@ -155,6 +289,13 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_summary:
+    weight: 131
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   field_target_audience:
     weight: 109
