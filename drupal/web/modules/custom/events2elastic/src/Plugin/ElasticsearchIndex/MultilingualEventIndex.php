@@ -232,6 +232,12 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'single_day' => [
                 'type' => 'boolean',
               ],
+              'is_hobby' => [
+                'type' => 'boolean',
+              ],
+              'accesible' => [
+                'type' => 'boolean',
+              ],
             ],
           ],
         ];

@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_area
     - node.type.event
     - taxonomy.vocabulary.area
+    - taxonomy.vocabulary.hobby_area
 id: node.event.field_area
 field_name: field_area
 entity_type: node
@@ -21,9 +22,10 @@ settings:
   handler_settings:
     target_bundles:
       area: area
+      hobby_area: hobby_area
     sort:
       field: name
       direction: asc
     auto_create: true
-    auto_create_bundle: ''
+    auto_create_bundle: area
 field_type: entity_reference

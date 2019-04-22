@@ -1,0 +1,8 @@
+
+pori_harrastukset.pori_hobbies_controller_hobbiesPage:
+  path: 'harrastukset'
+  defaults:
+    _controller: '\Drupal\pori_harrastukset\Controller\PoriHobbiesController::hobbiesPage'
+    _title: 'Harrastukset'
+  requirements:
+    _permission: 'access content'

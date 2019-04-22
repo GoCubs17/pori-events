@@ -1,0 +1,15 @@
+.menu-page-selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    margin-top: 30px;
+}
+.menu-item-selector > a {
+    color: black; 
+    padding: 10px 50%;
+    &:active &:visited {
+        background: lightgrey;
+    }
+    
+}

@@ -1,0 +1,20 @@
+uuid: b55d603b-b390-4526-bddf-b7d29e0d80b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_pre_registration_start_tim
+field_name: field_pre_registration_start_tim
+entity_type: node
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
