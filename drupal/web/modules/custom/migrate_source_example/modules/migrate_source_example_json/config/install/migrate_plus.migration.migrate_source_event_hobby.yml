@@ -1,4 +1,4 @@
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -11,10 +11,10 @@ label: Hobbies
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  data_parser_plugin: jsonpath
   # TODO: Change to use actual API. Now works only if there is json set on the site.
-  urls: 'https://local.tapahtumat.pori.fi/sites/default/files/activity.json'
-  item_selector: data
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/'
+  item_selector: $.data[*]
   ids:
     event_id:
       type: string
@@ -24,87 +24,111 @@ source:
     -
       name: event_id
       label: 'ID of the event'
-      selector: id
+      selector: $.id
     -
       name: event_title
       label: 'Title of the event'
-      selector: name/fi
+      selector: $.name.fi
     -
       name: event_image
       label: 'Image of the event'
-      selector: images
+      selector: $.images[0].url
     -
       name: event_description
       label: 'Long description of the event'
-      selector: description/fi
+      selector: $.description.fi
     -
       name: event_short_description
       label: 'Short description of the event'
-      selector: short_description/fi
+      selector: $.short_description.fi
     -
       name: event_address
       label: 'Address of the event'
-      selector: location_extra_info/fi
+      selector: $.location_extra_info.fi
     -
       name: event_start_time
       label: 'Event start time'
-      selector: start_time
+      selector: $.start_time
     -
       name: event_end_time
       label: 'Event end time'
-      selector: end_time
+      selector: $.end_time
     -
       name: event_created
       label: 'Time created'
-      selector: created_time
+      selector: $.created_time
     -
       name: event_location
       label: 'Location'
-      selector: location/id
+      selector: $.location.id
     -
       name: event_audience
       label: 'Audience'
-      selector: audience
+      selector: $.audience[*].id
     -
-      name: event_keywords
+      name: hobby_keywords
       label: 'Keywords'
-      selector: 'keywords'
+      selector: $.keywords[*].id
     -
-      name: event_offers
-      label: 'Offers'
-      selector: offers
+      name: event_offers_is_free
+      label: 'Offers is free'
+      selector: $.offers[0].is_free
+    -
+      name: event_offers_price
+      label: 'Offers price'
+      selector: $.offers[0].price.fi
+    -
+      name: event_offers_vedor
+      label: 'Offers vendo'
+      selector: $.offers[0].info_url.fi
     -
       name: event_provider_www
       label: 'Provider'
-      selector: provider_link
+      selector: $.provider_link
     -
       name: event_provider_phone
       label: 'Provider'
-      selector: provider_phone
+      selector: $.provider_phone
     -
       name: event_provider_email
       label: 'Provider'
-      selector: provider_email
+      selector: $.provider_email
     -
       name: event_location_extra_info
       label: 'Location extra info'
-      selector: location_extra_info/fi
+      selector: $.location_extra_info.fi
     -
       name: extra_options
       label: 'Accessible'
-      selector: extra_options
+      selector: $.extra_options
     -
       name: pre_registration
       label: 'Pre registration'
-      selector: 'pre_registration'
+      selector: $.pre_registration
+    -
+      name: pre_registration_end_time
+      label: 'Pre registration end time'
+      selector: $.pre_registration.end_time
+    -
+      name: pre_registration_start_time
+      label: 'Pre registration start time'
+      selector: $.pre_registration.start_time
+    -
+      name: pre_registration_url
+      label: 'Pre registration url'
+      selector: $.pre_registration.info_url.fi
+    -
+      name: pre_registration_desc
+      label: 'Pre registration description'
+      selector: $.pre_registration.description.fi
     -
       name: opening_hours
       label: 'Opening hours'
-      selector: opening_hours
+      selector: $.opening_hours
     -
       name: exceptional_opening_hours
       label: 'Exceptional opening hours'
-      selector: 'exceptional_opening_hours'
+      selector: $.exceptional_opening_hours
 process:
   type:
     plugin: default_value
@@ -116,29 +140,9 @@ process:
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_extra_info
-  field_ticket_vendor:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - info_url
-      - fi
-  field_price:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - price
-      - fi
-  field_free_enterance:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - is_free
+  field_ticket_vendor: event_offers_vedor
+  field_price: event_offers_price
+  field_free_enterance: event_offers_is_free
   field_start_time:
     plugin: substr
     source: event_start_time
@@ -168,39 +172,16 @@ process:
       source:
         - constants/slash
         - book_alias
-  field_image_ext_url:
-    source: event_image
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - url
-  field_event_type:
-    -
-      source: event_keywords
-      plugin: extract
-      default: ''
-      index:
-        - 0
-        - id
-    -
-      plugin: migration_lookup
-      migration: migrate_source_event_keywords
+  field_image_ext_url: event_image
   field_area:
     plugin: migration_lookup
     migration: migrate_source_event_area
     source: event_location
-  field_target_audience:
-    -
-      source: event_audience
-      plugin: extract
-      default: ''
-      index:
-        - 0
-        - id
+  field_hobby_audience:
     -
       plugin: migration_lookup
-      migration: migrate_source_event_audience
+      source: event_audience
+      migration: migrate_source_event_hobby_audience
   field_hobby_is_hobby:
     plugin: default_value
     default_value: 1
@@ -213,40 +194,24 @@ process:
   field_culture_and_or_activity_no:
     source: extra_options
     plugin: extra_offers_parse
-  field_pre_registration_link/uri:
-    -
-      plugin: extract_custom
-      source: pre_registration
-      default: ''
-      index:
-        - info_url
-        - fi
-  field_pre_registration_link/title:
-    -
-      plugin: extract_custom
-      source: pre_registration
-      default: ''
-      index:
-        - description
-        - fi
+  field_pre_registration_link/uri: pre_registration_url
+  field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
-      plugin: extract_custom
-      source: pre_registration
-      default: ''
-      index:
-        - start_time
+      plugin: skip_on_empty
+      source: pre_registration_start_time
+      method: process
     -
       plugin: substr
+      source: pre_registration_start_time
+      default_value: ""
       start: 0
       length: 19
   field_pre_registration_end_time:
     -
-      plugin: extract_custom
-      source: pre_registration
-      default: ''
-      index:
-        - end_time
+      plugin: skip_on_empty
+      source: pre_registration_end_time
+      method: process
     -
       plugin: substr
       start: 0
@@ -294,9 +259,16 @@ process:
     -
       source: exceptional_opening_hours
       plugin: exceptional_opening_hours_setter
+  field_hobby_category:
+    -
+      plugin: migration_lookup
+      source: hobby_keywords
+      migration: migrate_source_event_keywords_hobby_subterms
+      no_stub: true
 destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
     - migrate_source_event_keywords_hobby
     - migrate_source_event_keywords_hobby_subterms
+    - migrate_source_event_hobby_audience
