@@ -4,15 +4,26 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_accessible
     - field.field.node.event.field_address
     - field.field.node.event.field_area
+    - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_exceptional_opening_hours
     - field.field.node.event.field_free_enterance
-    - field.field.node.event.field_image
+    - field.field.node.event.field_hobby_audience
+    - field.field.node.event.field_hobby_category
+    - field.field.node.event.field_hobby_is_hobby
+    - field.field.node.event.field_hobby_map
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
+    - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_pre_registration_end_time
+    - field.field.node.event.field_pre_registration_link
+    - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
@@ -20,6 +31,15 @@ dependencies:
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
+    - field.field.node.event.field_ticket_vendor
+    - field.field.node.event.field_timeframe_of_day
+    - field.field.node.event.field_weekday_friday
+    - field.field.node.event.field_weekday_monday
+    - field.field.node.event.field_weekday_saturday
+    - field.field.node.event.field_weekday_sunday
+    - field.field.node.event.field_weekday_thursday
+    - field.field.node.event.field_weekday_tuesday
+    - field.field.node.event.field_weekday_wednesday
     - node.type.event
   module:
     - imagecache_external
@@ -44,14 +64,25 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_accessible: true
   field_address: true
   field_area: true
+  field_child_care: true
+  field_culture_and_or_activity_no: true
   field_description: true
   field_end_time: true
   field_event_type: true
+  field_exceptional_opening_hours: true
   field_free_enterance: true
-  field_image: true
+  field_hobby_audience: true
+  field_hobby_category: true
+  field_hobby_is_hobby: true
+  field_hobby_map: true
   field_location_extra_info: true
+  field_pre_registration: true
+  field_pre_registration_end_time: true
+  field_pre_registration_link: true
+  field_pre_registration_start_tim: true
   field_price: true
   field_provider_email: true
   field_provider_phone: true
@@ -59,4 +90,13 @@ hidden:
   field_short_description: true
   field_start_time: true
   field_target_audience: true
+  field_ticket_vendor: true
+  field_timeframe_of_day: true
+  field_weekday_friday: true
+  field_weekday_monday: true
+  field_weekday_saturday: true
+  field_weekday_sunday: true
+  field_weekday_thursday: true
+  field_weekday_tuesday: true
+  field_weekday_wednesday: true
   langcode: true
