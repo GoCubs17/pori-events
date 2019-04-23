@@ -1,0 +1,8 @@
+uuid: 419954e1-0a5d-4f3a-bb2a-e46fb685e1fd
+langcode: fi
+status: true
+dependencies: {  }
+id: hobby-not-hobby
+label: 'Hobby/not hobby'
+description: 'This menu switches between events and hobbies'
+locked: false
