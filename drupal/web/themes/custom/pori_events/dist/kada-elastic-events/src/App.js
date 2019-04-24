@@ -108,12 +108,12 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("What")}>
 
-                {/* <RefinementListFilter
+                <RefinementListFilter
                   id="event_type"
                   field="event_type"
                   operator="OR"
                   size={100}
-                /> */}
+                />
 
               </Panel>
 
@@ -153,6 +153,19 @@ class App extends SearchkitComponent {
                 <RefinementListFilter
                   id="audience"
                   field="audience"
+                  operator="OR"
+                  size={100}
+                />
+
+              </Panel>
+              <Panel
+                collapsable={true}
+                defaultCollapsed={true}
+                title={Drupal.t("Refine your search")}>
+
+                <RefinementListFilter
+                  id="accessible"
+                  field="accessible"
                   operator="OR"
                   size={100}
                 />
