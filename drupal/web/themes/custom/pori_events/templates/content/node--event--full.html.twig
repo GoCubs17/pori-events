@@ -85,11 +85,21 @@
 {% set description = content.field_description[0]['#text'] %}
 {% set location_extra_info = content.field_location_extra_info[0]['#context']['value'] %}
 {% set area = content.field_area[0]['#title'] %}
+{% set free = content.field_free_enterance[0]['response'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
 {% set provider_www = content.field_provider_www[0]['content'] %}
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
 {% set ticket_vendor = content.field_ticket_vendor[0]['content'] %}
+{% set accesible = content.accesible[0] %}
+{% set address = content.field_address[0]['content'] %}
+{% set childcare = content.field_child_care[0] %}
+{% set culture_card = content.field_culture_and_or_activity_no[0] %}
+{% set event_type = content.field_event_type[0]['#context']['value'] %}
+{% set free_entrance = content.field_free_entrance[0]['content'] %}
+{% set hobby_category = content.field_hobby_category[0]['content'] %}
+{% set hobby_map = content.field_hobby_map[0]['content'] %}
+{% set target_audience = content.field_target_audience[0]['#title'] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -118,7 +128,7 @@
 
       {% if description %}
         <div class="event__content__description">
-          {{ description|nl2br }}
+          {{ description| striptags| raw }}
         </div>
       {% endif %}
 
@@ -126,9 +136,16 @@
     </div>
 
     <div class="event__content--sidebar">
+    {% if 'On' in content.field_hobby_is_hobby[0] %}
+      <h3 class="event__content--sidebar__title hobby">
+        {{ "Hobby information:"|t }}
+      </h3>
+      {% endif %}
+      {% if 'Off' in content.field_hobby_is_hobby[0] %}
       <h3 class="event__content--sidebar__title">
         {{ "Event information:"|t }}
       </h3>
+      {% endif %}
 
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
@@ -147,6 +164,43 @@
       </div>
       {% endif %}
 
+      {% if address %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-map-marker-alt"></i>
+        {{ address }}
+      </div>
+      {% endif %}
+
+     {% if 'On' in content.field_free_enterance[0] %}
+      <div class="event__content--sidebar__item">
+      <i class="fas fa-door-open"></i>
+          Free Event
+      </div>
+      {% endif %}
+
+      {# {% if free.reponse %}yes{% else %}no{% endif%} #}
+
+      {% if 'On' in childcare %}
+      <div class="event__content--sidebar__item">
+      <i class="fas fa-child"></i>
+          Child friendly
+      </div>
+      {% endif %}
+
+
+      {% if event_type %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-euro-sign"></i>
+        {{ event_type }}
+      </div>
+      {% endif %}
+      {% if target_audience %}
+      <div class="event__content--sidebar__item">
+        <i class="fas fa-users"></i>
+        {{ target_audience }}
+      </div>
+      {% endif %}
+
       {% if price %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-euro-sign"></i>
@@ -156,7 +210,7 @@
 
       {% if provider_www %}
       <div class="event__content--sidebar__item">
-        <i class="fas fa-home"></i>
+        <i class="fab fa-chrome"></i>
         <a href={{ provider_www['url'] }}>
           {{ provider_www['label'] }}
         </a>
@@ -185,6 +239,12 @@
           </a>
         </div>
       {% endif %}
+      {% if 'On' in culture_card %}
+<div class="event__content--sidebar__item">
+<i class="fas fa-euro-sign"></i>
+     Payment with culture or activity card available
+</div>
+{% endif %}
     </div>
   </div>
 </article>
