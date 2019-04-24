@@ -238,7 +238,7 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'is_hobby' => [
                 'type' => 'boolean',
               ],
-              'accesible' => [
+              'accessible' => [
                 'type' => 'boolean',
               ],
             ],
