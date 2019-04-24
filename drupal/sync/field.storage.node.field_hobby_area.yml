@@ -1,0 +1,20 @@
+uuid: 5174d3c9-0e9b-41ef-a010-2ab9efed78d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_hobby_area
+field_name: field_hobby_area
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

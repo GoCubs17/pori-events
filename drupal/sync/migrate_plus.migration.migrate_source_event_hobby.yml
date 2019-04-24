@@ -1,5 +1,5 @@
 uuid: f96c7912-7ff8-48cb-93ec-ad498df1b909
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://local.tapahtumat.pori.fi/sites/default/files/activity.json'
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/'
   item_selector: '$.data[*]'
   ids:
     event_id:
@@ -132,6 +132,10 @@ source:
       name: exceptional_opening_hours
       label: 'Exceptional opening hours'
       selector: $.exceptional_opening_hours
+    -
+      name: hobby_area
+      label: 'Hobby area'
+      selector: '$.location[''@id'']'
 process:
   type:
     plugin: default_value
@@ -163,27 +167,13 @@ process:
   uid:
     plugin: default_value
     default_value: 1
-  path:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: book_alias
-    -
-      plugin: concat
-      delimiter: null
-      source:
-        - constants/slash
-        - book_alias
   field_image_ext_url: event_image
-  field_area:
-    plugin: migration_lookup
-    migration: migrate_source_event_area
-    source: event_location
   field_hobby_audience:
     -
       plugin: migration_lookup
       source: event_audience
       migration: migrate_source_event_hobby_audience
+      no_stub: true
   field_hobby_is_hobby:
     plugin: default_value
     default_value: 1
@@ -200,14 +190,22 @@ process:
   field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
+      plugin: skip_on_empty
+      source: pre_registration_start_time
+      method: process
+    -
       plugin: substr
       source: pre_registration_start_time
+      default_value: ''
       start: 0
       length: 19
   field_pre_registration_end_time:
     -
-      plugin: substr
+      plugin: skip_on_empty
       source: pre_registration_end_time
+      method: process
+    -
+      plugin: substr
       start: 0
       length: 19
   field_pre_registration:
@@ -259,6 +257,12 @@ process:
       source: hobby_keywords
       migration: migrate_source_event_keywords_hobby_subterms
       no_stub: true
+  field_hobby_area:
+    -
+      plugin: migration_lookup
+      source: hobby_area
+      migration: migrate_source_event_hobby_area
+      no_stub: true
 destination:
   plugin: 'entity:node'
 migration_dependencies:
@@ -266,3 +270,4 @@ migration_dependencies:
     - migrate_source_event_keywords_hobby
     - migrate_source_event_keywords_hobby_subterms
     - migrate_source_event_hobby_audience
+    - migrate_source_event_hobby_area

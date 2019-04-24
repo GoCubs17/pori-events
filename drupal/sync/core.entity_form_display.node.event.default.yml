@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_event_type
     - field.field.node.event.field_exceptional_opening_hours
     - field.field.node.event.field_free_enterance
+    - field.field.node.event.field_hobby_area
     - field.field.node.event.field_hobby_audience
     - field.field.node.event.field_hobby_category
     - field.field.node.event.field_hobby_is_hobby
@@ -130,6 +131,15 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_hobby_area:
+    weight: 68
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_hobby_audience:
     weight: 67

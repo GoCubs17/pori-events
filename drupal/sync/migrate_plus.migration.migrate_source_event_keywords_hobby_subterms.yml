@@ -1,5 +1,5 @@
 uuid: 5e170b57-3661-49d6-82b7-72ac81b5204b
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://local.tapahtumat.pori.fi/sites/default/files/keywords.json'
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
   item_selector: '$.data[*].keywords[*]'
   ids:
     keyword_id:
