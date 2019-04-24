@@ -158,6 +158,19 @@ class App extends SearchkitComponent {
                 />
 
               </Panel>
+              <Panel
+                collapsable={true}
+                defaultCollapsed={true}
+                title={Drupal.t("Refine your search")}>
+
+                <RefinementListFilter
+                  id="accessible"
+                  field="accessible"
+                  operator="OR"
+                  size={100}
+                />
+
+              </Panel>
 
             </SideBar>
 
