@@ -1,9 +1,9 @@
-uuid: 4c245d22-d62d-45d4-b82a-a850da1a5f32
+uuid: 555dd69d-a8b7-4ea7-9fe6-ed4b3649e617
 langcode: fi
 status: true
 dependencies: {  }
 name: 'Hobby area'
 vid: hobby_area
-description: ''
+description: 'Area of hobby'
 hierarchy: 0
 weight: 0
