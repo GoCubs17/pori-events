@@ -67,6 +67,12 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $data['event_type'][] = $term_name;
         }
       }
+      foreach ($object->field_hobby_category as $term) {
+        if ($term->target_id) {
+          $term_name = Term::load($term->target_id)->get('name')->value;
+          $data['hobby_category'][] = $term_name;
+        }
+      }
 
       // Text fields
       $data['description'] = $object->field_description->value;

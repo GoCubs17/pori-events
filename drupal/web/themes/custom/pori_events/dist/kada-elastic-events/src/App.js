@@ -102,6 +102,7 @@ class App extends SearchkitComponent {
               />
 
               <Panel
+                className={`${this.props.eventType}--what`}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("What")}>
@@ -114,8 +115,37 @@ class App extends SearchkitComponent {
                 />
 
               </Panel>
+              <Panel
+                className={`${this.props.eventType}--what-panel`}
+                collapsable={true}
+                defaultCollapsed={true}
+                title={Drupal.t("What")}>
+
+                <RefinementListFilter
+                  id="hobby_category"
+                  field="hobby_category"
+                  operator="OR"
+                  size={100}
+                />
+
+              </Panel>
 
               <Panel
+              className={`${this.props.eventType}--where`}
+                collapsable={true}
+                defaultCollapsed={true}
+                title={Drupal.t("Where")}>
+
+                <RefinementListFilter
+                  id="area"
+                  field="area"
+                  operator="OR"
+                  size={100}
+                />
+
+              </Panel>
+              <Panel
+              className={`${this.props.eventType}--where-panel`}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("Where")}>
@@ -130,6 +160,7 @@ class App extends SearchkitComponent {
               </Panel>
 
               <Panel
+                className={this.props.eventType}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("When")}>
@@ -140,10 +171,18 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
+                <MenuFilter
+                  id="weekdays"
+                  field="weekdays"
+                  title="Weekdays"
+                  operator="OR"
+                  size={100}
+                />
 
               </Panel>
 
               <Panel
+                className={this.props.eventType}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("For whom")}>
@@ -157,6 +196,7 @@ class App extends SearchkitComponent {
 
               </Panel>
               <Panel
+                
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}>
@@ -173,7 +213,7 @@ class App extends SearchkitComponent {
 
             </SideBar>
 
-          <LayoutResults>
+          <LayoutResults className={this.props.eventType}>
             <ActionBar>
 
               <ActionBarRow>
@@ -183,6 +223,7 @@ class App extends SearchkitComponent {
 
             </ActionBar>
             <ViewSwitcherHits
+                
                 hitsPerPage={12} highlightFields={["title"]}
                 hitComponents={[
                   {key:"list", title:"List", itemComponent:HitsListItem}
