@@ -1,6 +1,6 @@
 uuid: aafa6553-be01-477a-896d-b191b90de267
 langcode: fi
-status: true
+status: false
 dependencies:
   config:
     - views.view.promoted_hobbies

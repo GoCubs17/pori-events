@@ -1,6 +1,6 @@
-uuid: 41db0c17-ea78-4ec9-ae82-8959d49d838f
+uuid: f193e35c-7f17-4089-8274-edd47ece09d1
 langcode: fi
-status: true
+status: false
 dependencies:
   config:
     - system.menu.hobby-not-hobby

@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+ 
+ <div class = "event-tabs">
+
+  <input type = "radio" id = "tab1" name = "tabs" checked>
+  <label for = "tab1"><a href="http://pori-events.lndo.site:8000">Tapahtumat</a></label>
+   
+  <input type = "radio" id = "tab2" name = "tabs">
+  <label for = "tab2"><a href="http://pori-events.lndo.site:8000/harrastukset">Harrastukset</a></label>
+
+</div>
