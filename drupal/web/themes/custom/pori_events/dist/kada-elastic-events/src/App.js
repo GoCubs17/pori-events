@@ -5,7 +5,7 @@ import { SearchkitManager,SearchkitProvider,
   NoHits, ResetFilters, ViewSwitcherHits,
   GroupedSelectedFilters, Layout, LayoutBody,
   LayoutResults, ActionBar, ActionBarRow, SideBar,
-  QueryString, SearchkitComponent, Panel } from 'searchkit'
+  QueryString, SearchkitComponent, Panel, MenuFilter } from 'searchkit'
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter"
 import Moment from 'moment';
 
@@ -161,9 +161,10 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}>
 
-                <RefinementListFilter
+                <MenuFilter
                   id="accessible"
                   field="accessible"
+                  title="Accessible"
                   operator="OR"
                   size={100}
                 />
