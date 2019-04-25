@@ -167,10 +167,10 @@ process:
         - 0
         - id
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: migrate_source_event_keywords
   field_area:
-    plugin: migration
+    plugin: migration_lookup
     migration: migrate_source_event_area
     source: event_location
   field_target_audience:
@@ -182,8 +182,7 @@ process:
         - 0
         - id
     -
-  plugin: migration
-  migration: migrate_source_event_audience
+      plugin: migration_lookup
+      migration: migrate_source_event_audience
 destination:
   plugin: 'entity:node'
-

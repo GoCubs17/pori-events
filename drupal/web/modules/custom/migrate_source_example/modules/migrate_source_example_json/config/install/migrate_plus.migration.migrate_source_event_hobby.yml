@@ -1,4 +1,3 @@
-uuid: f96c7912-7ff8-48cb-93ec-ad498df1b909
 langcode: fi
 status: true
 dependencies:
@@ -6,9 +5,6 @@ dependencies:
     - migrate_source_example_json
     - node
 id: migrate_source_event_hobby
-class: null
-field_plugin_method: null
-cck_plugin_method: null
 migration_tags: null
 migration_group: migrate_source_event
 label: Hobbies
@@ -16,13 +12,14 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
+  # TODO: Change to use actual API. Now works only if there is json set on the site.
   urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/'
-  item_selector: '$.data[*]'
+  item_selector: $.data[*]
   ids:
     event_id:
       type: string
   constants:
-    slash: /
+      slash: '/'
   fields:
     -
       name: event_id
@@ -35,7 +32,7 @@ source:
     -
       name: event_image
       label: 'Image of the event'
-      selector: '$.images[0].url'
+      selector: $.images[0].url
     -
       name: event_description
       label: 'Long description of the event'
@@ -62,39 +59,39 @@ source:
       selector: $.created_time
     -
       name: event_location
-      label: Location
+      label: 'Location'
       selector: $.location.id
     -
       name: event_audience
-      label: Audience
-      selector: '$.audience[*].id'
+      label: 'Audience'
+      selector: $.audience[*].id
     -
       name: hobby_keywords
-      label: Keywords
-      selector: '$.keywords[*].id'
+      label: 'Keywords'
+      selector: $.keywords[*].id
     -
       name: event_offers_is_free
       label: 'Offers is free'
-      selector: '$.offers[0].is_free'
+      selector: $.offers[0].is_free
     -
       name: event_offers_price
       label: 'Offers price'
-      selector: '$.offers[0].price.fi'
+      selector: $.offers[0].price.fi
     -
       name: event_offers_vedor
       label: 'Offers vendo'
-      selector: '$.offers[0].info_url.fi'
+      selector: $.offers[0].info_url.fi
     -
       name: event_provider_www
-      label: Provider
+      label: 'Provider'
       selector: $.provider_link
     -
       name: event_provider_phone
-      label: Provider
+      label: 'Provider'
       selector: $.provider_phone
     -
       name: event_provider_email
-      label: Provider
+      label: 'Provider'
       selector: $.provider_email
     -
       name: event_location_extra_info
@@ -102,7 +99,7 @@ source:
       selector: $.location_extra_info.fi
     -
       name: extra_options
-      label: Accessible
+      label: 'Accessible'
       selector: $.extra_options
     -
       name: pre_registration
@@ -135,7 +132,7 @@ source:
     -
       name: hobby_area
       label: 'Hobby area'
-      selector: '$.location[''@id'']'
+      selector: $.location['@id']
 process:
   type:
     plugin: default_value
@@ -157,6 +154,7 @@ process:
     length: 19
   field_end_time:
     plugin: substr
+    # format: 'Y-m-d\TH:i:s'
     source: event_end_time
     start: 0
     length: 19
@@ -196,7 +194,7 @@ process:
     -
       plugin: substr
       source: pre_registration_start_time
-      default_value: ''
+      default_value: ""
       start: 0
       length: 19
   field_pre_registration_end_time:

@@ -1,0 +1,48 @@
+langcode: fi
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - taxonomy
+id: migrate_source_event_keywords_hobby_subterms
+migration_tags: null
+migration_group: migrate_source_event
+label: keyword_hobby_subterms
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: jsonpath
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
+  item_selector: $.data[*].keywords[*]
+  ids:
+    keyword_id:
+      type: string
+  constants:
+    slash: '/'
+  fields:
+    -
+      name: keyword_id
+      label: 'ID of the keyword'
+      selector: '$.id'
+    -
+      name: keyword_name
+      label: 'Name of the keyword'
+      selector: '$.name.fi'
+process:
+  vid:
+    plugin: default_value
+    default_value: categories
+  name: keyword_name
+  parent:
+    -
+      plugin: hobby_sub_categories
+      source: keyword_id
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_keywords_hobby
+      no_stub: true
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies:
+  required:
+    - migrate_source_event_keywords_hobby

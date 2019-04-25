@@ -1,0 +1,9 @@
+uuid: 7088c63f-889b-4c2e-89f2-cb17cd12051c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Hobby audience'
+vid: hobby_audience
+description: 'audience for hobbies'
+hierarchy: 0
+weight: 0

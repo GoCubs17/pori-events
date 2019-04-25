@@ -1,5 +1,5 @@
 {
-    "name": "Pori Events",
+    "name": "wunderio/pori_events",
     "description": "Drupal 8 based Pori Events Composer Project",
     "type": "project",
     "license": "GPL-2.0+",
