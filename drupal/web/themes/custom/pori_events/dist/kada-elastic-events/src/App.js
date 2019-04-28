@@ -5,7 +5,7 @@ import { SearchkitManager,SearchkitProvider,
   NoHits, ResetFilters, ViewSwitcherHits,
   GroupedSelectedFilters, Layout, LayoutBody,
   LayoutResults, ActionBar, ActionBarRow, SideBar,
-  QueryString, SearchkitComponent, Panel, MenuFilter } from 'searchkit'
+  QueryString, SearchkitComponent, Panel, MenuFilter, HierarchicalRefinementFilter } from 'searchkit'
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter"
 import Moment from 'moment';
 
@@ -123,11 +123,11 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("What")}>
 
-                <RefinementListFilter
+                <HierarchicalRefinementFilter
                   id="hobby_category"
                   field="hobby_category"
-                  operator="OR"
-                  size={100}
+                  title="What"
+                  startLevel="0"
                 />
 
               </Panel>
@@ -198,7 +198,7 @@ class App extends SearchkitComponent {
 
               </Panel>
               <Panel
-                
+                className={`${this.props.eventType}--refine-event`}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}>
@@ -210,7 +210,7 @@ class App extends SearchkitComponent {
                   operator="OR"
                   size={100}
                 />
-
+                
               </Panel>
 
             </SideBar>
