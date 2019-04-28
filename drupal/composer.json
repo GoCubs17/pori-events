@@ -71,8 +71,10 @@
         "slick": "^1.6",
         "blazy": "^1.8",
         "drupal/conditional_fields": "^1.0@alpha",
-        "drupal/simple_gmap": "^1.4",
-        "drupal/migrate_source_jsonpath": "1.x-dev"
+        "drupal/migrate_source_jsonpath": "1.x-dev",
+        "drupal/context": "^4.0@beta",
+        "drupal/empty_page": "^2.0",
+        "drupal/simple_gmap": "^1.4"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
