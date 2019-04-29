@@ -375,4 +375,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_hobby_email: true
+  field_hobby_person_responsible: true
+  field_hobby_phone_number: true
   langcode: true
