@@ -402,4 +402,7 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_hobby_email: true
+  field_hobby_person_responsible: true
+  field_hobby_phone_number: true

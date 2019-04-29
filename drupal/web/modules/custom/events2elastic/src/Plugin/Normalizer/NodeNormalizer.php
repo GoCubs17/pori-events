@@ -51,12 +51,23 @@ class NodeNormalizer extends ContentEntityNormalizer {
         $term_name = Term::load($object->field_area->target_id)->get('name')->value;
         $data['area'] = $term_name;
       }
+      if ($object->field_hobby_area->target_id) {
+        $term_name = Term::load($object->field_hobby_area->target_id)->get('name')->value;
+        $data['hobby_area'] = $term_name;
+      }
+
 
       // audience term
       foreach ($object->field_target_audience as $term) {
         if ($term->target_id) {
           $term_name = Term::load($term->target_id)->get('name')->value;
           $data['audience'][] = $term_name;
+        }
+      }
+      foreach ($object->field_hobby_audience as $term) {
+        if ($term->target_id) {
+          $term_name = Term::load($term->target_id)->get('name')->value;
+          $data['hobby_audience'][] = $term_name;
         }
       }
 
@@ -73,6 +84,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $data['hobby_category'][] = $term_name;
         }
       }
+     
 
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -85,6 +97,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['free_enterance'] = $object->field_free_enterance->value;
       $data['is_hobby'] = $object->field_hobby_is_hobby->value;
       $data['accessible'] = $object->field_accessible->value;
+      $data['child_care'] = $object->field_child_care->value;
+      $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value;
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";
