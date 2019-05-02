@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-let drupalElem = 'kada-event-search';
+const drupalElem = document.getElementById('kada-event-search');
+const eventType = drupalElem.dataset.eventType;
+
 
 ReactDOM.render(
-  <App />,
-  document.getElementById(drupalElem)
+  <App eventType={eventType} />,
+  drupalElem
 );
