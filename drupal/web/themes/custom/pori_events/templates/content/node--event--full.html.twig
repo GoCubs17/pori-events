@@ -131,8 +131,12 @@
           {{ description| striptags| raw }}
         </div>
       {% endif %}
-
+      {% if 'On' in content.field_hobby_is_hobby[0] %}
+      <a class="event__back-button" href="/harrastukset"><i class="fas fa-chevron-left"></i>{{ "Back to hobbies listing"|t }}</a>
+      {% endif %}
+      {% if 'Off' in content.field_hobby_is_hobby[0] %}
       <a class="event__back-button" href="/"><i class="fas fa-chevron-left"></i>{{ "Back to events listing"|t }}</a>
+      {% endif %}
     </div>
 
     <div class="event__content--sidebar">
