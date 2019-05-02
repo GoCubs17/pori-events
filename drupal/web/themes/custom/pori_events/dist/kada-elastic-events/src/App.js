@@ -20,7 +20,7 @@ import {
   SearchkitComponent,
   Panel,
   MenuFilter,
-  HierarchicalRefinementFilter
+  TermQuery
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
@@ -52,15 +52,6 @@ const queryOptions = {
   phrase_slop: 2
 };
 
-searchkit.addDefaultQuery(function(query) {
-  return query.setSort([
-    {
-      single_day: "desc",
-      start_time: "asc"
-    }
-  ]);
-});
-
 const HitsListItem = props => {
   const { bemBlocks, result } = props;
   const source = extend({}, result._source, result.highlight);
@@ -74,7 +65,6 @@ const HitsListItem = props => {
 
   const date_format = "D.M.YYYY";
   const time_format = "HH:mm";
-
   const date_start = Moment(source.start_time).format(date_format);
   const date_end = Moment(source.end_time).format(date_format);
 
@@ -104,6 +94,19 @@ const HitsListItem = props => {
 };
 
 class App extends SearchkitComponent {
+  componentDidMount() {
+    let filter = "1";
+   
+    console.log(this.props, filter);
+    searchkit.addDefaultQuery(query => {
+      return query.addQuery(TermQuery("is_hobby", filter)).setSort([
+        {
+          single_day: "desc",
+          start_time: "asc"
+        }
+      ]);
+    });
+  }
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -157,6 +160,7 @@ class App extends SearchkitComponent {
                 <RefinementListFilter
                   id="area"
                   field="area"
+                  title="Area"
                   operator="OR"
                   size={100}
                 />
@@ -170,6 +174,7 @@ class App extends SearchkitComponent {
                 <RefinementListFilter
                   id="hobby_area"
                   field="hobby_area"
+                  title="Area"
                   operator="OR"
                   size={100}
                 />
