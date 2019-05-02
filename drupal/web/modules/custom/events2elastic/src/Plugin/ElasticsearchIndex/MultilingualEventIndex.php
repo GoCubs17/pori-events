@@ -108,9 +108,12 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
             'analysis' => [
               'filter' => [
                 'autocomplete_filter' => [
-                  'type' => 'edge_ngram',
-                  'min_gram' => 2,
+                  'type' => 'ngram',
+                  'min_gram' => 4,
                   'max_gram' => 20,
+                  'token_chars' => [
+                    'letter',
+                  ],
                 ],
               ],
               'analyzer' => [
