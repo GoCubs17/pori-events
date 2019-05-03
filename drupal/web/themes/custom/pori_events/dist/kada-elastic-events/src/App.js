@@ -96,9 +96,10 @@ const HitsListItem = props => {
 
 class App extends SearchkitComponent {
   componentDidMount() {
-    let filter = "1";
-   
-    console.log(this.props, filter);
+    let filter = "0";
+    if (this.props.eventType === "hobbies") {
+      filter = "1";
+    }
     searchkit.addDefaultQuery(query => {
       return query.addQuery(TermQuery("is_hobby", filter)).setSort([
         {
