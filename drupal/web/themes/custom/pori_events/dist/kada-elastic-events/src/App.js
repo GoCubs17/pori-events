@@ -20,7 +20,8 @@ import {
   SearchkitComponent,
   Panel,
   MenuFilter,
-  TermQuery
+  TermQuery,
+  CheckboxFilter
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
@@ -228,33 +229,62 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}
               >
-                <MenuFilter
+                <CheckboxFilter
                   id="accessible"
                   field="accessible"
                   title="Accessible"
-                  operator="OR"
-                  size={100}
+                  label="Accessible"
+                  filter={TermQuery("accessible", '1')}
                 />
-                <MenuFilter
+                <CheckboxFilter
+                  id="not_accessible"
+                  field="accessible"
+                  label="Not Accessible"
+                  filter={TermQuery("accessible", '0')}
+                />
+                <CheckboxFilter
                   id="child_care"
                   field="child_care"
+                  label="Child Care"
                   title="Child Care"
-                  operator="OR"
-                  size={100}
+                  filter={TermQuery("child_care", '1')}
                 />
-                <MenuFilter
+                <CheckboxFilter
+                  id="no_child_care"
+                  field="child_care"
+                  label="No Child Care"                 
+                  filter={TermQuery("child_care", '0')}
+                />
+                <CheckboxFilter
                   id="free"
                   field="free_enterance"
+                  label="Free Entrance"
                   title="Free Entrance"
-                  operator="OR"
-                  size={100}
+                  filter={TermQuery("free", '1')}
+                  
                 />
-                <MenuFilter
+                <CheckboxFilter
+                  id="not_free"
+                  field="free_enterance"
+                  label="No Free Entrance"
+                  
+                  filter={TermQuery("free", '0')}
+                  
+                />
+                <CheckboxFilter
                   id="culture_and_or_activity_no"
                   field="culture_and_or_activity_no"
+                  label="Culture and Activity card"
                   title="Culture and Activity card"
-                  operator="OR"
-                  size={100}
+                  filter={TermQuery("culture_and_or_activity_no", '1')}
+                  
+                />
+                <CheckboxFilter
+                  id="culture_and_or_activity"
+                  field="culture_and_or_activity_no"
+                  label="No Culture and Activity card"
+                  filter={TermQuery("culture_and_or_activity_no", '0')}
+                  
                 />
               </Panel>
             </SideBar>
