@@ -232,59 +232,29 @@ class App extends SearchkitComponent {
                 <CheckboxFilter
                   id="accessible"
                   field="accessible"
-                  title="Accessible"
                   label="Accessible"
-                  filter={TermQuery("accessible", '1')}
+                  filter={TermQuery("accessible", "1")}
                 />
-                <CheckboxFilter
-                  id="not_accessible"
-                  field="accessible"
-                  label="Not Accessible"
-                  filter={TermQuery("accessible", '0')}
-                />
+
                 <CheckboxFilter
                   id="child_care"
                   field="child_care"
                   label="Child Care"
-                  title="Child Care"
-                  filter={TermQuery("child_care", '1')}
+                  filter={TermQuery("child_care", "1")}
                 />
-                <CheckboxFilter
-                  id="no_child_care"
-                  field="child_care"
-                  label="No Child Care"                 
-                  filter={TermQuery("child_care", '0')}
-                />
+
                 <CheckboxFilter
                   id="free"
                   field="free_enterance"
                   label="Free Entrance"
-                  title="Free Entrance"
-                  filter={TermQuery("free", '1')}
-                  
+                  filter={TermQuery("free", "1")}
                 />
-                <CheckboxFilter
-                  id="not_free"
-                  field="free_enterance"
-                  label="No Free Entrance"
-                  
-                  filter={TermQuery("free", '0')}
-                  
-                />
+
                 <CheckboxFilter
                   id="culture_and_or_activity_no"
                   field="culture_and_or_activity_no"
                   label="Culture and Activity card"
-                  title="Culture and Activity card"
-                  filter={TermQuery("culture_and_or_activity_no", '1')}
-                  
-                />
-                <CheckboxFilter
-                  id="culture_and_or_activity"
-                  field="culture_and_or_activity_no"
-                  label="No Culture and Activity card"
-                  filter={TermQuery("culture_and_or_activity_no", '0')}
-                  
+                  filter={TermQuery("culture_and_or_activity_no", "1")}
                 />
               </Panel>
             </SideBar>
