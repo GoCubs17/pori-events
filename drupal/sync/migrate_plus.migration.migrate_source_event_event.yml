@@ -163,18 +163,18 @@ process:
       - url
   field_event_type:
     -
-      plugin: sub_process
       source: event_keywords
+      plugin: sub_process
       process:
         -
           target_id:
             plugin: format_keywords
             source: id
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: migrate_source_event_keywords
   field_area:
-    plugin: migration
+    plugin: migration_lookup
     migration: migrate_source_event_area
     source: event_location
   field_target_audience:
@@ -187,7 +187,7 @@ process:
             plugin: format_keywords
             source: id
     -
-      plugin: migration
+      plugin: migration_lookup
       migration: migrate_source_event_audience
 destination:
   plugin: 'entity:node'
