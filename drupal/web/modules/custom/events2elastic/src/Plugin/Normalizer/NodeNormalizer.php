@@ -45,46 +45,16 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'created' => $object->getCreatedTime(),
       'url' => $object->url(),
     ];
+
     if ($bundle == 'event') {
-      // area term
-      if ($object->field_area->target_id) {
-        $term_name = Term::load($object->field_area->target_id)->get('name')->value;
-        $data['area'] = $term_name;
-      }
-      if ($object->field_hobby_area->target_id) {
-        $term_name = Term::load($object->field_hobby_area->target_id)->get('name')->value;
-        $data['hobby_area'] = $term_name;
-      }
 
-
-      // audience term
-      foreach ($object->field_target_audience as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['audience'][] = $term_name;
-        }
-      }
-      foreach ($object->field_hobby_audience as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['hobby_audience'][] = $term_name;
-        }
-      }
-
-      // type term
-      foreach ($object->field_event_type as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['event_type'][] = $term_name;
-        }
-      }
-      foreach ($object->field_hobby_category as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['hobby_category'][] = $term_name;
-        }
-      }
-     
+      // Term fields
+      $data['area'] = $this->getTranslatedTermNames($object->field_area, $langcode);
+      $data['hobby_area'] = $this->getTranslatedTermNames($object->field_hobby_area, $langcode);
+      $data['target_audience'] = $this->getTranslatedTermNames($object->field_target_audience, $langcode);
+      $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
+      $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
+      $data['hobby_category'] = $this->getTranslatedTermNames($object->field_hobby_category, $langcode);
 
       // Text fields
       $data['description'] = $object->field_description->value;
