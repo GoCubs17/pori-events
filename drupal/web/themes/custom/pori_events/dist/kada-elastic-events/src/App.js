@@ -20,7 +20,8 @@ import {
   SearchkitComponent,
   Panel,
   MenuFilter,
-  TermQuery
+  TermQuery,
+  CheckboxFilter
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
@@ -96,9 +97,10 @@ const HitsListItem = props => {
 
 class App extends SearchkitComponent {
   componentDidMount() {
-    let filter = "1";
-   
-    console.log(this.props, filter);
+    let filter = "0";
+    if (this.props.eventType === "hobbies") {
+      filter = "1";
+    }
     searchkit.addDefaultQuery(query => {
       return query.addQuery(TermQuery("is_hobby", filter)).setSort([
         {
@@ -227,33 +229,32 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}
               >
-                <MenuFilter
+                <CheckboxFilter
                   id="accessible"
                   field="accessible"
-                  title="Accessible"
-                  operator="OR"
-                  size={100}
+                  label="Accessible"
+                  filter={TermQuery("accessible", "1")}
                 />
-                <MenuFilter
+
+                <CheckboxFilter
                   id="child_care"
                   field="child_care"
-                  title="Child Care"
-                  operator="OR"
-                  size={100}
+                  label="Child Care"
+                  filter={TermQuery("child_care", "1")}
                 />
-                <MenuFilter
+
+                <CheckboxFilter
                   id="free"
                   field="free_enterance"
-                  title="Free Entrance"
-                  operator="OR"
-                  size={100}
+                  label="Free Entrance"
+                  filter={TermQuery("free", "1")}
                 />
-                <MenuFilter
+
+                <CheckboxFilter
                   id="culture_and_or_activity_no"
                   field="culture_and_or_activity_no"
-                  title="Culture and Activity card"
-                  operator="OR"
-                  size={100}
+                  label="Culture and Activity card"
+                  filter={TermQuery("culture_and_or_activity_no", "1")}
                 />
               </Panel>
             </SideBar>
