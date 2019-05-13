@@ -144,7 +144,9 @@ process:
   field_description: event_description
   field_short_description: event_short_description
   field_provider_email: event_provider_email
-  field_provider_www: event_provider_www
+  field_provider_www:
+    plugin: link_url_external
+    source: event_provider_www
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_extra_info
   field_ticket_vendor: event_offers_vedor
@@ -186,7 +188,9 @@ process:
   field_culture_and_or_activity_no:
     source: extra_options
     plugin: extra_offers_parse
-  field_pre_registration_link/uri: pre_registration_url
+  field_pre_registration_link/uri:
+    plugin: link_url_external
+    source: pre_registration_url
   field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -

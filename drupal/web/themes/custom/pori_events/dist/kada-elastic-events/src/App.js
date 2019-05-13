@@ -58,8 +58,8 @@ const HitsListItem = props => {
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
   const url = source.url ? source.url : "/node/" + result._id;
   const image_source = source.image_ext
-    ? source.image_ext
-    : "themes/custom/pori_events/dist/images/event-default.jpg";
+    ? "/"+source.image_ext
+    : "/themes/custom/pori_events/dist/images/event-default.jpg";
   const title = source.title ? source.title : null;
   const leading = source.short_description ? source.short_description : null;
 
