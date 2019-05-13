@@ -80,15 +80,9 @@ hidden:
   field_hobby_email: true
   field_hobby_is_hobby: true
   field_hobby_map: true
-  field_hobby_category: true
-  field_hobby_email: true
-  field_hobby_is_hobby: true
-  field_hobby_map: true
   field_hobby_person_responsible: true
   field_hobby_phone_number: true
   field_image: true
-  field_hobby_person_responsible: true
-  field_hobby_phone_number: true
   field_location_extra_info: true
   field_pre_registration: true
   field_pre_registration_end_time: true

@@ -24,5 +24,28 @@
   }
 }
 .footer-logo-hobby {
-  background: url("../../harrastukset.png") top left no-repeat;
+            box-sizing: border-box;
+            background: url(/themes/custom/pori_events/dist/images/harrastukset.png) no-repeat;
+            background-size: contain;
+            max-height: 150px;
+            width: 750px;
+}
+.hobby-class-1 {
+  .dialog-off-canvas-main-canvas{
+    .layout-container{
+      .page-footer {
+        
+            background: url(/themes/custom/pori_events/dist/images/harrastukset.png) no-repeat;
+            background-size: contain;
+            max-height: 150px;
+            width: 350px;
+        .page-footer__top{
+          
+          a {
+            display:none;
+          }
+        }
+      }
+    }
+  }
 }

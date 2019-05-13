@@ -210,8 +210,6 @@ process:
       index:
         - start_time
     -
-  field_pre_registration_link/uri: pre_registration_url
-  field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
       plugin: skip_on_empty
