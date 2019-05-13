@@ -143,6 +143,9 @@ process:
   uid:
     plugin: default_value
     default_value: 1
+  field_hobby_is_hobby:
+    plugin: default_value
+    default_value: 0
   path:
     -
       plugin: skip_on_empty
