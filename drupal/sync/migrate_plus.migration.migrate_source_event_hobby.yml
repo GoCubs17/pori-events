@@ -209,18 +209,6 @@ process:
       default: ''
       index:
         - start_time
-    -
-  field_pre_registration_start_tim:
-    -
-      plugin: skip_on_empty
-      source: pre_registration_start_time
-      method: process
-    -
-      plugin: substr
-      source: pre_registration_start_time
-      default_value: ''
-      start: 0
-      length: 19
   field_pre_registration_end_time:
     -
       plugin: skip_on_empty
