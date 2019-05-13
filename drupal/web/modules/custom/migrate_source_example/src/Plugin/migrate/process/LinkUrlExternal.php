@@ -28,7 +28,6 @@ class LinkUrlExternal extends ProcessPluginBase {
 
     // Make sure external links have a protocol.
     if ($value != '' && strpos($value, 'http') !== 0) {
-      print_r('No protocol: ');
       $value = 'http://' . $value;
     }
 
