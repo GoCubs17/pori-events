@@ -19,7 +19,6 @@ import {
   QueryString,
   SearchkitComponent,
   Panel,
-  MenuFilter,
   TermQuery,
   CheckboxFilter
 } from "searchkit";
@@ -96,17 +95,16 @@ const HitsListItem = props => {
 
 class App extends SearchkitComponent {
   componentDidMount() {
-    let filter = "0";
-    if (this.props.eventType === "hobbies") {
-      filter = "1";
-    }
+    let is_hobby = (this.props.eventType === "hobbies") ? true : false;
     searchkit.addDefaultQuery(query => {
-      return query.addQuery(TermQuery("is_hobby", filter)).setSort([
-        {
-          single_day: "desc",
-          start_time: "asc"
-        }
-      ]);
+      return query
+        .addQuery(TermQuery("is_hobby", is_hobby))
+        .setSort([
+          {
+            single_day: "desc",
+            start_time: "asc"
+          }
+        ]);
     });
   }
   render() {
