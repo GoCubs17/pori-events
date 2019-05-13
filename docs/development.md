@@ -51,7 +51,9 @@ Drush: ```$ lando drush [command]```
 
 Run the following to set up ES indexes.
 
-`$ lando drush eshd -y && lando drush eshr event_index && lando drush queue-run elasticsearch_helper_indexing`
+```
+lando drush eshd -y && lando drush eshs event_index && lando drush eshr event_index && lando drush queue-run elasticsearch_helper_indexing && lando drush cron && lando drush cr
+```
  
 ## Running event importer
  
@@ -61,7 +63,6 @@ Import new events by running ```lando drush migrate:import --group=migrate_sourc
 Clean up expired events by running ```lando drush migrate:rollback --group=migrate_source_event --missing-from-source```
 
 On the servers importer is run by a cron that executes script `drupal/scripts/event_import.sh`. You can check the output log of the script by loggin in the server with `root` user and executing `journalctl -t event_import`. 
-
 
 
 ## Working with search
