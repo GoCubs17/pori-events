@@ -27,13 +27,10 @@ class LinkUrlExternal extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
     // Make sure external links have a protocol.
-    if(preg_match('/(?:https?:\/\/)?(?:[a-zA-Z0-9.-]+?\.(?:[a-zA-Z])|\d+\.\d+\.\d+\.\d+)/', $value)) {
+    if ($value != '' && strpos($value, 'http') !== 0) {
       print_r('No protocol: ');
       $value = 'http://' . $value;
     }
-
-    print_r($value);
-    print("\n");
 
     return $value;
   }
