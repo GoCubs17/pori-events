@@ -144,7 +144,9 @@ process:
   field_description: event_description
   field_short_description: event_short_description
   field_provider_email: event_provider_email
-  field_provider_www: event_provider_www
+  field_provider_www:
+    plugin: link_url_external
+    source: event_provider_www
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_extra_info
   field_ticket_vendor: event_offers_vedor
@@ -187,28 +189,20 @@ process:
     source: extra_options
     plugin: extra_offers_parse
   field_pre_registration_link/uri:
-    -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - info_url
-        - fi
-  field_pre_registration_link/title:
-    -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - description
-        - fi
+    plugin: link_url_external
+    source: pre_registration_url
+  field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - start_time
+      plugin: skip_on_empty
+      source: pre_registration_start_time
+      method: process
+    -
+      plugin: substr
+      source: pre_registration_start_time
+      default_value: ''
+      start: 0
+      length: 19
   field_pre_registration_end_time:
     -
       plugin: skip_on_empty
