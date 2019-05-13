@@ -18,6 +18,11 @@ tooling:
     description: Execute build.sh
     cmd:
       - ./build.sh
+  composer:
+    service: appserver
+    description: Run composer commands
+    cmd:
+      - php -dmemory_limit=-1 /usr/local/bin/composer
 
 services:
   mailhog:

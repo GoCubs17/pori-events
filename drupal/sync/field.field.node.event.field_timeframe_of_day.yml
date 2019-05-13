@@ -1,0 +1,21 @@
+uuid: 1c52cea4-c3d3-45ae-b03c-88bd711defe6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeframe_of_day
+    - node.type.event
+  module:
+    - options
+id: node.event.field_timeframe_of_day
+field_name: field_timeframe_of_day
+entity_type: node
+bundle: event
+label: 'Timeframe of day'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

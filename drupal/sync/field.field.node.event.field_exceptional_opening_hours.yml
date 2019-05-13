@@ -1,0 +1,21 @@
+uuid: 4d977d20-7d02-49f8-8ea5-45321d4d62b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exceptional_opening_hours
+    - node.type.event
+  module:
+    - datetime_range
+id: node.event.field_exceptional_opening_hours
+field_name: field_exceptional_opening_hours
+entity_type: node
+bundle: event
+label: 'Exceptional opening hours'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

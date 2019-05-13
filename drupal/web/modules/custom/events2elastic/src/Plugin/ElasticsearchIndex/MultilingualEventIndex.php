@@ -235,6 +235,30 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'single_day' => [
                 'type' => 'boolean',
               ],
+              'is_hobby' => [
+                'type' => 'boolean',
+              ],
+              'accessible' => [
+                'type' => 'boolean',
+              ],
+              'child_care' => [
+                'type' => 'boolean',
+              ],
+              'culture_and_or_activity_no' => [
+                'type' => 'boolean',
+              ],
+              'hobby_category' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_audience' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_area' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
             ],
           ],
         ];

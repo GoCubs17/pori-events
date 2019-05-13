@@ -1,0 +1,19 @@
+uuid: 39e8bd63-783a-4f7a-9bd8-e4548c7145a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weekday_saturday
+    - node.type.event
+id: node.event.field_weekday_saturday
+field_name: field_weekday_saturday
+entity_type: node
+bundle: event
+label: 'Weekday saturday'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

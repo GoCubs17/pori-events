@@ -45,28 +45,16 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'created' => $object->getCreatedTime(),
       'url' => $object->url(),
     ];
+
     if ($bundle == 'event') {
-      // area term
-      if ($object->field_area->target_id) {
-        $term_name = Term::load($object->field_area->target_id)->get('name')->value;
-        $data['area'] = $term_name;
-      }
 
-      // audience term
-      foreach ($object->field_target_audience as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['audience'][] = $term_name;
-        }
-      }
-
-      // type term
-      foreach ($object->field_event_type as $term) {
-        if ($term->target_id) {
-          $term_name = Term::load($term->target_id)->get('name')->value;
-          $data['event_type'][] = $term_name;
-        }
-      }
+      // Term fields
+      $data['area'] = $this->getTranslatedTermNames($object->field_area, $langcode);
+      $data['hobby_area'] = $this->getTranslatedTermNames($object->field_hobby_area, $langcode);
+      $data['target_audience'] = $this->getTranslatedTermNames($object->field_target_audience, $langcode);
+      $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
+      $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
+      $data['hobby_category'] = $this->getTranslatedTermNames($object->field_hobby_category, $langcode);
 
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -77,6 +65,10 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // boolean fields
       $data['free_enterance'] = $object->field_free_enterance->value;
+      $data['is_hobby'] = $object->field_hobby_is_hobby->value;
+      $data['accessible'] = $object->field_accessible->value;
+      $data['child_care'] = $object->field_child_care->value;
+      $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value;
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";

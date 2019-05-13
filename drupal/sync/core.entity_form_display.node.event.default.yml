@@ -3,15 +3,27 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.field_accessible
     - field.field.node.event.field_address
     - field.field.node.event.field_area
+    - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_exceptional_opening_hours
     - field.field.node.event.field_free_enterance
-    - field.field.node.event.field_image
+    - field.field.node.event.field_hobby_area
+    - field.field.node.event.field_hobby_audience
+    - field.field.node.event.field_hobby_category
+    - field.field.node.event.field_hobby_is_hobby
+    - field.field.node.event.field_hobby_map
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
+    - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_pre_registration_end_time
+    - field.field.node.event.field_pre_registration_link
+    - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
@@ -20,12 +32,20 @@ dependencies:
     - field.field.node.event.field_start_time
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
-    - image.style.thumbnail
+    - field.field.node.event.field_timeframe_of_day
+    - field.field.node.event.field_weekday_friday
+    - field.field.node.event.field_weekday_monday
+    - field.field.node.event.field_weekday_saturday
+    - field.field.node.event.field_weekday_sunday
+    - field.field.node.event.field_weekday_thursday
+    - field.field.node.event.field_weekday_tuesday
+    - field.field.node.event.field_weekday_wednesday
     - node.type.event
   module:
     - address
     - datetime
-    - image
+    - datetime_range
+    - link
     - path
     - text
 id: node.event.default
@@ -39,6 +59,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_accessible:
+    weight: 34
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_address:
     weight: 12
     settings:
@@ -54,6 +81,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
+    region: content
+  field_child_care:
+    weight: 46
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_culture_and_or_activity_no:
+    weight: 47
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_description:
     weight: 11
@@ -78,6 +119,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
     region: content
+  field_exceptional_opening_hours:
+    weight: 66
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
   field_free_enterance:
     weight: 18
     settings:
@@ -85,13 +132,47 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_image:
-    weight: 13
+  field_hobby_area:
+    weight: 68
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: image_image
+    type: entity_reference_autocomplete
+    region: content
+  field_hobby_audience:
+    weight: 67
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_hobby_category:
+    weight: 45
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_hobby_is_hobby:
+    weight: 44
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_hobby_map:
+    weight: 49
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_image_ext_url:
     weight: 26
@@ -108,6 +189,33 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_pre_registration:
+    weight: 52
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_pre_registration_end_time:
+    weight: 57
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_pre_registration_link:
+    weight: 54
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_pre_registration_start_tim:
+    weight: 56
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_price:
     weight: 27
@@ -172,6 +280,68 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_timeframe_of_day:
+    weight: 60
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_weekday_friday:
+    weight: 63
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_monday:
+    weight: 58
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_saturday:
+    weight: 64
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_sunday:
+    weight: 65
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_thursday:
+    weight: 62
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_tuesday:
+    weight: 59
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weekday_wednesday:
+    weight: 61
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   langcode:
     type: language_select
     weight: 2
@@ -223,4 +393,7 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_hobby_email: true
+  field_hobby_person_responsible: true
+  field_hobby_phone_number: true

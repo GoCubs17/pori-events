@@ -1,0 +1,16 @@
+uuid: c9f394f4-009f-43e6-b5a6-fb43bf912013
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hobby_area
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: taxonomy_term.hobby_area
+target_entity_type_id: taxonomy_term
+target_bundle: hobby_area
+default_langcode: site_default
+language_alterable: false
