@@ -186,29 +186,19 @@ process:
   field_culture_and_or_activity_no:
     source: extra_options
     plugin: extra_offers_parse
-  field_pre_registration_link/uri:
-    -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - info_url
-        - fi
-  field_pre_registration_link/title:
-    -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - description
-        - fi
+  field_pre_registration_link/uri: pre_registration_url
+  field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
-      plugin: extract
-      source: pre_registration
-      default: ''
-      index:
-        - start_time
+      plugin: skip_on_empty
+      source: pre_registration_start_time
+      method: process
+    -
+      plugin: substr
+      source: pre_registration_start_time
+      default_value: ''
+      start: 0
+      length: 19
   field_pre_registration_end_time:
     -
       plugin: skip_on_empty
