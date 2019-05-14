@@ -1,0 +1,10 @@
+uuid: feb059ab-3171-4502-af8d-28673690ff21
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.token
+label: Token
+targetEntityType: node
+cache: true
