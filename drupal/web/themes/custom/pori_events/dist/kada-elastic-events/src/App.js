@@ -201,8 +201,8 @@ class App extends SearchkitComponent {
                 title={Drupal.t("For whom")}
               >
                 <RefinementListFilter
-                  id="audience"
-                  field="audience"
+                  id="target_audience"
+                  field="target_audience"
                   operator="OR"
                   size={100}
                 />
