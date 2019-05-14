@@ -21,8 +21,6 @@ source:
   ids:
     area_id:
       type: string
-  constants:
-    slash: /
   fields:
     -
       name: area_id
