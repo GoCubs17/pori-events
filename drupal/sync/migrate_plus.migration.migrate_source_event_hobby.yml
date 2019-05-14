@@ -21,8 +21,6 @@ source:
   ids:
     event_id:
       type: string
-  constants:
-    slash: /
   fields:
     -
       name: event_id
