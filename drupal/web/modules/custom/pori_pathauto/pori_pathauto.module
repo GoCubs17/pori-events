@@ -36,7 +36,7 @@ function pori_pathauto_pathauto_pattern_alter(PathautoPatternInterface $pattern,
     // @todo: Take translations into account.
     if ($node->getType() == 'event') {
       $segment1 = ($node->hasField('field_hobby_is_hobby') && $node->field_hobby_is_hobby->value) ? 'harrastukset': 'tapahtumat';
-      $pattern->setPattern($segment1 . '/[node:title]');
+      $pattern->setPattern($segment1 . '/' . $pattern->getPattern());
     }
   }
 }
