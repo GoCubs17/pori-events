@@ -133,7 +133,7 @@ source:
     -
       name: hobby_area
       label: 'Hobby area'
-      selector: '$.location[''@id'']'
+      selector: $.location.parent
 process:
   type:
     plugin: default_value
