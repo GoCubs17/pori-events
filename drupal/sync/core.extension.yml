@@ -52,6 +52,7 @@ module:
   path: 0
   pori_events_link_formatter: 0
   pori_harrastukset: 0
+  pori_pathauto: 0
   quickedit: 0
   rdf: 0
   search: 0
