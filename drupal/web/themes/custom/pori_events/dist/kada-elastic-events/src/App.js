@@ -244,7 +244,7 @@ class App extends SearchkitComponent {
                   id="free"
                   field="free_enterance"
                   label="Free Entrance"
-                  filter={TermQuery("free", "1")}
+                  filter={TermQuery("free_enterance", "1")}
                 />
 
                 <CheckboxFilter
