@@ -1,6 +1,6 @@
 uuid: e3f5bfc6-fd2c-4e3f-ab25-4ab9e1f04491
 langcode: fi
-status: false
+status: true
 dependencies:
   content:
     - 'block_content:basic:ae822b7b-9500-44d1-8817-7ac49af6d812'
@@ -26,6 +26,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
-    negate: true
+    pages: /harrastukset
+    negate: false
     context_mapping: {  }
