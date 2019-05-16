@@ -58,7 +58,7 @@ const HitsListItem = props => {
   // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
   const url = source.url ? source.url : "/node/" + result._id;
   const image_source = source.image_ext
-    ? "/"+source.image_ext
+    ? "/" + source.image_ext
     : "/themes/custom/pori_events/dist/images/event-default.jpg";
   const title = source.title ? source.title : null;
   const leading = source.short_description ? source.short_description : null;
@@ -95,16 +95,14 @@ const HitsListItem = props => {
 
 class App extends SearchkitComponent {
   componentDidMount() {
-    let is_hobby = (this.props.eventType === "hobbies") ? true : false;
+    let is_hobby = this.props.eventType === "hobbies" ? true : false;
     searchkit.addDefaultQuery(query => {
-      return query
-        .addQuery(TermQuery("is_hobby", is_hobby))
-        .setSort([
-          {
-            single_day: "desc",
-            start_time: "asc"
-          }
-        ]);
+      return query.addQuery(TermQuery("is_hobby", is_hobby)).setSort([
+        {
+          single_day: "desc",
+          start_time: "asc"
+        }
+      ]);
     });
   }
   render() {
@@ -179,7 +177,7 @@ class App extends SearchkitComponent {
               </Panel>
 
               <Panel
-                className={this.props.eventType}
+                className={`${this.props.eventType}--when-panel`}
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("When")}
@@ -190,6 +188,20 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
+              </Panel>
+              <Panel
+                className={`${this.props.eventType}--when`}
+                collapsable={true}
+                defaultCollapsed={true}
+                title={Drupal.t("When")}
+              >
+                <DateRangeFilter
+                  id="event_date"
+                  fromDateField="start_time"
+                  toDateField="end_time"
+                  calendarComponent={DateRangeCalendar}
+                />
+                <RefinementListFilter id="timeframe_of_day" title="timeframe_of_day" field="timeframe_of_day" operator="OR"/>
               </Panel>
 
               <Panel
