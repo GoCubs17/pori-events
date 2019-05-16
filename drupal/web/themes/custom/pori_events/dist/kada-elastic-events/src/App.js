@@ -160,7 +160,6 @@ class App extends SearchkitComponent {
                 <RefinementListFilter
                   id="area"
                   field="area"
-                  title="Area"
                   operator="OR"
                   size={100}
                 />
@@ -174,7 +173,6 @@ class App extends SearchkitComponent {
                 <RefinementListFilter
                   id="hobby_area"
                   field="hobby_area"
-                  title="Area"
                   operator="OR"
                   size={100}
                 />
