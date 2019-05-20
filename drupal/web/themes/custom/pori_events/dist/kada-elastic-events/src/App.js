@@ -179,7 +179,7 @@ class App extends SearchkitComponent {
               <Panel
                 className={`${this.props.eventType}--when-panel`}
                 collapsable={true}
-                defaultCollapsed={true}
+                defaultCollapsed={false}
                 title={Drupal.t("When")}
               >
                 <DateRangeFilter
@@ -192,7 +192,7 @@ class App extends SearchkitComponent {
               <Panel
                 className={`${this.props.eventType}--when`}
                 collapsable={true}
-                defaultCollapsed={true}
+                defaultCollapsed={false}
                 title={Drupal.t("When")}
               >
                 <DateRangeFilter
@@ -201,7 +201,58 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
-                <RefinementListFilter id="timeframe_of_day" title="timeframe_of_day" field="timeframe_of_day" operator="OR"/>
+               
+                <div className="weekdays_filter--container">
+                <CheckboxFilter
+                  id="monday"
+                  field="monday"
+                  label="MA"
+                  filter={TermQuery("monday", "1")}
+                />
+                <CheckboxFilter
+                  id="tuesday"
+                  field="tuesday"
+                  label="TI"
+                  filter={TermQuery("tuesday", "1")}
+                />
+                <CheckboxFilter
+                  id="wednesday"
+                  field="wednesday"
+                  label="KE"
+                  filter={TermQuery("wednesday", "1")}
+                />
+                <CheckboxFilter
+                  id="thursday"
+                  field="thursday"
+                  label="TO"
+                  filter={TermQuery("thursday", "1")}
+                />
+                <CheckboxFilter
+                  id="friday"
+                  field="friday"
+                  label="PE"
+                  filter={TermQuery("friday", "1")}
+                />
+                <CheckboxFilter
+                  id="saturday"
+                  field="saturday"
+                  label="LA"
+                  filter={TermQuery("saturday", "1")}
+                />
+                <CheckboxFilter
+                  id="sunday"
+                  field="sunday"
+                  label="SU"
+                  filter={TermQuery("sunday", "1")}
+                />
+                </div>
+                <RefinementListFilter
+                  id="timeframe_of_day"
+                  title="Timeframe of the day:"
+                  field="timeframe"
+                  operator="OR"
+              
+                />
               </Panel>
 
               <Panel
@@ -236,6 +287,12 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Refine your search")}
               >
+                <CheckboxFilter
+                  id="registration"
+                  field="registration"
+                  label="Registration required"
+                  filter={TermQuery("registration", "1")}
+                />
                 <CheckboxFilter
                   id="accessible"
                   field="accessible"
