@@ -85,7 +85,16 @@ class NodeNormalizer extends ContentEntityNormalizer {
       } else $data['sunday'] = '0';
 
       // Timeframe
-      $data['timeframe'] = $object->field_timeframe_of_day->value;
+      // $data['timeframe'] = $object->field_timeframe_of_day->value;
+        $timefields = $object->field_timeframe_of_day->value;
+        if ($timefields == "0") {
+          $data['timeframe'] = "Morning";
+        } elseif ($timefields == "1") {
+          $data['timeframe'] = "Afternoon";
+        } else {
+          $data['timeframe'] = "Evening";
+        } 
+      
 
 
       // boolean fields

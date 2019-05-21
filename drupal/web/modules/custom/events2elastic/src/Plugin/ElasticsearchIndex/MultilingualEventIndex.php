@@ -264,7 +264,6 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               ],
               'timeframe' => [
                 'type' => 'keyword',
-                'index' => 'analyzed',
               ],
               'monday' => [
                 'type' => 'boolean',
