@@ -70,6 +70,13 @@ const HitsListItem = props => {
 
   const time_start = Moment(source.start_time).format(time_format);
   const time_end = Moment(source.end_time).format(time_format);
+  const monday = source.monday === "1" ? "MA |" : null;
+  const tuesday = source.tuesday === "1" ? " TO |" : null;
+  const wednesday = source.wednesday === "1" ? " KE |" : null;
+  const thursday = source.thursday === "1" ? " TO |" : null;
+  const friday = source.friday === "1" ? " PE |" : null;
+  const saturday = source.saturday === "1" ? " LA |" : null;
+  const sunday = source.sunday === "1" ? " SU" : null;
 
   return (
     <div
@@ -82,6 +89,9 @@ const HitsListItem = props => {
         </div>
         <div className="event__time">
           {date_start} - {date_end} klo {time_start} - {time_end}
+        </div>
+        <div className="event__weekdays">
+          {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday}
         </div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
@@ -201,57 +211,56 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
-               
+
                 <div className="weekdays_filter--container">
-                <CheckboxFilter
-                  id="monday"
-                  field="monday"
-                  label="MA"
-                  filter={TermQuery("monday", "1")}
-                />
-                <CheckboxFilter
-                  id="tuesday"
-                  field="tuesday"
-                  label="TI"
-                  filter={TermQuery("tuesday", "1")}
-                />
-                <CheckboxFilter
-                  id="wednesday"
-                  field="wednesday"
-                  label="KE"
-                  filter={TermQuery("wednesday", "1")}
-                />
-                <CheckboxFilter
-                  id="thursday"
-                  field="thursday"
-                  label="TO"
-                  filter={TermQuery("thursday", "1")}
-                />
-                <CheckboxFilter
-                  id="friday"
-                  field="friday"
-                  label="PE"
-                  filter={TermQuery("friday", "1")}
-                />
-                <CheckboxFilter
-                  id="saturday"
-                  field="saturday"
-                  label="LA"
-                  filter={TermQuery("saturday", "1")}
-                />
-                <CheckboxFilter
-                  id="sunday"
-                  field="sunday"
-                  label="SU"
-                  filter={TermQuery("sunday", "1")}
-                />
+                  <CheckboxFilter
+                    id="monday"
+                    field="monday"
+                    label="MA"
+                    filter={TermQuery("monday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="tuesday"
+                    field="tuesday"
+                    label="TI"
+                    filter={TermQuery("tuesday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="wednesday"
+                    field="wednesday"
+                    label="KE"
+                    filter={TermQuery("wednesday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="thursday"
+                    field="thursday"
+                    label="TO"
+                    filter={TermQuery("thursday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="friday"
+                    field="friday"
+                    label="PE"
+                    filter={TermQuery("friday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="saturday"
+                    field="saturday"
+                    label="LA"
+                    filter={TermQuery("saturday", "1")}
+                  />
+                  <CheckboxFilter
+                    id="sunday"
+                    field="sunday"
+                    label="SU"
+                    filter={TermQuery("sunday", "1")}
+                  />
                 </div>
                 <RefinementListFilter
                   id="timeframe_of_day"
                   title="Timeframe of the day:"
                   field="timeframe"
                   operator="OR"
-              
                 />
               </Panel>
 
