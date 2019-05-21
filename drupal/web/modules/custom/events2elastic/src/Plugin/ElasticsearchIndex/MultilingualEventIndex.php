@@ -259,6 +259,31 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
+              'registration' => [
+                'type' => 'boolean',
+              ],
+              'timeframe' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'monday' => [
+                'type' => 'boolean',
+              ],
+              'wednesday' => [
+                'type' => 'boolean',
+              ],
+              'thursday' => [
+                'type' => 'boolean',
+              ],
+              'friday' => [
+                'type' => 'boolean',
+              ],
+              'saturday' => [
+                'type' => 'boolean',
+              ],
+              'sunday' => [
+                'type' => 'boolean',
+              ],
             ],
           ],
         ];

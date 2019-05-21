@@ -55,13 +55,38 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
       $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
       $data['hobby_category'] = $this->getTranslatedTermNames($object->field_hobby_category, $langcode);
-
+      
       // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
       if ($object->hasField('field_tickets')) {
         $data['tickets'] = $object->field_tickets->value;
       }
+      if (isset($object->field_weekday_monday->value)) {
+        $data['monday'] = '1';
+      } else $data['monday'] = '0';
+      if (isset($object->field_weekday_tuesday->value)) {
+        $data['tuesday'] = '1';
+      } else $data['tuesday'] = '0';
+      if (isset($object->field_weekday_wednesday->value)) {
+        $data['wednesday'] = '1';
+      } else $data['wednesday'] = '0';
+      if (isset($object->field_weekday_thursday->value)) {
+        $data['thursday'] = '1';
+      } else $data['thursday'] = '0';
+      if (isset($object->field_weekday_friday->value)) {
+        $data['friday'] = '1';
+      } else $data['friday'] = '0';
+      if (isset($object->field_weekday_saturday->value)) {
+        $data['saturday'] = '1';
+      } else $data['saturday'] = '0';
+      if (isset($object->field_weekday_sunday->value)) {
+        $data['sunday'] = '1';
+      } else $data['sunday'] = '0';
+
+      // Timeframe
+      $data['timeframe'] = $object->field_timeframe_of_day->value;
+
 
       // boolean fields
       $data['free_enterance'] = $object->field_free_enterance->value;
@@ -69,6 +94,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['accessible'] = $object->field_accessible->value;
       $data['child_care'] = $object->field_child_care->value;
       $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value;
+      $data['registration'] = $object->field_pre_registration->value;
+
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";
