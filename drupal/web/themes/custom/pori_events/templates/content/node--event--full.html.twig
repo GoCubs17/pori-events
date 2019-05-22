@@ -100,6 +100,13 @@
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
 {% set target_audience = content.field_target_audience[0]['#title'] %}
+{% set monday = content.field_weekday_monday[0] %}
+{% set tuesday = content.field_weekday_tuesday[0] %}
+{% set wednesday = content.field_weekday_wednesday[0] %}
+{% set thursday = content.field_weekday_thursday[0] %}
+{% set friday = content.field_weekday_friday[0] %}
+{% set saturday = content.field_weekday_saturday[0] %}
+{% set sunday = content.field_weekday_sunday[0] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -153,9 +160,34 @@
 
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
-        {% trans with {'context': 'Event sidebar'} %}At{% endtrans %} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        <div class="event__content-weekday-wrapper">
+         {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+        {% if monday %}
+         <p>Maanantai {{ monday }}</p>
+         {% endif %}
+          {% if tuesday %}
+         <p>Tiistai {{ tuesday }}</p>
+          {% endif %}
+          {% if wednesday %}
+         <p>Keskiviikko {{ wednesday }}</p>
+         {% endif %}
+          {% if thursday %}
+         <p>Torstai {{ thursday }}</p>
+          {% endif %}
+          {% if friday %}
+         <p>Perjantai {{ friday }}</p>
+          {% endif %}
+          {% if saturday %}
+         <p>Lauantai {{ saturday }}</p>
+          {% endif %}
+          {% if sunday %}
+         <p>Sunnuntai {{ sunday }}</p>
+          {% endif %}
+          {% else %}       
+        {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        {% endif %}
       </div>
-
+      </div>
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-map-marker-alt"></i>
@@ -181,8 +213,6 @@
           Free Event
       </div>
       {% endif %}
-
-      {# {% if free.reponse %}yes{% else %}no{% endif%} #}
 
       {% if 'On' in childcare %}
       <div class="event__content--sidebar__item">
