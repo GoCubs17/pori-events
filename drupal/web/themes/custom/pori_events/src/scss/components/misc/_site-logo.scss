@@ -35,6 +35,7 @@
   .dialog-off-canvas-main-canvas {
     .layout-container {
       .page-footer {
+        border-bottom: 0.6rem solid #EC1C24 !important; 
         .page-footer__top {
           .footer-logo {
             background: url(/themes/custom/pori_events/dist/images/harrastukset1.png)
@@ -43,10 +44,15 @@
           }
           .add-event{
             font-size: 0px;
+            background: #EC1C24;
+            &:hover {
+              color: white;
+              background: darken(#EC1C24, 5%);
+  }
           }
           .add-event:after {
             
-            content: 'Add own hobbies';
+            content: 'LISÄÄ OMA HARRASTUKSESI +';
             font-size: 20px;
           }
         }
