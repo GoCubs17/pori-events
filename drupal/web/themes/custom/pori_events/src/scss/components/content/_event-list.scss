@@ -1434,14 +1434,10 @@
 .add-event {
   display: inline-block;
   z-index: 5;
-  background: $green;
   color: #fff;
   padding: 10px 40px;
   text-transform: uppercase;
-  &:hover {
-    color: white;
-    background: darken($green, 5%);
-  }
+  
   .link-text {
     margin-right: 20px;
   }
