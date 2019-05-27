@@ -91,7 +91,7 @@
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
 {% set ticket_vendor = content.field_ticket_vendor[0]['content'] %}
-{% set accesible = content.accesible[0] %}
+{% set accessible = content.field_accessible[0] %}
 {% set address = content.field_address[0]['content'] %}
 {% set childcare = content.field_child_care[0] %}
 {% set culture_card = content.field_culture_and_or_activity_no[0] %}
@@ -224,7 +224,7 @@
 
        {% if 'On' in culture_card %}
       <div class="event__content--sidebar__item">
-      <i class="fas fa-euro-sign"></i>
+      <i class="fas fa-money-bill"></i>
           Payment with culture or activity card available
       </div>
       {% endif %}
@@ -276,18 +276,18 @@
       {% endif %}
 
       {% if 'Yes' in accessible %}
-            <div class="event__content--sidebar__item">
-            <i class="fab fa-accessible-icon"></i>
-                Accessible
-            </div>
-            {% endif %}
+        <div class="event__content--sidebar__item">
+        <i class="fab fa-accessible-icon"></i>
+            Accessible
+        </div>
+      {% endif %}
 
       {% if 'On' in childcare %}
-            <div class="event__content--sidebar__item">
-            <i class="fas fa-child"></i>
-                Child friendly
-            </div>
-            {% endif %}
+        <div class="event__content--sidebar__item">
+        <i class="fas fa-child"></i>
+            Child friendly
+        </div>
+      {% endif %}
     </div>
   </div>
 </article>
