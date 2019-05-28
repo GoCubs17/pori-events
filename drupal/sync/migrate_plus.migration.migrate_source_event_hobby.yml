@@ -65,11 +65,11 @@ source:
     -
       name: event_audience
       label: Audience
-      selector: '$.audience[*].id'
+      selector: '$.audience.*.id'
     -
       name: hobby_keywords
       label: Keywords
-      selector: '$.keywords[*].id'
+      selector: '$.keywords.*.id'
     -
       name: event_offers_is_free
       label: 'Offers is free'
@@ -125,7 +125,7 @@ source:
     -
       name: opening_hours
       label: 'Opening hours'
-      selector: $.opening_hours
+      selector: '$.opening_hours.*'
     -
       name: exceptional_opening_hours
       label: 'Exceptional opening hours'
