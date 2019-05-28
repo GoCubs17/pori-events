@@ -20,7 +20,8 @@ import {
   SearchkitComponent,
   Panel,
   TermQuery,
-  CheckboxFilter
+  CheckboxFilter,
+  HierarchicalMenuFilter
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
@@ -151,9 +152,9 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("What")}
               >
-                <RefinementListFilter
+                <HierarchicalMenuFilter
                   id="hobby_category"
-                  field="hobby_category"
+                  fields={["hobby_category", "hobby_sub_category"]}
                   operator="OR"
                   size={100}
                 />
