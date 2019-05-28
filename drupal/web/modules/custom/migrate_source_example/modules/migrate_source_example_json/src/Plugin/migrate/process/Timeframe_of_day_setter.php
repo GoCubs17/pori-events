@@ -21,16 +21,36 @@ use Drupal\migrate\Row;
 class Timeframe_of_day_setter extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     // Return 0 if morning, 1 with afternoon and 2 with evening. Field is mapped list of these 3 values.
-    if (is_array($value) && !empty($value['start_hour'])) {
-      $start_hour_int = (int)substr($value['start_hour'], 0, 2);
-      if ($start_hour_int < 12) {
-        return 0;
+    $return_array = [];
+    if (is_array($value)) {
+      if (isset($value['start_hour'])) {
+        $start_hour_int = (int)substr($value['start_hour'], 0, 2);
+        if ($start_hour_int < 12) {
+          $return_array[] = 0;
+        }
+        else if ($start_hour_int < 16 ) {
+          $return_array[] = 1;
+        }
+        else {
+          $return_array[] = 2;
+        }
+        return $return_array;
       }
-      else if ($start_hour_int < 16 ) {
-        return 1;
-      }
-      else {
-        return 2;
+      else if (isset($value[0]['start_hour'])) {
+        // If multiple values given.
+        foreach ($value as $key => $val) {
+          $start_hour_int = (int)substr($val['start_hour'], 0, 2);
+          if ($start_hour_int < 12) {
+            $return_array[] = 0;
+          }
+          else if ($start_hour_int < 16 ) {
+            $return_array[] = 1;
+          }
+          else {
+            $return_array[] = 2;
+          }
+        }
+        return $return_array;
       }
 
     }
