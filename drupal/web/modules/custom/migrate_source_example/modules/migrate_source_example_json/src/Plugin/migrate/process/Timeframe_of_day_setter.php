@@ -15,6 +15,7 @@ use Drupal\migrate\Row;
 /**
  * @MigrateProcessPlugin(
  *   id = "timeframe_of_day_setter",
+ *   handle_multiples = TRUE
  * )
  */
 class Timeframe_of_day_setter extends ProcessPluginBase {

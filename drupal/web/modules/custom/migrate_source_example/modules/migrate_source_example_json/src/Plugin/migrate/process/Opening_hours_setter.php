@@ -15,6 +15,7 @@ use Drupal\migrate\Row;
 /**
  * @MigrateProcessPlugin(
  *   id = "opening_hours_setter",
+ *   handle_multiples = TRUE
  * )
  */
 class Opening_hours_setter extends ProcessPluginBase {
