@@ -25,7 +25,6 @@ class Opening_hours_setter extends ProcessPluginBase {
       if (isset($value['day'])) {
         $day = $value['day'];
         $time_string = $value['start_hour'] . '-' . $value['end_hour'];
-        print_r($value);
         if ($destination_property == 'field_weekday_monday' && $day == 0) {
           return $time_string;
         }
