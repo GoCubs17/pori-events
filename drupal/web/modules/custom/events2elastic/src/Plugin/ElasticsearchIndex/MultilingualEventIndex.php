@@ -251,6 +251,10 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
+              'hobby_sub_category' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
               'hobby_audience' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
