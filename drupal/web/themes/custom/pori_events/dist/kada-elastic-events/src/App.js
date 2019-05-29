@@ -20,7 +20,8 @@ import {
   SearchkitComponent,
   Panel,
   TermQuery,
-  CheckboxFilter
+  CheckboxFilter,
+  HierarchicalMenuFilter
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
@@ -71,7 +72,7 @@ const HitsListItem = props => {
   const time_start = Moment(source.start_time).format(time_format);
   const time_end = Moment(source.end_time).format(time_format);
   const monday = source.monday === "1" ? "MA |" : null;
-  const tuesday = source.tuesday === "1" ? " TO |" : null;
+  const tuesday = source.tuesday === "1" ? " TI |" : null;
   const wednesday = source.wednesday === "1" ? " KE |" : null;
   const thursday = source.thursday === "1" ? " TO |" : null;
   const friday = source.friday === "1" ? " PE |" : null;
@@ -88,7 +89,7 @@ const HitsListItem = props => {
           <img src={image_source} />
         </div>
         <div className="event__time">
-          {date_start} - {date_end} klo {time_start} - {time_end}
+          {date_start} - {date_end}
         </div>
         <div className="event__weekdays">
           {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday}
@@ -151,9 +152,9 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("What")}
               >
-                <RefinementListFilter
+                <HierarchicalMenuFilter
                   id="hobby_category"
-                  field="hobby_category"
+                  fields={["hobby_category", "hobby_sub_category"]}
                   operator="OR"
                   size={100}
                 />
