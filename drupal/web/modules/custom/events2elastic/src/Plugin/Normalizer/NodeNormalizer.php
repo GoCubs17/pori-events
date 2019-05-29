@@ -55,7 +55,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
       $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
       $data['hobby_category'] = $this->getTranslatedParentTermNames($object->field_hobby_category, $langcode);
-      $data['hobby_sub_category'] = $this->getTranslatedTermNames($object->field_hobby_category, $langcode);
+      $data['hobby_sub_category'] = $this->getTranslatedChildTermNames($object->field_hobby_category, $langcode);
       
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -148,7 +148,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
   }
 
   /**
-   * Get a list of translated term names.
+   * Get a complete list of translated term names without hierarchy.
    *
    * @param \Drupal\Core\Field\FieldItemList $terms
    *   List of Drupal terms.
@@ -187,9 +187,42 @@ class NodeNormalizer extends ContentEntityNormalizer {
         $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term_entity, $langcode);
         /** @var \Drupal\taxonomy\Entity\Term $translated_term */
         $parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadParents($translated_term->id());
-        foreach ($parents as $parent) {
-          /** @var \Drupal\taxonomy\Entity\Term $parent */
-          $term_names[] = $parent->label();
+        if ($parents) {
+          foreach ($parents as $parent) {
+            /** @var \Drupal\taxonomy\Entity\Term $parent */
+            if ($parent && $parent->label()) {
+              $term_names[] = $parent->label();
+            }
+          }
+        }
+        else {
+          $term_names[] = $translated_term->label();
+        }
+      }
+    }
+    return array_unique($term_names);
+  }
+
+  /**
+   * Get a list of translated child term names.
+   *
+   * @param \Drupal\Core\Field\FieldItemList $terms
+   *   List of Drupal terms.
+   * @param string $langcode
+   *   Language code.
+   *
+   * @return array
+   *   List of translated term names.
+   */
+  private function getTranslatedChildTermNames(FieldItemList $terms, string $langcode) {
+    $term_names = [];
+    foreach ($terms as $term) {
+      if ($term_entity = Term::load($term->target_id)) {
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term_entity, $langcode);
+        /** @var \Drupal\taxonomy\Entity\Term $translated_term */
+        $parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadParents($translated_term->id());
+        if ($parents) {
+          $term_names[] = $translated_term->label();
         }
       }
     }
