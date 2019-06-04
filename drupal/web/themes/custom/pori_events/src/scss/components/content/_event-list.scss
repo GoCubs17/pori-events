@@ -1435,7 +1435,7 @@
   display: inline-block;
   z-index: 5;
   color: #fff;
-  padding: 10px 40px;
+  padding: 10px 30px;
   text-transform: uppercase;
   
   .link-text {
@@ -1451,9 +1451,8 @@
     }
   }
   @media screen and (min-width: $desktop-narrow) {
-    left: 50%;
     position: absolute;
-    top: 0;
+    top: 100px;
   }
 }
 
@@ -1487,6 +1486,21 @@
         .sk-panel {
           .sk-panel__header.is-collapsable {
             background: #ec1c24;
+          }
+        }
+      }
+    }
+  }
+}
+.hobbies{
+  .sk-action-bar {
+    .sk-action-bar-row{
+      .sk-filter-groups{
+        .sk-filter-group{
+          .sk-filter-group-items{
+            .sk-filter-group-items__value{
+              background: #ec1c24;
+            }
           }
         }
       }
