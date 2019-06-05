@@ -1,6 +1,6 @@
 uuid: 5036446f-9411-448b-9bfd-024188447b1d
 langcode: fi
-status: true
+status: false
 dependencies:
   config:
     - views.view.promoted_events

@@ -169,6 +169,10 @@
   flex-direction: column;
   align-items: flex-end;
 }
+.event__content-weekday-wrapper > p {
+  margin: 0;
+}
+
 .hobby {
   background: #EC1C24 !important;
 }
