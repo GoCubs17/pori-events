@@ -1288,7 +1288,9 @@
 .sk-panel__content {
   font-size: 14px;
 }
-
+.sk-panel__header{
+margin-bottom: 10px;
+}
 .sk-panel__header.is-collapsable {
   background: $secondary-color-light;
   margin-top: 10px;
@@ -1435,7 +1437,7 @@
   display: inline-block;
   z-index: 5;
   color: #fff;
-  padding: 10px 40px;
+  padding: 10px 30px;
   text-transform: uppercase;
   
   .link-text {
@@ -1451,9 +1453,8 @@
     }
   }
   @media screen and (min-width: $desktop-narrow) {
-    left: 50%;
     position: absolute;
-    top: 0;
+    top: 100px;
   }
 }
 
@@ -1493,22 +1494,40 @@
     }
   }
 }
+.hobbies{
+  .sk-action-bar {
+    .sk-action-bar-row{
+      .sk-filter-groups{
+        .sk-filter-group{
+          .sk-filter-group-items{
+            .sk-filter-group-items__value{
+              background: #ec1c24;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 // weekdays filter
 .weekdays_filter--container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   margin-top: 10px;
   .sk-panel {
     .sk-panel__content {
       .sk-item-list {
         .is-active {
           background: lightcoral;
+          border-radius: 12%;
         }
         .sk-item-list__item {
           padding: 0;
           margin: 0;
-
+          .sk-item-list-option__text {
+            padding: 0 8px;
+          }
           .sk-item-list-option__count {
             display: none;
           }

@@ -212,8 +212,11 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
-
+                <div class="weekdays_title">
+                VIIKONPÄIVÄT:
+                </div>
                 <div className="weekdays_filter--container">
+                  
                   <CheckboxFilter
                     id="monday"
                     field="monday"
@@ -259,7 +262,7 @@ class App extends SearchkitComponent {
                 </div>
                 <RefinementListFilter
                   id="timeframe_of_day"
-                  title="Timeframe of the day:"
+                  title="VUOROKAUDENAIKA:"
                   field="timeframe"
                   operator="OR"
                 />

@@ -2,10 +2,7 @@ uuid: 8d1490e3-2ef1-4166-b627-4e7902a2bba7
 langcode: fi
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:bec0822c-f305-44dc-aec8-d27cc42745f2'
   module:
-    - block_content
     - system
   theme:
     - pori_events
