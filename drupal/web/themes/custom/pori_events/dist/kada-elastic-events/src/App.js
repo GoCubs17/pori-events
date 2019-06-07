@@ -69,15 +69,15 @@ const HitsListItem = props => {
   const date_start = Moment(source.start_time).format(date_format);
   const date_end = Moment(source.end_time).format(date_format);
 
-  const time_start = Moment(source.start_time).format(time_format);
-  const time_end = Moment(source.end_time).format(time_format);
-  const monday = source.monday === "1" ? "MA |" : null;
-  const tuesday = source.tuesday === "1" ? " TI |" : null;
-  const wednesday = source.wednesday === "1" ? " KE |" : null;
-  const thursday = source.thursday === "1" ? " TO |" : null;
-  const friday = source.friday === "1" ? " PE |" : null;
-  const saturday = source.saturday === "1" ? " LA |" : null;
-  const sunday = source.sunday === "1" ? " SU" : null;
+  let weekDays = []
+  if (source.monday === "1")  weekDays.push("MA");
+  if (source.tuesday === "1")  weekDays.push("TI");
+  if (source.wednesday === "1")  weekDays.push("KE");
+  if (source.thursday === "1")  weekDays.push("TO");
+  if (source.friday === "1")  weekDays.push("PE");
+  if (source.saturday === "1")  weekDays.push("LA");
+  if (source.sunday === "1")  weekDays.push("SU");
+  const addDay = weekDays.join(' | ');
 
   return (
     <div
@@ -92,7 +92,8 @@ const HitsListItem = props => {
           {date_start} - {date_end}
         </div>
         <div className="event__weekdays">
-          {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday}
+          {/* {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday} */}
+          {addDay}
         </div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
