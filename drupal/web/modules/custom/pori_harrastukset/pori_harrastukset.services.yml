@@ -1,0 +1,5 @@
+services:
+  pori_harrastukset:
+    class: 'Drupal\pori_harrastukset\EventSubscriber\HobbiesRedirectSubscriber'
+    tags:
+      - {name: event_subscriber}
