@@ -411,6 +411,7 @@
 .rc-calendar-body {
   padding: 9px 10px 10px;
   height: 217px;
+  z-index: 2;
 }
 .rc-calendar table {
   border-collapse: collapse;
@@ -1296,6 +1297,11 @@ margin-bottom: 10px;
   margin-top: 10px;
   padding: 10px 10px 10px 30px;
   color: white;
+  &:hover {
+    color: white;
+    background: darken($blue, 5%);
+  }
+
 }
 
 .sk-item-list__item {
@@ -1435,7 +1441,7 @@ margin-bottom: 10px;
 
 .add-event {
   display: inline-block;
-  z-index: 5;
+  z-index: 1;
   color: #fff;
   padding: 10px 30px;
   text-transform: uppercase;
@@ -1488,6 +1494,10 @@ margin-bottom: 10px;
         .sk-panel {
           .sk-panel__header.is-collapsable {
             background: #ec1c24;
+            &:hover {
+              color: white;
+              background: darken(#EC1C24, 5%);
+            }
           }
         }
       }
