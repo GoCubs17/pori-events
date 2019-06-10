@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\pori_harrastukset\EventSubscriber;
+namespace Drupal\pori_event_search_defaults\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -11,7 +11,7 @@ use Drupal\Core\Url;
 /**
  * Class HobbiesRedirectSubscriber.
  */
-class HobbiesRedirectSubscriber implements EventSubscriberInterface {
+class EventsDefaultRedirectSubscriber implements EventSubscriberInterface {
 
   /**
    * Add daterange query parameters for default calendar view requests.
@@ -22,7 +22,6 @@ class HobbiesRedirectSubscriber implements EventSubscriberInterface {
   public function dateRangeRedirect(GetResponseEvent $event) {
 
     $url = Url::fromRoute('<current>')->getInternalPath();
-    $days = 5;
 
     /* @var $path_matcher \Drupal\Core\Path\PathMatcher */
     $path_matcher = \Drupal::service('path.matcher');
