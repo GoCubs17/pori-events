@@ -1,0 +1,5 @@
+services:
+  pori_event_search_defaults.eventsubscriber.default_redirect:
+    class: 'Drupal\pori_event_search_defaults\EventSubscriber\EventsDefaultRedirectSubscriber'
+    tags:
+      - {name: event_subscriber}
