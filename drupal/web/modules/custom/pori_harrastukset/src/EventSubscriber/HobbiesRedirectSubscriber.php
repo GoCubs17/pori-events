@@ -14,27 +14,32 @@ use Drupal\Core\Url;
 class HobbiesRedirectSubscriber implements EventSubscriberInterface {
 
   /**
-   * Redirects the hobbies calendar to url with one week window of date start/end.
+   * Add daterange query parameters for default calendar view requests.
+   *
+   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   *   ResponseEvent.
    */
   public function dateRangeRedirect(GetResponseEvent $event) {
 
-    $params = \Drupal::request()->query->all();
-    $current_url = Url::fromRoute('<current>');
-    $url = $current_url->getInternalPath();
-    $urls_to_redirect = [
-      'node',
-      'harrastukset'
-    ];
-    if (in_array($url, $urls_to_redirect) && empty($params)) {
-      global $base_url;
-      $days = 5;
-      $start = strtotime('today midnight');
-      $end = strtotime('+' . $days . ' day', $start);
+    $url = Url::fromRoute('<current>')->getInternalPath();
+    $days = 5;
 
-      // The start and end parameters, timestamp as normal
-      // but extra digits for searchkit..
-      $start = 'event_date_from=' . (string) $start . '000';
-      $end = 'event_date_to=' . (string) $end . '999';
+    /* @var $path_matcher \Drupal\Core\Path\PathMatcher */
+    $path_matcher = \Drupal::service('path.matcher');
+
+    $do_redirect = ($path_matcher->isFrontpage() || $path_matcher->matchPath('harrastukset', $url)) ? TRUE : FALSE;
+
+    if (empty(\Drupal::request()->query->all()) && $do_redirect) {
+      global $base_url;
+      $today = strtotime('today midnight');
+
+      // Use millisecond dates like
+      // \Drupal\events2elastic\Plugin\Normalizer\NodeNormalizer does..
+      $start = 'event_date_from=' . date('U000', $today);
+      $end = 'event_date_to=' . date('U000', strtotime('+5 day', $today));
+
+      // Rewrite to empty url if homepage.
+      $url = ($path_matcher->isFrontpage()) ? '' : $url;
 
       // Let user know about the time window default.
       // @todo: This is a dirty hack - what we need is to bypass cache....
