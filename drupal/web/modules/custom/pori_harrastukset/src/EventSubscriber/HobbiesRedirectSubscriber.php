@@ -4,7 +4,7 @@ namespace Drupal\pori_harrastukset\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Cache\CacheableRedirectResponse;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Drupal\Core\Url;
 
@@ -41,12 +41,7 @@ class HobbiesRedirectSubscriber implements EventSubscriberInterface {
       // Rewrite to empty url if homepage.
       $url = ($path_matcher->isFrontpage()) ? '' : $url;
 
-      // Let user know about the time window default.
-      // @todo: This is a dirty hack - what we need is to bypass cache....
-      drupal_set_message(t('Search filtered to next @days days', ['@days' => $days]));
-
-      $response = new RedirectResponse($base_url . '/' . $url . '?' . $start . '&' . $end);
-      $response->send();
+      $event->setResponse(new CacheableRedirectResponse($base_url . '/' . $url . '?' . $start . '&' . $end));
     }
   }
 
