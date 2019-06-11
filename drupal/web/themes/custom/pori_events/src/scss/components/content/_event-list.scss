@@ -1182,6 +1182,25 @@
   -ms-grid-row-align: center;
   align-self: center;
 }
+//"From" and "to" field label translation to FI: 
+.sk-date-box:first-of-type {
+.sk-date-box__label {
+  font-size: 0;
+  &:lang(fi):after{
+    content: "Alkaa";
+    font-size: 14px;
+    }
+  }
+}
+.sk-date-box {
+  .sk-date-box__label {
+    font-size: 0;
+    &:lang(fi):after{
+      content: "Loppuu";
+      font-size: 14px;
+    }
+  }
+}
 .sk-date-box__value {
   line-height: 1;
   background: #f4f4f4;
