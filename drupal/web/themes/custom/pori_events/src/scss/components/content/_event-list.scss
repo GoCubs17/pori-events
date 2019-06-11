@@ -1594,18 +1594,44 @@ margin-bottom: 10px;
     }
   }
 }
-//category hierarchical menu
-.sk-hierarchical-menu-option__count {
- display: none;
-}
-.sk-hierarchical-menu-option__text {
-  padding: 10px 20px;
+//hierarchical menu
+.sk-hierarchical-menu-option{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
   border-bottom: 1px solid #eee;
 }
-.is-active {
-  .sk-hierarchical-menu-option__text {
+.sk-hierarchical-menu-option__count {
+ align-self: center;
+ color:#bbb;
+ padding-right: 10px;
+ 
+}
+.sk-hierarchical-menu-option__text {
+  padding: 15px 20px;
+  
+}
+.filter--hobby_category > .sk-panel__header:after {
+  content: "";
+}
+.sk-hierarchical-menu-list__hierarchical-options{
+  margin-left: 40px;
+}
+.sk-hierarchical-menu-list__root > .sk-hierarchical-menu-list__hierarchical-options{
+    margin-left: 0;
+}
+.sk-hierarchical-menu-option.is-active { 
     border-left: 3px solid #ec1c24;
     background: lightcoral;
-    padding: 10px 10px;
+    color:white;
+}
+.is-active {
+  .sk-hierarchical-menu-option__text{
+    border: none;
+  }
+}
+.sk-hierarchical-menu-list__root{
+  .is-active{
+    content: "";
   }
 }
