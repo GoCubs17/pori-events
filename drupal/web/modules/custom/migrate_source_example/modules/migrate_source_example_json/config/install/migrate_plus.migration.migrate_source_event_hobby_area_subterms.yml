@@ -4,16 +4,16 @@ dependencies:
   module:
     - migrate_source_example_json
     - taxonomy
-id: migrate_source_event_hobby_area
+id: migrate_source_event_hobby_area_subterms
 migration_tags: null
 migration_group: migrate_source_event
-label: Hobby area
+label: Hobby area subterms
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/place/?is_address=false&page_size=100&no_parent=true'
-  item_selector: $.data[*]
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/place/?page_size=100&is_address=false&parent=se:13'
+  item_selector: $.data.*
   ids:
     area_id:
       type: string
@@ -33,6 +33,16 @@ process:
     plugin: default_value
     default_value: hobby_area
   name: area_name
+  parent:
+    -
+      plugin: default_value
+      default_value: https://test.satakuntaevents.fi/activity/api/v1/place/se:13/
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_hobby_area
+      no_stub: true
 destination:
   plugin: 'entity:taxonomy_term'
-migration_dependencies: {  }
+migration_dependencies:
+  required:
+    - migrate_source_event_hobby_area
