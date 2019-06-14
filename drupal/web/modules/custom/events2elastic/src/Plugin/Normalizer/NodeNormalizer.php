@@ -89,11 +89,11 @@ class NodeNormalizer extends ContentEntityNormalizer {
       // $data['timeframe'] = $object->field_timeframe_of_day->value;
         $timefields = $object->field_timeframe_of_day->value;
         if ($timefields == "0") {
-          $data['timeframe'] = "Morning";
+          $data['timeframe'] = " Aamupäivällä";
         } elseif ($timefields == "1") {
-          $data['timeframe'] = "Afternoon";
+          $data['timeframe'] = "Iltapäivällä";
         } else {
-          $data['timeframe'] = "Evening";
+          $data['timeframe'] = "Illalla";
         } 
       
 
