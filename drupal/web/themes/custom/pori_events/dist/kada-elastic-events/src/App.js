@@ -92,7 +92,6 @@ const HitsListItem = props => {
           {date_start} - {date_end}
         </div>
         <div className="event__weekdays">
-          {/* {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday} */}
           {addDay}
         </div>
         <h2 className="event__title">
