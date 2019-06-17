@@ -107,6 +107,7 @@
 {% set friday = content.field_weekday_friday[0] %}
 {% set saturday = content.field_weekday_saturday[0] %}
 {% set sunday = content.field_weekday_sunday[0] %}
+{% set extra_info_info = content.field_location_extra_info_info[0]['#context']['value'] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -193,7 +194,8 @@
       <div class="event__content--sidebar__item">
         <i class="fas fa-map-marker-alt"></i>
         {% if location_extra_info %}
-          {{ location_extra_info }},
+          {{ location_extra_info }}
+          <p>{{ extra_info_info }} </p>
         {% endif %}
         {% if area %}
           {{ area }}
