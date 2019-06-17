@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/place/?is_address=false&page_size=100'
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/place/?is_address=false&page_size=100&no_parent=true'
   item_selector: '$.data[*]'
   ids:
     area_id:
@@ -25,7 +25,7 @@ source:
     -
       name: area_id
       label: 'ID of the area'
-      selector: $.id
+      selector: '$[''@id'']'
     -
       name: area_name
       label: 'Name of the area'

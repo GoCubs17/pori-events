@@ -43,10 +43,6 @@ source:
       label: 'Short description of the event'
       selector: $.short_description.fi
     -
-      name: event_address
-      label: 'Address of the event'
-      selector: $.location_extra_info.fi
-    -
       name: event_start_time
       label: 'Event start time'
       selector: $.start_time
@@ -65,11 +61,11 @@ source:
     -
       name: event_audience
       label: Audience
-      selector: '$.audience[*].id'
+      selector: '$.audience.*.id'
     -
       name: hobby_keywords
       label: Keywords
-      selector: '$.keywords[*].id'
+      selector: '$.keywords.*.id'
     -
       name: event_offers_is_free
       label: 'Offers is free'
@@ -95,9 +91,9 @@ source:
       label: Provider
       selector: $.provider_email
     -
-      name: event_location_extra_info
+      name: event_location_address
       label: 'Location extra info'
-      selector: $.location_extra_info.fi
+      selector: $.location.name.fi
     -
       name: extra_options
       label: Accessible
@@ -125,7 +121,7 @@ source:
     -
       name: opening_hours
       label: 'Opening hours'
-      selector: $.opening_hours
+      selector: '$.opening_hours.*'
     -
       name: exceptional_opening_hours
       label: 'Exceptional opening hours'
@@ -133,7 +129,11 @@ source:
     -
       name: hobby_area
       label: 'Hobby area'
-      selector: $.location.parent
+      selector: '$.area[''@id'']'
+    -
+      name: hobby_location_extra_info
+      label: 'Hobby location extra info'
+      selector: $.location_extra_info.fi
 process:
   type:
     plugin: default_value
@@ -142,11 +142,10 @@ process:
   field_description: event_description
   field_short_description: event_short_description
   field_provider_email: event_provider_email
-  field_provider_www:
-    plugin: link_url_external
-    source: event_provider_www
+  field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
-  field_location_extra_info: event_location_extra_info
+  field_location_extra_info: event_location_address
+  field_location_extra_info_info: hobby_location_extra_info
   field_ticket_vendor: event_offers_vedor
   field_price: event_offers_price
   field_free_enterance: event_offers_is_free
@@ -186,9 +185,7 @@ process:
   field_culture_and_or_activity_no:
     source: extra_options
     plugin: extra_offers_parse
-  field_pre_registration_link/uri:
-    plugin: link_url_external
-    source: pre_registration_url
+  field_pre_registration_link/uri: pre_registration_url
   field_pre_registration_link/title: pre_registration_desc
   field_pre_registration_start_tim:
     -
@@ -263,7 +260,9 @@ process:
     -
       plugin: migration_lookup
       source: hobby_area
-      migration: migrate_source_event_hobby_area
+      migration:
+        - migrate_source_event_hobby_area
+        - migrate_source_event_hobby_area_subterms
       no_stub: true
 destination:
   plugin: 'entity:node'

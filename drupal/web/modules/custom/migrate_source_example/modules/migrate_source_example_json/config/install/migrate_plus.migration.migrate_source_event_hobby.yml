@@ -13,7 +13,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
   # TODO: Change to use actual API. Now works only if there is json set on the site.
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/'
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/?include=location,keywords,audience&page_size=999999'
   item_selector: $.data[*]
   ids:
     event_id:
@@ -42,10 +42,6 @@ source:
       label: 'Short description of the event'
       selector: $.short_description.fi
     -
-      name: event_address
-      label: 'Address of the event'
-      selector: $.location_extra_info.fi
-    -
       name: event_start_time
       label: 'Event start time'
       selector: $.start_time
@@ -64,11 +60,11 @@ source:
     -
       name: event_audience
       label: 'Audience'
-      selector: $.audience[*].id
+      selector: $.audience.*.id
     -
       name: hobby_keywords
       label: 'Keywords'
-      selector: $.keywords[*].id
+      selector: $.keywords.*.id
     -
       name: event_offers_is_free
       label: 'Offers is free'
@@ -94,9 +90,9 @@ source:
       label: 'Provider'
       selector: $.provider_email
     -
-      name: event_location_extra_info
+      name: event_location_address
       label: 'Location extra info'
-      selector: $.location_extra_info.fi
+      selector: $.location.name.fi
     -
       name: extra_options
       label: 'Accessible'
@@ -124,7 +120,7 @@ source:
     -
       name: opening_hours
       label: 'Opening hours'
-      selector: $.opening_hours
+      selector: $.opening_hours.*
     -
       name: exceptional_opening_hours
       label: 'Exceptional opening hours'
@@ -132,7 +128,11 @@ source:
     -
       name: hobby_area
       label: 'Hobby area'
-      selector: $.location['@id']
+      selector: $.area['@id']
+    -
+      name: hobby_location_extra_info
+      label: 'Hobby location extra info'
+      selector: $.location_extra_info.fi
 process:
   type:
     plugin: default_value
@@ -143,7 +143,8 @@ process:
   field_provider_email: event_provider_email
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
-  field_location_extra_info: event_location_extra_info
+  field_location_extra_info: event_location_address
+  field_location_extra_info_info: hobby_location_extra_info
   field_ticket_vendor: event_offers_vedor
   field_price: event_offers_price
   field_free_enterance: event_offers_is_free
@@ -259,7 +260,9 @@ process:
     -
       plugin: migration_lookup
       source: hobby_area
-      migration: migrate_source_event_hobby_area
+      migration:
+        - migrate_source_event_hobby_area
+        - migrate_source_event_hobby_area_subterms
       no_stub: true
 destination:
   plugin: 'entity:node'

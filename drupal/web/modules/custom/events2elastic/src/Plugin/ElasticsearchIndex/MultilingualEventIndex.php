@@ -251,6 +251,10 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
+              'hobby_sub_category' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
               'hobby_audience' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
@@ -258,6 +262,30 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               'hobby_area' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
+              ],
+              'registration' => [
+                'type' => 'boolean',
+              ],
+              'timeframe' => [
+                'type' => 'keyword',
+              ],
+              'monday' => [
+                'type' => 'boolean',
+              ],
+              'wednesday' => [
+                'type' => 'boolean',
+              ],
+              'thursday' => [
+                'type' => 'boolean',
+              ],
+              'friday' => [
+                'type' => 'boolean',
+              ],
+              'saturday' => [
+                'type' => 'boolean',
+              ],
+              'sunday' => [
+                'type' => 'boolean',
               ],
             ],
           ],

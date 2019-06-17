@@ -100,6 +100,13 @@
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
 {% set target_audience = content.field_target_audience[0]['#title'] %}
+{% set monday = content.field_weekday_monday[0] %}
+{% set tuesday = content.field_weekday_tuesday[0] %}
+{% set wednesday = content.field_weekday_wednesday[0] %}
+{% set thursday = content.field_weekday_thursday[0] %}
+{% set friday = content.field_weekday_friday[0] %}
+{% set saturday = content.field_weekday_saturday[0] %}
+{% set sunday = content.field_weekday_sunday[0] %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -113,20 +120,20 @@
     <h1 class="event__title">{{ label }}</h1>
   {{ title_suffix }}
 
-  {% if content.field_image_ext_url[0]['#uri'] %}
-    <div class="event__image--container" style="background-image: url('{{ bg_img }}' );">
-    </div>
-  {% endif %}
+        {% if content.field_image_ext_url[0]['#uri'] %}
+          <div class="event__image--container" style="background-image: url('{{ bg_img }}' );">
+          </div>
+        {% endif %}
 
-  <div class="event__content--container">
-    <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
-      {% if short_description %}
-        <div class="event__content__short-description">
-          {{ short_description }}
-        </div>
-      {% endif %}
+        <div class="event__content--container">
+          <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
+            {% if short_description %}
+              <div class="event__content__short-description">
+                {{ short_description }}
+              </div>
+            {% endif %}
 
-      {% if description %}
+       {% if description %}
         <div class="event__content__description">
           {{ description| striptags| raw }}
         </div>
@@ -137,25 +144,51 @@
       {% if 'Off' in content.field_hobby_is_hobby[0] %}
       <a class="event__back-button" href="/"><i class="fas fa-chevron-left"></i>{{ "Back to events listing"|t }}</a>
       {% endif %}
-    </div>
+       </div>
 
-    <div class="event__content--sidebar">
-    {% if 'On' in content.field_hobby_is_hobby[0] %}
-      <h3 class="event__content--sidebar__title hobby">
-        {{ "Hobby information:"|t }}
-      </h3>
-      {% endif %}
-      {% if 'Off' in content.field_hobby_is_hobby[0] %}
-      <h3 class="event__content--sidebar__title">
-        {{ "Event information:"|t }}
-      </h3>
-      {% endif %}
+      <div class="event__content--sidebar">
+      {% if 'On' in content.field_hobby_is_hobby[0] %}
+        <h3 class="event__content--sidebar__title hobby">
+          {{ "Hobby information:"|t }}
+        </h3>
+        {% endif %}
+        {% if 'Off' in content.field_hobby_is_hobby[0] %}
+        <h3 class="event__content--sidebar__title">
+          {{ "Event information:"|t }}
+        </h3>
+        {% endif %}
 
       <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
-        {% trans with {'context': 'Event sidebar'} %}At{% endtrans %} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        <div class="event__content-weekday-wrapper">
+         {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+        {% if monday %}
+         <p>Maanantai {{ monday }}</p>
+         {% endif %}
+          {% if tuesday %}
+         <p>Tiistai {{ tuesday }}</p>
+          {% endif %}
+          {% if wednesday %}
+         <p>Keskiviikko {{ wednesday }}</p>
+         {% endif %}
+          {% if thursday %}
+         <p>Torstai {{ thursday }}</p>
+          {% endif %}
+          {% if friday %}
+         <p>Perjantai {{ friday }}</p>
+          {% endif %}
+          {% if saturday %}
+         <p>Lauantai {{ saturday }}</p>
+          {% endif %}
+          {% if sunday %}
+         <p>Sunnuntai {{ sunday }}</p>
+          {% endif %}
+          {% else %}       
+        {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        {% endif %}
       </div>
-
+      </div>
+      
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-map-marker-alt"></i>
@@ -175,19 +208,17 @@
       </div>
       {% endif %}
 
-     {% if 'On' in content.field_free_enterance[0] %}
+      {% if price %}
       <div class="event__content--sidebar__item">
-      <i class="fas fa-door-open"></i>
-          Free Event
+        <i class="fas fa-euro-sign"></i>
+        {{ price }}
       </div>
       {% endif %}
 
-      {# {% if free.reponse %}yes{% else %}no{% endif%} #}
-
-      {% if 'On' in childcare %}
+      {% if 'On' in content.field_free_enterance[0] %}
       <div class="event__content--sidebar__item">
-      <i class="fas fa-child"></i>
-          Child friendly
+      <i class="fas fa-euro-sign"></i>
+          Free Event
       </div>
       {% endif %}
       {% if 'Yes' in accessible %}
@@ -197,6 +228,12 @@
       </div>
       {% endif %}
 
+       {% if 'On' in culture_card %}
+      <div class="event__content--sidebar__item">
+      <i class="fas fa-money-bill"></i>
+          Payment with culture or activity card available
+      </div>
+      {% endif %}
 
       {% if event_type %}
       <div class="event__content--sidebar__item">
@@ -204,17 +241,11 @@
         {{ event_type }}
       </div>
       {% endif %}
+
       {% if target_audience %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-users"></i>
         {{ target_audience }}
-      </div>
-      {% endif %}
-
-      {% if price %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-euro-sign"></i>
-        {{ price }}
       </div>
       {% endif %}
 
@@ -243,18 +274,26 @@
 
       {% if ticket_vendor %}
         <div class="event__content--sidebar__item">
-          <i class="fas fa-ticket-alt"></i>
+          <i class="fa fa-user-plus"></i>
           <a href={{ ticket_vendor['url'] }}>
-              {{ ticket_vendor['label'] }}
+              ILMOITTAUDU TÄSTÄ
           </a>
         </div>
       {% endif %}
-      {% if 'On' in culture_card %}
-<div class="event__content--sidebar__item">
-<i class="fas fa-euro-sign"></i>
-     Payment with culture or activity card available
-</div>
-{% endif %}
+
+      {% if 'Yes' in accessible %}
+        <div class="event__content--sidebar__item">
+        <i class="fab fa-accessible-icon"></i>
+            Accessible
+        </div>
+      {% endif %}
+
+      {% if 'On' in childcare %}
+        <div class="event__content--sidebar__item">
+        <i class="fas fa-child"></i>
+            Child friendly
+        </div>
+      {% endif %}
     </div>
   </div>
 </article>

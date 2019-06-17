@@ -54,14 +54,49 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['target_audience'] = $this->getTranslatedTermNames($object->field_target_audience, $langcode);
       $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
       $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
-      $data['hobby_category'] = $this->getTranslatedTermNames($object->field_hobby_category, $langcode);
-
+      $data['hobby_category'] = $this->getTranslatedParentTermNames($object->field_hobby_category, $langcode);
+      $data['hobby_sub_category'] = $this->getTranslatedChildTermNames($object->field_hobby_category, $langcode);
+      
       // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
       if ($object->hasField('field_tickets')) {
         $data['tickets'] = $object->field_tickets->value;
       }
+      if (isset($object->field_weekday_monday->value)) {
+        $data['monday'] = '1';
+      } else $data['monday'] = '0';
+      if (isset($object->field_weekday_tuesday->value)) {
+        $data['tuesday'] = '1';
+      } else $data['tuesday'] = '0';
+      if (isset($object->field_weekday_wednesday->value)) {
+        $data['wednesday'] = '1';
+      } else $data['wednesday'] = '0';
+      if (isset($object->field_weekday_thursday->value)) {
+        $data['thursday'] = '1';
+      } else $data['thursday'] = '0';
+      if (isset($object->field_weekday_friday->value)) {
+        $data['friday'] = '1';
+      } else $data['friday'] = '0';
+      if (isset($object->field_weekday_saturday->value)) {
+        $data['saturday'] = '1';
+      } else $data['saturday'] = '0';
+      if (isset($object->field_weekday_sunday->value)) {
+        $data['sunday'] = '1';
+      } else $data['sunday'] = '0';
+
+      // Timeframe
+      // $data['timeframe'] = $object->field_timeframe_of_day->value;
+        $timefields = $object->field_timeframe_of_day->value;
+        if ($timefields == "0") {
+          $data['timeframe'] = "Morning";
+        } elseif ($timefields == "1") {
+          $data['timeframe'] = "Afternoon";
+        } else {
+          $data['timeframe'] = "Evening";
+        } 
+      
+
 
       // boolean fields
       $data['free_enterance'] = $object->field_free_enterance->value;
@@ -69,6 +104,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['accessible'] = $object->field_accessible->value;
       $data['child_care'] = $object->field_child_care->value;
       $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value;
+      $data['registration'] = $object->field_pre_registration->value;
+
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";
@@ -111,7 +148,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
   }
 
   /**
-   * Get a list of translated term names.
+   * Get a complete list of translated term names without hierarchy.
    *
    * @param \Drupal\Core\Field\FieldItemList $terms
    *   List of Drupal terms.
@@ -127,6 +164,66 @@ class NodeNormalizer extends ContentEntityNormalizer {
       if ($term_entity = Term::load($term->target_id)) {
         $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term_entity, $langcode);
         $term_names[] = $translated_term->getName();
+      }
+    }
+    return $term_names;
+  }
+
+  /**
+   * Get a list of translated parent term names.
+   *
+   * @param \Drupal\Core\Field\FieldItemList $terms
+   *   List of Drupal terms.
+   * @param string $langcode
+   *   Language code.
+   *
+   * @return array
+   *   List of translated term names.
+   */
+  private function getTranslatedParentTermNames(FieldItemList $terms, string $langcode) {
+    $term_names = [];
+    foreach ($terms as $term) {
+      if ($term_entity = Term::load($term->target_id)) {
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term_entity, $langcode);
+        /** @var \Drupal\taxonomy\Entity\Term $translated_term */
+        $parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadParents($translated_term->id());
+        if ($parents) {
+          foreach ($parents as $parent) {
+            /** @var \Drupal\taxonomy\Entity\Term $parent */
+            if ($parent && $parent->label()) {
+              $term_names[] = $parent->label();
+            }
+          }
+        }
+        else {
+          $term_names[] = $translated_term->label();
+        }
+      }
+    }
+    return array_unique($term_names);
+  }
+
+  /**
+   * Get a list of translated child term names.
+   *
+   * @param \Drupal\Core\Field\FieldItemList $terms
+   *   List of Drupal terms.
+   * @param string $langcode
+   *   Language code.
+   *
+   * @return array
+   *   List of translated term names.
+   */
+  private function getTranslatedChildTermNames(FieldItemList $terms, string $langcode) {
+    $term_names = [];
+    foreach ($terms as $term) {
+      if ($term_entity = Term::load($term->target_id)) {
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term_entity, $langcode);
+        /** @var \Drupal\taxonomy\Entity\Term $translated_term */
+        $parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadParents($translated_term->id());
+        if ($parents) {
+          $term_names[] = $translated_term->label();
+        }
       }
     }
     return $term_names;

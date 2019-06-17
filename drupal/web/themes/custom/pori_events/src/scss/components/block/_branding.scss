@@ -41,7 +41,7 @@
             background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
             background-size: contain;
             max-height: 150px;
-            width: 750px;
+            width: 550px;
             @media screen and (max-width: $desktop-narrow) {
               display: none;
             
@@ -72,4 +72,11 @@
     }
     
 }  
+}
+.hobbies-logo {
+  box-sizing: border-box;
+  background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  width: 550px;
 }

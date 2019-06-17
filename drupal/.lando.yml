@@ -9,7 +9,7 @@ config:
   via: nginx
   php: '7.2'
   database: mariadb:10.1
-  xdebug: true
+  xdebug: false
   drush: 8.1.15
 
 tooling:
