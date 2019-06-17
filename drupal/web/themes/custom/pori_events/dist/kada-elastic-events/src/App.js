@@ -92,7 +92,6 @@ const HitsListItem = props => {
           {date_start} - {date_end}
         </div>
         <div className="event__weekdays">
-          {/* {monday}{tuesday}{wednesday}{thursday}{friday}{saturday}{sunday} */}
           {addDay}
         </div>
         <h2 className="event__title">
@@ -180,9 +179,9 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Where")}
               >
-                <RefinementListFilter
+                <HierarchicalMenuFilter
                   id="hobby_area"
-                  field="hobby_area"
+                  fields={["hobby_location_area", "hobby_location_sub_area"]}
                   operator="OR"
                   size={100}
                 />
@@ -214,7 +213,7 @@ class App extends SearchkitComponent {
                   calendarComponent={DateRangeCalendar}
                 />
                 <div class="weekdays_title">
-                VIIKONPÄIVÄT:
+                {Drupal.t("Weekdays")}
                 </div>
                 <div className="weekdays_filter--container">
                   
@@ -263,7 +262,7 @@ class App extends SearchkitComponent {
                 </div>
                 <RefinementListFilter
                   id="timeframe_of_day"
-                  title="VUOROKAUDENAIKA:"
+                  title={Drupal.t("Timeframe of the day")}
                   field="timeframe"
                   operator="OR"
                 />
@@ -304,34 +303,34 @@ class App extends SearchkitComponent {
                 <CheckboxFilter
                   id="registration"
                   field="registration"
-                  label="Registration required"
+                  label={Drupal.t("Registration required")}
                   filter={TermQuery("registration", "1")}
                 />
                 <CheckboxFilter
                   id="accessible"
                   field="accessible"
-                  label="Accessible"
+                  label={Drupal.t("Accessible")}
                   filter={TermQuery("accessible", "1")}
                 />
 
                 <CheckboxFilter
                   id="child_care"
                   field="child_care"
-                  label="Child Care"
+                  label={Drupal.t("Child Care")}
                   filter={TermQuery("child_care", "1")}
                 />
 
                 <CheckboxFilter
                   id="free"
                   field="free_enterance"
-                  label="Free Entrance"
+                  label={Drupal.t("Free Entrance")}
                   filter={TermQuery("free_enterance", "1")}
                 />
 
                 <CheckboxFilter
                   id="culture_and_or_activity_no"
                   field="culture_and_or_activity_no"
-                  label="Culture and Activity card"
+                  label={Drupal.t("Culture and Activity card")}
                   filter={TermQuery("culture_and_or_activity_no", "1")}
                 />
               </Panel>

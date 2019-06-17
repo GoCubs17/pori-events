@@ -56,6 +56,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['event_type'] = $this->getTranslatedTermNames($object->field_event_type, $langcode);
       $data['hobby_category'] = $this->getTranslatedParentTermNames($object->field_hobby_category, $langcode);
       $data['hobby_sub_category'] = $this->getTranslatedChildTermNames($object->field_hobby_category, $langcode);
+      $data['hobby_location_area'] = $this->getTranslatedParentTermNames($object->field_hobby_area, $langcode);
+      $data['hobby_location_sub_area'] = $this->getTranslatedChildTermNames($object->field_hobby_area, $langcode);
       
       // Text fields
       $data['description'] = $object->field_description->value;
@@ -89,11 +91,11 @@ class NodeNormalizer extends ContentEntityNormalizer {
       // $data['timeframe'] = $object->field_timeframe_of_day->value;
         $timefields = $object->field_timeframe_of_day->value;
         if ($timefields == "0") {
-          $data['timeframe'] = "Morning";
+          $data['timeframe'] = " Aamupäivällä";
         } elseif ($timefields == "1") {
-          $data['timeframe'] = "Afternoon";
+          $data['timeframe'] = "Iltapäivällä";
         } else {
-          $data['timeframe'] = "Evening";
+          $data['timeframe'] = "Illalla";
         } 
       
 
