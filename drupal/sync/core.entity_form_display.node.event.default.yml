@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.event.field_hobby_map
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
+    - field.field.node.event.field_location_extra_info_info
     - field.field.node.event.field_pre_registration
     - field.field.node.event.field_pre_registration_end_time
     - field.field.node.event.field_pre_registration_link
@@ -190,6 +191,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_location_extra_info_info:
+    weight: 69
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
     region: content
   field_pre_registration:
     weight: 52
