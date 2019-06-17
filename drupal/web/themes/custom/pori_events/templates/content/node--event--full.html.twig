@@ -163,25 +163,25 @@
         <div class="event__content-weekday-wrapper">
          {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
         {% if monday %}
-         <p>Maanantai {{ monday }}</p>
+         <p>{{ "Monday: "|t }} {{ monday }}</p>
          {% endif %}
           {% if tuesday %}
-         <p>Tiistai {{ tuesday }}</p>
+         <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
           {% endif %}
           {% if wednesday %}
-         <p>Keskiviikko {{ wednesday }}</p>
+         <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
          {% endif %}
           {% if thursday %}
-         <p>Torstai {{ thursday }}</p>
+         <p>{{ "Thursday: "|t }} {{ thursday }}</p>
           {% endif %}
           {% if friday %}
-         <p>Perjantai {{ friday }}</p>
+         <p>{{ "Friday: "|t }} {{ friday }}</p>
           {% endif %}
           {% if saturday %}
-         <p>Lauantai {{ saturday }}</p>
+         <p>{{ "Saturday: "|t }} {{ saturday }}</p>
           {% endif %}
           {% if sunday %}
-         <p>Sunnuntai {{ sunday }}</p>
+         <p>{{ "Sunday: "|t }} {{ sunday }}</p>
           {% endif %}
           {% else %}       
         {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
@@ -218,7 +218,7 @@
       {% if 'On' in content.field_free_enterance[0] %}
       <div class="event__content--sidebar__item">
       <i class="fas fa-euro-sign"></i>
-          Free Event
+          {{ ' Free Event'|t }}
       </div>
       {% endif %}
       {% if 'Yes' in accessible %}
@@ -231,7 +231,7 @@
        {% if 'On' in culture_card %}
       <div class="event__content--sidebar__item">
       <i class="fas fa-money-bill"></i>
-          Payment with culture or activity card available
+           {{ 'Payment with culture or activity card available'|t }}
       </div>
       {% endif %}
 
@@ -276,7 +276,7 @@
         <div class="event__content--sidebar__item">
           <i class="fa fa-user-plus"></i>
           <a href={{ ticket_vendor['url'] }}>
-              ILMOITTAUDU TÄSTÄ
+              {{ 'Register here'|t }}
           </a>
         </div>
       {% endif %}
@@ -284,14 +284,14 @@
       {% if 'Yes' in accessible %}
         <div class="event__content--sidebar__item">
         <i class="fab fa-accessible-icon"></i>
-            Accessible
+            {{ 'Accessible'|t }}
         </div>
       {% endif %}
 
       {% if 'On' in childcare %}
         <div class="event__content--sidebar__item">
         <i class="fas fa-child"></i>
-            Child friendly
+           {{ 'Child friendly'|t }}
         </div>
       {% endif %}
     </div>
