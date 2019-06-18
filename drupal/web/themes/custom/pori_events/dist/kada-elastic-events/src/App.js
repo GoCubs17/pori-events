@@ -48,7 +48,6 @@ const queryFields = [
   "area^5",
   "description^2"
 ];
-
 const queryOptions = {
   phrase_slop: 2
 };
