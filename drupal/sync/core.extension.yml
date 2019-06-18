@@ -19,7 +19,6 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
-  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
   empty_page: 0
