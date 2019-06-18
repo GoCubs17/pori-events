@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
+  urls: 'https://satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
   item_selector: '$.data[*].keywords[*]'
   ids:
     keyword_id:
