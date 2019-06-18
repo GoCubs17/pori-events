@@ -68,15 +68,15 @@ const HitsListItem = props => {
   const date_start = Moment(source.start_time).format(date_format);
   const date_end = Moment(source.end_time).format(date_format);
 
-  let weekDays = []
-  if (source.monday === "1")  weekDays.push("MA");
-  if (source.tuesday === "1")  weekDays.push("TI");
-  if (source.wednesday === "1")  weekDays.push("KE");
-  if (source.thursday === "1")  weekDays.push("TO");
-  if (source.friday === "1")  weekDays.push("PE");
-  if (source.saturday === "1")  weekDays.push("LA");
-  if (source.sunday === "1")  weekDays.push("SU");
-  const addDay = weekDays.join(' | ');
+  let weekDays = [];
+  if (source.monday === "1") weekDays.push("MA");
+  if (source.tuesday === "1") weekDays.push("TI");
+  if (source.wednesday === "1") weekDays.push("KE");
+  if (source.thursday === "1") weekDays.push("TO");
+  if (source.friday === "1") weekDays.push("PE");
+  if (source.saturday === "1") weekDays.push("LA");
+  if (source.sunday === "1") weekDays.push("SU");
+  const addDay = weekDays.join(" | ");
 
   return (
     <div
@@ -90,9 +90,7 @@ const HitsListItem = props => {
         <div className="event__time">
           {date_start} - {date_end}
         </div>
-        <div className="event__weekdays">
-          {addDay}
-        </div>
+        <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
         </h2>
@@ -211,11 +209,8 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
-                <div class="weekdays_title">
-                {Drupal.t("Weekdays")}
-                </div>
+                <div class="weekdays_title">{Drupal.t("Weekdays")}</div>
                 <div className="weekdays_filter--container">
-                  
                   <CheckboxFilter
                     id="monday"
                     field="monday"
