@@ -58,7 +58,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['hobby_sub_category'] = $this->getTranslatedChildTermNames($object->field_hobby_category, $langcode);
       $data['hobby_location_area'] = $this->getTranslatedParentTermNames($object->field_hobby_area, $langcode);
       $data['hobby_location_sub_area'] = $this->getTranslatedChildTermNames($object->field_hobby_area, $langcode);
-      
+
       // Text fields
       $data['description'] = $object->field_description->value;
       $data['short_description'] = $object->field_short_description->value;
@@ -202,7 +202,12 @@ class NodeNormalizer extends ContentEntityNormalizer {
         }
       }
     }
-    return array_unique($term_names);
+
+    // Drop duplicates and reset keys.
+    $term_names = array_unique($term_names);
+    $term_names = array_values($term_names);
+
+    return $term_names;
   }
 
   /**
