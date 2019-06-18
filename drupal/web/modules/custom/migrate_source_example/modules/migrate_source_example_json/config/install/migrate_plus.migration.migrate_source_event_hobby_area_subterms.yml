@@ -12,7 +12,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/place/?page_size=100&is_address=false&parent=se:13'
+  urls: 'https://satakuntaevents.fi/activity/api/v1/place/?page_size=100&is_address=false&parent=se:13'
   item_selector: $.data.*
   ids:
     area_id:
@@ -36,7 +36,7 @@ process:
   parent:
     -
       plugin: default_value
-      default_value: https://test.satakuntaevents.fi/activity/api/v1/place/se:13/
+      default_value: https://satakuntaevents.fi/activity/api/v1/place/se:13/
     -
       plugin: migration_lookup
       migration: migrate_source_event_hobby_area
