@@ -1,0 +1,21 @@
+uuid: 3eb97b01-e729-4349-ba8e-0974ae8978d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_registration_start_tim
+    - node.type.event
+  module:
+    - datetime
+id: node.event.field_pre_registration_start_tim
+field_name: field_pre_registration_start_tim
+entity_type: node
+bundle: event
+label: 'Pre registration start time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

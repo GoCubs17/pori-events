@@ -111,7 +111,7 @@
   font-size: .9rem;
   padding: 1.25rem 0.5rem 1.25rem 3.75rem;
   position: relative;
-  text-align: left;
+  text-align: right;
   text-transform: uppercase;
   overflow-wrap: break-word;
   &:first-of-type {
@@ -162,4 +162,34 @@
   .svg-inline--fa {
     margin-right: 20px;
   }
+}
+
+.event__content-weekday-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.event__content-weekday-wrapper > p {
+  margin: 0;
+}
+
+.hobby {
+  background: #EC1C24 !important;
+}
+.hobby-text-red {
+  background: #EC1C24;
+  &:hover {
+    color: white;
+    background: darken(#EC1C24, 5%);
+  }
+}
+.event-text-blue {
+  background: $blue;
+  &:hover {
+    color: white;
+    background: darken($blue, 5%);
+  }
+}
+.page-footer-hobby {
+  border-bottom: 0.6rem solid #EC1C24 !important;
 }

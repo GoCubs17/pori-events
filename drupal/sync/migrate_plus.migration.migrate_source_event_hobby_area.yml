@@ -1,0 +1,40 @@
+uuid: 01be7030-39a9-4f8b-95b6-33d03c641d6a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - taxonomy
+id: migrate_source_event_hobby_area
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_event
+label: 'Hobby area'
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: jsonpath
+  urls: 'https://satakuntaevents.fi/activity/api/v1/place/?is_address=false&page_size=100&no_parent=true'
+  item_selector: '$.data[*]'
+  ids:
+    area_id:
+      type: string
+  fields:
+    -
+      name: area_id
+      label: 'ID of the area'
+      selector: '$[''@id'']'
+    -
+      name: area_name
+      label: 'Name of the area'
+      selector: $.name.fi
+process:
+  vid:
+    plugin: default_value
+    default_value: hobby_area
+  name: area_name
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: {  }

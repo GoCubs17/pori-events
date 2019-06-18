@@ -1,16 +1,15 @@
-uuid: e784dfb2-86ba-420b-9573-64aa0d4f179f
+uuid: a00eea88-9c2e-46e3-adee-b232cfd16947
 langcode: en
 status: true
 dependencies:
   module:
-    - address
     - node
-id: node.field_address
-field_name: field_address
+id: node.field_hobby_is_hobby
+field_name: field_hobby_is_hobby
 entity_type: node
-type: address
+type: boolean
 settings: {  }
-module: address
+module: core
 locked: false
 cardinality: 1
 translatable: true

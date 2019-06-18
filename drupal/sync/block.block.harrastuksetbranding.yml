@@ -1,0 +1,28 @@
+uuid: a3dcbe34-33fd-48fb-ac3a-048094e2077a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pori_events
+id: harrastuksetbranding
+theme: pori_events
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
+settings:
+  id: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
+  label: 'Harrastukset branding'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /harrastukset
+    negate: false
+    context_mapping: {  }

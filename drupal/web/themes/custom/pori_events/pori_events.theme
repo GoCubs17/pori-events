@@ -5,3 +5,15 @@
  * pori_events theme.
  */
 
+/**
+ * Implements hook_preprocess_html().
+ */
+function pori_events_preprocess_html(&$variables) {
+    /* @var $node \Drupal\node\Entity\Node */
+    $node = \Drupal::request()->attributes->get('node');
+    if (!empty($node) && $node->hasField('field_hobby_is_hobby')) {
+      if ($hobby_value = $node->field_hobby_is_hobby->value) {
+        $variables['attributes']['class'][] = 'hobby-class-' . $hobby_value;
+      }
+    }
+  }

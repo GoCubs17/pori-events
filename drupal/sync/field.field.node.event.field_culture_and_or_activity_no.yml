@@ -1,0 +1,23 @@
+uuid: 68600c94-9b76-4847-9f51-de23ec15cb24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_culture_and_or_activity_no
+    - node.type.event
+id: node.event.field_culture_and_or_activity_no
+field_name: field_culture_and_or_activity_no
+entity_type: node
+bundle: event
+label: 'Culture and/or activity note etc can be used for payment'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
