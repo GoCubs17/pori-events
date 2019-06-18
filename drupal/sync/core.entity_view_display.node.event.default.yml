@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.event.field_accessible
-    - field.field.node.event.field_address
     - field.field.node.event.field_area
     - field.field.node.event.field_child_care
     - field.field.node.event.field_culture_and_or_activity_no
@@ -44,7 +43,6 @@ dependencies:
     - field.field.node.event.field_weekday_wednesday
     - node.type.event
   module:
-    - address
     - datetime
     - datetime_range
     - imagecache_external
@@ -67,13 +65,6 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-    region: content
-  field_address:
-    weight: 107
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
     region: content
   field_area:
     weight: 108
