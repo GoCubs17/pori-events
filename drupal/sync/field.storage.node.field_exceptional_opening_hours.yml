@@ -1,0 +1,20 @@
+uuid: 12532822-c8e3-4882-9eab-2e903c6b8519
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+id: node.field_exceptional_opening_hours
+field_name: field_exceptional_opening_hours
+entity_type: node
+type: daterange
+settings:
+  datetime_type: datetime
+module: datetime_range
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

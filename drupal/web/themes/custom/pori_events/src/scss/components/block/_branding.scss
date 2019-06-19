@@ -8,7 +8,6 @@
 }
 
 .site-slogan {
-  display: none;
   font-family: $heading-font-family;
   font-size: .85rem;
   letter-spacing: -0.5px;
@@ -16,8 +15,8 @@
   padding: .5rem 0;
   text-transform: uppercase;
 
-  @media screen and (min-width: $desktop-narrow) {
-    display: block;
+  @media screen and (max-width: $desktop-narrow) {
+    display: none;
     width: 70%;
   }
 
@@ -28,4 +27,56 @@
       color: $link-color-hover;
     }
   }
+}
+//Making custom branding acording to hobby or event
+
+.hobby-class-1 {
+  .dialog-off-canvas-main-canvas{
+    .layout-container{
+      .page-header{
+        .region-header{
+          #block-sitebranding{
+           .site-logo{
+            box-sizing: border-box;
+            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+            background-size: contain;
+            max-height: 150px;
+            width: 550px;
+            @media screen and (max-width: $desktop-narrow) {
+              display: none;
+            
+            }
+            img {
+              display: none;
+            }
+
+           }
+          }
+          
+        }
+        
+      }
+    }
+  }
+}
+.hobby-header-container  {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem;
+}
+.hobby-header-container {
+  a{
+    img {
+      max-height: 150px;
+      width: 450px;
+    }
+    
+}  
+}
+.hobbies-logo {
+  box-sizing: border-box;
+  background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+  background-size: contain;
+  height: 150px;
+  width: 550px;
 }

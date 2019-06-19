@@ -1,0 +1,16 @@
+uuid: e14bc17d-886c-4bdd-af02-db6c1dbcd8f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hobby_audience
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.hobby_audience
+target_entity_type_id: taxonomy_term
+target_bundle: hobby_audience
+default_langcode: site_default
+language_alterable: false

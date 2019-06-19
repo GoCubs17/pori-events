@@ -185,7 +185,7 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
-              'audience' => [
+              'target_audience' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
@@ -233,6 +233,62 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'text',
               ],
               'single_day' => [
+                'type' => 'boolean',
+              ],
+              'is_hobby' => [
+                'type' => 'boolean',
+              ],
+              'accessible' => [
+                'type' => 'boolean',
+              ],
+              'child_care' => [
+                'type' => 'boolean',
+              ],
+              'culture_and_or_activity_no' => [
+                'type' => 'boolean',
+              ],
+              'hobby_category' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_sub_category' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_audience' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_location_area' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'hobby_location_sub_area' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
+              'registration' => [
+                'type' => 'boolean',
+              ],
+              'timeframe' => [
+                'type' => 'keyword',
+              ],
+              'monday' => [
+                'type' => 'boolean',
+              ],
+              'wednesday' => [
+                'type' => 'boolean',
+              ],
+              'thursday' => [
+                'type' => 'boolean',
+              ],
+              'friday' => [
+                'type' => 'boolean',
+              ],
+              'saturday' => [
+                'type' => 'boolean',
+              ],
+              'sunday' => [
                 'type' => 'boolean',
               ],
             ],

@@ -1,0 +1,9 @@
+uuid: 8714beb3-73b7-49af-bf98-8876f1e7ac99
+langcode: en
+status: true
+dependencies: {  }
+name: 'Activity area'
+vid: activity_area
+description: ''
+hierarchy: 0
+weight: 0

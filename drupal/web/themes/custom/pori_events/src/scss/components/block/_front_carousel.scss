@@ -9,8 +9,11 @@
 .slide-container {
     background-size: cover;
     background-position: center center;
+    margin: 2.5rem auto;
     @media screen and (min-width: $desktop-narrow) {
         height: 700px;
+        max-width: 1680px;
+        margin: 0 auto;
     }
     @media screen and (max-width: $desktop-narrow) {
         background-image: none !important;

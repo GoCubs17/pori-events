@@ -1,0 +1,19 @@
+uuid: 8eee34ee-8bfe-49f2-9784-308b2ac5bb27
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_extra_info_info
+    - node.type.event
+id: node.event.field_location_extra_info_info
+field_name: field_location_extra_info_info
+entity_type: node
+bundle: event
+label: 'Location extra info info'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

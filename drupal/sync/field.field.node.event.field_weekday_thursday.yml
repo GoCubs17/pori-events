@@ -1,0 +1,19 @@
+uuid: ee5325ac-cfe2-4581-8c2d-472db1df422a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weekday_thursday
+    - node.type.event
+id: node.event.field_weekday_thursday
+field_name: field_weekday_thursday
+entity_type: node
+bundle: event
+label: 'Weekday thursday'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
