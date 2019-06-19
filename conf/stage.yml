@@ -59,6 +59,17 @@
         user: nginx
       tags: ['cron']
       when: drupal_web_root is defined
+    # Clear caches after midnight because of \Drupal\pori_event_search_defaults\EventSubscriber\EventsDefaultRedirectSubscriber getting stuck there for frontpage request
+    - name: "Daily cache clear"
+      cron:
+        name: "Clear caches"
+        minute: "5"
+        hour: "0"
+        job: "/usr/lib/composer/vendor/bin/drush --root={{ drupal_web_root }} cr"
+        state: "present"
+        user: nginx
+      tags: ['cron']
+      when: drupal_web_root is defined
 
   vars:
     wkv_site_env: stage
