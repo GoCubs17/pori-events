@@ -16,8 +16,7 @@
   text-transform: uppercase;
 
   @media screen and (max-width: $desktop-narrow) {
-    display: none;
-    width: 70%;
+    display:none;
   }
 
   a {
@@ -79,4 +78,8 @@
   background-size: contain;
   height: 150px;
   width: 550px;
+  @media screen and (max-width: $desktop-narrow) {
+    width: 25rem;
+  
+  }
 }
