@@ -74,12 +74,14 @@ class LinkFieldFormatter extends FormatterBase {
     $label = preg_replace('#^https?://#', '', $item->getValue()['value']);
     $url = $item->getValue()['value'];
 
-    $url_contents = parse_url($url);
+    if ($url != '') {
+      $url_contents = parse_url($url);
 
-    if (!isset($url_contents['scheme'])) {
-      $url = '//' . $item->getValue()['value'];
+      if (!isset($url_contents['scheme'])) {
+        $url = '//' . $item->getValue()['value'];
+      }
+
+      return ['label' => $label, 'url' => $url];
     }
-
-    return ['label' => $label, 'url' => $url];
   }
 }

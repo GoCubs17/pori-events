@@ -10,6 +10,9 @@
     justify-content: center;
     z-index: 99;
     margin-top: 100px;
+    @media screen and (max-width: $tablet-portrait-narrow) {
+      flex-direction: column;
+    }
   }
   .event-tabs > h2 {
     text-align: center;
@@ -21,11 +24,25 @@
   .event-tabs > a {
     box-sizing: border-box;
     display:block;
-    padding: 15px 15rem;
+    padding: 15px 20rem;
     margin-bottom: -1px;
     margin-left: -1px;
     position: absolute;
     top: -100px;
+    @media screen and (max-width: 1500px) {
+      padding: 15px 15rem;
+    }
+    @media screen and (max-width: 1200px) {
+      padding: 15px 10rem;
+    }
+    @media screen and (max-width: 800px) {
+      padding: 15px 0;
+      text-align: center;
+    }
+    @media screen and (max-width: 400px) {
+      padding: 10px 0;
+      text-align: center;
+    }
   }
   .event-tabs > a:before {
     content:'';   

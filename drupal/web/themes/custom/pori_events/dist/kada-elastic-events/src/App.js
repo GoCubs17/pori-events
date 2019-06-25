@@ -212,7 +212,7 @@ class App extends SearchkitComponent {
                   toDateField="end_time"
                   calendarComponent={DateRangeCalendar}
                 />
-                <div class="weekdays_title">{Drupal.t("Weekdays")}</div>
+                <div className="weekdays_title">{Drupal.t("Weekdays")}</div>
                 <div className="weekdays_filter--container">
                   <CheckboxFilter
                     id="monday"
