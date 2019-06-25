@@ -1,0 +1,22 @@
+<?php
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pori_harrastukset_preprocess_node(&$variables) {
+  if($variables['node']->bundle() == 'event' && $variables['view_mode'] == 'full') {
+    $variables['content']['show_registration_link'] = FALSE;
+    if (isset($variables['node']->get('field_pre_registration_end_time')->getValue()[0]['value'])) {
+      $end_time = $variables['node']->get('field_pre_registration_end_time')->getValue()[0]['value'];
+      $end_date_object = new DateTime($end_time);
+      $current_time_object = new DateTime;
+      // If registration end date is to come then show the link from twig.
+      if($current_time_object < $end_date_object) {
+        $variables['content']['show_registration_link'] = TRUE;
+      }
+    }
+    else {
+      // If no end time given the registration is always on.
+      $variables['content']['show_registration_link'] = TRUE;
+    }
+  }
+}

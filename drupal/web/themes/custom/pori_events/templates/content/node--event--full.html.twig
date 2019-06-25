@@ -91,6 +91,10 @@
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
 {% set provider_email = content.field_provider_email[0]['#context']['value'] %}
 {% set ticket_vendor = content.field_ticket_vendor[0]['content'] %}
+{% set pre_registration_url = content.field_pre_registration_link[0]['#url'] %}
+{% set pre_registration_title = content.field_pre_registration_link[0]['#title'] %}
+{% set show_registration_link = content.show_registration_link %}
+
 {% set accessible = content.field_accessible[0] %}
 {% set address = content.field_address[0]['content'] %}
 {% set childcare = content.field_child_care[0] %}
@@ -184,12 +188,12 @@
           {% if sunday %}
          <p>{{ "Sunday: "|t }} {{ sunday }}</p>
           {% endif %}
-          {% else %}       
+          {% else %}
         {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
         {% endif %}
       </div>
       </div>
-      
+
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
         <i class="fas fa-map-marker-alt"></i>
@@ -224,7 +228,7 @@
       </div>
       {% endif %}
 
-       {% if 'On' in culture_card %}
+      {% if 'On' in culture_card %}
       <div class="event__content--sidebar__item">
       <i class="fas fa-money-bill"></i>
            {{ 'Payment with culture or activity card available'|t }}
@@ -268,13 +272,22 @@
       </div>
       {% endif %}
 
-      {% if ticket_vendor %}
-        <div class="event__content--sidebar__item">
-          <i class="fa fa-user-plus"></i>
-          <a href={{ ticket_vendor['url'] }}>
-              {{ 'Register here'|t }}
-          </a>
-        </div>
+      {% if pre_registration_url %}
+        {% if show_registration_link %}
+          <div class="event__content--sidebar__item">
+            <i class="fa fa-user-plus"></i>
+            <a href={{ pre_registration_url }}>
+                {{ 'Register here'|t }}
+            </a>
+          </div>
+        {% else %}
+          <div class="event__content--sidebar__item">
+            <i class="fa fa-user-plus"></i>
+            <div>
+                {{ 'Registration is closed'|t }}
+            </div>
+          </div>
+        {% endif %}
       {% endif %}
 
       {% if 'Yes' in accessible %}
@@ -293,4 +306,3 @@
     </div>
   </div>
 </article>
-
