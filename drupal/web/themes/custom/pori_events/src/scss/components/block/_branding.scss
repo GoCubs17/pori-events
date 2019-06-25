@@ -16,7 +16,7 @@
   text-transform: uppercase;
 
   @media screen and (max-width: $desktop-narrow) {
-    display:none;
+    display: none;
   }
 
   a {
@@ -36,24 +36,20 @@
         .region-header{
           #block-sitebranding{
            .site-logo{
-            box-sizing: border-box;
-            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
-            background-size: contain;
-            max-height: 150px;
-            width: 550px;
-            @media screen and (max-width: $desktop-narrow) {
-              display: none;
-            
+              box-sizing: border-box;
+              background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+              background-size: contain;
+              max-height: 150px;
+              width: 550px;
+              @media screen and (max-width: $desktop-narrow) {
+                display: none;
+              }
+              img {
+                display: none;
+              }
             }
-            img {
-              display: none;
-            }
-
-           }
           }
-          
         }
-        
       }
     }
   }
@@ -69,8 +65,7 @@
       max-height: 150px;
       width: 450px;
     }
-    
-}  
+  }
 }
 .hobbies-logo {
   box-sizing: border-box;
@@ -80,6 +75,5 @@
   width: 550px;
   @media screen and (max-width: $desktop-narrow) {
     width: 25rem;
-  
   }
 }
