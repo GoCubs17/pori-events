@@ -25,6 +25,9 @@ import {
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
+import 'moment/locale/fi';
+
+Moment.locale('fi');
 
 const loc = window.location.origin;
 
@@ -65,6 +68,7 @@ const HitsListItem = props => {
 
   const date_format = "D.M.YYYY";
   const time_format = "HH:mm";
+
   const date_start = Moment(source.start_time).format(date_format);
   const date_end = Moment(source.end_time).format(date_format);
 
