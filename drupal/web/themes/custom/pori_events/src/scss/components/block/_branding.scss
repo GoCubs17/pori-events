@@ -36,18 +36,20 @@
         .region-header{
           #block-sitebranding{
            .site-logo{
-              box-sizing: border-box;
-              background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
-              background-size: contain;
-              max-height: 150px;
-              width: 550px;
-              @media screen and (max-width: $desktop-narrow) {
-                display: none;
-              }
-              img {
-                display: none;
-              }
+            box-sizing: border-box;
+            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+            background-size: contain;
+            max-height: 150px;
+            width: 550px;
+            @media screen and (max-width: $desktop-narrow) {
+              background-position: 50% 50%;
+              width: 100%;
+
             }
+            img {
+              visibility: hidden;
+            }
+           }
           }
         }
       }
@@ -74,6 +76,9 @@
   height: 150px;
   width: 550px;
   @media screen and (max-width: $desktop-narrow) {
-    width: 25rem;
+    max-height: 3rem;
+    background-position: 50% 50%;
+    width: 100%;
+
   }
 }
