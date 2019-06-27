@@ -91,6 +91,10 @@ source:
       label: Provider
       selector: $.provider_email
     -
+      name: event_provider_name
+      label: Provider
+      selector: $.provider_name
+    -
       name: event_location_address
       label: 'Location extra info'
       selector: $.location.name.fi
@@ -144,6 +148,7 @@ process:
   field_provider_email: event_provider_email
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
+  field_provider_name: event_provider_name
   field_location_extra_info: event_location_address
   field_location_extra_info_info: hobby_location_extra_info
   field_ticket_vendor: event_offers_vedor
