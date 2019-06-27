@@ -1456,7 +1456,6 @@ margin-bottom: 10px;
 #content_header {
   position: relative;
   @extend %layout-container;
-  display: none;
   @media screen and (min-width: $desktop-narrow) {
     display: block;
   }
