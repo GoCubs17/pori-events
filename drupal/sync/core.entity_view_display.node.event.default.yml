@@ -26,6 +26,7 @@ dependencies:
     - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
+    - field.field.node.event.field_provider_name
     - field.field.node.event.field_provider_phone
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
@@ -253,6 +254,14 @@ content:
     region: content
   field_provider_email:
     weight: 119
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_provider_name:
+    weight: 158
     label: above
     settings:
       link_to_entity: false
