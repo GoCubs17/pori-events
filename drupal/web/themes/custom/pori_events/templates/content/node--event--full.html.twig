@@ -139,7 +139,7 @@
 
        {% if description %}
         <div class="event__content__description">
-          {{ description| striptags| raw }}
+          {{ description | raw }}
         </div>
       {% endif %}
       {% if 'On' in content.field_hobby_is_hobby[0] %}
