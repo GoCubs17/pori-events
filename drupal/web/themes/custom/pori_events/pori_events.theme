@@ -19,18 +19,13 @@ function pori_events_preprocess_html(&$variables) {
 );
 
 switch(\Drupal::service('path.current')->getPath()) {
-    case '/':
+    case '/node':
         $tag['#attributes']['content'] = 'Porin tapahtumakalenterista löydät kaikki lähialueen tapahtumat ja harrastukset. Ilmoita helposti myös oma tapahtumasi tai harrastuksesi mukaan!';
         break;
     case '/harrastukset':
         $tag['#attributes']['content'] = 'Porin harrastuskalenterista löydät kaikki lähialueen harrastukset ja tapahtumat. Ilmoita helposti myös oma harrastuksesi tai tapahtumasi mukaan!';
         break;
 }
-$is_front_page = \Drupal::service('path.matcher')
-    ->isFrontPage();
-    if ($is_front_page) {
-      $tag['#attributes']['content'] = 'Porin tapahtumakalenterista löydät kaikki lähialueen tapahtumat ja harrastukset. Ilmoita helposti myös oma tapahtumasi tai harrastuksesi mukaan!';
-    }
 
 if($tag['#attributes']['content']) {
     $variables['page']['#attached']['html_head'][] = array($tag, 'pori_events_meta_description');
