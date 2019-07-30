@@ -39,7 +39,6 @@
             box-sizing: border-box;
             background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
             background-size: contain;
-            max-height: 150px;
             width: 550px;
             @media screen and (max-width: $desktop-narrow) {
               background-position: 50% 50%;
@@ -73,8 +72,7 @@
   box-sizing: border-box;
   background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
   background-size: contain;
-  height: 150px;
-  width: 550px;
+  width: 350px;
   @media screen and (max-width: $desktop-narrow) {
     max-height: 3rem;
     background-position: 50% 50%;
