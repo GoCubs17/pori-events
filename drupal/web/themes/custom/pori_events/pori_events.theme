@@ -41,9 +41,6 @@ if($tag['#attributes']['content']) {
     if (!empty($node) && $node->hasField('field_hobby_is_hobby')) {
       if ($hobby_value = $node->field_hobby_is_hobby->value) {
         $variables['attributes']['class'][] = 'hobby-class-' . $hobby_value;
-        $variables['head_title'] = 'Harrastukset | Porin harrastusmakalenteri';
-      }else {
-        $variables['head_title'] = 'Tapahtumat | Porin tapahtumakalenteri';
       }
     }
   }
