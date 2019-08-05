@@ -107,7 +107,6 @@ const HitsListItem = props => {
     </div>
   );
 };
-
 class App extends SearchkitComponent {
   componentDidMount() {
     let is_hobby = this.props.eventType === "hobbies" ? true : false;
@@ -194,7 +193,7 @@ class App extends SearchkitComponent {
               <Panel
                 className={`${this.props.eventType}--when-panel`}
                 collapsable={true}
-                defaultCollapsed={false}
+                defaultCollapsed={this.props.filterOpen}
                 title={Drupal.t("When")}
               >
                 <DateRangeFilter
@@ -207,7 +206,7 @@ class App extends SearchkitComponent {
               <Panel
                 className={`${this.props.eventType}--when`}
                 collapsable={true}
-                defaultCollapsed={false}
+                defaultCollapsed={this.props.filterOpen}
                 title={Drupal.t("When")}
               >
                 <DateRangeFilter
