@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Write a line or two here about what the updates are for.
- * This is shown to users on the update.php page.
+ * Updates text field character limit
  */
 function pori_harrastukset_update_8001(&$sandbox) {
-    _module_change_text_field_max_length('node', 'field_text', 300);
+    _module_change_text_field_max_length('node', 'field_image_ext_url', 300);
 }
 
 /**
