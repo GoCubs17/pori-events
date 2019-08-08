@@ -4,7 +4,7 @@
  * Updates text field character limit
  */
 function pori_harrastukset_update_8001(&$sandbox) {
-    _module_change_text_field_max_length('node', 'field_image_ext_url', 300);
+    _module_change_text_field_max_length('node', 'field_image_ext_url', 1100);
 }
 
 /**
