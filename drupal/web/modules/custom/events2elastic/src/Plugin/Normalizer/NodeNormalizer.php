@@ -111,7 +111,12 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // Date fields
       $from = $object->field_start_time->value . ".000Z";
-      $to = $object->field_end_time->value . ".000Z";
+      if(isset($object->field_end_time->value)) {
+        $to = $object->field_end_time->value . ".000Z";
+      } else {
+        $to = null;
+      }
+      
 
       $start_date = date('Y-m-d', strtotime($from));
       $end_date = date('Y-m-d', strtotime($to));
