@@ -25,9 +25,9 @@ import {
 } from "searchkit";
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
 import Moment from "moment";
-import 'moment/locale/fi';
+import "moment/locale/fi";
 
-Moment.locale('fi');
+Moment.locale("fi");
 
 const loc = window.location.origin;
 
@@ -70,7 +70,11 @@ const HitsListItem = props => {
   const time_format = "HH:mm";
 
   const date_start = Moment(source.start_time).format(date_format);
-  const date_end = Moment(source.end_time).format(date_format);
+  let date_end = "";
+  if (source.end_time != null) {
+    date_end = "- " + Moment(source.end_time).format(date_format);
+  }
+
 
   let weekDays = [];
   if (source.monday === "1") weekDays.push("MA");
@@ -82,7 +86,9 @@ const HitsListItem = props => {
   if (source.sunday === "1") weekDays.push("SU");
   const addDay = weekDays.join(" | ");
 
-  const hobby_area = source.hobby_location_area ? source.hobby_location_area : source.hobby_location_sub_area;
+  const hobby_area = source.hobby_location_area
+    ? source.hobby_location_area
+    : source.hobby_location_sub_area;
 
   return (
     <div
@@ -94,7 +100,7 @@ const HitsListItem = props => {
           <img src={image_source} />
         </div>
         <div className="event__time">
-          {date_start} - {date_end}
+          {date_start} {date_end}
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
