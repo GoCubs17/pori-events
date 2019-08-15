@@ -1,0 +1,24 @@
+uuid: 5213766e-11fb-42b0-830b-639d09080110
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.hobby_footer_content
+  module:
+    - views
+  theme:
+    - pori_events
+id: views_block__hobby_footer_content_footer_content_block
+theme: pori_events
+region: footer
+weight: 0
+provider: null
+plugin: 'views_block:hobby_footer_content-footer_content_block'
+settings:
+  id: 'views_block:hobby_footer_content-footer_content_block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }

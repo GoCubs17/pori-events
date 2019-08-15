@@ -1,4 +1,4 @@
-uuid: c0e522e8-a0ea-4e40-aae4-e79d01a730e4
+uuid: fa419f63-333f-4201-88c6-be154a8dff15
 langcode: en
 status: true
 dependencies:
@@ -8,10 +8,10 @@ dependencies:
   module:
     - node
     - user
-id: footer_content
-label: 'Footer content'
+id: hobby_footer_content
+label: 'Hobby Footer content'
 module: views
-description: 'Display footer content.'
+description: 'Display hobby footer content.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -42,7 +42,7 @@ display:
         type: basic
         options:
           submit_button: Submit
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: Sort
           expose_sort_order: true
@@ -188,6 +188,37 @@ display:
           id: field_hobby_footer_value
           table: node__field_hobby_footer
           field: field_hobby_footer_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           plugin_id: boolean
       sorts:
         created:
