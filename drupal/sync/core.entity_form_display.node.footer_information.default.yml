@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.footer_information.field_footer_section_2
     - field.field.node.footer_information.field_footer_section_3
     - field.field.node.footer_information.field_footer_section_4
+    - field.field.node.footer_information.field_hobby_footer
     - node.type.footer_information
   module:
     - path
@@ -53,6 +54,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_hobby_footer:
+    weight: 125
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   langcode:
     type: language_select
