@@ -1,5 +1,5 @@
 uuid: c0e522e8-a0ea-4e40-aae4-e79d01a730e4
-langcode: fi
+langcode: en
 status: true
 dependencies:
   config:
@@ -41,10 +41,10 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Käytä
-          reset_button: false
-          reset_button_label: Palauta
-          exposed_sorts_label: Lajittele
+          submit_button: Submit
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: Sort
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
