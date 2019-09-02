@@ -1,45 +1,23 @@
 <?php
 
 /**
- * Updates text field character limit
+ * Increase the length of "field_image_ext_url" to 1100 characters.
  */
-function pori_harrastukset_update_8001(&$sandbox) {
-    _module_change_text_field_max_length('node', 'field_image_ext_url', 1100);
+function pori_harrastukset_update_8003() {
+  $database = \Drupal::database();
+$database->query("ALTER TABLE node__field_image_ext_url MODIFY field_image_ext_url_value VARCHAR(1100)");
+$database->query("ALTER TABLE node_revision__field_image_ext_url MODIFY field_image_ext_url_value VARCHAR(1100)");
+$storage_key = 'node.field_schema_data.field_image_ext_url';
+$storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+$field_schema = $storage_schema->get($storage_key);
+$field_schema['node__field_image_ext_url']['fields']['field_image_ext_url_value']['length'] = 1100;
+$field_schema['node_revision__field_image_ext_url']['fields']['field_image_ext_url_value']['length'] = 1100;
+$storage_schema->set($storage_key, $field_schema);
+// Update field configuration.
+$config = \Drupal::configFactory()
+  ->getEditable('field.storage.node.field_image_ext_url');
+$config->set('settings.max_length', 1100);
+$config->save(TRUE);
+// Update field storage configuration.
+\Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_image_ext_url')->save();
 }
-
-/**
- * Update the length of a text field which already contains data.
- *
- * @param string $entity_type_id
- * @param string $field_name
- * @param integer $new_length
- */
-function _module_change_text_field_max_length ($entity_type_id, $field_name, $new_length) {
-    $name = 'field.storage.' . $entity_type_id . "." . $field_name;
-  
-    // Get the current settings
-    $result = \Drupal::database()->query(
-      'SELECT data FROM {config} WHERE name = :name',
-      [':name' => $name]
-    )->fetchField();
-    $data = unserialize($result);
-    $data['settings']['max_length'] = $new_length;
-  
-    // Write settings back to the database.
-    \Drupal::database()->update('config')
-      ->fields(['data' => serialize($data)])
-      ->condition('name', $name)
-      ->execute();
-  
-    // Update the value column in both the _data and _revision tables for the field
-    $table = $entity_type_id . "__" . $field_name;
-    $table_revision = $entity_type_id . "_revision__" . $field_name;
-    $new_field = ['type' => 'varchar', 'length' => $new_length];
-    $col_name = $field_name . '_value';
-    \Drupal::database()->schema()->changeField($table, $col_name, $col_name, $new_field);
-    \Drupal::database()->schema()->changeField($table_revision, $col_name, $col_name, $new_field);
-  
-    // Flush the caches.
-    drupal_flush_all_caches();
-  }
-  
