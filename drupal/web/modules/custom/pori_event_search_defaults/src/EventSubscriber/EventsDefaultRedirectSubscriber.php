@@ -35,7 +35,7 @@ class EventsDefaultRedirectSubscriber implements EventSubscriberInterface {
       // Use millisecond dates like
       // \Drupal\events2elastic\Plugin\Normalizer\NodeNormalizer does..
       $start = 'event_date_from=' . date('U000', $today);
-      $end = 'event_date_to=' . date('U000', strtotime('+5 day', $today));
+      $end = 'event_date_to=' . date('U000', strtotime('+6 day', $today));
 
       // Rewrite to empty url if homepage.
       $url = ($path_matcher->isFrontpage()) ? '' : $url;
