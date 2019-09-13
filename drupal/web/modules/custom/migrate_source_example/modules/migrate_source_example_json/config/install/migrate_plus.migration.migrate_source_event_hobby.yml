@@ -13,7 +13,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
   # TODO: Change to use actual API. Now works only if there is json set on the site.
-  urls: 'https://satakuntaevents.fi/activity/api/v1/event/?include=location,keywords,audience&page_size=999999'
+  urls: 'https://test.satakuntaevents.fi/api/v2/event/?include=location,keywords,audience&page_size=999999'
   item_selector: $.data[*]
   ids:
     event_id:
