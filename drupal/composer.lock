@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3629e52d1163c40992eed1ab7ab5bec",
+    "content-hash": "7ca596d05d4d39257046a7f518cbbd10",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -127,9 +127,7 @@
             "version": "1.8.2",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip"
             },
             "type": "drupal-library"
         },
@@ -2295,7 +2293,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.26",
-                    "datestamp": "1549559402",
+                    "datestamp": "1549218480",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2592,7 +2590,7 @@
             ],
             "homepage": "https://www.drupal.org/project/config_installer",
             "support": {
-                "source": "https://git.drupalcode.org/project/config_installer"
+                "source": "http://cgit.drupalcode.org/config_installer"
             }
         },
         {
@@ -3302,15 +3300,18 @@
         },
         {
             "name": "drupal/elasticsearch_helper",
-            "version": "dev-5.x",
+            "version": "dev-6.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/elasticsearch_helper.git",
-                "reference": "3e95c35741d5dff6fb1a92a8e7cd7602b48eec6f"
+                "reference": "7d778d07a7da8e236e747b5f92da346f85f82bfd"
             },
             "require": {
                 "drupal/core": "*",
                 "elasticsearch/elasticsearch": "~5.0"
+            },
+            "require-dev": {
+                "drupal/elasticsearch_helper_content": "*"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Amazon PHP SDK",
@@ -3319,11 +3320,11 @@
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-5.x": "5.x-dev"
+                    "dev-6.x": "6.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.x-dev",
-                    "datestamp": "1537174380",
+                    "version": "8.x-6.x-dev",
+                    "datestamp": "1563205981",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -3359,7 +3360,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/elasticsearch_helper"
             },
-            "time": "2018-09-17T08:53:22+00:00"
+            "time": "2019-07-22T14:37:02+00:00"
         },
         {
             "name": "drupal/empty_page",
@@ -3655,7 +3656,7 @@
             "description": "Allows you to fetch external images and use image styles on them.",
             "homepage": "https://www.drupal.org/project/imagecache_external",
             "support": {
-                "source": "https://git.drupalcode.org/project/imagecache_external"
+                "source": "http://cgit.drupalcode.org/imagecache_external"
             }
         },
         {
@@ -4003,7 +4004,7 @@
             "description": "Environment Indicator, Super Light.",
             "homepage": "https://www.drupal.org/project/simplei",
             "support": {
-                "source": "https://git.drupalcode.org/project/simplei"
+                "source": "http://cgit.drupalcode.org/simplei"
             }
         },
         {
@@ -4113,7 +4114,7 @@
             "description": "Provides Slick carousel integration with Views.",
             "homepage": "https://www.drupal.org/project/slick_views",
             "support": {
-                "source": "https://git.drupalcode.org/project/slick_views"
+                "source": "http://cgit.drupalcode.org/slick_views"
             }
         },
         {
@@ -4140,7 +4141,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0",
-                    "datestamp": "1524216007",
+                    "datestamp": "1524215880",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4171,12 +4172,16 @@
                 {
                     "name": "r_honey",
                     "homepage": "https://www.drupal.org/user/473356"
+                },
+                {
+                    "name": "vszilard",
+                    "homepage": "https://www.drupal.org/user/3526208"
                 }
             ],
             "description": "Annotate your content to generate Rich Search Snippets.",
             "homepage": "https://www.drupal.org/project/structured_data",
             "support": {
-                "source": "https://git.drupalcode.org/project/structured_data"
+                "source": "http://cgit.drupalcode.org/structured_data"
             }
         },
         {
@@ -5827,9 +5832,7 @@
             "version": "1.6.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip"
             },
             "type": "drupal-library"
         },
@@ -6765,7 +6768,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -8565,7 +8568,7 @@
             "description": "Helps developers work with configuration.",
             "homepage": "https://www.drupal.org/project/config_devel",
             "support": {
-                "source": "https://git.drupalcode.org/project/config_devel"
+                "source": "http://cgit.drupalcode.org/config_devel"
             }
         },
         {
@@ -10345,7 +10348,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/elasticsearch_helper": 20,
         "drupal/conditional_fields": 15,
         "drupal/migrate_source_jsonpath": 20,
         "drupal/context": 10,
