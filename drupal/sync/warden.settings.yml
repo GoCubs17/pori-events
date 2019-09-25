@@ -1,9 +1,9 @@
-warden_allow_requests: false
-warden_public_allow_ips: '127.0.0.1,::1'
-warden_server_host_path: ''
-warden_http_username: ''
-warden_http_password: ''
-warden_token: ''
+warden_allow_requests: true
+warden_public_allow_ips: '83.136.254.41,2a04:3541:1000:500:d456:61ff:fee3:7d8d'
+warden_server_host_path: 'https://warden.wunder.io'
+warden_http_username: 'warden'
+warden_http_password: 'wunder'
+warden_token: 'aCsTnss8YMAPzU6COnaYKFcr7BTiir'
 warden_match_contrib: true
 warden_match_custom: true
 warden_preg_match_custom: '{^modules\/custom\/*}'
