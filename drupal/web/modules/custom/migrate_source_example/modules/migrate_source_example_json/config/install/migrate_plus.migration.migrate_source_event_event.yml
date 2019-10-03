@@ -12,7 +12,8 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  #TODO: change this back to   urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  urls: 'https://local.tapahtumat.pori.fi/eventtesti.json'
   item_selector: data
   ids:
     event_id:
@@ -88,6 +89,10 @@ source:
       name: event_location_extra_info
       label: 'Location extra info'
       selector: location_extra_info/fi
+    -
+      name: event_external_links
+      label: 'External Link'
+      selector: external_links
 process:
   type:
     plugin: default_value
@@ -186,5 +191,8 @@ process:
     -
       plugin: migration_lookup
       migration: migrate_source_event_audience
+  field_external:
+      plugin: link_extractor
+      source: event_external_links
 destination:
   plugin: 'entity:node'

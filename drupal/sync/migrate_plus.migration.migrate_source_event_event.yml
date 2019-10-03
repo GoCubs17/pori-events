@@ -90,6 +90,10 @@ source:
       name: event_location_extra_info
       label: 'Location extra info'
       selector: location_extra_info/fi
+    -
+      name: event_external_links
+      label: 'External Link'
+      selector: external_links
 process:
   type:
     plugin: default_value
@@ -179,6 +183,9 @@ process:
     -
       plugin: migration_lookup
       migration: migrate_source_event_audience
+  field_external:
+    plugin: link_extractor
+    source: event_external_links
 destination:
   plugin: 'entity:node'
 migration_dependencies: null
