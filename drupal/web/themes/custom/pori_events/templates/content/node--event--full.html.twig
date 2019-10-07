@@ -291,15 +291,17 @@
       {% if external_links[0] %}
         <div class="event__content--sidebar__item">
           <i class="fas fa-link"></i>
-          {% for i in 0..10 %}
-            {% if external_links[i] %}
+          <div class="external-links-list">
+            {% for external_link in external_links['#items'] %}
+              {% if external_links[loop.index0] %}
 
-                <a href={{ external_links[i]['#url'] }} target="_blank" >
-                    {{ external_links[i]['#title'] }}
-                </a>
+                  <a href={{ external_links[loop.index0]['#url'] }} target="_blank" class="external-links-list__item" >
+                      {{ external_links[loop.index0]['#title'] }}
+                  </a>
 
-            {% endif %}
-          {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
       {% endif %}
 
