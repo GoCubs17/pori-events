@@ -154,16 +154,27 @@ process:
   field_price: event_offers_price
   field_free_enterance: event_offers_is_free
   field_start_time:
-    plugin: substr
-    source: event_start_time
-    start: 0
-    length: 19
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_start_time
+    -
+      plugin: substr
+      # format: 'Y-m-d\TH:i:s'
+      source: event_start_time
+      start: 0
+      length: 19
   field_end_time:
-    plugin: substr
-    # format: 'Y-m-d\TH:i:s'
-    source: event_end_time
-    start: 0
-    length: 19
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_end_time
+    -
+      plugin: substr
+      # format: 'Y-m-d\TH:i:s'
+      source: event_end_time
+      start: 0
+      length: 19
   created:
     plugin: format_date
     format: U
