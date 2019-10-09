@@ -1304,6 +1304,7 @@
 
 .sk-panel {
   cursor: pointer;
+  overflow: hidden;
 }
 
 .sk-panel__content {
@@ -1559,6 +1560,7 @@ margin-bottom: 10px;
   margin-top: 10px;
   .sk-panel {
     .sk-panel__content {
+      overflow: hidden;
       .sk-item-list {
         .is-active {
           background: lightcoral;
