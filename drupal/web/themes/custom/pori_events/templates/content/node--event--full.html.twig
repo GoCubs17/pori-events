@@ -117,9 +117,11 @@
 
   <div class="event__date--container">
     {{ start_time|date("d.m.Y", "Europe/Helsinki") }}
+     {% if end_time %}
     <span class="event__date--separator"></span>
     {{ end_time|date("d.m.Y", "Europe/Helsinki") }}
-  </div>
+    {% endif %}
+  </div> 
   {{ title_prefix }}
     <h1 class="event__title">{{ label }}</h1>
   {{ title_suffix }}
@@ -222,6 +224,39 @@
             </div>
           </div>
         {% endif %}
+
+      <div class="event__content--sidebar__item event__time">
+        <i class="fas fa-clock"></i>
+        <div class="event__content-weekday-wrapper">
+         {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+        {% if monday %}
+         <p>{{ "Monday: "|t }} {{ monday }}</p>
+         {% endif %}
+          {% if tuesday %}
+         <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+          {% endif %}
+          {% if wednesday %}
+         <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+         {% endif %}
+          {% if thursday %}
+         <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+          {% endif %}
+          {% if friday %}
+         <p>{{ "Friday: "|t }} {{ friday }}</p>
+          {% endif %}
+          {% if saturday %}
+         <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+          {% endif %}
+          {% if sunday %}
+         <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+          {% endif %}
+          {% else %}
+        {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }}{% if end_time %} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+        {% endif %}
+        {% endif %}
+      </div>
+      </div>
+
       {% endif %}
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
