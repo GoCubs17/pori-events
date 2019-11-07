@@ -1,5 +1,5 @@
 /**
- * Created by lisette on 28/07/16.
+ * Created by lisette on 28/07/16. (Updated on 5.11.2019 for Gulp 4)
  */
 // General plugins
 var gulp = require('gulp');
@@ -63,17 +63,17 @@ var changeEvent = function(evt) {
 console.log(gutil.env.production);
 
 // BrowserSync task
-gulp.task('browserSync', function() {
+gulp.task('browserSync', gulp.series(function() {
   browserSync.init({
     //files: path.styles.dist + '*.css', // Does not work when stylesheets have @import
     files: path.styles.src + '**/*.scss',
     // proxy: 'localhost:8080/pori-web/',
     // browser: '<browser>'
   })
-});
+}));
 
 // Sass task
-gulp.task('sass', function(minify) {
+gulp.task('sass', gulp.series(function(minify) {
   return gulp.src(path.styles.src + '**/*.scss')
     .pipe(gulpif(path.sourcemaps.prod, sourcemaps.init()))
     .pipe(sassGlob())
@@ -98,37 +98,37 @@ gulp.task('sass', function(minify) {
     .pipe(path.env.prod === true ? cleanCss() : gutil.noop())
     .pipe(gulpif(path.sourcemaps.prod, sourcemaps.write()))
     .pipe(gulp.dest(path.styles.dist));
-});
+}));
 
 // Watch task
-gulp.task('watch', ['sass', 'browserSync'], function() {
+gulp.task('watch', gulp.series(['sass', 'browserSync'], function() {
   gulp.watch(path.styles.src + '**/*.scss', ['sass']);
   gulp.watch(path.templates.dist + '**/*.html.twig', browserSync.reload);
   gulp.watch(path.scripts.src + '*.js', ['scripts']).on('change', browserSync.reload);
-});
+}));
 
 // Uglify task
-gulp.task('scripts', function() {
+gulp.task('scripts', gulp.series(function() {
   gulp.src(path.scripts.src + '/*.js')
     .pipe(path.env.prod === true ? uglify() : gutil.noop())
     .pipe(rename({
       suffix: '.min'
     }))
     .pipe(gulp.dest(path.scripts.dist));
-});
+}));
 
 // Image task
-gulp.task('imagemin', function() {
+gulp.task('imagemin', gulp.series(function() {
   gulp.src(path.images.src + '*')
     .pipe(path.env.prod === true ? imagemin() : gutil.noop())
     .pipe(gulp.dest(path.images.dist));
-});
+}));
 
 // Default tasks
-gulp.task('default', ['sass', 'watch', 'scripts'], function() {
+gulp.task('default', gulp.series(['sass', 'watch', 'scripts'], function() {
   console.log('Running default tasks');
-});
+}));
 
-gulp.task('build', ['sass', 'scripts', 'imagemin'], function() {
+gulp.task('build', gulp.series(['sass', 'scripts', 'imagemin'], function() {
   console.log('Running build tasks');
-});
+}));
