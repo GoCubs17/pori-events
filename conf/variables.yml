@@ -6,7 +6,7 @@ support_email: fi.support@wunder.io
 
 innodb_buffer_pool_size: "{{ memory_db }}"
 
-php_memory_limit: 256 # In MB "256MB ought to be enough for anyone." -Bill Gates
+php_memory_limit: 1024 # In MB "256MB ought to be enough for anyone." -Bill Gates
 
 # Estimated average memory usage per process
 # Use `ps --no-headers -o "rss,cmd" -C php-fpm | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"Mb") }'` to get the average
