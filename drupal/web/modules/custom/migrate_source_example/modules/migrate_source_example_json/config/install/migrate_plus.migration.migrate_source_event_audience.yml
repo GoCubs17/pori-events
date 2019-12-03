@@ -1,4 +1,4 @@
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -17,8 +17,6 @@ source:
   ids:
     audience_id:
       type: string
-  constants:
-    slash: '/'
   fields:
     -
       name: audience_id
@@ -33,14 +31,6 @@ process:
     plugin: default_value
     default_value: target_audience
   name: audience_name
-  path:
-    -
-      plugin: concat
-      delimiter: null
-      source:
-        # Slash needs to be prefixed for the path.
-        - constants/slash
-        - author_alias
 destination:
   plugin: 'entity:taxonomy_term'
 migration_dependencies: {  }

@@ -1,5 +1,5 @@
 uuid: 18c70afd-dbb0-4486-a99a-208df04d17cd
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -21,8 +21,6 @@ source:
   ids:
     area_id:
       type: string
-  constants:
-    slash: /
   fields:
     -
       name: area_id

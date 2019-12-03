@@ -1,4 +1,4 @@
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -12,13 +12,11 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://test.satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
+  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today'
   item_selector: data
   ids:
     event_id:
       type: string
-  constants:
-      slash: '/'
   fields:
     -
       name: event_id
@@ -155,17 +153,9 @@ process:
   uid:
     plugin: default_value
     default_value: 1
-  path:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: book_alias
-    -
-      plugin: concat
-      delimiter: null
-      source:
-        - constants/slash
-        - book_alias
+  field_hobby_is_hobby:
+    plugin: default_value
+    default_value: 0
   field_image_ext_url:
     source: event_image
     plugin: extract

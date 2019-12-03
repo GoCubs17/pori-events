@@ -17,8 +17,6 @@ source:
   ids:
     keyword_id:
       type: string
-  constants:
-    slash: '/'
   fields:
     -
       name: keyword_id
