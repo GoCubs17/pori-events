@@ -231,28 +231,26 @@
             <div class="event__content-weekday-wrapper">
               {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
                 {% if monday %}
-                  <p>{{ "Monday: "|t }} {{ monday }}</p>
+                  <p>{{ "Monday"|t }} {{ monday }}</p>
                 {% endif %}
                 {% if tuesday %}
-                  <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+                  <p>{{ "Tuesday"|t }} {{ tuesday }}</p>
                 {% endif %}
                 {% if wednesday %}
-                  <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+                  <p>{{ "Wednesday"|t }} {{ wednesday }}</p>
                 {% endif %}
                 {% if thursday %}
-                  <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+                  <p>{{ "Thursday"|t }} {{ thursday }}</p>
                 {% endif %}
                 {% if friday %}
-                  <p>{{ "Friday: "|t }} {{ friday }}</p>
+                  <p>{{ "Friday"|t }} {{ friday }}</p>
                 {% endif %}
                 {% if saturday %}
-                  <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+                  <p>{{ "Saturday"|t }} {{ saturday }}</p>
                 {% endif %}
                 {% if sunday %}
-                  <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+                  <p>{{ "Sunday"|t }} {{ sunday }}</p>
                 {% endif %}
-              {% else %}
-                {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
               {% endif %}
             </div>
           </div>
