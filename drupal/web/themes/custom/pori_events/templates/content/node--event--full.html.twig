@@ -227,32 +227,32 @@
           </div>
         {% else %}
           <div class="event__content--sidebar__item event__time">
-            <i class="fas fa-clock"></i>
-            <div class="event__content-weekday-wrapper">
-              {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
-                {% if monday %}
-                  <p>{{ "Monday"|t }} {{ monday }}</p>
-                {% endif %}
-                {% if tuesday %}
-                  <p>{{ "Tuesday"|t }} {{ tuesday }}</p>
-                {% endif %}
-                {% if wednesday %}
-                  <p>{{ "Wednesday"|t }} {{ wednesday }}</p>
-                {% endif %}
-                {% if thursday %}
-                  <p>{{ "Thursday"|t }} {{ thursday }}</p>
-                {% endif %}
-                {% if friday %}
-                  <p>{{ "Friday"|t }} {{ friday }}</p>
-                {% endif %}
-                {% if saturday %}
-                  <p>{{ "Saturday"|t }} {{ saturday }}</p>
-                {% endif %}
-                {% if sunday %}
-                  <p>{{ "Sunday"|t }} {{ sunday }}</p>
-                {% endif %}
+            {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+              <i class="fas fa-clock"></i>
+              <div class="event__content-weekday-wrapper">
+              {% if monday %}
+                <p>{{ "Monday"|t }} {{ monday }}</p>
               {% endif %}
-            </div>
+              {% if tuesday %}
+                <p>{{ "Tuesday"|t }} {{ tuesday }}</p>
+              {% endif %}
+              {% if wednesday %}
+                <p>{{ "Wednesday"|t }} {{ wednesday }}</p>
+              {% endif %}
+              {% if thursday %}
+                <p>{{ "Thursday"|t }} {{ thursday }}</p>
+              {% endif %}
+              {% if friday %}
+                <p>{{ "Friday"|t }} {{ friday }}</p>
+              {% endif %}
+              {% if saturday %}
+                <p>{{ "Saturday"|t }} {{ saturday }}</p>
+              {% endif %}
+              {% if sunday %}
+                <p>{{ "Sunday"|t }} {{ sunday }}</p>
+              {% endif %}
+              </div>
+            {% endif %}
           </div>
         {% endif %}
       {% endif %}
