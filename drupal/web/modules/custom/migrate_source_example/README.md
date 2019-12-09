@@ -1,4 +1,61 @@
-# Migrate source example
+# Migrations on pori-events
+
+There is `function migrate_source_example_migration_plugins_alter(array &$migrations)`
+That alters dev, local and lando sites to use test.satakuntaevents. For prod API
+testing comment out the environment in question.
+
+Development code for the importers can be found from
+`modules/migrate_source_example/config/install`. Hobbies and events use their own migrations.
+
+To check status of Migrations
+`drush ms` if total gives null (N/A) then fetching source is failing for some reason.
+
+To run migrations use:
+`drush mim --update --group migrate_source_event`
+or one migration
+`drush mim --update migrate_source_event_event`
+you can run migration with dependencies
+`drush mim --update --execute-dependencies migrate_source_event_event`
+
+Migrations needs to be idle to start migrating.
+`drush mrs migrate_source_event_event` will reset the status.
+
+Automatic running of migration in environments is done by running import script in cron.
+`scripts/event_import.sh`. It is ran at /var/spool/cron/nginx on servers.
+
+Custom plugins for migration processes are found in
+`modules/src/Plugin/migrate/process`.
+
+To test migrations with your own JSON you can make test.json file to web folder
+and use `https://local.tapahtumat.pori.fi/test.json` as urls: parameter. Or use
+test.satakuntaevents API or even satakuntaevents API. Both are open.
+
+Making changes to dev files in install folder doesn't work straight away. You need
+to run `drush config-import --partial --source=modules/custom/migrate_source_example/modules/migrate_source_example_json/config/install/ -y && drush cr` to import changes to db.
+
+After every change works as intended drush cex -y` will pull out sync yml for Migrations
+which is needed to release to other environments.
+
+Cron does rollback (prod,stage,dev) to remove events that have been removed from JSON that API returns.
+`drush mr migrate_source_event_event`
+
+!IMPORTANT keep development yml files the same as sync/ yml files so partial import
+doesn't do unwanted changes later.
+
+## List of migrations and sources updated 21.10.2019
+migrate_source_event_area | https://satakuntaevents.fi/api/v2/places?show_all_places=1&page_size=999
+migrate_source_event_audience | https://satakuntaevents.fi/api/v2/keyword_set/pori:audiences/?include=keywords&page_size=999
+migrate_source_event_event | https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today
+migrate_source_event_hobby_area_subterms | https://satakuntaevents.fi/activity/api/v1/place/?page_size=100&is_address=false&parent=se:13
+migrate_source_event_hobby_area | https://satakuntaevents.fi/activity/api/v1/place/?is_address=false&page_size=100&no_parent=true
+migrate_source_event_hobby_audience | https://satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=audience
+migrate_source_event_hobby | https://satakuntaevents.fi/activity/api/v1/event/?include=location,keywords,audience&page_size=999999&start=today
+migrate_source_event_keywords_hobby_subterms | https://satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword
+migrate_source_event_keywords_hobby | https://satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword
+migrate_source_event_keywords | https://satakuntaevents.fi/api/v2/keyword_set/pori:topics/?include=keywords&page_size=999
+
+Migration example readme content below.
+<!-- # Migrate source example
 
 `migrate_source_example` is a module that contains a set of sub-modules that provide content migrations from different
 sources.
@@ -47,4 +104,4 @@ site.
 
 ## Data source
 
-Example content is synced with a [Google Spreadsheet](https://goo.gl/Iq2Tk6).
+Example content is synced with a [Google Spreadsheet](https://goo.gl/Iq2Tk6). -->
