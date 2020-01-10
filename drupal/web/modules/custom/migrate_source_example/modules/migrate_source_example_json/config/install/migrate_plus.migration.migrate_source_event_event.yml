@@ -1,4 +1,4 @@
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -12,14 +12,11 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  #TODO: change this back to   urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience'
-  urls: 'https://local.tapahtumat.pori.fi/eventtesti.json'
+  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today'
   item_selector: data
   ids:
     event_id:
       type: string
-  constants:
-      slash: '/'
   fields:
     -
       name: event_id
@@ -128,16 +125,27 @@ process:
       - 0
       - is_free
   field_start_time:
-    plugin: substr
-    source: event_start_time
-    start: 0
-    length: 19
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_start_time
+    -
+      plugin: substr
+      # format: 'Y-m-d\TH:i:s'
+      source: event_start_time
+      start: 0
+      length: 19
   field_end_time:
-    plugin: substr
-    # format: 'Y-m-d\TH:i:s'
-    source: event_end_time
-    start: 0
-    length: 19
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_end_time
+    -
+      plugin: substr
+      # format: 'Y-m-d\TH:i:s'
+      source: event_end_time
+      start: 0
+      length: 19
   created:
     plugin: format_date
     format: U
@@ -145,17 +153,9 @@ process:
   uid:
     plugin: default_value
     default_value: 1
-  path:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: book_alias
-    -
-      plugin: concat
-      delimiter: null
-      source:
-        - constants/slash
-        - book_alias
+  field_hobby_is_hobby:
+    plugin: default_value
+    default_value: 0
   field_image_ext_url:
     source: event_image
     plugin: extract

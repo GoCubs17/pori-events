@@ -96,8 +96,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
           $data['timeframe'] = "Iltapäivällä";
         } else {
           $data['timeframe'] = "Illalla";
-        } 
-      
+        }
+
 
 
       // boolean fields
@@ -110,22 +110,52 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
 
       // Date fields
-      $from = $object->field_start_time->value . ".000Z";
-      $to = $object->field_end_time->value . ".000Z";
+      if (!empty($object->field_start_time->value)) {
+        $from = $object->field_start_time->value . ".000Z";
 
-      $start_date = date('Y-m-d', strtotime($from));
-      $end_date = date('Y-m-d', strtotime($to));
+        $start_date = date('Y-m-d', strtotime($from));
+
+        $data['start_time'] = $from;
+
+        $data['start_time_millis'] = date('U000', strtotime($from));
+      }
+      else {
+        $data['start_time'] = null;
+        $data['start_time_millis'] = null;
+        $start_date = null;
+      }
+      if (!empty($object->field_end_time->value)) {
+        $to = $object->field_end_time->value . ".000Z";
+
+        $end_date = date('Y-m-d', strtotime($to));
+
+        $data['end_time'] = $to;
+
+        $data['end_time_millis'] = date('U000',strtotime($to));
+
+        $data['date_lenght'] = !empty($data['end_time_millis']) ? $data['end_time_millis'] - $data['start_time_millis'] : null;
+
+        $data['date_pretty'] = date('j.n.Y H:i', strtotime($from)) . " - " . date('j.n.Y H:i', strtotime($to));
+      }
+      else {
+        // Set pretty date without dash and end date values to null.
+        if ($start_date != null) {
+          $data['date_pretty'] = date('j.n.Y H:i', strtotime($from));
+        }
+        else {
+          $data['date_pretty'] = t('No dates given.');
+        }
+        $data['date_lenght'] = null;
+        $data['end_time_millis'] = null;
+        $data['end_time'] = null;
+        $end_date = null;
+      }
       $start_date == $end_date ? $data['single_day'] = 1 : $data['single_day'] = 0;
 
-      $data['start_time'] = $from;
-      $data['end_time'] = $to;
 
-      $data['start_time_millis'] = date('U000', strtotime($from));
-      $data['end_time_millis'] = date('U000',strtotime($to));
 
-      $data['date_lenght'] = !empty($data['end_time_millis']) ? $data['end_time_millis'] - $data['start_time_millis'] : null;
 
-      $data['date_pretty'] = date('j.n.Y H:i', strtotime($from)) . " - " . date('j.n.Y H:i', strtotime($to));
+
 
 
 

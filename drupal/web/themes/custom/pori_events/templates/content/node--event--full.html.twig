@@ -63,19 +63,17 @@
  *   in different view modes.
  */
 #}
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'l-content',
-    'event-page__wrapper',
-    'l-article-wrapper'
-  ]
-%}
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'l-content',
+  'event-page__wrapper',
+  'l-article-wrapper'
+] %}
 
 <!-- fields -->
 {% set bg_img = content.field_image_ext_url[0]['#uri'] | image_style('event_page_pic_1360px_') %}
@@ -118,156 +116,252 @@
 
   <div class="event__date--container">
     {{ start_time|date("d.m.Y", "Europe/Helsinki") }}
-    <span class="event__date--separator"></span>
-    {{ end_time|date("d.m.Y", "Europe/Helsinki") }}
+    {% if end_time %}
+      <span class="event__date--separator"></span>
+      {{ end_time|date("d.m.Y", "Europe/Helsinki") }}
+    {% endif %}
   </div>
   {{ title_prefix }}
-    <h1 class="event__title">{{ label }}</h1>
+  <h1 class="event__title">{{ label }}</h1>
   {{ title_suffix }}
 
-        {% if content.field_image_ext_url[0]['#uri'] %}
-          <div class="event__image--container" style="background-image: url('{{ bg_img }}' );">
-          </div>
-        {% endif %}
+  {% if content.field_image_ext_url[0]['#uri'] %}
+    <div class="event__image--container"
+         style="background-image: url('{{ bg_img }}' );">
+    </div>
+  {% endif %}
 
-        <div class="event__content--container">
-          <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
-            {% if short_description %}
-              <div class="event__content__short-description">
-                {{ short_description }}
-              </div>
-            {% endif %}
+  <div class="event__content--container">
+    <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
+      {% if short_description %}
+        <div class="event__content__short-description">
+          {{ short_description }}
+        </div>
+      {% endif %}
 
-       {% if description %}
+      {% if description %}
         <div class="event__content__description">
           {{ description| striptags| raw }}
         </div>
       {% endif %}
       {% if 'On' in content.field_hobby_is_hobby[0] %}
-      <a class="event__back-button" href="/harrastukset"><i class="fas fa-chevron-left"></i>{{ "Back to hobbies listing"|t }}</a>
+        <a class="event__back-button" href="/harrastukset"><i
+            class="fas fa-chevron-left"></i>{{ "Back to hobbies listing"|t }}
+        </a>
       {% endif %}
       {% if 'Off' in content.field_hobby_is_hobby[0] %}
-      <a class="event__back-button" href="/"><i class="fas fa-chevron-left"></i>{{ "Back to events listing"|t }}</a>
+        <a class="event__back-button" href="/"><i
+            class="fas fa-chevron-left"></i>{{ "Back to events listing"|t }}</a>
       {% endif %}
-       </div>
+    </div>
 
-      <div class="event__content--sidebar">
+    <div class="event__content--sidebar">
       {% if 'On' in content.field_hobby_is_hobby[0] %}
         <h3 class="event__content--sidebar__title hobby">
           {{ "Hobby information:"|t }}
         </h3>
+        {% if start_time|date('U', "Europe/Helsinki")|format_date('short') !=  end_time|date('U', "Europe/Helsinki")|format_date('short') %}
+          <div class="event__content--sidebar__item event__time">
+            <i class="fas fa-clock"></i>
+            <div class="event__content-weekday-wrapper">
+              {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+                {% if monday %}
+                  <p>{{ "Monday: "|t }} {{ monday }}</p>
+                {% endif %}
+                {% if tuesday %}
+                  <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+                {% endif %}
+                {% if wednesday %}
+                  <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+                {% endif %}
+                {% if thursday %}
+                  <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+                {% endif %}
+                {% if friday %}
+                  <p>{{ "Friday: "|t }} {{ friday }}</p>
+                {% endif %}
+                {% if saturday %}
+                  <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+                {% endif %}
+                {% if sunday %}
+                  <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+                {% endif %}
+              {% else %}
+                {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+            <div class="event__content--sidebar__item event__time">
+              <i class="fas fa-clock"></i>
+              <div class="event__content-weekday-wrapper">
+              {% if monday %}
+                <p>{{ "Monday: "|t }} {{ monday }}</p>
+              {% endif %}
+              {% if tuesday %}
+                <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+              {% endif %}
+              {% if wednesday %}
+                <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+              {% endif %}
+              {% if thursday %}
+                <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+              {% endif %}
+              {% if friday %}
+                <p>{{ "Friday: "|t }} {{ friday }}</p>
+              {% endif %}
+              {% if saturday %}
+                <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+              {% endif %}
+              {% if sunday %}
+                <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+              {% endif %}
+              </div>
+            </div>
+          {% endif %}
         {% endif %}
-        {% if 'Off' in content.field_hobby_is_hobby[0] %}
+      {% endif %}
+      {% if 'Off' in content.field_hobby_is_hobby[0] %}
         <h3 class="event__content--sidebar__title">
           {{ "Event information:"|t }}
         </h3>
+        {% if start_time|date('U', "Europe/Helsinki")|format_date('short') !=  end_time|date('U', "Europe/Helsinki")|format_date('short') %}
+          <div class="event__content--sidebar__item event__time">
+            <i class="fas fa-clock"></i>
+            <div class="event__content-weekday-wrapper">
+              {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+                {% if monday %}
+                  <p>{{ "Monday: "|t }} {{ monday }}</p>
+                {% endif %}
+                {% if tuesday %}
+                  <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+                {% endif %}
+                {% if wednesday %}
+                  <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+                {% endif %}
+                {% if thursday %}
+                  <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+                {% endif %}
+                {% if friday %}
+                  <p>{{ "Friday: "|t }} {{ friday }}</p>
+                {% endif %}
+                {% if saturday %}
+                  <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+                {% endif %}
+                {% if sunday %}
+                  <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+                {% endif %}
+              {% else %}
+                {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+            {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+              <div class="event__content--sidebar__item event__time">
+                <i class="fas fa-clock"></i>
+                <div class="event__content-weekday-wrapper">
+                {% if monday %}
+                  <p>{{ "Monday: "|t }} {{ monday }}</p>
+                {% endif %}
+                {% if tuesday %}
+                  <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+                {% endif %}
+                {% if wednesday %}
+                  <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+                {% endif %}
+                {% if thursday %}
+                  <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+                {% endif %}
+                {% if friday %}
+                  <p>{{ "Friday: "|t }} {{ friday }}</p>
+                {% endif %}
+                {% if saturday %}
+                  <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+                {% endif %}
+                {% if sunday %}
+                  <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+                {% endif %}
+                </div>
+              </div>
+            {% endif %}
         {% endif %}
-
-      <div class="event__content--sidebar__item event__time">
-        <i class="fas fa-clock"></i>
-        <div class="event__content-weekday-wrapper">
-         {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
-        {% if monday %}
-         <p>{{ "Monday: "|t }} {{ monday }}</p>
-         {% endif %}
-          {% if tuesday %}
-         <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
-          {% endif %}
-          {% if wednesday %}
-         <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
-         {% endif %}
-          {% if thursday %}
-         <p>{{ "Thursday: "|t }} {{ thursday }}</p>
-          {% endif %}
-          {% if friday %}
-         <p>{{ "Friday: "|t }} {{ friday }}</p>
-          {% endif %}
-          {% if saturday %}
-         <p>{{ "Saturday: "|t }} {{ saturday }}</p>
-          {% endif %}
-          {% if sunday %}
-         <p>{{ "Sunday: "|t }} {{ sunday }}</p>
-          {% endif %}
-          {% else %}
-        {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
-        {% endif %}
-      </div>
-      </div>
-
+      {% endif %}
       {% if location_extra_info or area %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-map-marker-alt"></i>
-        {% if location_extra_info %}
-          {{ location_extra_info }}
-          <div>{{ extra_info_info }} </div>
-        {% endif %}
-        {% if area %}
-          {{ area }}
-        {% endif %}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-map-marker-alt"></i>
+          {% if location_extra_info %}
+            {{ location_extra_info }}
+            <div>{{ extra_info_info }} </div>
+          {% endif %}
+          {% if area %}
+            {{ area }}
+          {% endif %}
+        </div>
       {% endif %}
 
       {% if price %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-euro-sign"></i>
-        {{ price }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-euro-sign"></i>
+          {{ price }}
+        </div>
       {% endif %}
 
       {% if 'On' in content.field_free_enterance[0] %}
-      <div class="event__content--sidebar__item">
-      <i class="fas fa-euro-sign"></i>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-euro-sign"></i>
           {{ ' Free Event'|t }}
-      </div>
+        </div>
       {% endif %}
 
       {% if event_type %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-euro-sign"></i>
-        {{ event_type }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-euro-sign"></i>
+          {{ event_type }}
+        </div>
       {% endif %}
 
       {% if target_audience %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-users"></i>
-        {{ target_audience }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-users"></i>
+          {{ target_audience }}
+        </div>
       {% endif %}
 
       {% if provider_www %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-home"></i>
-        <div>
-        {{ provider_name }}
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-home"></i>
+          <div>
+            {{ provider_name }}
+          </div>
+          <a href={{ provider_www['url'] }}>
+            {{ provider_www['label'] }}
+          </a>
         </div>
-        <a href={{ provider_www['url'] }}>
-          {{ provider_www['label'] }}
-        </a>
-      </div>
       {% endif %}
 
       {% if provider_phone %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-phone"></i>
-        {{ provider_phone }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-phone"></i>
+          {{ provider_phone }}
+        </div>
       {% endif %}
 
       {% if provider_email %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-at"></i>
-        {{ provider_email }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-at"></i>
+          {{ provider_email }}
+        </div>
       {% endif %}
 
       {% if ticket_vendor %}
-      <div class="event__content--sidebar__item">
-        <i class="fas fa-ticket-alt"></i>
-        <a href={{ ticket_vendor['url'] }}>
-          {{ ticket_vendor['label'] }}
-        </a>
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-ticket-alt"></i>
+          <a href={{ ticket_vendor['url'] }}>
+            {{ ticket_vendor['label'] }}
+          </a>
+        </div>
       {% endif %}
 
       {% if pre_registration_url %}
@@ -275,14 +369,14 @@
           <div class="event__content--sidebar__item">
             <i class="fa fa-user-plus"></i>
             <a href={{ pre_registration_url }}>
-                {{ 'Register here'|t }}
+              {{ 'Register here'|t }}
             </a>
           </div>
         {% else %}
           <div class="event__content--sidebar__item">
             <i class="fa fa-user-plus"></i>
             <div>
-                {{ 'Registration is closed'|t }}
+              {{ 'Registration is closed'|t }}
             </div>
           </div>
         {% endif %}
@@ -307,23 +401,23 @@
 
       {% if 'Yes' in accessible %}
         <div class="event__content--sidebar__item">
-        <i class="fab fa-accessible-icon"></i>
-            {{ 'Accessible'|t }}
+          <i class="fab fa-accessible-icon"></i>
+          {{ 'Accessible'|t }}
         </div>
       {% endif %}
 
       {% if 'On' in childcare %}
         <div class="event__content--sidebar__item">
-        <i class="fas fa-child"></i>
-           {{ 'Child friendly'|t }}
+          <i class="fas fa-child"></i>
+          {{ 'Child friendly'|t }}
         </div>
       {% endif %}
 
       {% if 'On' in culture_card %}
-      <div class="event__content--sidebar__item">
-      <i class="fas fa-money-bill"></i>
-           {{ 'Payment with culture or activity card available'|t }}
-      </div>
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-money-bill"></i>
+          {{ 'Payment with culture or activity card available'|t }}
+        </div>
       {% endif %}
     </div>
   </div>
