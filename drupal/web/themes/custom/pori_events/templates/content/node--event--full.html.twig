@@ -109,6 +109,7 @@
 {% set saturday = content.field_weekday_saturday[0] %}
 {% set sunday = content.field_weekday_sunday[0] %}
 {% set extra_info_info = content.field_location_extra_info_info[0]['#context']['value'] %}
+{% set external_links = content.field_external %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -379,6 +380,23 @@
             </div>
           </div>
         {% endif %}
+      {% endif %}
+
+      {% if external_links[0] %}
+        <div class="event__content--sidebar__item">
+          <i class="fas fa-link"></i>
+          <div class="external-links-list">
+            {% for external_link in external_links['#items'] %}
+              {% if external_links[loop.index0] %}
+
+                  <a href={{ external_links[loop.index0]['#url'] }} target="_blank" class="external-links-list__item" >
+                      {{ external_links[loop.index0]['#title'] }}
+                  </a>
+
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
       {% endif %}
 
       {% if 'Yes' in accessible %}
