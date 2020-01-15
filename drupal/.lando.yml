@@ -62,6 +62,7 @@ services:
     webroot: web
     build:
       - composer install
+      - /app/.lando/migrate.sh
     # build_as_root:
     #   - "apt-get update -y"
     #   - "apt-get install python-yaml -y"
