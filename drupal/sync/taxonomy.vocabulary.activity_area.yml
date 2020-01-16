@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Activity area'
 vid: activity_area
 description: ''
-hierarchy: 0
 weight: 0
