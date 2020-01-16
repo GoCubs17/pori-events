@@ -8,7 +8,7 @@
 /**
  * Database settings (overridden per environment)
  */
-$databases = [];
+// $databases = [];
 $databases['default']['default'] = [
   'database' => getenv('DB_NAME_DRUPAL'),
   'username' => getenv('DB_USER_DRUPAL'),
@@ -65,10 +65,6 @@ switch ($env) {
     $settings['simple_environment_indicator'] = 'DarkGreen Local';
     $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
     break;
-  case 'lando':
-    $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = "elasticsearch";
-    $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = "9200";
-    break;
 
 }
 /**
@@ -99,13 +95,6 @@ $settings['update_free_access'] = FALSE;
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
-/**
- * Environment specific override configuration, if available.
- */
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  include __DIR__ . '/settings.local.php';
-}
-
 $settings['install_profile'] = 'config_installer';
 
 // Warden settings.
@@ -125,3 +114,17 @@ $config['warden.settings']['warden_public_allow_ips'] = '83.136.254.41,2a04:3541
 // Define module locations.
 $config['warden.settings']['warden_preg_match_custom'] = '{^modules\/custom\/*}';
 $config['warden.settings']['warden_preg_match_contrib'] = '{^modules\/contrib\/*}';
+
+/**
+ * Environment specific override configuration, if available.
+ */
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
+}
+
+/**
+ * Lando configuration overrides.
+ */
+if (getenv('LANDO_INFO') && file_exists($app_root . '/' . $site_path . '/settings.lando.php')) {
+  include $app_root . '/' . $site_path . '/settings.lando.php';
+}
