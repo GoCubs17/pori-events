@@ -15,6 +15,10 @@ tooling:
   #   description: Execute build.sh
   #   cmd:
   #     - ./build.sh
+  bower:
+    service: node
+  gulp:
+    service: node
   index:
     description: Sets up elasticsearch indexes
     cmd:
@@ -47,6 +51,8 @@ tooling:
     description: Disables xdebug for nginx
     cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
     user: root
+  yarn:
+    service: node
 
 services:
   adminer:
@@ -78,8 +84,11 @@ services:
       - appserver
   node:
     type: node
-    build:
-      - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
+    globals:
+      gulp-cli: latest
+      bower: latest
+    # build:
+    #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 proxy:
   adminer:
     - adminer-tapahtumat.lndo.site
