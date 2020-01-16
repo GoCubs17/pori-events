@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Hobby target audience'
 vid: hobby_target_audience
 description: ''
-hierarchy: 0
 weight: 0

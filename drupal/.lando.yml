@@ -15,6 +15,10 @@ tooling:
   #   description: Execute build.sh
   #   cmd:
   #     - ./build.sh
+  bower:
+    service: node
+  gulp:
+    service: node
   index:
     description: Sets up elasticsearch indexes
     cmd:
@@ -31,8 +35,6 @@ tooling:
     description: Synchronizes local db with selected environment
     cmd:
       - appserver: /app/.lando/syncdb.sh
-      - appserver: /app/.lando/update.sh
-      - appserver: /app/.lando/index.sh
   update:
     description: Updates local db & enables dev components
     cmd:
@@ -47,6 +49,8 @@ tooling:
     description: Disables xdebug for nginx
     cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
     user: root
+  yarn:
+    service: node
 
 services:
   adminer:
@@ -62,10 +66,11 @@ services:
     webroot: web
     build:
       - composer install
-      - /app/.lando/migrate.sh
     # build_as_root:
     #   - "apt-get update -y"
     #   - "apt-get install python-yaml -y"
+    run:
+      - /app/.lando/migrate.sh
     overrides:
       environment:
         WKV_SITE_ENV: lando
@@ -77,8 +82,11 @@ services:
       - appserver
   node:
     type: node
-    build:
-      - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
+    globals:
+      gulp-cli: latest
+      bower: latest
+    # build:
+    #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 proxy:
   adminer:
     - adminer-tapahtumat.lndo.site

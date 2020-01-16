@@ -83,7 +83,8 @@
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.0@RC",
         "drupal/devel": "^2.0",
-        "drupal/twig_xdebug": "^1.0"
+        "drupal/twig_xdebug": "^1.0",
+        "guncha25/drupal-codeception": "^8.0"
     },
     "conflict": {
         "drupal/drupal": "*"
