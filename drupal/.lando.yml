@@ -35,8 +35,6 @@ tooling:
     description: Synchronizes local db with selected environment
     cmd:
       - appserver: /app/.lando/syncdb.sh
-      - appserver: /app/.lando/update.sh
-      - appserver: /app/.lando/index.sh
   update:
     description: Updates local db & enables dev components
     cmd:
