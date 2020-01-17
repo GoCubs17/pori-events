@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Hobby area'
 vid: hobby_area
 description: 'Area of hobby'
-hierarchy: 0
 weight: 0

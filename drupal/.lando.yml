@@ -1,52 +1,102 @@
-name: pori-events
+name: tapahtumat
 recipe: drupal8
 
 compose:
   - compose.yml
 
 config:
-  webroot: web
   via: nginx
-  php: '7.2'
-  database: mariadb:10.1
   xdebug: false
-  drush: 8.1.15
+  vhosts: ./.lando/drupal8.conf
 
 tooling:
-  build.sh:
-    service: appserver
-    description: Execute build.sh
+  # build.sh:
+  #   service: appserver
+  #   description: Execute build.sh
+  #   cmd:
+  #     - ./build.sh
+  bower:
+    service: node
+  gulp:
+    service: node
+  index:
+    description: Sets up elasticsearch indexes
     cmd:
-      - ./build.sh
-  composer:
-    service: appserver
-    description: Run composer commands
+      - appserver: /app/.lando/index.sh
+  migrate:
+    description: Imports migrate_source_event migration group
     cmd:
-      - php -dmemory_limit=-1 /usr/local/bin/composer
+      - appserver: /app/.lando/migrate.sh
+  node:
+    service: node
+  npm:
+    service: node
+  syncdb:
+    description: Synchronizes local db with selected environment
+    cmd:
+      - appserver: /app/.lando/syncdb.sh
+  update:
+    description: Updates local db & enables dev components
+    cmd:
+      - appserver: /app/.lando/update.sh
+  xdebug-on:
+    service: appserver
+    description: Enables xdebug for nginx
+    cmd: docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disables xdebug for nginx
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+    user: root
+  yarn:
+    service: node
 
 services:
+  adminer:
+    type: compose
+    services:
+      image: dehy/adminer
+      command: /bin/s6-svscan /etc/services.d
+    run_as_root:
+      - /app/.lando/adminer.sh
+    portforward: true
+  appserver:
+    type: php:7.2
+    webroot: web
+    build:
+      - composer install
+    # build_as_root:
+    #   - "apt-get update -y"
+    #   - "apt-get install python-yaml -y"
+    run:
+      - /app/.lando/migrate.sh
+    overrides:
+      environment:
+        WKV_SITE_ENV: lando
+  database:
+    type: mariadb:10.1
   mailhog:
     type: mailhog
     hogfrom:
       - appserver
-
-  appserver:
-    build_as_root:
-      - "apt-get update -y"
-      - "apt-get install python-yaml -y"
-    overrides:
-      environment:
-        WKV_SITE_ENV: lando
-        DB_PASS_DRUPAL: drupal8
-        DB_USER_DRUPAL: drupal8
-        DB_HOST_DRUPAL: database
-        DB_NAME_DRUPAL: drupal8
-
+  node:
+    type: node
+    globals:
+      gulp-cli: latest
+      bower: latest
+    # build:
+    #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 proxy:
+  adminer:
+    - adminer-tapahtumat.lndo.site
   mailhog:
-    - mail.lndo.site
+    - mail-tapahtumat.lndo.site
 
-events:
-  # Clear caches after a database import
+eevents:
   post-db-import:
-    - appserver: cd $LANDO_WEBROOT && drush cr -y
+    - appserver: /app/.lando/update.sh
+    - appserver: /app/.lando/index.sh
+
+# Lando version.
+version: v3.0.0-rc.23

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
     - field.field.node.event.field_exceptional_opening_hours
+    - field.field.node.event.field_external
     - field.field.node.event.field_free_enterance
     - field.field.node.event.field_hobby_area
     - field.field.node.event.field_hobby_audience
@@ -117,6 +118,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: daterange_default
+    region: content
+  field_external:
+    weight: 71
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_free_enterance:
     weight: 18

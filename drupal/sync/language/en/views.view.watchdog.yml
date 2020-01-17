@@ -49,8 +49,7 @@ display:
             label: Severity
       title: 'Recent log messages'
       empty:
-        area:
-          content:
-            value: 'No log messages available.'
+        area_text_custom:
+          content: 'No log messages available.'
   page:
     display_title: Page
