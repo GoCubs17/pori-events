@@ -177,7 +177,9 @@ process:
       migration: migrate_source_event_keywords
   field_area:
     plugin: migration_lookup
-    migration: migrate_source_event_area
+    migration:
+      - migrate_source_event_area
+      - migrate_source_event_area_subterms
     source: event_location
   field_target_audience:
     -

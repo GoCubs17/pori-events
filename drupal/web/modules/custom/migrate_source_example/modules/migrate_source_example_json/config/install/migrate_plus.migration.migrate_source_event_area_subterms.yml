@@ -12,7 +12,8 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://satakuntaevents.fi/api/v2/place/?parent=pori:12&is_address=false'
+# ToDo: Point out right url that will contain Pori sub-areas
+  urls: 'https://satakuntaevents.fi/api/v2/place/?parent=se:13&is_address=false'
   item_selector: $.data.*
   ids:
     area_id:
@@ -34,7 +35,8 @@ process:
   parent:
     -
       plugin: default_value
-      default_value: pori:12
+# ToDo: Point out right id for Pori
+      default_value: se:19
     -
       plugin: migration_lookup
       migration: migrate_source_event_area

@@ -50,6 +50,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // Term fields
       $data['area'] = $this->getTranslatedTermNames($object->field_area, $langcode);
+      $data['area_sub_area'] = $this->getTranslatedChildTermNames($object->field_area, $langcode);
       $data['hobby_area'] = $this->getTranslatedTermNames($object->field_hobby_area, $langcode);
       $data['target_audience'] = $this->getTranslatedTermNames($object->field_target_audience, $langcode);
       $data['hobby_audience'] = $this->getTranslatedTermNames($object->field_hobby_audience, $langcode);
