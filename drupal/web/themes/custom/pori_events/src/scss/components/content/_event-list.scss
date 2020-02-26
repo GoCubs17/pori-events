@@ -1425,6 +1425,29 @@ margin-bottom: 10px;
   font-weight: 700;
   margin-bottom: 1em;
 }
+
+// Event area & sub-area filters
+.events--where {
+  .sk-panel {
+    .sk-panel__content {
+      .is-active {
+        background: $secondary-color-lighter;
+      }
+    }
+    // Remove thin vertical line at the left
+    .sk-hierarchical-menu-option.is-active {
+      border-left: 0;
+      // Set thin vertical line at the left for each items (similar as red line for hobbies):
+      // border-left: 3px solid $secondary-color-light;
+      // background: $secondary-color-lighter;
+    }
+    // Remove - in the list
+    .sk-panel__header:after {
+      content: "";
+    }
+  }
+}
+
 .hobby__area {
   font-weight: 700;
   margin-bottom: 1em;
