@@ -1,22 +1,22 @@
-uuid: 2e098b1d-4228-48eb-a844-4a260f0491a0
+uuid: c0c71a81-d110-4d2b-b9d6-b46d483b127b
 langcode: fi
 status: true
 dependencies:
   module:
     - migrate_source_example_json
     - taxonomy
-id: migrate_source_event_area
+id: migrate_source_event_area_subterms
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: migrate_source_event
-label: Area
+label: 'Area subterms'
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://satakuntaevents.fi/api/v2/place/?no_parent=true&page_size=99'
+  urls: 'https://satakuntaevents.fi/api/v2/place/?parent=se:13&is_address=false&page_size=99'
   item_selector: '$.data.*'
   ids:
     area_id:
@@ -35,6 +35,16 @@ process:
     plugin: default_value
     default_value: area
   name: area_name
+  parent:
+    -
+      plugin: default_value
+      default_value: 'https://satakuntaevents.fi/api/v2/place/se:13/'
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_area
+      no_stub: true
 destination:
   plugin: 'entity:taxonomy_term'
-migration_dependencies: {  }
+migration_dependencies:
+  required:
+    - migrate_source_event_area
