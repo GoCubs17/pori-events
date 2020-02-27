@@ -24,9 +24,19 @@ $settings['skip_permissions_hardening'] = TRUE;
 // Skip trusted host pattern when using Lando.
 $settings['trusted_host_patterns'] = ['.*'];
 
+// Disable CSS and JS aggregation.
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
+
+// Enable local development services.
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+
 // elasticsearch_helper settings.
 $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = "elasticsearch";
 $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = "9200";
 
 // simple_environment_indicator settings.
 $settings['simple_environment_indicator'] = '#88b700 Local';
+
+// stage_file_proxy_origin settings.
+$conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';

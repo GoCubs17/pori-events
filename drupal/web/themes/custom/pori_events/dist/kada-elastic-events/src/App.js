@@ -175,9 +175,9 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Where")}
               >
-                <RefinementListFilter
+               <HierarchicalMenuFilter
                   id="area"
-                  field="area"
+                  fields={["area", "area_sub_area"]}
                   operator="OR"
                   size={100}
                 />

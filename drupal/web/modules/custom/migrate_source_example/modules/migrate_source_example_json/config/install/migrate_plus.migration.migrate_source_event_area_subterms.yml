@@ -1,0 +1,48 @@
+langcode: fi
+status: true
+dependencies:
+  module:
+    - migrate_source_example_json
+    - taxonomy
+id: migrate_source_event_area_subterms
+migration_tags: null
+migration_group: migrate_source_event
+label: Area subterms
+source:
+  plugin: migrate_source_example_url
+  data_fetcher_plugin: http
+  data_parser_plugin: jsonpath
+# ToDo: Point out right url that will contain Pori sub-areas
+  urls: 'https://satakuntaevents.fi/api/v2/place/?parent=se:13&is_address=false&page_size=99'
+  item_selector: $.data.*
+  ids:
+    area_id:
+      type: string
+  fields:
+    -
+      name: area_id
+      label: 'ID of the area'
+      selector: $['@id']
+    -
+      name: area_name
+      label: 'Name of the area'
+      selector: $.name.fi
+process:
+  vid:
+    plugin: default_value
+    default_value: area
+  name: area_name
+  parent:
+    -
+      plugin: default_value
+# ToDo: Point out right id for Pori
+      default_value: https://satakuntaevents.fi/api/v2/place/se:13/
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_area
+      no_stub: true
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies:
+  required:
+    - migrate_source_event_area
