@@ -86,10 +86,6 @@ const HitsListItem = props => {
   if (source.sunday === "1") weekDays.push("SU");
   const addDay = weekDays.join(" | ");
 
-  const hobby_area = source.hobby_location_area
-    ? source.hobby_location_area
-    : source.hobby_location_sub_area;
-
   return (
     <div
       className={bemBlocks.item().mix(bemBlocks.container("item"))}
@@ -101,17 +97,20 @@ const HitsListItem = props => {
         </div>
         <div className="event__time">
           {date_start} {date_end}
-          <tag className="event__area"> {source.area}</tag>
-          {source.area_sub_area.length !== 0 && (
-            <tag className="event__area"> / {source.area_sub_area}</tag>
-          )}
+          <tag className="event__area">{source.area_sub_area.length !== 0 && (
+            <tag className="event__area"> {source.area_sub_area},</tag>
+          )} {source.area}</tag>
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
         </h2>
-        <div className="hobby__area">{hobby_area}</div>
-        {/* <div className="event__area">{source.area}</div> */}
+        <div className="hobby__area">
+          {source.hobby_location_sub_area.length !== 0 && (
+            <tag className="hobby__area"> {source.hobby_location_sub_area},</tag>
+          )}
+          <tag> {source.hobby_location_area}</tag>
+        </div>
         <div className="event__short_description">{leading}</div>
       </div>
     </div>
