@@ -101,13 +101,17 @@ const HitsListItem = props => {
         </div>
         <div className="event__time">
           {date_start} {date_end}
+          <tag className="event__area"> {source.area}</tag>
+          {source.area_sub_area.length !== 0 && (
+            <tag className="event__area"> / {source.area_sub_area}</tag>
+          )}
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
         </h2>
         <div className="hobby__area">{hobby_area}</div>
-        <div className="event__area">{source.area}</div>
+        {/* <div className="event__area">{source.area}</div> */}
         <div className="event__short_description">{leading}</div>
       </div>
     </div>
@@ -175,7 +179,7 @@ class App extends SearchkitComponent {
                 defaultCollapsed={true}
                 title={Drupal.t("Where")}
               >
-               <HierarchicalMenuFilter
+                <HierarchicalMenuFilter
                   id="area"
                   fields={["area", "area_sub_area"]}
                   operator="OR"
