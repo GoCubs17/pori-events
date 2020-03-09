@@ -1531,15 +1531,25 @@ margin-bottom: 10px;
     content: "-";
     position: absolute;
     right: 10px;
-    top: 5px;
+    top: 11px;
     color: #fff;
     font-size: 26px;
     &.is-collapsed {
       content: "-";
+      // Fix `-` sign posistion after clicking on `+`
+      top: 10px;
+    }
+    // Normalize breaks + / - sign position by changing font size. Need to fix:
+    @media screen and (min-width: $tablet-portrait-narrow) {
+      top: 11px;
     }
   }
   .sk-panel__header.is-collapsed:after {
     content: "+";
+    // take care of + sign position on screen larger than 600px:
+    @media screen and (min-width: $tablet-portrait-narrow) {
+      top: 12px;
+    }
   }
 }
 
