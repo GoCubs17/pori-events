@@ -1553,6 +1553,40 @@ margin-bottom: 10px;
   }
 }
 
+// [data-qa="option"]
+[data-key*="Pori"] {
+  padding-left: 10px;
+  &:after{
+
+    content: "+";
+    position: absolute;
+
+    top: 13px;
+    color: #005eb8;
+    font-size: 26px;
+
+    // Normalize breaks + / - sign position by changing font size. Need to fix:
+    @media screen and (min-width: $tablet-portrait-narrow) {
+      top: 13px;
+    }
+  }
+    &.is-active:after {
+      content: "-";
+      color: #fff;
+      // Fix `-` sign posistion after clicking on `+`
+      top: 12px;
+    }
+  }
+  
+  // .is-active {
+  //   content: "+";
+  //   // take care of + sign position on screen larger than 600px:
+  //   @media screen and (min-width: $tablet-portrait-narrow) {
+  //     top: 12px;
+  //   }
+  // }
+
+
 // Styling the searchkit items for the hobbies page is determined by the hooby-search class
 .hobby-search {
   .sk-layout {
