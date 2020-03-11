@@ -1553,38 +1553,62 @@ margin-bottom: 10px;
   }
 }
 
-// [data-qa="option"]
-[data-key*="Pori"] {
-  padding-left: 10px;
-  &:after{
 
-    content: "+";
-    position: absolute;
 
-    top: 13px;
-    color: #005eb8;
-    font-size: 26px;
-
-    // Normalize breaks + / - sign position by changing font size. Need to fix:
-    @media screen and (min-width: $tablet-portrait-narrow) {
-      top: 13px;
+.hobbies--what-panel {
+  .sk-hierarchical-menu-option:nth-child(1n+0) {
+    position: relative;
+    padding-right:20px;
+    &:after{
+      position: absolute;
+      right: 10px;
+      content: "+";
+      color:lightcoral;
+      top: 4px;
+      font-size: 26px;
     }
-  }
-    &.is-active:after {
+    &.is-active:after{
+      position: absolute;
+      right: 10px;
       content: "-";
-      color: #fff;
-      // Fix `-` sign posistion after clicking on `+`
-      top: 12px;
+      color: white;
+      top: 3px;
+      font-size: 26px;
     }
   }
-  
-  // .is-active {
-  //   content: "+";
-  //   // take care of + sign position on screen larger than 600px:
-  //   @media screen and (min-width: $tablet-portrait-narrow) {
-  //     top: 12px;
-  //   }
-  // }
+
+  // Do not show + / - sign for sub-elements
+  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options :after{
+    content: "";
+  }
+}
+
+
+// .events--where - Do not mess with other "Pori" items
+.events--where {
+  [data-key="Pori"] {
+    &.sk-hierarchical-menu-option {
+      position: relative;
+      padding-right:20px;
+      &:not(.is-active):after{
+        position: absolute;
+        right: 10px;
+        content: "+";
+        color:#005eb8;
+        top: 4px;
+        font-size: 26px;
+      }
+      &.is-active:after{
+        position: absolute;
+        right: 10px;
+        content: "-";
+        color: white;
+        top: 3px;
+        font-size: 26px;
+      }
+    }
+  }
+}
 
 
 // Styling the searchkit items for the hobbies page is determined by the hooby-search class
