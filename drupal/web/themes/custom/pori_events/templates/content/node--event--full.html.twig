@@ -100,6 +100,7 @@
 {% set free_entrance = content.field_free_entrance[0]['content'] %}
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
+{% set field_hobby_area = content.field_hobby_area[0]['#title'] %}
 {% set target_audience = content.field_target_audience[0]['#title'] %}
 {% set monday = content.field_weekday_monday[0] %}
 {% set tuesday = content.field_weekday_tuesday[0] %}
@@ -288,7 +289,7 @@
             {% endif %}
         {% endif %}
       {% endif %}
-      {% if location_extra_info or area %}
+      {% if location_extra_info or area or field_hobby_area %}
         <div class="event__content--sidebar__item">
           <i class="fas fa-map-marker-alt"></i>
           {% if location_extra_info %}
@@ -297,6 +298,9 @@
           {% endif %}
           {% if area %}
             {{ area }}
+          {% endif %}
+          {% if field_hobby_area %}
+            {{ field_hobby_area }}
           {% endif %}
         </div>
       {% endif %}
