@@ -49,6 +49,7 @@ module:
   options: 0
   page_cache: 0
   path: 0
+  path_alias: 0
   pori_event_search_defaults: 0
   pori_events_link_formatter: 0
   pori_harrastukset: 0

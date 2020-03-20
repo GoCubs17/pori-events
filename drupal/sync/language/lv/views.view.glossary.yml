@@ -1,9 +1,11 @@
+label: Sanasto
 display:
   default:
     display_title: Isäntä
     display_options:
       exposed_form:
         options:
+          submit_button: Käytä
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
       pager:
@@ -14,3 +16,7 @@ display:
       fields:
         title:
           label: Virsraksts
+  page_1:
+    display_options:
+      menu:
+        title: Sanasto

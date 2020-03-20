@@ -33,4 +33,3 @@ Install new modules
 Build for production
 
     yarn build
-
