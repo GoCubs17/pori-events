@@ -1,8 +1,14 @@
 display:
   default:
     display_options:
+      empty:
+        area_text_custom:
+          content: 'No front page content has been created yet.'
+        title:
+          title: '[site:name]'
       exposed_form:
         options:
+          submit_button: Käytä
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
       pager:
@@ -13,4 +19,6 @@ display:
           tags:
             previous: '‹ Edellinen'
             next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
     display_title: Isäntä

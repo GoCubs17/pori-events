@@ -14,7 +14,6 @@ description: 'Etsi ja ylläpidä sisältöä.'
 tag: default
 base_table: node_field_data
 base_field: nid
-core: 8.x
 display:
   default:
     display_options:
@@ -247,7 +246,7 @@ display:
           table: users_field_data
           field: name
           relationship: uid
-          label: Author
+          label: Tekijä
           exclude: false
           alter:
             alter_text: false
@@ -265,7 +264,7 @@ display:
           id: status
           table: node_field_data
           field: status
-          label: Status
+          label: Tila
           exclude: false
           alter:
             alter_text: false
@@ -382,6 +381,8 @@ display:
               anonymous: '0'
               administrator: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -423,6 +424,8 @@ display:
               anonymous: '0'
               administrator: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -451,7 +454,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Status
+            label: Tila
             description: ''
             use_operator: false
             operator: status_op
@@ -461,6 +464,8 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
             label: Julkaisutila
@@ -510,6 +515,8 @@ display:
               anonymous: '0'
               administrator: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -534,6 +541,9 @@ display:
           plugin_id: node_status
           group: 1
           entity_type: node
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
       sorts: {  }
       title: Sisältö
       empty:

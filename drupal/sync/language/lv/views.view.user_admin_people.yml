@@ -1,3 +1,5 @@
+label: Käyttäjät
+description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
 display:
   default:
     display_title: Isäntä
@@ -12,17 +14,37 @@ display:
           tags:
             previous: '‹ Edellinen'
             next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
       fields:
+        user_bulk_form:
+          label: Massapäivitys
+        name:
+          label: Käyttäjätunnus
         status:
           label: Statuss
+          settings:
+            format_custom_true: Voimassa
+            format_custom_false: Suljettu
+        operations:
+          label: Toimenpiteet
       filters:
         status:
           group_info:
             label: Statuss
+            group_items:
+              1:
+                title: Voimassa
+              2:
+                title: Suljettu
+      title: Käyttäjät
   page_1:
     display_options:
       menu:
         title: Saraksts
+        description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
+      tab_options:
+        title: Käyttäjät

@@ -1,4 +1,5 @@
 label: Saturs
+description: 'Etsi ja ylläpidä sisältöä.'
 display:
   default:
     display_options:
@@ -12,11 +13,17 @@ display:
           tags:
             previous: '‹ Edellinen'
             next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
       fields:
         title:
           label: Virsraksts
         status:
           label: Statuss
+        changed:
+          label: Päivitetty
+        operations:
+          label: Toimenpiteet
       filters:
         title:
           expose:
