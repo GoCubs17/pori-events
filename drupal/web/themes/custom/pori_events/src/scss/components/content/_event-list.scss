@@ -1578,14 +1578,18 @@ margin-bottom: 10px;
   }
 
   // Do not show + / - sign for sub-elements
-  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options :after{
+  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options :after {
+    content: "";
+  }
+    // Do not show + / - sign for sub-elements for selected sub-item (active one)
+  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options .is-active:after {
     content: "";
   }
 }
 
 
 // .events--where - Do not mess with other "Pori" items
-.events--where {
+.events--where, .hobbies--where-panel {
   [data-key="Pori"] {
     &.sk-hierarchical-menu-option {
       position: relative;
