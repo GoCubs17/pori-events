@@ -1,3 +1,5 @@
+label: Vahtikoira
+description: 'Viimeisimmät lokimerkinnät'
 display:
   default:
     display_title: Isäntä
@@ -13,9 +15,19 @@ display:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
       fields:
+        nothing:
+          admin_label: Ikoni
+        severity:
+          label: Vakavuus
         type:
           label: Veids
+        link:
+          label: Toimenpiteet
       filters:
         type:
           expose:
             label: Veids
+        severity:
+          expose:
+            label: Vakavuus
+      title: 'Viimeisimmät lokimerkinnät'
