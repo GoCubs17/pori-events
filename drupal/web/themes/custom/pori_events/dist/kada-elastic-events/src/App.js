@@ -97,16 +97,16 @@ const HitsListItem = props => {
         </div>
         <div className="event__time">
           {date_start} {date_end}
-          <tag className="event__area">
-            {source.area_sub_area.length !== 0 && (
-              <tag> {source.area_sub_area},</tag>
-            )} {source.area}
-          </tag>
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
         </h2>
+        <tag className="event__area">
+            {source.area_sub_area.length !== 0 && (
+              <tag> {source.area_sub_area},</tag>
+            )} {source.area}
+          </tag>
         <div className="hobby__area">
           {source.hobby_location_sub_area.length !== 0 && (
             <tag> {source.hobby_location_sub_area},</tag>
