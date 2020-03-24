@@ -1589,7 +1589,7 @@ margin-bottom: 10px;
 
 
 // .events--where - Do not mess with other "Pori" items
-.events--where, .hobbies--where-panel {
+.events--where {
   [data-key="Pori"] {
     &.sk-hierarchical-menu-option {
       position: relative;
