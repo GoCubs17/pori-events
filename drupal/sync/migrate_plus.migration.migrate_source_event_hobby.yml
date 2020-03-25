@@ -96,7 +96,7 @@ source:
       selector: $.provider_name
     -
       name: event_location_address
-      label: 'Location extra info'
+      label: 'Location address'
       selector: $.location.name.fi
     -
       name: extra_options
