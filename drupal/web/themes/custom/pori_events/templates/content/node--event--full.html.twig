@@ -82,7 +82,7 @@
 {% set short_description = content.field_short_description[0]['#context']['value'] %}
 {% set description = content.field_description[0]['#text'] %}
 {% set location_address = content.field_location_extra_info[0]['#context']['value'] %}
-{% set area = content.field_area[0]['#title'] %}
+{#{% set area = content.field_area[0]['#title'] %}#}
 {% set free = content.field_free_enterance[0]['response'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
 {% set provider_www = content.field_provider_www[0]['content'] %}
@@ -100,7 +100,7 @@
 {% set free_entrance = content.field_free_entrance[0]['content'] %}
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
-{% set field_hobby_area = content.field_hobby_area[0]['#title'] %}
+{#{% set field_hobby_area = content.field_hobby_area[0]['#title'] %}#}
 {% set target_audience = content.field_target_audience[0]['#title'] %}
 {% set monday = content.field_weekday_monday[0] %}
 {% set tuesday = content.field_weekday_tuesday[0] %}
@@ -289,18 +289,12 @@
             {% endif %}
         {% endif %}
       {% endif %}
-      {% if location_address or area or field_hobby_area %}
+      {% if location_address %}
         <div class="event__content--sidebar__item">
           <i class="fas fa-map-marker-alt"></i>
           {% if location_address %}
             {{ location_address }}
             <div>{{ location_extra_info }} </div>
-          {% endif %}
-          {% if area %}
-            {{ area }}
-          {% endif %}
-          {% if field_hobby_area %}
-            {{ field_hobby_area }}
           {% endif %}
         </div>
       {% endif %}
