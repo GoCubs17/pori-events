@@ -185,6 +185,10 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 'type' => 'keyword',
                 'index' => 'analyzed',
               ],
+              'area_sub_area' => [
+                'type' => 'keyword',
+                'index' => 'analyzed',
+              ],
               'target_audience' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
