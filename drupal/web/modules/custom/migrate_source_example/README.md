@@ -39,6 +39,9 @@ which is needed to release to other environments.
 Cron does rollback (prod,stage,dev) to remove events that have been removed from JSON that API returns.
 `drush mr migrate_source_event_event`
 
+To reindex imported events/hobbies use. May help if something is wrong.
+`drush eshd -y && drush eshs event_index && drush eshr event_index && drush queue-run elasticsearch_helper_indexing && drush cron && drush cr`
+
 !IMPORTANT keep development yml files the same as sync/ yml files so partial import
 doesn't do unwanted changes later.
 
