@@ -1,87 +1,32 @@
-# Pori Events
+# tapahtumat.pori.fi
 
-Drupal 8 based event calendar site.
+The [tapahtumat.pori.fi](https://tapahtumat.pori.fi/) calendar contains all the events and activities near Pori.
 
-## Setting up
+## Local development
 
-This repository comes with two options to run your local development environment - Lando and Vagrant. If you are starting a new project from this repository refer to the `docs/setup.md` for suggestions on preparing your own repository.
+### Setup
 
-### Lando (Recommended)
+1. Read the [Lando docs](https://docs.lando.dev/) and install the **latest** [Lando](https://github.com/lando/lando/releases).
+2. Check out the repo: `git clone git@github.com:City-of-Pori/pori-events.git tapahtumat && cd tapahtumat/drupal`.
+3. Start the site: `lando start`.
+4. Sync the local database with selected environment: `lando syncdb <env>` (`stage` by default, `prod`). Connect to the required VPN first.
+5. Update the local database & enable development components: `lando update`.
+6. Go to <https://tapahtumat.lndo.site/>.
 
-#### Requirements
+### Services
 
-- Install [Lando](https://docs.devwithlando.io/) 3.0.0-rc.2 or greater
+- <https://adminer-tapahtumat.lndo.site> - Adminer for database management, log in **without** entering the credentials.
+- <https://mail-tapahtumat.lndo.site> - Mailhog for mail management.
 
-Start you environment by running:
-    
-```$ lando start```
+### Tools
 
-#### If you are building the environment for an ongoing project 
+Full commands/tools overview is available by running `lando`. Custom tools:
 
-Build the project by running:    
-    
-```$ lando build.sh build```
+- `lando bower`, `lando gulp`, `lando npm` - frontend tooling,
+- `lando index` - sets up the elasticsearch indexes,
+- `lando update` - updates the local db & enables dev components,
+- `lando migrate` - imports migrate_source_event migration group,
+- `lando xdebug-on` - enables xdebug,
+- `lando xdebug-off` - disables xdebug.
 
-Import your existing database by running
-
-```$ lando db-import [database-dump.sql]```
-
-Run full build update
-
-```$ lando build.sh update```
-    
-#### If you are using this repository to start a new project
-    
-Build the project by running:    
-    
-```$ lando build.sh create```
-
-Known issues with configuration import:
-
-> Error: Call to a member function getCacheTags() on null in /app/web/core/modules/shortcut/src/Entity/Shortcut.php
-
-The default shortcut set causes issues when running the import for the first time. Run `$ lando drush cim` to restart the configuration import.
-   
-### Vagrant
-
-#### Requirements
-
-- Install [Vagrant](https://www.vagrantup.com/downloads.html) 1.9.2 or greater
-- Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier)
- `vagrant plugin install vagrant-cachier`
-- Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) 5.1 or greater. Note version 5.1.24 has a known issue that breaks nfs, do not use it, version 5.1.22 s known to work.
-- Make sure you have python2.7 also installed (For OS X should be default).
-
-#### Setup vagrant environment
-
-```$ git clone git@github.com:City-of-Pori/pori-events.git```
-
-```$ vagrant up``` 
-
-```$ vagrant ssh```
-
-```$ cd /vagrant/drupal/```
-
-#### 2.a Setting up an existing site
-
-```$ ./build.sh build```
-
-```$ exit```
-
-```drush @pori-events.stage sql-dump | drush @pori-events.local sql-cli```
-
-#### 2.b First time setup
-
-```$ vagrant ssh```
-
-```$ cd /vagrant/drupal/```
-
-```$ ./build.sh create```
-
-Access your local environment at https://local.tapahtumat.pori.fi
-
-Check `docs/development.md` for more detailed information about development process.
-
-## Credits
-
-This project is based on WunderTools: https://wundertools.wunder.io/#!index.md
+[Old readme](README_old.md).

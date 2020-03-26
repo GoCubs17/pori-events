@@ -33,7 +33,7 @@ test.satakuntaevents API or even satakuntaevents API. Both are open.
 Making changes to dev files in install folder doesn't work straight away. You need
 to run `drush config-import --partial --source=modules/custom/migrate_source_example/modules/migrate_source_example_json/config/install/ -y && drush cr` to import changes to db.
 
-After every change works as intended drush cex -y` will pull out sync yml for Migrations
+After every change works as intended `drush cex -y` will pull out sync yml for Migrations
 which is needed to release to other environments.
 
 Cron does rollback (prod,stage,dev) to remove events that have been removed from JSON that API returns.
@@ -43,7 +43,8 @@ Cron does rollback (prod,stage,dev) to remove events that have been removed from
 doesn't do unwanted changes later.
 
 ## List of migrations and sources updated 21.10.2019
-migrate_source_event_area | https://satakuntaevents.fi/api/v2/places?show_all_places=1&page_size=999
+migrate_source_event_area | https://satakuntaevents.fi/api/v2/place/?no_parent=true&page_size=99
+migrate_source_event_area_subterms | https://satakuntaevents.fi/api/v2/place/?parent=se:13&is_address=false&page_size=99
 migrate_source_event_audience | https://satakuntaevents.fi/api/v2/keyword_set/pori:audiences/?include=keywords&page_size=999
 migrate_source_event_event | https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today
 migrate_source_event_hobby_area_subterms | https://satakuntaevents.fi/activity/api/v1/place/?page_size=100&is_address=false&parent=se:13

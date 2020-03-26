@@ -61,7 +61,7 @@ source:
     -
       name: event_location
       label: Location
-      selector: location/id
+      selector: area/@id
     -
       name: event_audience
       label: Audience
@@ -87,6 +87,10 @@ source:
       label: Provider
       selector: provider_email
     -
+      name: event_location_address
+      label: 'Location address'
+      selector: location/name/fi
+    -
       name: event_location_extra_info
       label: 'Location extra info'
       selector: location_extra_info/fi
@@ -104,7 +108,8 @@ process:
   field_provider_email: event_provider_email
   field_provider_www: event_provider_www
   field_provider_phone: event_provider_phone
-  field_location_extra_info: event_location_extra_info
+  field_location_extra_info: event_location_address
+  field_location_extra_info_info: event_location_extra_info
   field_ticket_vendor:
     source: event_offers
     plugin: extract
@@ -179,7 +184,9 @@ process:
       migration: migrate_source_event_keywords
   field_area:
     plugin: migration_lookup
-    migration: migrate_source_event_area
+    migration:
+      - migrate_source_event_area
+      - migrate_source_event_area_subterms
     source: event_location
   field_target_audience:
     -
