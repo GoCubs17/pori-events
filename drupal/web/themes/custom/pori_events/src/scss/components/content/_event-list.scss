@@ -1422,6 +1422,7 @@ margin-bottom: 10px;
   overflow: hidden;
 }
 .event__area {
+  color: #1e1e1e;
   font-weight: 700;
   margin-bottom: 1em;
 }
@@ -1530,17 +1531,114 @@ margin-bottom: 10px;
     content: "-";
     position: absolute;
     right: 10px;
-    top: 5px;
+    top: 11px;
     color: #fff;
     font-size: 26px;
     &.is-collapsed {
       content: "-";
+      // Fix `-` sign posistion after clicking on `+`
+      top: 10px;
+    }
+    // Normalize breaks + / - sign position by changing font size. Need to fix:
+    @media screen and (min-width: $tablet-portrait-narrow) {
+      top: 11px;
     }
   }
   .sk-panel__header.is-collapsed:after {
     content: "+";
+    // take care of + sign position on screen larger than 600px:
+    @media screen and (min-width: $tablet-portrait-narrow) {
+      top: 12px;
+    }
   }
 }
+
+
+.hobbies--what-panel {
+  .sk-hierarchical-menu-option:nth-child(1n+0) {
+    position: relative;
+    padding-right:20px;
+    &:after{
+      position: absolute;
+      right: 10px;
+      content: "+";
+      color:lightcoral;
+      top: 4px;
+      font-size: 26px;
+    }
+    &.is-active:after{
+      position: absolute;
+      right: 10px;
+      content: "-";
+      color: white;
+      top: 3px;
+      font-size: 26px;
+    }
+  }
+
+  // Do not show + / - sign for sub-elements
+  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options :after {
+    content: "";
+  }
+    // Do not show + / - sign for sub-elements for selected sub-item (active one)
+  .sk-hierarchical-menu-option ~ .sk-hierarchical-menu-list__hierarchical-options .is-active:after {
+    content: "";
+  }
+}
+
+
+// .events--where - Do not mess with other "Pori" items
+.events--where {
+  [data-key="Pori"] {
+    &.sk-hierarchical-menu-option {
+      position: relative;
+      padding-right:20px;
+      &:not(.is-active):after{
+        position: absolute;
+        right: 10px;
+        content: "+";
+        color:#005eb8;
+        top: 4px;
+        font-size: 26px;
+      }
+      &.is-active:after{
+        position: absolute;
+        right: 10px;
+        content: "-";
+        color: white;
+        top: 3px;
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+// .hobbies--where-panel - Do not mess with other "Pori" items
+.hobbies--where-panel {
+  [data-key="Pori"] {
+    &.sk-hierarchical-menu-option {
+      position: relative;
+      padding-right:20px;
+      &:not(.is-active):after{
+        position: absolute;
+        right: 10px;
+        content: "+";
+        color:lightcoral;
+        top: 4px;
+        font-size: 26px;
+      }
+      &.is-active:after{
+        position: absolute;
+        right: 10px;
+        content: "-";
+        color: white;
+        top: 3px;
+        font-size: 26px;
+      }
+    }
+  }
+}
+
 
 // Styling the searchkit items for the hobbies page is determined by the hooby-search class
 .hobby-search {

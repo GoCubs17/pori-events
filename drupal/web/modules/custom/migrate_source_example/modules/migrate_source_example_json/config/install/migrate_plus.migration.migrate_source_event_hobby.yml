@@ -53,7 +53,7 @@ source:
     -
       name: event_location
       label: 'Location'
-      selector: $.location.id
+      selector: $.area.id
     -
       name: event_audience
       label: 'Audience'
@@ -92,7 +92,7 @@ source:
       selector: $.provider_name
     -
       name: event_location_address
-      label: 'Location extra info'
+      label: 'Location address'
       selector: $.location.name.fi
     -
       name: extra_options
