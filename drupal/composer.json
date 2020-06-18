@@ -75,7 +75,7 @@
         "drupal/empty_page": "^2.0",
         "drupal/simple_gmap": "^1.4",
         "drupal/pathauto": "^1.6",
-        "drupal/core": "^8.8.6",
+        "drupal/core": "^8.8.8",
         "symfony/finder": "^3.4",
         "symfony/filesystem": "^3.4"
     },
